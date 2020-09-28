@@ -1,5 +1,5 @@
 Timing Analyzer report for top_level
-Sat Sep 26 18:27:53 2020
+Mon Sep 28 12:32:54 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -92,12 +92,12 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 6           ;
 ;                            ;             ;
-; Average used               ; 1.08        ;
+; Average used               ; 1.12        ;
 ; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-6         ;   1.5%      ;
+;     Processors 2-6         ;   2.4%      ;
 +----------------------------+-------------+
 
 
@@ -106,7 +106,7 @@ refer to the applicable agreement for further details.
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; top_level.SDC ; OK     ; Sat Sep 26 18:27:50 2020 ;
+; top_level.SDC ; OK     ; Mon Sep 28 12:32:52 2020 ;
 +---------------+--------+--------------------------+
 
 
@@ -772,7 +772,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Sep 26 18:27:48 2020
+    Info: Processing started: Mon Sep 28 12:32:51 2020
 Info: Command: quartus_sta Group8_Lab1_ENCM453 -c top_level
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -843,9 +843,9 @@ Info (332146): Worst-case minimum pulse width slack is 9.327
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 4849 megabytes
-    Info: Processing ended: Sat Sep 26 18:27:53 2020
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Peak virtual memory: 4846 megabytes
+    Info: Processing ended: Mon Sep 28 12:32:54 2020
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 

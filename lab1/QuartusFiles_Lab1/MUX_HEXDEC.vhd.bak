@@ -1,0 +1,20 @@
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use ieee.numeric_std.all;
+
+--MT START MODS
+
+entity MUX_HEXorDEC is
+				Port ( SLIDE		: in STD_LOGIC;
+						 DEC_IN	 	: in STD_LOGIC_VECTOR(15 downto 0); 
+						 HEX_IN	 	: in STD_LOGIC_VECTOR(15 downto 0);
+						 DATA_OUT 	: out STD_LOGIC_VECTOR(15 downto 0));				
+end MUX_HEXorDEC;
+
+
+
+
+architecture Behavioral of MUX_HEXorDEC is	
+	
+	

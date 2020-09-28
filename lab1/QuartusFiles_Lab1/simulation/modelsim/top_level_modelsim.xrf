@@ -5,6 +5,7 @@ source_file = 1, S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_le
 source_file = 1, S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment_decoder.vhd
 source_file = 1, S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd
 source_file = 1, S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/binary_bcd.vhd
+source_file = 1, S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd
 source_file = 1, d:/program files/quartus/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, d:/program files/quartus/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
 source_file = 1, d:/program files/quartus/quartus/libraries/vhdl/ieee/timing_b.vhd
