@@ -19,7 +19,7 @@ architecture synth of MUX_HEXDEC is
 		
 	-- NO EXTRA COMPONENTS  or signals needed for this mux
 	begin
-		DATA_OUT <= DEC_IN when SLIDE = '1' else HEX_IN; 
+		DATA_OUT <= DEC_IN when SLIDE = '0' else HEX_IN; 
 			--mux outputs decimal values when slide is on, else hex values
 end;
 				
