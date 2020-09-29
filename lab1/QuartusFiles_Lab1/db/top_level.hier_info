@@ -1,6 +1,7 @@
 |top_level
 clk => binary_bcd:binary_bcd_ins.clk
 reset_n => binary_bcd:binary_bcd_ins.reset_n
+reset_n => muxSW.OUTPUTSELECT
 SW[0] => binary_bcd:binary_bcd_ins.binary[0]
 SW[0] => MUX_HEXDEC:MUX_HEXDEC_ins.HEX_IN[0]
 SW[0] => LEDR[0].DATAIN
@@ -26,7 +27,7 @@ SW[7] => binary_bcd:binary_bcd_ins.binary[7]
 SW[7] => MUX_HEXDEC:MUX_HEXDEC_ins.HEX_IN[7]
 SW[7] => LEDR[7].DATAIN
 SW[8] => LEDR[8].DATAIN
-SW[9] => MUX_HEXDEC:MUX_HEXDEC_ins.SLIDE
+SW[9] => muxSW.DATAA
 SW[9] => LEDR[9].DATAIN
 LEDR[0] <= SW[0].DB_MAX_OUTPUT_PORT_TYPE
 LEDR[1] <= SW[1].DB_MAX_OUTPUT_PORT_TYPE

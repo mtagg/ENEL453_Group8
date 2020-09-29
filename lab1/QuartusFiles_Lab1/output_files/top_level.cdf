@@ -3,8 +3,8 @@ JedecChain;
 	FileRevision(JESD32A);
 	DefaultMfr(6E);
 
-	P ActionCode(Cfg)
-		Device PartName(10M50DAF484ES) Path("S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/") File("top_level.sof") MfrSpec(OpMask(1));
+	P ActionCode(Ign)
+		Device PartName(10M50DAF484ES) MfrSpec(OpMask(0) FullPath("S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/top_level.sof"));
 
 ChainEnd;
 
