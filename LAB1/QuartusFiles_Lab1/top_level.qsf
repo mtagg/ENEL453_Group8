@@ -367,4 +367,6 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
 set_global_assignment -name VHDL_FILE MUX_HEXDEC.vhd
+set_global_assignment -name VHDL_FILE output_files/tb_MUX_HEXDEC.vhd
+set_global_assignment -name VHDL_FILE output_files/tb_top_level.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

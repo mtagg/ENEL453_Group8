@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
 
--- DATE "09/29/2020 09:57:07"
+-- DATE "09/29/2020 12:52:13"
 
 -- 
 -- Device: Altera 10M50DAF484C6GES Package FBGA484
@@ -92,13 +92,13 @@ ENTITY 	top_level IS
 	clk : IN std_logic;
 	reset_n : IN std_logic;
 	SW : IN std_logic_vector(9 DOWNTO 0);
-	LEDR : BUFFER std_logic_vector(9 DOWNTO 0);
-	HEX0 : BUFFER std_logic_vector(7 DOWNTO 0);
-	HEX1 : BUFFER std_logic_vector(7 DOWNTO 0);
-	HEX2 : BUFFER std_logic_vector(7 DOWNTO 0);
-	HEX3 : BUFFER std_logic_vector(7 DOWNTO 0);
-	HEX4 : BUFFER std_logic_vector(7 DOWNTO 0);
-	HEX5 : BUFFER std_logic_vector(7 DOWNTO 0)
+	LEDR : OUT std_logic_vector(9 DOWNTO 0);
+	HEX0 : OUT std_logic_vector(7 DOWNTO 0);
+	HEX1 : OUT std_logic_vector(7 DOWNTO 0);
+	HEX2 : OUT std_logic_vector(7 DOWNTO 0);
+	HEX3 : OUT std_logic_vector(7 DOWNTO 0);
+	HEX4 : OUT std_logic_vector(7 DOWNTO 0);
+	HEX5 : OUT std_logic_vector(7 DOWNTO 0)
 	);
 END top_level;
 
@@ -272,20 +272,21 @@ SIGNAL \SW[8]~input_o\ : std_logic;
 SIGNAL \SW[9]~input_o\ : std_logic;
 SIGNAL \clk~input_o\ : std_logic;
 SIGNAL \clk~inputclkctrl_outclk\ : std_logic;
-SIGNAL \binary_bcd_ins|Equal0~5_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~0_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Equal0~8_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Equal0~5_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Equal0~7_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Equal0~6_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Equal0~9_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|counter~2_combout\ : std_logic;
 SIGNAL \reset_n~input_o\ : std_logic;
+SIGNAL \binary_bcd_ins|CurentState.s6~feeder_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|CurentState.s6~q\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~1\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~2_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~3\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~4_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|counter~1_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Equal0~8_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Equal0~6_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Equal0~7_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Equal0~9_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~5\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~6_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|counter~0_combout\ : std_logic;
@@ -321,7 +322,6 @@ SIGNAL \binary_bcd_ins|Add4~35\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~36_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~37\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~38_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Equal0~3_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~39\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~40_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~41\ : std_logic;
@@ -338,6 +338,7 @@ SIGNAL \binary_bcd_ins|Add4~51\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~52_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~53\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~54_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Equal0~1_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~55\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~56_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~57\ : std_logic;
@@ -347,8 +348,8 @@ SIGNAL \binary_bcd_ins|Add4~60_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~61\ : std_logic;
 SIGNAL \binary_bcd_ins|Add4~62_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Equal0~0_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Equal0~3_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Equal0~2_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Equal0~1_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Equal0~4_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|bcd[3]~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|CurentState.S0~0_combout\ : std_logic;
@@ -357,15 +358,14 @@ SIGNAL \binary_bcd_ins|Selector29~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|CurentState.S1~q\ : std_logic;
 SIGNAL \binary_bcd_ins|CurentState.S2~q\ : std_logic;
 SIGNAL \binary_bcd_ins|CurentState.S3~q\ : std_logic;
+SIGNAL \binary_bcd_ins|CurentState.S4~feeder_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|CurentState.S4~q\ : std_logic;
-SIGNAL \binary_bcd_ins|CurentState.S5~feeder_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|CurentState.S5~q\ : std_logic;
-SIGNAL \binary_bcd_ins|Selector28~1_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector28~0_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Selector28~1_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector28~2_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Selector28~3_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector27~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[12]~37_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[9]~35_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector26~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector25~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector24~0_combout\ : std_logic;
@@ -380,9 +380,9 @@ SIGNAL \binary_bcd_ins|Selector16~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector15~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|LessThan3~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[13]~6_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[13]~7_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[13]~38_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[13]~4_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[13]~5_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[13]~36_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~1\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~2_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector14~0_combout\ : std_logic;
@@ -392,8 +392,10 @@ SIGNAL \binary_bcd_ins|Selector13~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~5\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~6_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector12~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd[0]~feeder_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd[1]~feeder_combout\ : std_logic;
+SIGNAL \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ : std_logic;
+SIGNAL \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ : std_logic;
+SIGNAL \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ : std_logic;
+SIGNAL \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder0|Mux6~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder0|Mux5~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder0|Mux4~0_combout\ : std_logic;
@@ -405,24 +407,28 @@ SIGNAL \binary_bcd_ins|Add3~7\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~8_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector11~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~1\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~2_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[18]~6_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[18]~7_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[18]~8_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~9\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~10_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~1\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~2_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector10~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~11\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~12_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~3\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~4_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector9~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~5\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~6_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~13\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~14_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~5\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~6_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector8~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[19]~8_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[19]~9_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[19]~10_combout\ : std_logic;
+SIGNAL \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ : std_logic;
+SIGNAL \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ : std_logic;
+SIGNAL \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ : std_logic;
+SIGNAL \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder1|Mux6~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder1|Mux5~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder1|Mux4~0_combout\ : std_logic;
@@ -430,110 +436,125 @@ SIGNAL \SevenSegment_ins|decoder1|Mux3~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder1|Mux2~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder1|Mux1~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder1|Mux0~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[24]~11_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|WideOr1~0_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[22]~9_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add1~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~15\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~16_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|WideOr1~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector7~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~7\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~8_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector7~1_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[19]~13_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[24]~12_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[24]~14_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~9\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~10_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~1\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~2_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Selector6~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~17\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~18_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Selector6~1_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~11\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~12_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~3\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~4_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~19\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~20_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Selector5~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Selector5~1_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~5\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~6_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~13\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~14_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~5\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~6_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector4~0_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~17\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~19\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~21\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~22_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Selector4~1_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[22]~10_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[22]~11_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[22]~12_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~1\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~2_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~10_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Selector6~0_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~18_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Selector6~1_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~3\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~4_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~20_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Selector5~0_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~12_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Selector5~1_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd[9]~feeder_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|bcd[8]~feeder_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder2|Mux6~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder2|Mux5~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder2|Mux4~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder2|Mux3~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder2|Mux2~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder2|Mux1~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder2|Mux0~0_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[28]~34_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[28]~35_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux6~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux6~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux5~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux5~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux4~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux4~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux3~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux3~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux2~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux2~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux1~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux1~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux0~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|Mux0~3_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~23\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~24_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~15\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~16_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~7\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~8_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[25]~15_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[25]~16_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[25]~17_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[25]~18_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~25\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~26_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add2~17\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~19\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~21\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~22_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[28]~40_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~18_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~9\ : std_logic;
+SIGNAL \binary_bcd_ins|Add1~10_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[26]~19_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[26]~20_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[26]~21_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[26]~22_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|LessThan0~0_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[27]~23_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~27\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~29\ : std_logic;
 SIGNAL \binary_bcd_ins|Add3~30_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[27]~29_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[27]~28_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~7\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~9\ : std_logic;
 SIGNAL \binary_bcd_ins|Add1~11\ : std_logic;
 SIGNAL \binary_bcd_ins|Add1~13\ : std_logic;
 SIGNAL \binary_bcd_ins|Add1~14_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[28]~33_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[27]~26_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[28]~36_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[28]~15_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[28]~16_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[28]~17_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~8_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[25]~18_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[25]~19_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~16_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[25]~20_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~23\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~24_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[25]~21_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[26]~23_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~18_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add1~10_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[26]~22_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[26]~24_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~25\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~26_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[26]~25_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~27\ : std_logic;
-SIGNAL \binary_bcd_ins|Add3~28_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|Add2~20_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[27]~39_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|bcd_signal[27]~27_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[28]~32_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~19\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~21\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~22_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[28]~33_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[28]~37_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[28]~34_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[28]~13_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[28]~14_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[27]~24_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|Add1~12_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[27]~25_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[27]~26_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add2~20_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[27]~28_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|bcd_signal[27]~29_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|bcd_signal[27]~30_combout\ : std_logic;
+SIGNAL \binary_bcd_ins|Add3~28_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|bcd_signal[27]~31_combout\ : std_logic;
-SIGNAL \binary_bcd_ins|bcd_signal[27]~32_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder3|Mux6~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder3|Mux5~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder3|Mux4~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder3|Mux3~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder3|Mux2~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder3|Mux1~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder3|Mux0~0_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux6~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux6~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux5~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux5~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux4~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux4~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux3~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux3~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux2~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux2~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux1~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux1~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux0~2_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|Mux0~3_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|bcd_signal\ : std_logic_vector(28 DOWNTO 0);
 SIGNAL \binary_bcd_ins|bcd\ : std_logic_vector(15 DOWNTO 0);
 SIGNAL \binary_bcd_ins|counter\ : std_logic_vector(31 DOWNTO 0);
-SIGNAL \SevenSegment_ins|decoder3|ALT_INV_Mux0~0_combout\ : std_logic;
-SIGNAL \SevenSegment_ins|decoder2|ALT_INV_Mux0~0_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|ALT_INV_Mux0~3_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder2|ALT_INV_Mux0~3_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder1|ALT_INV_Mux0~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder0|ALT_INV_Mux0~0_combout\ : std_logic;
 
@@ -565,8 +586,8 @@ ww_devpor <= devpor;
 \~QUARTUS_CREATED_ADC2~_CHSEL_bus\ <= (\~QUARTUS_CREATED_GND~I_combout\ & \~QUARTUS_CREATED_GND~I_combout\ & \~QUARTUS_CREATED_GND~I_combout\ & \~QUARTUS_CREATED_GND~I_combout\ & \~QUARTUS_CREATED_GND~I_combout\);
 
 \clk~inputclkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \clk~input_o\);
-\SevenSegment_ins|decoder3|ALT_INV_Mux0~0_combout\ <= NOT \SevenSegment_ins|decoder3|Mux0~0_combout\;
-\SevenSegment_ins|decoder2|ALT_INV_Mux0~0_combout\ <= NOT \SevenSegment_ins|decoder2|Mux0~0_combout\;
+\SevenSegment_ins|decoder3|ALT_INV_Mux0~3_combout\ <= NOT \SevenSegment_ins|decoder3|Mux0~3_combout\;
+\SevenSegment_ins|decoder2|ALT_INV_Mux0~3_combout\ <= NOT \SevenSegment_ins|decoder2|Mux0~3_combout\;
 \SevenSegment_ins|decoder1|ALT_INV_Mux0~0_combout\ <= NOT \SevenSegment_ins|decoder1|Mux0~0_combout\;
 \SevenSegment_ins|decoder0|ALT_INV_Mux0~0_combout\ <= NOT \SevenSegment_ins|decoder0|Mux0~0_combout\;
 auto_generated_inst : hard_block
@@ -575,7 +596,7 @@ PORT MAP (
 	devclrn => ww_devclrn,
 	devpor => ww_devpor);
 
--- Location: LCCOMB_X44_Y52_N8
+-- Location: LCCOMB_X44_Y44_N8
 \~QUARTUS_CREATED_GND~I\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \~QUARTUS_CREATED_GND~I_combout\ = GND
@@ -908,7 +929,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder2|Mux6~0_combout\,
+	i => \SevenSegment_ins|decoder2|Mux6~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX2[0]~output_o\);
 
@@ -920,7 +941,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder2|Mux5~0_combout\,
+	i => \SevenSegment_ins|decoder2|Mux5~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX2[1]~output_o\);
 
@@ -932,7 +953,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder2|Mux4~0_combout\,
+	i => \SevenSegment_ins|decoder2|Mux4~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX2[2]~output_o\);
 
@@ -944,7 +965,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder2|Mux3~0_combout\,
+	i => \SevenSegment_ins|decoder2|Mux3~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX2[3]~output_o\);
 
@@ -956,7 +977,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder2|Mux2~0_combout\,
+	i => \SevenSegment_ins|decoder2|Mux2~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX2[4]~output_o\);
 
@@ -968,7 +989,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder2|Mux1~0_combout\,
+	i => \SevenSegment_ins|decoder2|Mux1~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX2[5]~output_o\);
 
@@ -980,7 +1001,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder2|ALT_INV_Mux0~0_combout\,
+	i => \SevenSegment_ins|decoder2|ALT_INV_Mux0~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX2[6]~output_o\);
 
@@ -1004,7 +1025,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder3|Mux6~0_combout\,
+	i => \SevenSegment_ins|decoder3|Mux6~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX3[0]~output_o\);
 
@@ -1016,7 +1037,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder3|Mux5~0_combout\,
+	i => \SevenSegment_ins|decoder3|Mux5~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX3[1]~output_o\);
 
@@ -1028,7 +1049,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder3|Mux4~0_combout\,
+	i => \SevenSegment_ins|decoder3|Mux4~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX3[2]~output_o\);
 
@@ -1040,7 +1061,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder3|Mux3~0_combout\,
+	i => \SevenSegment_ins|decoder3|Mux3~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX3[3]~output_o\);
 
@@ -1052,7 +1073,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder3|Mux2~0_combout\,
+	i => \SevenSegment_ins|decoder3|Mux2~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX3[4]~output_o\);
 
@@ -1064,7 +1085,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder3|Mux1~0_combout\,
+	i => \SevenSegment_ins|decoder3|Mux1~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX3[5]~output_o\);
 
@@ -1076,7 +1097,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \SevenSegment_ins|decoder3|ALT_INV_Mux0~0_combout\,
+	i => \SevenSegment_ins|decoder3|ALT_INV_Mux0~3_combout\,
 	devoe => ww_devoe,
 	o => \HEX3[6]~output_o\);
 
@@ -1429,24 +1450,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	outclk => \clk~inputclkctrl_outclk\);
 
--- Location: LCCOMB_X57_Y49_N22
-\binary_bcd_ins|Equal0~5\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Equal0~5_combout\ = (!\binary_bcd_ins|counter\(13) & (!\binary_bcd_ins|counter\(14) & (!\binary_bcd_ins|counter\(15) & !\binary_bcd_ins|counter\(12))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000000000001",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|counter\(13),
-	datab => \binary_bcd_ins|counter\(14),
-	datac => \binary_bcd_ins|counter\(15),
-	datad => \binary_bcd_ins|counter\(12),
-	combout => \binary_bcd_ins|Equal0~5_combout\);
-
--- Location: LCCOMB_X58_Y49_N0
+-- Location: LCCOMB_X56_Y52_N0
 \binary_bcd_ins|Add4~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~0_combout\ = \binary_bcd_ins|counter\(0) $ (VCC)
@@ -1463,7 +1467,92 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~0_combout\,
 	cout => \binary_bcd_ins|Add4~1\);
 
--- Location: LCCOMB_X57_Y49_N14
+-- Location: LCCOMB_X57_Y52_N12
+\binary_bcd_ins|Equal0~8\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Equal0~8_combout\ = (!\binary_bcd_ins|counter\(1) & (\binary_bcd_ins|counter\(2) & (\binary_bcd_ins|counter\(3) & !\binary_bcd_ins|counter\(0))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000001000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|counter\(1),
+	datab => \binary_bcd_ins|counter\(2),
+	datac => \binary_bcd_ins|counter\(3),
+	datad => \binary_bcd_ins|counter\(0),
+	combout => \binary_bcd_ins|Equal0~8_combout\);
+
+-- Location: LCCOMB_X57_Y52_N24
+\binary_bcd_ins|Equal0~5\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Equal0~5_combout\ = (!\binary_bcd_ins|counter\(14) & (!\binary_bcd_ins|counter\(12) & (!\binary_bcd_ins|counter\(13) & !\binary_bcd_ins|counter\(15))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000000000001",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|counter\(14),
+	datab => \binary_bcd_ins|counter\(12),
+	datac => \binary_bcd_ins|counter\(13),
+	datad => \binary_bcd_ins|counter\(15),
+	combout => \binary_bcd_ins|Equal0~5_combout\);
+
+-- Location: LCCOMB_X57_Y52_N4
+\binary_bcd_ins|Equal0~7\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Equal0~7_combout\ = (!\binary_bcd_ins|counter\(5) & (!\binary_bcd_ins|counter\(4) & (!\binary_bcd_ins|counter\(7) & !\binary_bcd_ins|counter\(6))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000000000001",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|counter\(5),
+	datab => \binary_bcd_ins|counter\(4),
+	datac => \binary_bcd_ins|counter\(7),
+	datad => \binary_bcd_ins|counter\(6),
+	combout => \binary_bcd_ins|Equal0~7_combout\);
+
+-- Location: LCCOMB_X57_Y52_N10
+\binary_bcd_ins|Equal0~6\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Equal0~6_combout\ = (!\binary_bcd_ins|counter\(10) & (!\binary_bcd_ins|counter\(11) & (!\binary_bcd_ins|counter\(8) & !\binary_bcd_ins|counter\(9))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000000000001",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|counter\(10),
+	datab => \binary_bcd_ins|counter\(11),
+	datac => \binary_bcd_ins|counter\(8),
+	datad => \binary_bcd_ins|counter\(9),
+	combout => \binary_bcd_ins|Equal0~6_combout\);
+
+-- Location: LCCOMB_X57_Y52_N6
+\binary_bcd_ins|Equal0~9\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Equal0~9_combout\ = (\binary_bcd_ins|Equal0~8_combout\ & (\binary_bcd_ins|Equal0~5_combout\ & (\binary_bcd_ins|Equal0~7_combout\ & \binary_bcd_ins|Equal0~6_combout\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1000000000000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|Equal0~8_combout\,
+	datab => \binary_bcd_ins|Equal0~5_combout\,
+	datac => \binary_bcd_ins|Equal0~7_combout\,
+	datad => \binary_bcd_ins|Equal0~6_combout\,
+	combout => \binary_bcd_ins|Equal0~9_combout\);
+
+-- Location: LCCOMB_X57_Y52_N2
 \binary_bcd_ins|counter~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|counter~2_combout\ = (\binary_bcd_ins|Add4~0_combout\ & ((!\binary_bcd_ins|Equal0~9_combout\) # (!\binary_bcd_ins|Equal0~4_combout\)))
@@ -1491,7 +1580,21 @@ PORT MAP (
 	i => ww_reset_n,
 	o => \reset_n~input_o\);
 
--- Location: FF_X57_Y49_N9
+-- Location: LCCOMB_X60_Y51_N16
+\binary_bcd_ins|CurentState.s6~feeder\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|CurentState.s6~feeder_combout\ = \binary_bcd_ins|CurentState.S5~q\
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111000011110000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datac => \binary_bcd_ins|CurentState.S5~q\,
+	combout => \binary_bcd_ins|CurentState.s6~feeder_combout\);
+
+-- Location: FF_X60_Y51_N17
 \binary_bcd_ins|CurentState.s6\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1500,14 +1603,13 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|CurentState.S5~q\,
-	sload => VCC,
+	d => \binary_bcd_ins|CurentState.s6~feeder_combout\,
 	ena => \reset_n~input_o\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|CurentState.s6~q\);
 
--- Location: FF_X57_Y49_N15
+-- Location: FF_X57_Y52_N3
 \binary_bcd_ins|counter[0]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1523,7 +1625,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(0));
 
--- Location: LCCOMB_X58_Y49_N2
+-- Location: LCCOMB_X56_Y52_N2
 \binary_bcd_ins|Add4~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~2_combout\ = (\binary_bcd_ins|counter\(1) & (!\binary_bcd_ins|Add4~1\)) # (!\binary_bcd_ins|counter\(1) & ((\binary_bcd_ins|Add4~1\) # (GND)))
@@ -1541,7 +1643,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~2_combout\,
 	cout => \binary_bcd_ins|Add4~3\);
 
--- Location: FF_X58_Y49_N3
+-- Location: FF_X56_Y52_N3
 \binary_bcd_ins|counter[1]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1557,7 +1659,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(1));
 
--- Location: LCCOMB_X58_Y49_N4
+-- Location: LCCOMB_X56_Y52_N4
 \binary_bcd_ins|Add4~4\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~4_combout\ = (\binary_bcd_ins|counter\(2) & (\binary_bcd_ins|Add4~3\ $ (GND))) # (!\binary_bcd_ins|counter\(2) & (!\binary_bcd_ins|Add4~3\ & VCC))
@@ -1575,23 +1677,23 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~4_combout\,
 	cout => \binary_bcd_ins|Add4~5\);
 
--- Location: LCCOMB_X57_Y49_N28
+-- Location: LCCOMB_X57_Y52_N0
 \binary_bcd_ins|counter~1\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|counter~1_combout\ = (\binary_bcd_ins|Add4~4_combout\ & ((!\binary_bcd_ins|Equal0~4_combout\) # (!\binary_bcd_ins|Equal0~9_combout\)))
+-- \binary_bcd_ins|counter~1_combout\ = (\binary_bcd_ins|Add4~4_combout\ & ((!\binary_bcd_ins|Equal0~9_combout\) # (!\binary_bcd_ins|Equal0~4_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0101111100000000",
+	lut_mask => "0101000011110000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|Equal0~9_combout\,
-	datac => \binary_bcd_ins|Equal0~4_combout\,
-	datad => \binary_bcd_ins|Add4~4_combout\,
+	dataa => \binary_bcd_ins|Equal0~4_combout\,
+	datac => \binary_bcd_ins|Add4~4_combout\,
+	datad => \binary_bcd_ins|Equal0~9_combout\,
 	combout => \binary_bcd_ins|counter~1_combout\);
 
--- Location: FF_X57_Y49_N29
+-- Location: FF_X57_Y52_N1
 \binary_bcd_ins|counter[2]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1607,75 +1709,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(2));
 
--- Location: LCCOMB_X57_Y49_N16
-\binary_bcd_ins|Equal0~8\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Equal0~8_combout\ = (!\binary_bcd_ins|counter\(1) & (\binary_bcd_ins|counter\(2) & (!\binary_bcd_ins|counter\(0) & \binary_bcd_ins|counter\(3))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000010000000000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|counter\(1),
-	datab => \binary_bcd_ins|counter\(2),
-	datac => \binary_bcd_ins|counter\(0),
-	datad => \binary_bcd_ins|counter\(3),
-	combout => \binary_bcd_ins|Equal0~8_combout\);
-
--- Location: LCCOMB_X59_Y49_N24
-\binary_bcd_ins|Equal0~6\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Equal0~6_combout\ = (!\binary_bcd_ins|counter\(11) & (!\binary_bcd_ins|counter\(10) & (!\binary_bcd_ins|counter\(8) & !\binary_bcd_ins|counter\(9))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000000000001",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|counter\(11),
-	datab => \binary_bcd_ins|counter\(10),
-	datac => \binary_bcd_ins|counter\(8),
-	datad => \binary_bcd_ins|counter\(9),
-	combout => \binary_bcd_ins|Equal0~6_combout\);
-
--- Location: LCCOMB_X57_Y49_N24
-\binary_bcd_ins|Equal0~7\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Equal0~7_combout\ = (!\binary_bcd_ins|counter\(5) & (!\binary_bcd_ins|counter\(7) & (!\binary_bcd_ins|counter\(4) & !\binary_bcd_ins|counter\(6))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000000000001",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|counter\(5),
-	datab => \binary_bcd_ins|counter\(7),
-	datac => \binary_bcd_ins|counter\(4),
-	datad => \binary_bcd_ins|counter\(6),
-	combout => \binary_bcd_ins|Equal0~7_combout\);
-
--- Location: LCCOMB_X57_Y49_N10
-\binary_bcd_ins|Equal0~9\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Equal0~9_combout\ = (\binary_bcd_ins|Equal0~5_combout\ & (\binary_bcd_ins|Equal0~8_combout\ & (\binary_bcd_ins|Equal0~6_combout\ & \binary_bcd_ins|Equal0~7_combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1000000000000000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|Equal0~5_combout\,
-	datab => \binary_bcd_ins|Equal0~8_combout\,
-	datac => \binary_bcd_ins|Equal0~6_combout\,
-	datad => \binary_bcd_ins|Equal0~7_combout\,
-	combout => \binary_bcd_ins|Equal0~9_combout\);
-
--- Location: LCCOMB_X58_Y49_N6
+-- Location: LCCOMB_X56_Y52_N6
 \binary_bcd_ins|Add4~6\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~6_combout\ = (\binary_bcd_ins|counter\(3) & (!\binary_bcd_ins|Add4~5\)) # (!\binary_bcd_ins|counter\(3) & ((\binary_bcd_ins|Add4~5\) # (GND)))
@@ -1683,20 +1717,20 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0101101001011111",
+	lut_mask => "0011110000111111",
 	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|counter\(3),
+	datab => \binary_bcd_ins|counter\(3),
 	datad => VCC,
 	cin => \binary_bcd_ins|Add4~5\,
 	combout => \binary_bcd_ins|Add4~6_combout\,
 	cout => \binary_bcd_ins|Add4~7\);
 
--- Location: LCCOMB_X57_Y49_N2
+-- Location: LCCOMB_X57_Y52_N22
 \binary_bcd_ins|counter~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|counter~0_combout\ = (\binary_bcd_ins|Add4~6_combout\ & ((!\binary_bcd_ins|Equal0~4_combout\) # (!\binary_bcd_ins|Equal0~9_combout\)))
+-- \binary_bcd_ins|counter~0_combout\ = (\binary_bcd_ins|Add4~6_combout\ & ((!\binary_bcd_ins|Equal0~9_combout\) # (!\binary_bcd_ins|Equal0~4_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -1704,12 +1738,12 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|Equal0~9_combout\,
+	dataa => \binary_bcd_ins|Equal0~4_combout\,
 	datac => \binary_bcd_ins|Add4~6_combout\,
-	datad => \binary_bcd_ins|Equal0~4_combout\,
+	datad => \binary_bcd_ins|Equal0~9_combout\,
 	combout => \binary_bcd_ins|counter~0_combout\);
 
--- Location: FF_X57_Y49_N3
+-- Location: FF_X57_Y52_N23
 \binary_bcd_ins|counter[3]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1725,7 +1759,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(3));
 
--- Location: LCCOMB_X58_Y49_N8
+-- Location: LCCOMB_X56_Y52_N8
 \binary_bcd_ins|Add4~8\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~8_combout\ = (\binary_bcd_ins|counter\(4) & (\binary_bcd_ins|Add4~7\ $ (GND))) # (!\binary_bcd_ins|counter\(4) & (!\binary_bcd_ins|Add4~7\ & VCC))
@@ -1743,7 +1777,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~8_combout\,
 	cout => \binary_bcd_ins|Add4~9\);
 
--- Location: FF_X58_Y49_N9
+-- Location: FF_X56_Y52_N9
 \binary_bcd_ins|counter[4]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1759,7 +1793,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(4));
 
--- Location: LCCOMB_X58_Y49_N10
+-- Location: LCCOMB_X56_Y52_N10
 \binary_bcd_ins|Add4~10\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~10_combout\ = (\binary_bcd_ins|counter\(5) & (!\binary_bcd_ins|Add4~9\)) # (!\binary_bcd_ins|counter\(5) & ((\binary_bcd_ins|Add4~9\) # (GND)))
@@ -1777,7 +1811,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~10_combout\,
 	cout => \binary_bcd_ins|Add4~11\);
 
--- Location: FF_X58_Y49_N11
+-- Location: FF_X56_Y52_N11
 \binary_bcd_ins|counter[5]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1793,7 +1827,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(5));
 
--- Location: LCCOMB_X58_Y49_N12
+-- Location: LCCOMB_X56_Y52_N12
 \binary_bcd_ins|Add4~12\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~12_combout\ = (\binary_bcd_ins|counter\(6) & (\binary_bcd_ins|Add4~11\ $ (GND))) # (!\binary_bcd_ins|counter\(6) & (!\binary_bcd_ins|Add4~11\ & VCC))
@@ -1811,7 +1845,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~12_combout\,
 	cout => \binary_bcd_ins|Add4~13\);
 
--- Location: FF_X58_Y49_N13
+-- Location: FF_X56_Y52_N13
 \binary_bcd_ins|counter[6]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1827,7 +1861,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(6));
 
--- Location: LCCOMB_X58_Y49_N14
+-- Location: LCCOMB_X56_Y52_N14
 \binary_bcd_ins|Add4~14\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~14_combout\ = (\binary_bcd_ins|counter\(7) & (!\binary_bcd_ins|Add4~13\)) # (!\binary_bcd_ins|counter\(7) & ((\binary_bcd_ins|Add4~13\) # (GND)))
@@ -1845,7 +1879,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~14_combout\,
 	cout => \binary_bcd_ins|Add4~15\);
 
--- Location: FF_X58_Y49_N15
+-- Location: FF_X56_Y52_N15
 \binary_bcd_ins|counter[7]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1861,7 +1895,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(7));
 
--- Location: LCCOMB_X58_Y49_N16
+-- Location: LCCOMB_X56_Y52_N16
 \binary_bcd_ins|Add4~16\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~16_combout\ = (\binary_bcd_ins|counter\(8) & (\binary_bcd_ins|Add4~15\ $ (GND))) # (!\binary_bcd_ins|counter\(8) & (!\binary_bcd_ins|Add4~15\ & VCC))
@@ -1879,7 +1913,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~16_combout\,
 	cout => \binary_bcd_ins|Add4~17\);
 
--- Location: FF_X58_Y49_N17
+-- Location: FF_X56_Y52_N17
 \binary_bcd_ins|counter[8]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1895,7 +1929,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(8));
 
--- Location: LCCOMB_X58_Y49_N18
+-- Location: LCCOMB_X56_Y52_N18
 \binary_bcd_ins|Add4~18\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~18_combout\ = (\binary_bcd_ins|counter\(9) & (!\binary_bcd_ins|Add4~17\)) # (!\binary_bcd_ins|counter\(9) & ((\binary_bcd_ins|Add4~17\) # (GND)))
@@ -1913,7 +1947,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~18_combout\,
 	cout => \binary_bcd_ins|Add4~19\);
 
--- Location: FF_X58_Y49_N19
+-- Location: FF_X56_Y52_N19
 \binary_bcd_ins|counter[9]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1929,7 +1963,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(9));
 
--- Location: LCCOMB_X58_Y49_N20
+-- Location: LCCOMB_X56_Y52_N20
 \binary_bcd_ins|Add4~20\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~20_combout\ = (\binary_bcd_ins|counter\(10) & (\binary_bcd_ins|Add4~19\ $ (GND))) # (!\binary_bcd_ins|counter\(10) & (!\binary_bcd_ins|Add4~19\ & VCC))
@@ -1947,7 +1981,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~20_combout\,
 	cout => \binary_bcd_ins|Add4~21\);
 
--- Location: FF_X58_Y49_N21
+-- Location: FF_X56_Y52_N21
 \binary_bcd_ins|counter[10]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1963,7 +1997,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(10));
 
--- Location: LCCOMB_X58_Y49_N22
+-- Location: LCCOMB_X56_Y52_N22
 \binary_bcd_ins|Add4~22\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~22_combout\ = (\binary_bcd_ins|counter\(11) & (!\binary_bcd_ins|Add4~21\)) # (!\binary_bcd_ins|counter\(11) & ((\binary_bcd_ins|Add4~21\) # (GND)))
@@ -1981,7 +2015,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~22_combout\,
 	cout => \binary_bcd_ins|Add4~23\);
 
--- Location: FF_X58_Y49_N23
+-- Location: FF_X56_Y52_N23
 \binary_bcd_ins|counter[11]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1997,7 +2031,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(11));
 
--- Location: LCCOMB_X58_Y49_N24
+-- Location: LCCOMB_X56_Y52_N24
 \binary_bcd_ins|Add4~24\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~24_combout\ = (\binary_bcd_ins|counter\(12) & (\binary_bcd_ins|Add4~23\ $ (GND))) # (!\binary_bcd_ins|counter\(12) & (!\binary_bcd_ins|Add4~23\ & VCC))
@@ -2015,7 +2049,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~24_combout\,
 	cout => \binary_bcd_ins|Add4~25\);
 
--- Location: FF_X58_Y49_N25
+-- Location: FF_X56_Y52_N25
 \binary_bcd_ins|counter[12]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2031,7 +2065,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(12));
 
--- Location: LCCOMB_X58_Y49_N26
+-- Location: LCCOMB_X56_Y52_N26
 \binary_bcd_ins|Add4~26\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~26_combout\ = (\binary_bcd_ins|counter\(13) & (!\binary_bcd_ins|Add4~25\)) # (!\binary_bcd_ins|counter\(13) & ((\binary_bcd_ins|Add4~25\) # (GND)))
@@ -2049,7 +2083,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~26_combout\,
 	cout => \binary_bcd_ins|Add4~27\);
 
--- Location: FF_X58_Y49_N27
+-- Location: FF_X56_Y52_N27
 \binary_bcd_ins|counter[13]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2065,7 +2099,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(13));
 
--- Location: LCCOMB_X58_Y49_N28
+-- Location: LCCOMB_X56_Y52_N28
 \binary_bcd_ins|Add4~28\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~28_combout\ = (\binary_bcd_ins|counter\(14) & (\binary_bcd_ins|Add4~27\ $ (GND))) # (!\binary_bcd_ins|counter\(14) & (!\binary_bcd_ins|Add4~27\ & VCC))
@@ -2083,7 +2117,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~28_combout\,
 	cout => \binary_bcd_ins|Add4~29\);
 
--- Location: FF_X58_Y49_N29
+-- Location: FF_X56_Y52_N29
 \binary_bcd_ins|counter[14]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2099,7 +2133,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(14));
 
--- Location: LCCOMB_X58_Y49_N30
+-- Location: LCCOMB_X56_Y52_N30
 \binary_bcd_ins|Add4~30\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~30_combout\ = (\binary_bcd_ins|counter\(15) & (!\binary_bcd_ins|Add4~29\)) # (!\binary_bcd_ins|counter\(15) & ((\binary_bcd_ins|Add4~29\) # (GND)))
@@ -2117,7 +2151,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~30_combout\,
 	cout => \binary_bcd_ins|Add4~31\);
 
--- Location: FF_X58_Y49_N31
+-- Location: FF_X56_Y52_N31
 \binary_bcd_ins|counter[15]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2133,7 +2167,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(15));
 
--- Location: LCCOMB_X58_Y48_N0
+-- Location: LCCOMB_X56_Y51_N0
 \binary_bcd_ins|Add4~32\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~32_combout\ = (\binary_bcd_ins|counter\(16) & (\binary_bcd_ins|Add4~31\ $ (GND))) # (!\binary_bcd_ins|counter\(16) & (!\binary_bcd_ins|Add4~31\ & VCC))
@@ -2151,7 +2185,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~32_combout\,
 	cout => \binary_bcd_ins|Add4~33\);
 
--- Location: FF_X58_Y48_N1
+-- Location: FF_X56_Y51_N1
 \binary_bcd_ins|counter[16]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2167,7 +2201,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(16));
 
--- Location: LCCOMB_X58_Y48_N2
+-- Location: LCCOMB_X56_Y51_N2
 \binary_bcd_ins|Add4~34\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~34_combout\ = (\binary_bcd_ins|counter\(17) & (!\binary_bcd_ins|Add4~33\)) # (!\binary_bcd_ins|counter\(17) & ((\binary_bcd_ins|Add4~33\) # (GND)))
@@ -2185,7 +2219,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~34_combout\,
 	cout => \binary_bcd_ins|Add4~35\);
 
--- Location: FF_X58_Y48_N3
+-- Location: FF_X56_Y51_N3
 \binary_bcd_ins|counter[17]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2201,7 +2235,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(17));
 
--- Location: LCCOMB_X58_Y48_N4
+-- Location: LCCOMB_X56_Y51_N4
 \binary_bcd_ins|Add4~36\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~36_combout\ = (\binary_bcd_ins|counter\(18) & (\binary_bcd_ins|Add4~35\ $ (GND))) # (!\binary_bcd_ins|counter\(18) & (!\binary_bcd_ins|Add4~35\ & VCC))
@@ -2219,7 +2253,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~36_combout\,
 	cout => \binary_bcd_ins|Add4~37\);
 
--- Location: FF_X58_Y48_N5
+-- Location: FF_X56_Y51_N5
 \binary_bcd_ins|counter[18]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2235,7 +2269,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(18));
 
--- Location: LCCOMB_X58_Y48_N6
+-- Location: LCCOMB_X56_Y51_N6
 \binary_bcd_ins|Add4~38\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~38_combout\ = (\binary_bcd_ins|counter\(19) & (!\binary_bcd_ins|Add4~37\)) # (!\binary_bcd_ins|counter\(19) & ((\binary_bcd_ins|Add4~37\) # (GND)))
@@ -2253,7 +2287,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~38_combout\,
 	cout => \binary_bcd_ins|Add4~39\);
 
--- Location: FF_X58_Y48_N7
+-- Location: FF_X56_Y51_N7
 \binary_bcd_ins|counter[19]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2269,24 +2303,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(19));
 
--- Location: LCCOMB_X57_Y48_N4
-\binary_bcd_ins|Equal0~3\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Equal0~3_combout\ = (!\binary_bcd_ins|counter\(18) & (!\binary_bcd_ins|counter\(17) & (!\binary_bcd_ins|counter\(16) & !\binary_bcd_ins|counter\(19))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000000000001",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|counter\(18),
-	datab => \binary_bcd_ins|counter\(17),
-	datac => \binary_bcd_ins|counter\(16),
-	datad => \binary_bcd_ins|counter\(19),
-	combout => \binary_bcd_ins|Equal0~3_combout\);
-
--- Location: LCCOMB_X58_Y48_N8
+-- Location: LCCOMB_X56_Y51_N8
 \binary_bcd_ins|Add4~40\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~40_combout\ = (\binary_bcd_ins|counter\(20) & (\binary_bcd_ins|Add4~39\ $ (GND))) # (!\binary_bcd_ins|counter\(20) & (!\binary_bcd_ins|Add4~39\ & VCC))
@@ -2304,7 +2321,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~40_combout\,
 	cout => \binary_bcd_ins|Add4~41\);
 
--- Location: FF_X58_Y48_N9
+-- Location: FF_X56_Y51_N9
 \binary_bcd_ins|counter[20]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2320,7 +2337,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(20));
 
--- Location: LCCOMB_X58_Y48_N10
+-- Location: LCCOMB_X56_Y51_N10
 \binary_bcd_ins|Add4~42\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~42_combout\ = (\binary_bcd_ins|counter\(21) & (!\binary_bcd_ins|Add4~41\)) # (!\binary_bcd_ins|counter\(21) & ((\binary_bcd_ins|Add4~41\) # (GND)))
@@ -2338,7 +2355,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~42_combout\,
 	cout => \binary_bcd_ins|Add4~43\);
 
--- Location: FF_X58_Y48_N11
+-- Location: FF_X56_Y51_N11
 \binary_bcd_ins|counter[21]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2354,7 +2371,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(21));
 
--- Location: LCCOMB_X58_Y48_N12
+-- Location: LCCOMB_X56_Y51_N12
 \binary_bcd_ins|Add4~44\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~44_combout\ = (\binary_bcd_ins|counter\(22) & (\binary_bcd_ins|Add4~43\ $ (GND))) # (!\binary_bcd_ins|counter\(22) & (!\binary_bcd_ins|Add4~43\ & VCC))
@@ -2372,7 +2389,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~44_combout\,
 	cout => \binary_bcd_ins|Add4~45\);
 
--- Location: FF_X58_Y48_N13
+-- Location: FF_X56_Y51_N13
 \binary_bcd_ins|counter[22]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2388,7 +2405,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(22));
 
--- Location: LCCOMB_X58_Y48_N14
+-- Location: LCCOMB_X56_Y51_N14
 \binary_bcd_ins|Add4~46\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~46_combout\ = (\binary_bcd_ins|counter\(23) & (!\binary_bcd_ins|Add4~45\)) # (!\binary_bcd_ins|counter\(23) & ((\binary_bcd_ins|Add4~45\) # (GND)))
@@ -2406,7 +2423,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~46_combout\,
 	cout => \binary_bcd_ins|Add4~47\);
 
--- Location: FF_X58_Y48_N15
+-- Location: FF_X56_Y51_N15
 \binary_bcd_ins|counter[23]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2422,7 +2439,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(23));
 
--- Location: LCCOMB_X58_Y48_N16
+-- Location: LCCOMB_X56_Y51_N16
 \binary_bcd_ins|Add4~48\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~48_combout\ = (\binary_bcd_ins|counter\(24) & (\binary_bcd_ins|Add4~47\ $ (GND))) # (!\binary_bcd_ins|counter\(24) & (!\binary_bcd_ins|Add4~47\ & VCC))
@@ -2440,7 +2457,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~48_combout\,
 	cout => \binary_bcd_ins|Add4~49\);
 
--- Location: FF_X58_Y48_N17
+-- Location: FF_X56_Y51_N17
 \binary_bcd_ins|counter[24]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2456,7 +2473,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(24));
 
--- Location: LCCOMB_X58_Y48_N18
+-- Location: LCCOMB_X56_Y51_N18
 \binary_bcd_ins|Add4~50\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~50_combout\ = (\binary_bcd_ins|counter\(25) & (!\binary_bcd_ins|Add4~49\)) # (!\binary_bcd_ins|counter\(25) & ((\binary_bcd_ins|Add4~49\) # (GND)))
@@ -2474,7 +2491,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~50_combout\,
 	cout => \binary_bcd_ins|Add4~51\);
 
--- Location: FF_X58_Y48_N19
+-- Location: FF_X56_Y51_N19
 \binary_bcd_ins|counter[25]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2490,7 +2507,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(25));
 
--- Location: LCCOMB_X58_Y48_N20
+-- Location: LCCOMB_X56_Y51_N20
 \binary_bcd_ins|Add4~52\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~52_combout\ = (\binary_bcd_ins|counter\(26) & (\binary_bcd_ins|Add4~51\ $ (GND))) # (!\binary_bcd_ins|counter\(26) & (!\binary_bcd_ins|Add4~51\ & VCC))
@@ -2508,7 +2525,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~52_combout\,
 	cout => \binary_bcd_ins|Add4~53\);
 
--- Location: FF_X58_Y48_N21
+-- Location: FF_X56_Y51_N21
 \binary_bcd_ins|counter[26]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2524,7 +2541,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(26));
 
--- Location: LCCOMB_X58_Y48_N22
+-- Location: LCCOMB_X56_Y51_N22
 \binary_bcd_ins|Add4~54\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~54_combout\ = (\binary_bcd_ins|counter\(27) & (!\binary_bcd_ins|Add4~53\)) # (!\binary_bcd_ins|counter\(27) & ((\binary_bcd_ins|Add4~53\) # (GND)))
@@ -2542,7 +2559,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~54_combout\,
 	cout => \binary_bcd_ins|Add4~55\);
 
--- Location: FF_X58_Y48_N23
+-- Location: FF_X56_Y51_N23
 \binary_bcd_ins|counter[27]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2558,7 +2575,24 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(27));
 
--- Location: LCCOMB_X58_Y48_N24
+-- Location: LCCOMB_X57_Y51_N10
+\binary_bcd_ins|Equal0~1\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Equal0~1_combout\ = (!\binary_bcd_ins|counter\(27) & (!\binary_bcd_ins|counter\(25) & (!\binary_bcd_ins|counter\(24) & !\binary_bcd_ins|counter\(26))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000000000001",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|counter\(27),
+	datab => \binary_bcd_ins|counter\(25),
+	datac => \binary_bcd_ins|counter\(24),
+	datad => \binary_bcd_ins|counter\(26),
+	combout => \binary_bcd_ins|Equal0~1_combout\);
+
+-- Location: LCCOMB_X56_Y51_N24
 \binary_bcd_ins|Add4~56\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~56_combout\ = (\binary_bcd_ins|counter\(28) & (\binary_bcd_ins|Add4~55\ $ (GND))) # (!\binary_bcd_ins|counter\(28) & (!\binary_bcd_ins|Add4~55\ & VCC))
@@ -2576,7 +2610,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~56_combout\,
 	cout => \binary_bcd_ins|Add4~57\);
 
--- Location: FF_X58_Y48_N25
+-- Location: FF_X56_Y51_N25
 \binary_bcd_ins|counter[28]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2592,7 +2626,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(28));
 
--- Location: LCCOMB_X58_Y48_N26
+-- Location: LCCOMB_X56_Y51_N26
 \binary_bcd_ins|Add4~58\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~58_combout\ = (\binary_bcd_ins|counter\(29) & (!\binary_bcd_ins|Add4~57\)) # (!\binary_bcd_ins|counter\(29) & ((\binary_bcd_ins|Add4~57\) # (GND)))
@@ -2610,7 +2644,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~58_combout\,
 	cout => \binary_bcd_ins|Add4~59\);
 
--- Location: FF_X58_Y48_N27
+-- Location: FF_X56_Y51_N27
 \binary_bcd_ins|counter[29]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2626,7 +2660,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(29));
 
--- Location: LCCOMB_X58_Y48_N28
+-- Location: LCCOMB_X56_Y51_N28
 \binary_bcd_ins|Add4~60\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~60_combout\ = (\binary_bcd_ins|counter\(30) & (\binary_bcd_ins|Add4~59\ $ (GND))) # (!\binary_bcd_ins|counter\(30) & (!\binary_bcd_ins|Add4~59\ & VCC))
@@ -2644,7 +2678,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add4~60_combout\,
 	cout => \binary_bcd_ins|Add4~61\);
 
--- Location: FF_X58_Y48_N29
+-- Location: FF_X56_Y51_N29
 \binary_bcd_ins|counter[30]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2660,7 +2694,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(30));
 
--- Location: LCCOMB_X58_Y48_N30
+-- Location: LCCOMB_X56_Y51_N30
 \binary_bcd_ins|Add4~62\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add4~62_combout\ = \binary_bcd_ins|counter\(31) $ (\binary_bcd_ins|Add4~61\)
@@ -2675,7 +2709,7 @@ PORT MAP (
 	cin => \binary_bcd_ins|Add4~61\,
 	combout => \binary_bcd_ins|Add4~62_combout\);
 
--- Location: FF_X58_Y48_N31
+-- Location: FF_X56_Y51_N31
 \binary_bcd_ins|counter[31]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2691,10 +2725,10 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|counter\(31));
 
--- Location: LCCOMB_X57_Y48_N0
+-- Location: LCCOMB_X57_Y51_N24
 \binary_bcd_ins|Equal0~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Equal0~0_combout\ = (!\binary_bcd_ins|counter\(29) & (!\binary_bcd_ins|counter\(28) & (!\binary_bcd_ins|counter\(31) & !\binary_bcd_ins|counter\(30))))
+-- \binary_bcd_ins|Equal0~0_combout\ = (!\binary_bcd_ins|counter\(28) & (!\binary_bcd_ins|counter\(30) & (!\binary_bcd_ins|counter\(29) & !\binary_bcd_ins|counter\(31))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -2702,16 +2736,16 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|counter\(29),
-	datab => \binary_bcd_ins|counter\(28),
-	datac => \binary_bcd_ins|counter\(31),
-	datad => \binary_bcd_ins|counter\(30),
+	dataa => \binary_bcd_ins|counter\(28),
+	datab => \binary_bcd_ins|counter\(30),
+	datac => \binary_bcd_ins|counter\(29),
+	datad => \binary_bcd_ins|counter\(31),
 	combout => \binary_bcd_ins|Equal0~0_combout\);
 
--- Location: LCCOMB_X57_Y49_N26
-\binary_bcd_ins|Equal0~2\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X57_Y51_N14
+\binary_bcd_ins|Equal0~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Equal0~2_combout\ = (!\binary_bcd_ins|counter\(23) & (!\binary_bcd_ins|counter\(21) & (!\binary_bcd_ins|counter\(22) & !\binary_bcd_ins|counter\(20))))
+-- \binary_bcd_ins|Equal0~3_combout\ = (!\binary_bcd_ins|counter\(16) & (!\binary_bcd_ins|counter\(18) & (!\binary_bcd_ins|counter\(19) & !\binary_bcd_ins|counter\(17))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -2719,33 +2753,33 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|counter\(23),
+	dataa => \binary_bcd_ins|counter\(16),
+	datab => \binary_bcd_ins|counter\(18),
+	datac => \binary_bcd_ins|counter\(19),
+	datad => \binary_bcd_ins|counter\(17),
+	combout => \binary_bcd_ins|Equal0~3_combout\);
+
+-- Location: LCCOMB_X57_Y51_N12
+\binary_bcd_ins|Equal0~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Equal0~2_combout\ = (!\binary_bcd_ins|counter\(22) & (!\binary_bcd_ins|counter\(21) & (!\binary_bcd_ins|counter\(23) & !\binary_bcd_ins|counter\(20))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000000000001",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|counter\(22),
 	datab => \binary_bcd_ins|counter\(21),
-	datac => \binary_bcd_ins|counter\(22),
+	datac => \binary_bcd_ins|counter\(23),
 	datad => \binary_bcd_ins|counter\(20),
 	combout => \binary_bcd_ins|Equal0~2_combout\);
 
--- Location: LCCOMB_X57_Y48_N2
-\binary_bcd_ins|Equal0~1\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Equal0~1_combout\ = (!\binary_bcd_ins|counter\(24) & (!\binary_bcd_ins|counter\(25) & (!\binary_bcd_ins|counter\(26) & !\binary_bcd_ins|counter\(27))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000000000001",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|counter\(24),
-	datab => \binary_bcd_ins|counter\(25),
-	datac => \binary_bcd_ins|counter\(26),
-	datad => \binary_bcd_ins|counter\(27),
-	combout => \binary_bcd_ins|Equal0~1_combout\);
-
--- Location: LCCOMB_X57_Y49_N12
+-- Location: LCCOMB_X57_Y51_N16
 \binary_bcd_ins|Equal0~4\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Equal0~4_combout\ = (\binary_bcd_ins|Equal0~3_combout\ & (\binary_bcd_ins|Equal0~0_combout\ & (\binary_bcd_ins|Equal0~2_combout\ & \binary_bcd_ins|Equal0~1_combout\)))
+-- \binary_bcd_ins|Equal0~4_combout\ = (\binary_bcd_ins|Equal0~1_combout\ & (\binary_bcd_ins|Equal0~0_combout\ & (\binary_bcd_ins|Equal0~3_combout\ & \binary_bcd_ins|Equal0~2_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -2753,13 +2787,13 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|Equal0~3_combout\,
+	dataa => \binary_bcd_ins|Equal0~1_combout\,
 	datab => \binary_bcd_ins|Equal0~0_combout\,
-	datac => \binary_bcd_ins|Equal0~2_combout\,
-	datad => \binary_bcd_ins|Equal0~1_combout\,
+	datac => \binary_bcd_ins|Equal0~3_combout\,
+	datad => \binary_bcd_ins|Equal0~2_combout\,
 	combout => \binary_bcd_ins|Equal0~4_combout\);
 
--- Location: LCCOMB_X57_Y49_N20
+-- Location: LCCOMB_X57_Y52_N16
 \binary_bcd_ins|bcd[3]~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|bcd[3]~0_combout\ = (\binary_bcd_ins|Equal0~4_combout\ & (\binary_bcd_ins|CurentState.s6~q\ & \binary_bcd_ins|Equal0~9_combout\))
@@ -2775,7 +2809,7 @@ PORT MAP (
 	datad => \binary_bcd_ins|Equal0~9_combout\,
 	combout => \binary_bcd_ins|bcd[3]~0_combout\);
 
--- Location: LCCOMB_X57_Y48_N14
+-- Location: LCCOMB_X59_Y51_N4
 \binary_bcd_ins|CurentState.S0~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|CurentState.S0~0_combout\ = !\binary_bcd_ins|bcd[3]~0_combout\
@@ -2789,7 +2823,7 @@ PORT MAP (
 	datad => \binary_bcd_ins|bcd[3]~0_combout\,
 	combout => \binary_bcd_ins|CurentState.S0~0_combout\);
 
--- Location: FF_X57_Y48_N15
+-- Location: FF_X59_Y51_N5
 \binary_bcd_ins|CurentState.S0\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2804,24 +2838,24 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|CurentState.S0~q\);
 
--- Location: LCCOMB_X57_Y49_N0
+-- Location: LCCOMB_X61_Y51_N28
 \binary_bcd_ins|Selector29~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector29~0_combout\ = ((\binary_bcd_ins|CurentState.s6~q\ & ((!\binary_bcd_ins|Equal0~9_combout\) # (!\binary_bcd_ins|Equal0~4_combout\)))) # (!\binary_bcd_ins|CurentState.S0~q\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100111111001111",
+	lut_mask => "0111010111110101",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|Equal0~4_combout\,
-	datab => \binary_bcd_ins|CurentState.s6~q\,
-	datac => \binary_bcd_ins|CurentState.S0~q\,
+	dataa => \binary_bcd_ins|CurentState.S0~q\,
+	datab => \binary_bcd_ins|Equal0~4_combout\,
+	datac => \binary_bcd_ins|CurentState.s6~q\,
 	datad => \binary_bcd_ins|Equal0~9_combout\,
 	combout => \binary_bcd_ins|Selector29~0_combout\);
 
--- Location: FF_X57_Y49_N1
+-- Location: FF_X61_Y51_N29
 \binary_bcd_ins|CurentState.S1\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2836,7 +2870,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|CurentState.S1~q\);
 
--- Location: FF_X64_Y50_N5
+-- Location: FF_X62_Y51_N31
 \binary_bcd_ins|CurentState.S2\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2852,7 +2886,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|CurentState.S2~q\);
 
--- Location: FF_X64_Y50_N31
+-- Location: FF_X62_Y51_N21
 \binary_bcd_ins|CurentState.S3\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2868,7 +2902,21 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|CurentState.S3~q\);
 
--- Location: FF_X64_Y50_N3
+-- Location: LCCOMB_X60_Y51_N18
+\binary_bcd_ins|CurentState.S4~feeder\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|CurentState.S4~feeder_combout\ = \binary_bcd_ins|CurentState.S3~q\
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111111100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datad => \binary_bcd_ins|CurentState.S3~q\,
+	combout => \binary_bcd_ins|CurentState.S4~feeder_combout\);
+
+-- Location: FF_X60_Y51_N19
 \binary_bcd_ins|CurentState.S4\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2877,28 +2925,13 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|CurentState.S3~q\,
-	sload => VCC,
+	d => \binary_bcd_ins|CurentState.S4~feeder_combout\,
 	ena => \reset_n~input_o\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|CurentState.S4~q\);
 
--- Location: LCCOMB_X64_Y50_N28
-\binary_bcd_ins|CurentState.S5~feeder\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|CurentState.S5~feeder_combout\ = \binary_bcd_ins|CurentState.S4~q\
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111000011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datac => \binary_bcd_ins|CurentState.S4~q\,
-	combout => \binary_bcd_ins|CurentState.S5~feeder_combout\);
-
--- Location: FF_X64_Y50_N29
+-- Location: FF_X62_Y51_N13
 \binary_bcd_ins|CurentState.S5\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2907,77 +2940,65 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	d => \binary_bcd_ins|CurentState.S5~feeder_combout\,
+	asdata => \binary_bcd_ins|CurentState.S4~q\,
+	sload => VCC,
 	ena => \reset_n~input_o\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|CurentState.S5~q\);
 
--- Location: LCCOMB_X64_Y50_N8
-\binary_bcd_ins|Selector28~1\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X57_Y52_N26
+\binary_bcd_ins|Selector28~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector28~1_combout\ = (\binary_bcd_ins|CurentState.S0~q\ & (!\binary_bcd_ins|CurentState.s6~q\ & !\binary_bcd_ins|CurentState.S5~q\))
+-- \binary_bcd_ins|Selector28~0_combout\ = (\binary_bcd_ins|CurentState.S0~q\ & (!\binary_bcd_ins|CurentState.s6~q\ & !\binary_bcd_ins|CurentState.S5~q\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000000000001010",
+	lut_mask => "0000000000001100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S0~q\,
+	datab => \binary_bcd_ins|CurentState.S0~q\,
 	datac => \binary_bcd_ins|CurentState.s6~q\,
 	datad => \binary_bcd_ins|CurentState.S5~q\,
-	combout => \binary_bcd_ins|Selector28~1_combout\);
+	combout => \binary_bcd_ins|Selector28~0_combout\);
 
--- Location: LCCOMB_X57_Y49_N8
-\binary_bcd_ins|Selector28~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X57_Y52_N14
+\binary_bcd_ins|Selector28~1\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector28~0_combout\ = (\binary_bcd_ins|CurentState.s6~q\ & ((!\binary_bcd_ins|Equal0~9_combout\) # (!\binary_bcd_ins|Equal0~4_combout\)))
+-- \binary_bcd_ins|Selector28~1_combout\ = (\binary_bcd_ins|Selector28~0_combout\) # ((\binary_bcd_ins|CurentState.s6~q\ & ((!\binary_bcd_ins|Equal0~9_combout\) # (!\binary_bcd_ins|Equal0~4_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0101000011110000",
+	lut_mask => "1111010011111100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|Equal0~4_combout\,
-	datac => \binary_bcd_ins|CurentState.s6~q\,
+	datab => \binary_bcd_ins|CurentState.s6~q\,
+	datac => \binary_bcd_ins|Selector28~0_combout\,
 	datad => \binary_bcd_ins|Equal0~9_combout\,
-	combout => \binary_bcd_ins|Selector28~0_combout\);
+	combout => \binary_bcd_ins|Selector28~1_combout\);
 
--- Location: LCCOMB_X57_Y50_N20
+-- Location: LCCOMB_X58_Y52_N30
 \binary_bcd_ins|Selector28~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector28~2_combout\ = (\SW[0]~input_o\ & !\binary_bcd_ins|CurentState.S0~q\)
+-- \binary_bcd_ins|Selector28~2_combout\ = (\binary_bcd_ins|Selector28~1_combout\ & ((\binary_bcd_ins|bcd_signal\(0)) # ((\SW[0]~input_o\ & !\binary_bcd_ins|CurentState.S0~q\)))) # (!\binary_bcd_ins|Selector28~1_combout\ & (\SW[0]~input_o\ & 
+-- ((!\binary_bcd_ins|CurentState.S0~q\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000101000001010",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \SW[0]~input_o\,
-	datac => \binary_bcd_ins|CurentState.S0~q\,
-	combout => \binary_bcd_ins|Selector28~2_combout\);
-
--- Location: LCCOMB_X57_Y50_N10
-\binary_bcd_ins|Selector28~3\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Selector28~3_combout\ = (\binary_bcd_ins|Selector28~2_combout\) # ((\binary_bcd_ins|bcd_signal\(0) & ((\binary_bcd_ins|Selector28~1_combout\) # (\binary_bcd_ins|Selector28~0_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111111111100000",
+	lut_mask => "1010000011101100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|Selector28~1_combout\,
-	datab => \binary_bcd_ins|Selector28~0_combout\,
+	datab => \SW[0]~input_o\,
 	datac => \binary_bcd_ins|bcd_signal\(0),
-	datad => \binary_bcd_ins|Selector28~2_combout\,
-	combout => \binary_bcd_ins|Selector28~3_combout\);
+	datad => \binary_bcd_ins|CurentState.S0~q\,
+	combout => \binary_bcd_ins|Selector28~2_combout\);
 
--- Location: FF_X57_Y50_N11
+-- Location: FF_X58_Y52_N31
 \binary_bcd_ins|bcd_signal[0]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -2986,32 +3007,32 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	d => \binary_bcd_ins|Selector28~3_combout\,
+	d => \binary_bcd_ins|Selector28~2_combout\,
 	clrn => \reset_n~input_o\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(0));
 
--- Location: LCCOMB_X57_Y50_N4
+-- Location: LCCOMB_X59_Y52_N28
 \binary_bcd_ins|Selector27~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector27~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|bcd_signal\(0)))) # (!\binary_bcd_ins|CurentState.S5~q\ & (\SW[1]~input_o\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110111000100010",
+	lut_mask => "1100110010101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \SW[1]~input_o\,
-	datab => \binary_bcd_ins|CurentState.S5~q\,
-	datad => \binary_bcd_ins|bcd_signal\(0),
+	datab => \binary_bcd_ins|bcd_signal\(0),
+	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector27~0_combout\);
 
--- Location: LCCOMB_X57_Y50_N26
-\binary_bcd_ins|bcd_signal[12]~37\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X57_Y52_N20
+\binary_bcd_ins|bcd_signal[9]~35\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[12]~37_combout\ = (!\binary_bcd_ins|Selector28~1_combout\ & (((\binary_bcd_ins|Equal0~4_combout\ & \binary_bcd_ins|Equal0~9_combout\)) # (!\binary_bcd_ins|CurentState.s6~q\)))
+-- \binary_bcd_ins|bcd_signal[9]~35_combout\ = (!\binary_bcd_ins|Selector28~0_combout\ & (((\binary_bcd_ins|Equal0~4_combout\ & \binary_bcd_ins|Equal0~9_combout\)) # (!\binary_bcd_ins|CurentState.s6~q\)))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -3021,11 +3042,11 @@ GENERIC MAP (
 PORT MAP (
 	dataa => \binary_bcd_ins|Equal0~4_combout\,
 	datab => \binary_bcd_ins|CurentState.s6~q\,
-	datac => \binary_bcd_ins|Selector28~1_combout\,
+	datac => \binary_bcd_ins|Selector28~0_combout\,
 	datad => \binary_bcd_ins|Equal0~9_combout\,
-	combout => \binary_bcd_ins|bcd_signal[12]~37_combout\);
+	combout => \binary_bcd_ins|bcd_signal[9]~35_combout\);
 
--- Location: FF_X57_Y50_N5
+-- Location: FF_X59_Y52_N29
 \binary_bcd_ins|bcd_signal[1]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3037,28 +3058,28 @@ PORT MAP (
 	d => \binary_bcd_ins|Selector27~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(1));
 
--- Location: LCCOMB_X57_Y50_N2
+-- Location: LCCOMB_X59_Y52_N10
 \binary_bcd_ins|Selector26~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector26~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|bcd_signal\(1)))) # (!\binary_bcd_ins|CurentState.S5~q\ & (\SW[2]~input_o\))
+-- \binary_bcd_ins|Selector26~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|bcd_signal\(1))) # (!\binary_bcd_ins|CurentState.S5~q\ & ((\SW[2]~input_o\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111000010101010",
+	lut_mask => "1100110011110000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \SW[2]~input_o\,
-	datac => \binary_bcd_ins|bcd_signal\(1),
+	datab => \binary_bcd_ins|bcd_signal\(1),
+	datac => \SW[2]~input_o\,
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector26~0_combout\);
 
--- Location: FF_X57_Y50_N3
+-- Location: FF_X59_Y52_N11
 \binary_bcd_ins|bcd_signal[2]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3070,28 +3091,28 @@ PORT MAP (
 	d => \binary_bcd_ins|Selector26~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(2));
 
--- Location: LCCOMB_X57_Y50_N16
+-- Location: LCCOMB_X59_Y52_N16
 \binary_bcd_ins|Selector25~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector25~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|bcd_signal\(2))) # (!\binary_bcd_ins|CurentState.S5~q\ & ((\SW[3]~input_o\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100110011110000",
+	lut_mask => "1010101011110000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(2),
+	dataa => \binary_bcd_ins|bcd_signal\(2),
 	datac => \SW[3]~input_o\,
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector25~0_combout\);
 
--- Location: FF_X57_Y50_N17
+-- Location: FF_X59_Y52_N17
 \binary_bcd_ins|bcd_signal[3]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3103,28 +3124,28 @@ PORT MAP (
 	d => \binary_bcd_ins|Selector25~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(3));
 
--- Location: LCCOMB_X57_Y50_N6
+-- Location: LCCOMB_X59_Y52_N22
 \binary_bcd_ins|Selector24~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector24~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|bcd_signal\(3))) # (!\binary_bcd_ins|CurentState.S5~q\ & ((\SW[4]~input_o\)))
+-- \binary_bcd_ins|Selector24~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|bcd_signal\(3)))) # (!\binary_bcd_ins|CurentState.S5~q\ & (\SW[4]~input_o\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100110011110000",
+	lut_mask => "1100110010101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
+	dataa => \SW[4]~input_o\,
 	datab => \binary_bcd_ins|bcd_signal\(3),
-	datac => \SW[4]~input_o\,
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector24~0_combout\);
 
--- Location: FF_X57_Y50_N7
+-- Location: FF_X59_Y52_N23
 \binary_bcd_ins|bcd_signal[4]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3136,28 +3157,28 @@ PORT MAP (
 	d => \binary_bcd_ins|Selector24~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(4));
 
--- Location: LCCOMB_X57_Y50_N28
+-- Location: LCCOMB_X59_Y52_N4
 \binary_bcd_ins|Selector23~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector23~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|bcd_signal\(4))) # (!\binary_bcd_ins|CurentState.S5~q\ & ((\SW[5]~input_o\)))
+-- \binary_bcd_ins|Selector23~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|bcd_signal\(4)))) # (!\binary_bcd_ins|CurentState.S5~q\ & (\SW[5]~input_o\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010101011110000",
+	lut_mask => "1111000010101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(4),
-	datac => \SW[5]~input_o\,
+	dataa => \SW[5]~input_o\,
+	datac => \binary_bcd_ins|bcd_signal\(4),
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector23~0_combout\);
 
--- Location: FF_X57_Y50_N29
+-- Location: FF_X59_Y52_N5
 \binary_bcd_ins|bcd_signal[5]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3169,28 +3190,28 @@ PORT MAP (
 	d => \binary_bcd_ins|Selector23~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(5));
 
--- Location: LCCOMB_X57_Y50_N18
+-- Location: LCCOMB_X59_Y52_N2
 \binary_bcd_ins|Selector22~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector22~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|bcd_signal\(5))) # (!\binary_bcd_ins|CurentState.S5~q\ & ((\SW[6]~input_o\)))
+-- \binary_bcd_ins|Selector22~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|bcd_signal\(5)))) # (!\binary_bcd_ins|CurentState.S5~q\ & (\SW[6]~input_o\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100110011110000",
+	lut_mask => "1100110010101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
+	dataa => \SW[6]~input_o\,
 	datab => \binary_bcd_ins|bcd_signal\(5),
-	datac => \SW[6]~input_o\,
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector22~0_combout\);
 
--- Location: FF_X57_Y50_N19
+-- Location: FF_X59_Y52_N3
 \binary_bcd_ins|bcd_signal[6]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3202,28 +3223,28 @@ PORT MAP (
 	d => \binary_bcd_ins|Selector22~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(6));
 
--- Location: LCCOMB_X57_Y50_N0
+-- Location: LCCOMB_X59_Y52_N24
 \binary_bcd_ins|Selector21~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector21~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|bcd_signal\(6))) # (!\binary_bcd_ins|CurentState.S5~q\ & ((\SW[7]~input_o\)))
+-- \binary_bcd_ins|Selector21~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|bcd_signal\(6)))) # (!\binary_bcd_ins|CurentState.S5~q\ & (\SW[7]~input_o\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100110011110000",
+	lut_mask => "1110111001000100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(6),
-	datac => \SW[7]~input_o\,
-	datad => \binary_bcd_ins|CurentState.S5~q\,
+	dataa => \binary_bcd_ins|CurentState.S5~q\,
+	datab => \SW[7]~input_o\,
+	datad => \binary_bcd_ins|bcd_signal\(6),
 	combout => \binary_bcd_ins|Selector21~0_combout\);
 
--- Location: FF_X57_Y50_N1
+-- Location: FF_X59_Y52_N25
 \binary_bcd_ins|bcd_signal[7]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3235,12 +3256,12 @@ PORT MAP (
 	d => \binary_bcd_ins|Selector21~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(7));
 
--- Location: LCCOMB_X57_Y50_N8
+-- Location: LCCOMB_X59_Y52_N6
 \binary_bcd_ins|Selector20~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector20~0_combout\ = (\binary_bcd_ins|bcd_signal\(7) & \binary_bcd_ins|CurentState.S5~q\)
@@ -3255,7 +3276,7 @@ PORT MAP (
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector20~0_combout\);
 
--- Location: FF_X57_Y50_N9
+-- Location: FF_X59_Y52_N7
 \binary_bcd_ins|bcd_signal[8]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3266,27 +3287,27 @@ PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
 	d => \binary_bcd_ins|Selector20~0_combout\,
 	clrn => \reset_n~input_o\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(8));
 
--- Location: LCCOMB_X57_Y50_N30
+-- Location: LCCOMB_X59_Y52_N20
 \binary_bcd_ins|Selector19~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector19~0_combout\ = (\binary_bcd_ins|bcd_signal\(8) & \binary_bcd_ins|CurentState.S5~q\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111000000000000",
+	lut_mask => "1010101000000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datac => \binary_bcd_ins|bcd_signal\(8),
+	dataa => \binary_bcd_ins|bcd_signal\(8),
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector19~0_combout\);
 
--- Location: FF_X57_Y50_N31
+-- Location: FF_X59_Y52_N21
 \binary_bcd_ins|bcd_signal[9]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3297,27 +3318,27 @@ PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
 	d => \binary_bcd_ins|Selector19~0_combout\,
 	clrn => \reset_n~input_o\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(9));
 
--- Location: LCCOMB_X57_Y50_N12
+-- Location: LCCOMB_X59_Y52_N26
 \binary_bcd_ins|Selector18~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector18~0_combout\ = (\binary_bcd_ins|bcd_signal\(9) & \binary_bcd_ins|CurentState.S5~q\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111000000000000",
+	lut_mask => "1100110000000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datac => \binary_bcd_ins|bcd_signal\(9),
+	datab => \binary_bcd_ins|bcd_signal\(9),
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector18~0_combout\);
 
--- Location: FF_X57_Y50_N13
+-- Location: FF_X59_Y52_N27
 \binary_bcd_ins|bcd_signal[10]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3328,27 +3349,27 @@ PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
 	d => \binary_bcd_ins|Selector18~0_combout\,
 	clrn => \reset_n~input_o\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(10));
 
--- Location: LCCOMB_X57_Y50_N24
+-- Location: LCCOMB_X59_Y52_N8
 \binary_bcd_ins|Selector17~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector17~0_combout\ = (\binary_bcd_ins|bcd_signal\(10) & \binary_bcd_ins|CurentState.S5~q\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010101000000000",
+	lut_mask => "1111000000000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(10),
+	datac => \binary_bcd_ins|bcd_signal\(10),
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector17~0_combout\);
 
--- Location: FF_X57_Y50_N25
+-- Location: FF_X59_Y52_N9
 \binary_bcd_ins|bcd_signal[11]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3359,27 +3380,27 @@ PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
 	d => \binary_bcd_ins|Selector17~0_combout\,
 	clrn => \reset_n~input_o\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(11));
 
--- Location: LCCOMB_X57_Y50_N22
+-- Location: LCCOMB_X59_Y52_N14
 \binary_bcd_ins|Selector16~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector16~0_combout\ = (\binary_bcd_ins|bcd_signal\(11) & \binary_bcd_ins|CurentState.S5~q\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100110000000000",
+	lut_mask => "1111000000000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(11),
+	datac => \binary_bcd_ins|bcd_signal\(11),
 	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector16~0_combout\);
 
--- Location: FF_X57_Y50_N23
+-- Location: FF_X59_Y52_N15
 \binary_bcd_ins|bcd_signal[12]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3390,12 +3411,12 @@ PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
 	d => \binary_bcd_ins|Selector16~0_combout\,
 	clrn => \reset_n~input_o\,
-	ena => \binary_bcd_ins|bcd_signal[12]~37_combout\,
+	ena => \binary_bcd_ins|bcd_signal[9]~35_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(12));
 
--- Location: LCCOMB_X65_Y50_N0
+-- Location: LCCOMB_X60_Y52_N0
 \binary_bcd_ins|Add3~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~0_combout\ = \binary_bcd_ins|bcd_signal\(13) $ (VCC)
@@ -3403,84 +3424,84 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0011001111001100",
+	lut_mask => "0101010110101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(13),
+	dataa => \binary_bcd_ins|bcd_signal\(13),
 	datad => VCC,
 	combout => \binary_bcd_ins|Add3~0_combout\,
 	cout => \binary_bcd_ins|Add3~1\);
 
--- Location: LCCOMB_X66_Y50_N0
+-- Location: LCCOMB_X59_Y52_N0
 \binary_bcd_ins|Selector15~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector15~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|bcd_signal\(12))) # (!\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|Add3~0_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1101100011011000",
+	lut_mask => "1100110011110000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S5~q\,
 	datab => \binary_bcd_ins|bcd_signal\(12),
 	datac => \binary_bcd_ins|Add3~0_combout\,
+	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector15~0_combout\);
 
--- Location: LCCOMB_X66_Y50_N26
+-- Location: LCCOMB_X60_Y51_N30
 \binary_bcd_ins|LessThan3~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|LessThan3~0_combout\ = (\binary_bcd_ins|bcd_signal\(13)) # (\binary_bcd_ins|bcd_signal\(14))
+-- \binary_bcd_ins|LessThan3~0_combout\ = (\binary_bcd_ins|bcd_signal\(15) & ((\binary_bcd_ins|bcd_signal\(14)) # (\binary_bcd_ins|bcd_signal\(13))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111111110101010",
+	lut_mask => "1111000011000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(13),
-	datad => \binary_bcd_ins|bcd_signal\(14),
+	datab => \binary_bcd_ins|bcd_signal\(14),
+	datac => \binary_bcd_ins|bcd_signal\(15),
+	datad => \binary_bcd_ins|bcd_signal\(13),
 	combout => \binary_bcd_ins|LessThan3~0_combout\);
 
--- Location: LCCOMB_X64_Y50_N2
-\binary_bcd_ins|bcd_signal[13]~6\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X60_Y51_N8
+\binary_bcd_ins|bcd_signal[13]~4\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[13]~6_combout\ = (\binary_bcd_ins|CurentState.S4~q\ & (!\binary_bcd_ins|bcd_signal\(16) & ((!\binary_bcd_ins|LessThan3~0_combout\) # (!\binary_bcd_ins|bcd_signal\(15)))))
+-- \binary_bcd_ins|bcd_signal[13]~4_combout\ = (!\binary_bcd_ins|bcd_signal\(16) & (!\binary_bcd_ins|LessThan3~0_combout\ & \binary_bcd_ins|CurentState.S4~q\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000000001110000",
+	lut_mask => "0000001100000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(15),
-	datab => \binary_bcd_ins|LessThan3~0_combout\,
-	datac => \binary_bcd_ins|CurentState.S4~q\,
-	datad => \binary_bcd_ins|bcd_signal\(16),
-	combout => \binary_bcd_ins|bcd_signal[13]~6_combout\);
+	datab => \binary_bcd_ins|bcd_signal\(16),
+	datac => \binary_bcd_ins|LessThan3~0_combout\,
+	datad => \binary_bcd_ins|CurentState.S4~q\,
+	combout => \binary_bcd_ins|bcd_signal[13]~4_combout\);
 
--- Location: LCCOMB_X57_Y49_N6
-\binary_bcd_ins|bcd_signal[13]~7\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X60_Y51_N10
+\binary_bcd_ins|bcd_signal[13]~5\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[13]~7_combout\ = (!\binary_bcd_ins|bcd_signal[13]~6_combout\ & (((\binary_bcd_ins|Equal0~4_combout\ & \binary_bcd_ins|Equal0~9_combout\)) # (!\binary_bcd_ins|CurentState.s6~q\)))
+-- \binary_bcd_ins|bcd_signal[13]~5_combout\ = (!\binary_bcd_ins|bcd_signal[13]~4_combout\ & (((\binary_bcd_ins|Equal0~4_combout\ & \binary_bcd_ins|Equal0~9_combout\)) # (!\binary_bcd_ins|CurentState.s6~q\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000101100000011",
+	lut_mask => "0010000000110011",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|Equal0~4_combout\,
-	datab => \binary_bcd_ins|CurentState.s6~q\,
-	datac => \binary_bcd_ins|bcd_signal[13]~6_combout\,
-	datad => \binary_bcd_ins|Equal0~9_combout\,
-	combout => \binary_bcd_ins|bcd_signal[13]~7_combout\);
+	datab => \binary_bcd_ins|bcd_signal[13]~4_combout\,
+	datac => \binary_bcd_ins|Equal0~9_combout\,
+	datad => \binary_bcd_ins|CurentState.s6~q\,
+	combout => \binary_bcd_ins|bcd_signal[13]~5_combout\);
 
--- Location: LCCOMB_X64_Y50_N6
-\binary_bcd_ins|bcd_signal[13]~38\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X60_Y51_N22
+\binary_bcd_ins|bcd_signal[13]~36\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[13]~38_combout\ = (\binary_bcd_ins|bcd_signal[13]~7_combout\ & ((\binary_bcd_ins|CurentState.S5~q\) # ((\binary_bcd_ins|CurentState.S4~q\) # (\binary_bcd_ins|CurentState.s6~q\))))
+-- \binary_bcd_ins|bcd_signal[13]~36_combout\ = (\binary_bcd_ins|bcd_signal[13]~5_combout\ & ((\binary_bcd_ins|CurentState.S4~q\) # ((\binary_bcd_ins|CurentState.S5~q\) # (\binary_bcd_ins|CurentState.s6~q\))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -3488,13 +3509,13 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[13]~7_combout\,
-	datab => \binary_bcd_ins|CurentState.S5~q\,
-	datac => \binary_bcd_ins|CurentState.S4~q\,
+	dataa => \binary_bcd_ins|bcd_signal[13]~5_combout\,
+	datab => \binary_bcd_ins|CurentState.S4~q\,
+	datac => \binary_bcd_ins|CurentState.S5~q\,
 	datad => \binary_bcd_ins|CurentState.s6~q\,
-	combout => \binary_bcd_ins|bcd_signal[13]~38_combout\);
+	combout => \binary_bcd_ins|bcd_signal[13]~36_combout\);
 
--- Location: FF_X65_Y50_N1
+-- Location: FF_X59_Y52_N1
 \binary_bcd_ins|bcd_signal[13]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3503,16 +3524,15 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|Selector15~0_combout\,
+	d => \binary_bcd_ins|Selector15~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd_signal[13]~38_combout\,
+	ena => \binary_bcd_ins|bcd_signal[13]~36_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(13));
 
--- Location: LCCOMB_X65_Y50_N2
+-- Location: LCCOMB_X60_Y52_N2
 \binary_bcd_ins|Add3~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~2_combout\ = (\binary_bcd_ins|bcd_signal\(14) & (\binary_bcd_ins|Add3~1\ & VCC)) # (!\binary_bcd_ins|bcd_signal\(14) & (!\binary_bcd_ins|Add3~1\))
@@ -3530,23 +3550,23 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add3~2_combout\,
 	cout => \binary_bcd_ins|Add3~3\);
 
--- Location: LCCOMB_X66_Y50_N20
+-- Location: LCCOMB_X59_Y52_N18
 \binary_bcd_ins|Selector14~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector14~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|bcd_signal\(13)))) # (!\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|Add3~2_combout\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111101001010000",
+	lut_mask => "1100110010101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S5~q\,
-	datac => \binary_bcd_ins|Add3~2_combout\,
-	datad => \binary_bcd_ins|bcd_signal\(13),
+	dataa => \binary_bcd_ins|Add3~2_combout\,
+	datab => \binary_bcd_ins|bcd_signal\(13),
+	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector14~0_combout\);
 
--- Location: FF_X65_Y50_N3
+-- Location: FF_X59_Y52_N19
 \binary_bcd_ins|bcd_signal[14]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3555,16 +3575,15 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|Selector14~0_combout\,
+	d => \binary_bcd_ins|Selector14~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd_signal[13]~38_combout\,
+	ena => \binary_bcd_ins|bcd_signal[13]~36_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(14));
 
--- Location: LCCOMB_X65_Y50_N4
+-- Location: LCCOMB_X60_Y52_N4
 \binary_bcd_ins|Add3~4\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~4_combout\ = (\binary_bcd_ins|bcd_signal\(15) & (\binary_bcd_ins|Add3~3\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(15) & (!\binary_bcd_ins|Add3~3\ & VCC))
@@ -3572,33 +3591,33 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100001100001100",
+	lut_mask => "1010010100001010",
 	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(15),
+	dataa => \binary_bcd_ins|bcd_signal\(15),
 	datad => VCC,
 	cin => \binary_bcd_ins|Add3~3\,
 	combout => \binary_bcd_ins|Add3~4_combout\,
 	cout => \binary_bcd_ins|Add3~5\);
 
--- Location: LCCOMB_X66_Y50_N30
+-- Location: LCCOMB_X59_Y52_N12
 \binary_bcd_ins|Selector13~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector13~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|bcd_signal\(14)))) # (!\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|Add3~4_combout\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111101001010000",
+	lut_mask => "1100110010101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S5~q\,
-	datac => \binary_bcd_ins|Add3~4_combout\,
-	datad => \binary_bcd_ins|bcd_signal\(14),
+	dataa => \binary_bcd_ins|Add3~4_combout\,
+	datab => \binary_bcd_ins|bcd_signal\(14),
+	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector13~0_combout\);
 
--- Location: FF_X65_Y50_N5
+-- Location: FF_X59_Y52_N13
 \binary_bcd_ins|bcd_signal[15]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3607,16 +3626,15 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|Selector13~0_combout\,
+	d => \binary_bcd_ins|Selector13~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd_signal[13]~38_combout\,
+	ena => \binary_bcd_ins|bcd_signal[13]~36_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(15));
 
--- Location: LCCOMB_X65_Y50_N6
+-- Location: LCCOMB_X60_Y52_N6
 \binary_bcd_ins|Add3~6\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~6_combout\ = (\binary_bcd_ins|bcd_signal\(16) & (!\binary_bcd_ins|Add3~5\)) # (!\binary_bcd_ins|bcd_signal\(16) & ((\binary_bcd_ins|Add3~5\) # (GND)))
@@ -3624,33 +3642,33 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0101101001011111",
+	lut_mask => "0011110000111111",
 	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(16),
+	datab => \binary_bcd_ins|bcd_signal\(16),
 	datad => VCC,
 	cin => \binary_bcd_ins|Add3~5\,
 	combout => \binary_bcd_ins|Add3~6_combout\,
 	cout => \binary_bcd_ins|Add3~7\);
 
--- Location: LCCOMB_X66_Y50_N24
+-- Location: LCCOMB_X59_Y52_N30
 \binary_bcd_ins|Selector12~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector12~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|bcd_signal\(15))) # (!\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|Add3~6_combout\)))
+-- \binary_bcd_ins|Selector12~0_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & ((\binary_bcd_ins|bcd_signal\(15)))) # (!\binary_bcd_ins|CurentState.S5~q\ & (\binary_bcd_ins|Add3~6_combout\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1101110110001000",
+	lut_mask => "1111000010101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S5~q\,
-	datab => \binary_bcd_ins|bcd_signal\(15),
-	datad => \binary_bcd_ins|Add3~6_combout\,
+	dataa => \binary_bcd_ins|Add3~6_combout\,
+	datac => \binary_bcd_ins|bcd_signal\(15),
+	datad => \binary_bcd_ins|CurentState.S5~q\,
 	combout => \binary_bcd_ins|Selector12~0_combout\);
 
--- Location: FF_X65_Y50_N7
+-- Location: FF_X59_Y52_N31
 \binary_bcd_ins|bcd_signal[16]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3659,16 +3677,15 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|Selector12~0_combout\,
+	d => \binary_bcd_ins|Selector12~0_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd_signal[13]~38_combout\,
+	ena => \binary_bcd_ins|bcd_signal[13]~36_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(16));
 
--- Location: FF_X66_Y51_N7
+-- Location: FF_X60_Y51_N7
 \binary_bcd_ins|bcd[3]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3685,37 +3702,23 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(3));
 
--- Location: LCCOMB_X66_Y51_N16
-\binary_bcd_ins|bcd[0]~feeder\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X60_Y51_N6
+\MUX_HEXDEC_ins|DATA_OUT[3]~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd[0]~feeder_combout\ = \binary_bcd_ins|bcd_signal\(13)
+-- \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ = (\SW[9]~input_o\ & ((\SW[3]~input_o\))) # (!\SW[9]~input_o\ & (\binary_bcd_ins|bcd\(3)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111000011110000",
+	lut_mask => "1111110000110000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datac => \binary_bcd_ins|bcd_signal\(13),
-	combout => \binary_bcd_ins|bcd[0]~feeder_combout\);
+	datab => \SW[9]~input_o\,
+	datac => \binary_bcd_ins|bcd\(3),
+	datad => \SW[3]~input_o\,
+	combout => \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\);
 
--- Location: FF_X66_Y51_N17
-\binary_bcd_ins|bcd[0]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~inputclkctrl_outclk\,
-	d => \binary_bcd_ins|bcd[0]~feeder_combout\,
-	clrn => \reset_n~input_o\,
-	ena => \binary_bcd_ins|bcd[3]~0_combout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd\(0));
-
--- Location: FF_X66_Y51_N5
+-- Location: FF_X60_Y51_N5
 \binary_bcd_ins|bcd[2]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3732,21 +3735,23 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(2));
 
--- Location: LCCOMB_X66_Y51_N2
-\binary_bcd_ins|bcd[1]~feeder\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X60_Y51_N4
+\MUX_HEXDEC_ins|DATA_OUT[2]~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd[1]~feeder_combout\ = \binary_bcd_ins|bcd_signal\(14)
+-- \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ = (\SW[9]~input_o\ & (\SW[2]~input_o\)) # (!\SW[9]~input_o\ & ((\binary_bcd_ins|bcd\(2))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111111100000000",
+	lut_mask => "1011100010111000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datad => \binary_bcd_ins|bcd_signal\(14),
-	combout => \binary_bcd_ins|bcd[1]~feeder_combout\);
+	dataa => \SW[2]~input_o\,
+	datab => \SW[9]~input_o\,
+	datac => \binary_bcd_ins|bcd\(2),
+	combout => \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\);
 
--- Location: FF_X66_Y51_N3
+-- Location: FF_X60_Y51_N3
 \binary_bcd_ins|bcd[1]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -3755,140 +3760,192 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	d => \binary_bcd_ins|bcd[1]~feeder_combout\,
+	asdata => \binary_bcd_ins|bcd_signal\(14),
 	clrn => \reset_n~input_o\,
+	sload => VCC,
 	ena => \binary_bcd_ins|bcd[3]~0_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(1));
 
--- Location: LCCOMB_X66_Y51_N8
+-- Location: LCCOMB_X60_Y51_N2
+\MUX_HEXDEC_ins|DATA_OUT[1]~1\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ = (\SW[9]~input_o\ & ((\SW[1]~input_o\))) # (!\SW[9]~input_o\ & (\binary_bcd_ins|bcd\(1)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111110000110000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datab => \SW[9]~input_o\,
+	datac => \binary_bcd_ins|bcd\(1),
+	datad => \SW[1]~input_o\,
+	combout => \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\);
+
+-- Location: FF_X60_Y51_N1
+\binary_bcd_ins|bcd[0]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~inputclkctrl_outclk\,
+	asdata => \binary_bcd_ins|bcd_signal\(13),
+	clrn => \reset_n~input_o\,
+	sload => VCC,
+	ena => \binary_bcd_ins|bcd[3]~0_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \binary_bcd_ins|bcd\(0));
+
+-- Location: LCCOMB_X60_Y51_N0
+\MUX_HEXDEC_ins|DATA_OUT[0]~0\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ = (\SW[9]~input_o\ & (\SW[0]~input_o\)) # (!\SW[9]~input_o\ & ((\binary_bcd_ins|bcd\(0))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1011100010111000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \SW[0]~input_o\,
+	datab => \SW[9]~input_o\,
+	datac => \binary_bcd_ins|bcd\(0),
+	combout => \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\);
+
+-- Location: LCCOMB_X63_Y53_N24
 \SevenSegment_ins|decoder0|Mux6~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder0|Mux6~0_combout\ = (\binary_bcd_ins|bcd\(2) & (!\binary_bcd_ins|bcd\(1) & ((\binary_bcd_ins|bcd\(3)) # (!\binary_bcd_ins|bcd\(0))))) # (!\binary_bcd_ins|bcd\(2) & (\binary_bcd_ins|bcd\(0) & (\binary_bcd_ins|bcd\(3) $ 
--- (!\binary_bcd_ins|bcd\(1)))))
+-- \SevenSegment_ins|decoder0|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ $ (!\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000100010110100",
+	lut_mask => "0010100100001100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(3),
-	datab => \binary_bcd_ins|bcd\(0),
-	datac => \binary_bcd_ins|bcd\(2),
-	datad => \binary_bcd_ins|bcd\(1),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\,
 	combout => \SevenSegment_ins|decoder0|Mux6~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N26
+-- Location: LCCOMB_X63_Y53_N18
 \SevenSegment_ins|decoder0|Mux5~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder0|Mux5~0_combout\ = (\binary_bcd_ins|bcd\(3) & ((\binary_bcd_ins|bcd\(0) & ((\binary_bcd_ins|bcd\(1)))) # (!\binary_bcd_ins|bcd\(0) & (\binary_bcd_ins|bcd\(2))))) # (!\binary_bcd_ins|bcd\(3) & (\binary_bcd_ins|bcd\(2) & 
--- (\binary_bcd_ins|bcd\(0) $ (\binary_bcd_ins|bcd\(1)))))
+-- \SevenSegment_ins|decoder0|Mux5~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\))) # (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & 
+-- (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1011100001100000",
+	lut_mask => "1010010011001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(3),
-	datab => \binary_bcd_ins|bcd\(0),
-	datac => \binary_bcd_ins|bcd\(2),
-	datad => \binary_bcd_ins|bcd\(1),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\,
 	combout => \SevenSegment_ins|decoder0|Mux5~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N28
+-- Location: LCCOMB_X63_Y53_N4
 \SevenSegment_ins|decoder0|Mux4~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder0|Mux4~0_combout\ = (\binary_bcd_ins|bcd\(3) & (\binary_bcd_ins|bcd\(2) & ((\binary_bcd_ins|bcd\(1)) # (!\binary_bcd_ins|bcd\(0))))) # (!\binary_bcd_ins|bcd\(3) & (!\binary_bcd_ins|bcd\(0) & (!\binary_bcd_ins|bcd\(2) & 
--- \binary_bcd_ins|bcd\(1))))
+-- \SevenSegment_ins|decoder0|Mux4~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ & !\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010000100100000",
+	lut_mask => "1000000010011000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(3),
-	datab => \binary_bcd_ins|bcd\(0),
-	datac => \binary_bcd_ins|bcd\(2),
-	datad => \binary_bcd_ins|bcd\(1),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\,
 	combout => \SevenSegment_ins|decoder0|Mux4~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N30
+-- Location: LCCOMB_X63_Y53_N22
 \SevenSegment_ins|decoder0|Mux3~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder0|Mux3~0_combout\ = (\binary_bcd_ins|bcd\(0) & ((\binary_bcd_ins|bcd\(2) $ (!\binary_bcd_ins|bcd\(1))))) # (!\binary_bcd_ins|bcd\(0) & ((\binary_bcd_ins|bcd\(3) & (!\binary_bcd_ins|bcd\(2) & \binary_bcd_ins|bcd\(1))) # 
--- (!\binary_bcd_ins|bcd\(3) & (\binary_bcd_ins|bcd\(2) & !\binary_bcd_ins|bcd\(1)))))
+-- \SevenSegment_ins|decoder0|Mux3~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ $ (!\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & 
+-- ((\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\)) # (!\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & 
+-- !\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100001000011100",
+	lut_mask => "1100001100100100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(3),
-	datab => \binary_bcd_ins|bcd\(0),
-	datac => \binary_bcd_ins|bcd\(2),
-	datad => \binary_bcd_ins|bcd\(1),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\,
 	combout => \SevenSegment_ins|decoder0|Mux3~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N24
+-- Location: LCCOMB_X63_Y53_N8
 \SevenSegment_ins|decoder0|Mux2~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder0|Mux2~0_combout\ = (\binary_bcd_ins|bcd\(1) & (!\binary_bcd_ins|bcd\(3) & (\binary_bcd_ins|bcd\(0)))) # (!\binary_bcd_ins|bcd\(1) & ((\binary_bcd_ins|bcd\(2) & (!\binary_bcd_ins|bcd\(3))) # (!\binary_bcd_ins|bcd\(2) & 
--- ((\binary_bcd_ins|bcd\(0))))))
+-- \SevenSegment_ins|decoder0|Mux2~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ & 
+-- ((\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\)) # (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100010001011100",
+	lut_mask => "0101011100000100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(3),
-	datab => \binary_bcd_ins|bcd\(0),
-	datac => \binary_bcd_ins|bcd\(2),
-	datad => \binary_bcd_ins|bcd\(1),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\,
 	combout => \SevenSegment_ins|decoder0|Mux2~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N4
+-- Location: LCCOMB_X63_Y53_N10
 \SevenSegment_ins|decoder0|Mux1~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder0|Mux1~0_combout\ = (\binary_bcd_ins|bcd\(3) & (((\binary_bcd_ins|bcd\(2) & !\binary_bcd_ins|bcd\(1))))) # (!\binary_bcd_ins|bcd\(3) & ((\binary_bcd_ins|bcd\(0) & ((\binary_bcd_ins|bcd\(1)) # (!\binary_bcd_ins|bcd\(2)))) # 
--- (!\binary_bcd_ins|bcd\(0) & (!\binary_bcd_ins|bcd\(2) & \binary_bcd_ins|bcd\(1)))))
+-- \SevenSegment_ins|decoder0|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\))) # (!\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & 
+-- ((\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ & \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\)) # (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\) # 
+-- (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100010110100100",
+	lut_mask => "0101100100011000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(3),
-	datab => \binary_bcd_ins|bcd\(0),
-	datac => \binary_bcd_ins|bcd\(2),
-	datad => \binary_bcd_ins|bcd\(1),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\,
 	combout => \SevenSegment_ins|decoder0|Mux1~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N6
+-- Location: LCCOMB_X63_Y53_N12
 \SevenSegment_ins|decoder0|Mux0~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder0|Mux0~0_combout\ = (\binary_bcd_ins|bcd\(0) & ((\binary_bcd_ins|bcd\(3)) # (\binary_bcd_ins|bcd\(1) $ (\binary_bcd_ins|bcd\(2))))) # (!\binary_bcd_ins|bcd\(0) & ((\binary_bcd_ins|bcd\(2)) # (\binary_bcd_ins|bcd\(1) $ 
--- (\binary_bcd_ins|bcd\(3)))))
+-- \SevenSegment_ins|decoder0|Mux0~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111011011011110",
+	lut_mask => "1011111011011110",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(1),
-	datab => \binary_bcd_ins|bcd\(2),
-	datac => \binary_bcd_ins|bcd\(3),
-	datad => \binary_bcd_ins|bcd\(0),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\,
 	combout => \SevenSegment_ins|decoder0|Mux0~0_combout\);
 
--- Location: LCCOMB_X65_Y50_N8
+-- Location: LCCOMB_X60_Y52_N8
 \binary_bcd_ins|Add3~8\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~8_combout\ = (\binary_bcd_ins|bcd_signal\(17) & (\binary_bcd_ins|Add3~7\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(17) & (!\binary_bcd_ins|Add3~7\ & VCC))
@@ -3896,17 +3953,17 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010010100001010",
+	lut_mask => "1100001100001100",
 	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(17),
+	datab => \binary_bcd_ins|bcd_signal\(17),
 	datad => VCC,
 	cin => \binary_bcd_ins|Add3~7\,
 	combout => \binary_bcd_ins|Add3~8_combout\,
 	cout => \binary_bcd_ins|Add3~9\);
 
--- Location: LCCOMB_X65_Y51_N4
+-- Location: LCCOMB_X61_Y51_N2
 \binary_bcd_ins|Add2~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add2~0_combout\ = \binary_bcd_ins|bcd_signal\(17) $ (VCC)
@@ -3914,50 +3971,101 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0101010110101010",
+	lut_mask => "0011001111001100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(17),
+	datab => \binary_bcd_ins|bcd_signal\(17),
 	datad => VCC,
 	combout => \binary_bcd_ins|Add2~0_combout\,
 	cout => \binary_bcd_ins|Add2~1\);
 
--- Location: LCCOMB_X64_Y51_N8
+-- Location: LCCOMB_X61_Y52_N8
 \binary_bcd_ins|Selector11~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector11~0_combout\ = (\binary_bcd_ins|CurentState.S4~q\ & (\binary_bcd_ins|Add3~8_combout\)) # (!\binary_bcd_ins|CurentState.S4~q\ & ((\binary_bcd_ins|Add2~0_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1101110110001000",
+	lut_mask => "1011101110001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S4~q\,
-	datab => \binary_bcd_ins|Add3~8_combout\,
+	dataa => \binary_bcd_ins|Add3~8_combout\,
+	datab => \binary_bcd_ins|CurentState.S4~q\,
 	datad => \binary_bcd_ins|Add2~0_combout\,
 	combout => \binary_bcd_ins|Selector11~0_combout\);
 
--- Location: LCCOMB_X65_Y51_N6
-\binary_bcd_ins|Add2~2\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X61_Y52_N0
+\binary_bcd_ins|bcd_signal[18]~6\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Add2~2_combout\ = (\binary_bcd_ins|bcd_signal\(18) & (\binary_bcd_ins|Add2~1\ & VCC)) # (!\binary_bcd_ins|bcd_signal\(18) & (!\binary_bcd_ins|Add2~1\))
--- \binary_bcd_ins|Add2~3\ = CARRY((!\binary_bcd_ins|bcd_signal\(18) & !\binary_bcd_ins|Add2~1\))
+-- \binary_bcd_ins|bcd_signal[18]~6_combout\ = (!\binary_bcd_ins|bcd_signal\(20) & (((!\binary_bcd_ins|bcd_signal\(18) & !\binary_bcd_ins|bcd_signal\(17))) # (!\binary_bcd_ins|bcd_signal\(19))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010010100000101",
-	sum_lutc_input => "cin")
+	lut_mask => "0000000000011111",
+	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|bcd_signal\(18),
-	datad => VCC,
-	cin => \binary_bcd_ins|Add2~1\,
-	combout => \binary_bcd_ins|Add2~2_combout\,
-	cout => \binary_bcd_ins|Add2~3\);
+	datab => \binary_bcd_ins|bcd_signal\(17),
+	datac => \binary_bcd_ins|bcd_signal\(19),
+	datad => \binary_bcd_ins|bcd_signal\(20),
+	combout => \binary_bcd_ins|bcd_signal[18]~6_combout\);
 
--- Location: LCCOMB_X65_Y50_N10
+-- Location: LCCOMB_X62_Y51_N20
+\binary_bcd_ins|bcd_signal[18]~7\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[18]~7_combout\ = (\binary_bcd_ins|CurentState.S0~q\ & ((!\binary_bcd_ins|bcd_signal[18]~6_combout\) # (!\binary_bcd_ins|CurentState.S3~q\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000110011001100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datab => \binary_bcd_ins|CurentState.S0~q\,
+	datac => \binary_bcd_ins|CurentState.S3~q\,
+	datad => \binary_bcd_ins|bcd_signal[18]~6_combout\,
+	combout => \binary_bcd_ins|bcd_signal[18]~7_combout\);
+
+-- Location: LCCOMB_X62_Y51_N0
+\binary_bcd_ins|bcd_signal[18]~8\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[18]~8_combout\ = (!\binary_bcd_ins|CurentState.S1~q\ & (\binary_bcd_ins|bcd_signal[18]~7_combout\ & (!\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|bcd_signal[13]~5_combout\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000010000000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|CurentState.S1~q\,
+	datab => \binary_bcd_ins|bcd_signal[18]~7_combout\,
+	datac => \binary_bcd_ins|CurentState.S2~q\,
+	datad => \binary_bcd_ins|bcd_signal[13]~5_combout\,
+	combout => \binary_bcd_ins|bcd_signal[18]~8_combout\);
+
+-- Location: FF_X61_Y52_N9
+\binary_bcd_ins|bcd_signal[17]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~inputclkctrl_outclk\,
+	d => \binary_bcd_ins|Selector11~0_combout\,
+	asdata => \binary_bcd_ins|bcd_signal\(16),
+	clrn => \reset_n~input_o\,
+	sclr => \binary_bcd_ins|CurentState.s6~q\,
+	sload => \binary_bcd_ins|CurentState.S5~q\,
+	ena => \binary_bcd_ins|bcd_signal[18]~8_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \binary_bcd_ins|bcd_signal\(17));
+
+-- Location: LCCOMB_X60_Y52_N10
 \binary_bcd_ins|Add3~10\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~10_combout\ = (\binary_bcd_ins|bcd_signal\(18) & (!\binary_bcd_ins|Add3~9\)) # (!\binary_bcd_ins|bcd_signal\(18) & ((\binary_bcd_ins|Add3~9\) # (GND)))
@@ -3975,23 +4083,41 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add3~10_combout\,
 	cout => \binary_bcd_ins|Add3~11\);
 
--- Location: LCCOMB_X64_Y51_N26
-\binary_bcd_ins|Selector10~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X61_Y51_N4
+\binary_bcd_ins|Add2~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector10~0_combout\ = (\binary_bcd_ins|CurentState.S4~q\ & ((\binary_bcd_ins|Add3~10_combout\))) # (!\binary_bcd_ins|CurentState.S4~q\ & (\binary_bcd_ins|Add2~2_combout\))
+-- \binary_bcd_ins|Add2~2_combout\ = (\binary_bcd_ins|bcd_signal\(18) & (\binary_bcd_ins|Add2~1\ & VCC)) # (!\binary_bcd_ins|bcd_signal\(18) & (!\binary_bcd_ins|Add2~1\))
+-- \binary_bcd_ins|Add2~3\ = CARRY((!\binary_bcd_ins|bcd_signal\(18) & !\binary_bcd_ins|Add2~1\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100110010101010",
+	lut_mask => "1100001100000011",
+	sum_lutc_input => "cin")
+-- pragma translate_on
+PORT MAP (
+	datab => \binary_bcd_ins|bcd_signal\(18),
+	datad => VCC,
+	cin => \binary_bcd_ins|Add2~1\,
+	combout => \binary_bcd_ins|Add2~2_combout\,
+	cout => \binary_bcd_ins|Add2~3\);
+
+-- Location: LCCOMB_X61_Y52_N26
+\binary_bcd_ins|Selector10~0\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Selector10~0_combout\ = (\binary_bcd_ins|CurentState.S4~q\ & (\binary_bcd_ins|Add3~10_combout\)) # (!\binary_bcd_ins|CurentState.S4~q\ & ((\binary_bcd_ins|Add2~2_combout\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1011101110001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|Add2~2_combout\,
-	datab => \binary_bcd_ins|Add3~10_combout\,
-	datad => \binary_bcd_ins|CurentState.S4~q\,
+	dataa => \binary_bcd_ins|Add3~10_combout\,
+	datab => \binary_bcd_ins|CurentState.S4~q\,
+	datad => \binary_bcd_ins|Add2~2_combout\,
 	combout => \binary_bcd_ins|Selector10~0_combout\);
 
--- Location: FF_X64_Y51_N27
+-- Location: FF_X61_Y52_N27
 \binary_bcd_ins|bcd_signal[18]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -4005,12 +4131,12 @@ PORT MAP (
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
 	sload => \binary_bcd_ins|CurentState.S5~q\,
-	ena => \binary_bcd_ins|bcd_signal[19]~10_combout\,
+	ena => \binary_bcd_ins|bcd_signal[18]~8_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(18));
 
--- Location: LCCOMB_X65_Y50_N12
+-- Location: LCCOMB_X60_Y52_N12
 \binary_bcd_ins|Add3~12\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~12_combout\ = (\binary_bcd_ins|bcd_signal\(19) & (\binary_bcd_ins|Add3~11\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(19) & (!\binary_bcd_ins|Add3~11\ & VCC))
@@ -4018,17 +4144,17 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100001100001100",
+	lut_mask => "1010010100001010",
 	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(19),
+	dataa => \binary_bcd_ins|bcd_signal\(19),
 	datad => VCC,
 	cin => \binary_bcd_ins|Add3~11\,
 	combout => \binary_bcd_ins|Add3~12_combout\,
 	cout => \binary_bcd_ins|Add3~13\);
 
--- Location: LCCOMB_X65_Y51_N8
+-- Location: LCCOMB_X61_Y51_N6
 \binary_bcd_ins|Add2~4\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add2~4_combout\ = (\binary_bcd_ins|bcd_signal\(19) & (\binary_bcd_ins|Add2~3\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(19) & (!\binary_bcd_ins|Add2~3\ & VCC))
@@ -4046,23 +4172,23 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add2~4_combout\,
 	cout => \binary_bcd_ins|Add2~5\);
 
--- Location: LCCOMB_X64_Y51_N4
+-- Location: LCCOMB_X61_Y52_N4
 \binary_bcd_ins|Selector9~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Selector9~0_combout\ = (\binary_bcd_ins|CurentState.S4~q\ & (\binary_bcd_ins|Add3~12_combout\)) # (!\binary_bcd_ins|CurentState.S4~q\ & ((\binary_bcd_ins|Add2~4_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010101011001100",
+	lut_mask => "1011101110001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|Add3~12_combout\,
-	datab => \binary_bcd_ins|Add2~4_combout\,
-	datad => \binary_bcd_ins|CurentState.S4~q\,
+	datab => \binary_bcd_ins|CurentState.S4~q\,
+	datad => \binary_bcd_ins|Add2~4_combout\,
 	combout => \binary_bcd_ins|Selector9~0_combout\);
 
--- Location: FF_X64_Y51_N5
+-- Location: FF_X61_Y52_N5
 \binary_bcd_ins|bcd_signal[19]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -4076,30 +4202,12 @@ PORT MAP (
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
 	sload => \binary_bcd_ins|CurentState.S5~q\,
-	ena => \binary_bcd_ins|bcd_signal[19]~10_combout\,
+	ena => \binary_bcd_ins|bcd_signal[18]~8_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(19));
 
--- Location: LCCOMB_X65_Y51_N10
-\binary_bcd_ins|Add2~6\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Add2~6_combout\ = (\binary_bcd_ins|bcd_signal\(20) & (!\binary_bcd_ins|Add2~5\)) # (!\binary_bcd_ins|bcd_signal\(20) & ((\binary_bcd_ins|Add2~5\) # (GND)))
--- \binary_bcd_ins|Add2~7\ = CARRY((!\binary_bcd_ins|Add2~5\) # (!\binary_bcd_ins|bcd_signal\(20)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0101101001011111",
-	sum_lutc_input => "cin")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(20),
-	datad => VCC,
-	cin => \binary_bcd_ins|Add2~5\,
-	combout => \binary_bcd_ins|Add2~6_combout\,
-	cout => \binary_bcd_ins|Add2~7\);
-
--- Location: LCCOMB_X65_Y50_N14
+-- Location: LCCOMB_X60_Y52_N14
 \binary_bcd_ins|Add3~14\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~14_combout\ = (\binary_bcd_ins|bcd_signal\(20) & (!\binary_bcd_ins|Add3~13\)) # (!\binary_bcd_ins|bcd_signal\(20) & ((\binary_bcd_ins|Add3~13\) # (GND)))
@@ -4117,23 +4225,41 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add3~14_combout\,
 	cout => \binary_bcd_ins|Add3~15\);
 
--- Location: LCCOMB_X64_Y51_N30
-\binary_bcd_ins|Selector8~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X61_Y51_N8
+\binary_bcd_ins|Add2~6\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector8~0_combout\ = (\binary_bcd_ins|CurentState.S4~q\ & ((\binary_bcd_ins|Add3~14_combout\))) # (!\binary_bcd_ins|CurentState.S4~q\ & (\binary_bcd_ins|Add2~6_combout\))
+-- \binary_bcd_ins|Add2~6_combout\ = (\binary_bcd_ins|bcd_signal\(20) & (!\binary_bcd_ins|Add2~5\)) # (!\binary_bcd_ins|bcd_signal\(20) & ((\binary_bcd_ins|Add2~5\) # (GND)))
+-- \binary_bcd_ins|Add2~7\ = CARRY((!\binary_bcd_ins|Add2~5\) # (!\binary_bcd_ins|bcd_signal\(20)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110111001000100",
+	lut_mask => "0101101001011111",
+	sum_lutc_input => "cin")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal\(20),
+	datad => VCC,
+	cin => \binary_bcd_ins|Add2~5\,
+	combout => \binary_bcd_ins|Add2~6_combout\,
+	cout => \binary_bcd_ins|Add2~7\);
+
+-- Location: LCCOMB_X61_Y52_N6
+\binary_bcd_ins|Selector8~0\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Selector8~0_combout\ = (\binary_bcd_ins|CurentState.S4~q\ & (\binary_bcd_ins|Add3~14_combout\)) # (!\binary_bcd_ins|CurentState.S4~q\ & ((\binary_bcd_ins|Add2~6_combout\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1011101110001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S4~q\,
-	datab => \binary_bcd_ins|Add2~6_combout\,
-	datad => \binary_bcd_ins|Add3~14_combout\,
+	dataa => \binary_bcd_ins|Add3~14_combout\,
+	datab => \binary_bcd_ins|CurentState.S4~q\,
+	datad => \binary_bcd_ins|Add2~6_combout\,
 	combout => \binary_bcd_ins|Selector8~0_combout\);
 
--- Location: FF_X64_Y51_N31
+-- Location: FF_X61_Y52_N7
 \binary_bcd_ins|bcd_signal[20]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -4147,98 +4273,12 @@ PORT MAP (
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
 	sload => \binary_bcd_ins|CurentState.S5~q\,
-	ena => \binary_bcd_ins|bcd_signal[19]~10_combout\,
+	ena => \binary_bcd_ins|bcd_signal[18]~8_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(20));
 
--- Location: LCCOMB_X64_Y50_N18
-\binary_bcd_ins|bcd_signal[19]~8\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[19]~8_combout\ = (!\binary_bcd_ins|bcd_signal\(20) & (((!\binary_bcd_ins|bcd_signal\(17) & !\binary_bcd_ins|bcd_signal\(18))) # (!\binary_bcd_ins|bcd_signal\(19))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0001000100010011",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(19),
-	datab => \binary_bcd_ins|bcd_signal\(20),
-	datac => \binary_bcd_ins|bcd_signal\(17),
-	datad => \binary_bcd_ins|bcd_signal\(18),
-	combout => \binary_bcd_ins|bcd_signal[19]~8_combout\);
-
--- Location: LCCOMB_X64_Y50_N30
-\binary_bcd_ins|bcd_signal[19]~9\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[19]~9_combout\ = (\binary_bcd_ins|CurentState.S0~q\ & ((!\binary_bcd_ins|bcd_signal[19]~8_combout\) # (!\binary_bcd_ins|CurentState.S3~q\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000101010101010",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S0~q\,
-	datac => \binary_bcd_ins|CurentState.S3~q\,
-	datad => \binary_bcd_ins|bcd_signal[19]~8_combout\,
-	combout => \binary_bcd_ins|bcd_signal[19]~9_combout\);
-
--- Location: LCCOMB_X64_Y50_N0
-\binary_bcd_ins|bcd_signal[19]~10\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[19]~10_combout\ = (\binary_bcd_ins|bcd_signal[13]~7_combout\ & (!\binary_bcd_ins|CurentState.S2~q\ & (\binary_bcd_ins|bcd_signal[19]~9_combout\ & !\binary_bcd_ins|CurentState.S1~q\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000000100000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[13]~7_combout\,
-	datab => \binary_bcd_ins|CurentState.S2~q\,
-	datac => \binary_bcd_ins|bcd_signal[19]~9_combout\,
-	datad => \binary_bcd_ins|CurentState.S1~q\,
-	combout => \binary_bcd_ins|bcd_signal[19]~10_combout\);
-
--- Location: FF_X64_Y51_N9
-\binary_bcd_ins|bcd_signal[17]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~inputclkctrl_outclk\,
-	d => \binary_bcd_ins|Selector11~0_combout\,
-	asdata => \binary_bcd_ins|bcd_signal\(16),
-	clrn => \reset_n~input_o\,
-	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	sload => \binary_bcd_ins|CurentState.S5~q\,
-	ena => \binary_bcd_ins|bcd_signal[19]~10_combout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd_signal\(17));
-
--- Location: FF_X66_Y51_N19
-\binary_bcd_ins|bcd[4]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|bcd_signal\(17),
-	clrn => \reset_n~input_o\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd[3]~0_combout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd\(4));
-
--- Location: FF_X66_Y51_N1
+-- Location: FF_X58_Y52_N7
 \binary_bcd_ins|bcd[7]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -4255,7 +4295,23 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(7));
 
--- Location: FF_X66_Y51_N15
+-- Location: LCCOMB_X58_Y52_N6
+\MUX_HEXDEC_ins|DATA_OUT[7]~7\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ = (\SW[9]~input_o\ & (\SW[7]~input_o\)) # (!\SW[9]~input_o\ & ((\binary_bcd_ins|bcd\(7))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1010101011110000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \SW[7]~input_o\,
+	datac => \binary_bcd_ins|bcd\(7),
+	datad => \SW[9]~input_o\,
+	combout => \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\);
+
+-- Location: FF_X58_Y52_N29
 \binary_bcd_ins|bcd[6]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -4272,7 +4328,23 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(6));
 
--- Location: FF_X66_Y51_N21
+-- Location: LCCOMB_X58_Y52_N28
+\MUX_HEXDEC_ins|DATA_OUT[6]~6\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ = (\SW[9]~input_o\ & (\SW[6]~input_o\)) # (!\SW[9]~input_o\ & ((\binary_bcd_ins|bcd\(6))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1010101011110000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \SW[6]~input_o\,
+	datac => \binary_bcd_ins|bcd\(6),
+	datad => \SW[9]~input_o\,
+	combout => \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\);
+
+-- Location: FF_X58_Y52_N27
 \binary_bcd_ins|bcd[5]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -4289,164 +4361,200 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(5));
 
--- Location: LCCOMB_X66_Y51_N10
+-- Location: LCCOMB_X58_Y52_N26
+\MUX_HEXDEC_ins|DATA_OUT[5]~5\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ = (\SW[9]~input_o\ & (\SW[5]~input_o\)) # (!\SW[9]~input_o\ & ((\binary_bcd_ins|bcd\(5))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1010101011110000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \SW[5]~input_o\,
+	datac => \binary_bcd_ins|bcd\(5),
+	datad => \SW[9]~input_o\,
+	combout => \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\);
+
+-- Location: FF_X58_Y52_N17
+\binary_bcd_ins|bcd[4]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~inputclkctrl_outclk\,
+	asdata => \binary_bcd_ins|bcd_signal\(17),
+	clrn => \reset_n~input_o\,
+	sload => VCC,
+	ena => \binary_bcd_ins|bcd[3]~0_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \binary_bcd_ins|bcd\(4));
+
+-- Location: LCCOMB_X58_Y52_N16
+\MUX_HEXDEC_ins|DATA_OUT[4]~4\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ = (\SW[9]~input_o\ & (\SW[4]~input_o\)) # (!\SW[9]~input_o\ & ((\binary_bcd_ins|bcd\(4))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1100110011110000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datab => \SW[4]~input_o\,
+	datac => \binary_bcd_ins|bcd\(4),
+	datad => \SW[9]~input_o\,
+	combout => \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\);
+
+-- Location: LCCOMB_X58_Y52_N8
 \SevenSegment_ins|decoder1|Mux6~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder1|Mux6~0_combout\ = (\binary_bcd_ins|bcd\(6) & (!\binary_bcd_ins|bcd\(5) & ((\binary_bcd_ins|bcd\(7)) # (!\binary_bcd_ins|bcd\(4))))) # (!\binary_bcd_ins|bcd\(6) & (\binary_bcd_ins|bcd\(4) & (\binary_bcd_ins|bcd\(7) $ 
--- (!\binary_bcd_ins|bcd\(5)))))
+-- \SevenSegment_ins|decoder1|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ $ (!\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000100011010010",
+	lut_mask => "0010100100001100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(4),
-	datab => \binary_bcd_ins|bcd\(7),
-	datac => \binary_bcd_ins|bcd\(6),
-	datad => \binary_bcd_ins|bcd\(5),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\,
 	combout => \SevenSegment_ins|decoder1|Mux6~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N12
+-- Location: LCCOMB_X58_Y52_N10
 \SevenSegment_ins|decoder1|Mux5~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder1|Mux5~0_combout\ = (\binary_bcd_ins|bcd\(7) & ((\binary_bcd_ins|bcd\(4) & ((\binary_bcd_ins|bcd\(5)))) # (!\binary_bcd_ins|bcd\(4) & (\binary_bcd_ins|bcd\(6))))) # (!\binary_bcd_ins|bcd\(7) & (\binary_bcd_ins|bcd\(6) & 
--- (\binary_bcd_ins|bcd\(4) $ (\binary_bcd_ins|bcd\(5)))))
+-- \SevenSegment_ins|decoder1|Mux5~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\))) # (!\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & 
+-- (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1101100001100000",
+	lut_mask => "1010010011001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(4),
-	datab => \binary_bcd_ins|bcd\(7),
-	datac => \binary_bcd_ins|bcd\(6),
-	datad => \binary_bcd_ins|bcd\(5),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\,
 	combout => \SevenSegment_ins|decoder1|Mux5~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N22
+-- Location: LCCOMB_X58_Y52_N4
 \SevenSegment_ins|decoder1|Mux4~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder1|Mux4~0_combout\ = (\binary_bcd_ins|bcd\(7) & (\binary_bcd_ins|bcd\(6) & ((\binary_bcd_ins|bcd\(5)) # (!\binary_bcd_ins|bcd\(4))))) # (!\binary_bcd_ins|bcd\(7) & (!\binary_bcd_ins|bcd\(4) & (!\binary_bcd_ins|bcd\(6) & 
--- \binary_bcd_ins|bcd\(5))))
+-- \SevenSegment_ins|decoder1|Mux4~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & !\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100000101000000",
+	lut_mask => "1000000010011000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(4),
-	datab => \binary_bcd_ins|bcd\(7),
-	datac => \binary_bcd_ins|bcd\(6),
-	datad => \binary_bcd_ins|bcd\(5),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\,
 	combout => \SevenSegment_ins|decoder1|Mux4~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N18
+-- Location: LCCOMB_X58_Y52_N22
 \SevenSegment_ins|decoder1|Mux3~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder1|Mux3~0_combout\ = (\binary_bcd_ins|bcd\(4) & (\binary_bcd_ins|bcd\(6) $ (((!\binary_bcd_ins|bcd\(5)))))) # (!\binary_bcd_ins|bcd\(4) & ((\binary_bcd_ins|bcd\(6) & (!\binary_bcd_ins|bcd\(7) & !\binary_bcd_ins|bcd\(5))) # 
--- (!\binary_bcd_ins|bcd\(6) & (\binary_bcd_ins|bcd\(7) & \binary_bcd_ins|bcd\(5)))))
+-- \SevenSegment_ins|decoder1|Mux3~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ $ (!\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & 
+-- ((\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\)) # (!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & 
+-- !\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010010001010010",
+	lut_mask => "1100001100100100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(6),
-	datab => \binary_bcd_ins|bcd\(7),
-	datac => \binary_bcd_ins|bcd\(4),
-	datad => \binary_bcd_ins|bcd\(5),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\,
 	combout => \SevenSegment_ins|decoder1|Mux3~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N20
+-- Location: LCCOMB_X58_Y52_N24
 \SevenSegment_ins|decoder1|Mux2~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder1|Mux2~0_combout\ = (\binary_bcd_ins|bcd\(5) & (\binary_bcd_ins|bcd\(4) & ((!\binary_bcd_ins|bcd\(7))))) # (!\binary_bcd_ins|bcd\(5) & ((\binary_bcd_ins|bcd\(6) & ((!\binary_bcd_ins|bcd\(7)))) # (!\binary_bcd_ins|bcd\(6) & 
--- (\binary_bcd_ins|bcd\(4)))))
+-- \SevenSegment_ins|decoder1|Mux2~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & 
+-- ((\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\)) # (!\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000001010101110",
+	lut_mask => "0101011100000100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(4),
-	datab => \binary_bcd_ins|bcd\(6),
-	datac => \binary_bcd_ins|bcd\(5),
-	datad => \binary_bcd_ins|bcd\(7),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\,
 	combout => \SevenSegment_ins|decoder1|Mux2~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N14
+-- Location: LCCOMB_X58_Y52_N2
 \SevenSegment_ins|decoder1|Mux1~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder1|Mux1~0_combout\ = (\binary_bcd_ins|bcd\(7) & (((\binary_bcd_ins|bcd\(6) & !\binary_bcd_ins|bcd\(5))))) # (!\binary_bcd_ins|bcd\(7) & ((\binary_bcd_ins|bcd\(4) & ((\binary_bcd_ins|bcd\(5)) # (!\binary_bcd_ins|bcd\(6)))) # 
--- (!\binary_bcd_ins|bcd\(4) & (!\binary_bcd_ins|bcd\(6) & \binary_bcd_ins|bcd\(5)))))
+-- \SevenSegment_ins|decoder1|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\))) # (!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & 
+-- ((\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\)) # (!\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\) # 
+-- (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0010001111000010",
+	lut_mask => "0101100100011000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(4),
-	datab => \binary_bcd_ins|bcd\(7),
-	datac => \binary_bcd_ins|bcd\(6),
-	datad => \binary_bcd_ins|bcd\(5),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\,
 	combout => \SevenSegment_ins|decoder1|Mux1~0_combout\);
 
--- Location: LCCOMB_X66_Y51_N0
+-- Location: LCCOMB_X58_Y52_N12
 \SevenSegment_ins|decoder1|Mux0~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder1|Mux0~0_combout\ = (\binary_bcd_ins|bcd\(4) & ((\binary_bcd_ins|bcd\(7)) # (\binary_bcd_ins|bcd\(6) $ (\binary_bcd_ins|bcd\(5))))) # (!\binary_bcd_ins|bcd\(4) & ((\binary_bcd_ins|bcd\(6)) # (\binary_bcd_ins|bcd\(7) $ 
--- (\binary_bcd_ins|bcd\(5)))))
+-- \SevenSegment_ins|decoder1|Mux0~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110011111111100",
+	lut_mask => "1011111011011110",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(4),
-	datab => \binary_bcd_ins|bcd\(6),
-	datac => \binary_bcd_ins|bcd\(7),
-	datad => \binary_bcd_ins|bcd\(5),
+	dataa => \MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\,
+	datab => \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\,
+	datac => \MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\,
+	datad => \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\,
 	combout => \SevenSegment_ins|decoder1|Mux0~0_combout\);
 
--- Location: LCCOMB_X64_Y50_N22
-\binary_bcd_ins|bcd_signal[24]~11\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X60_Y51_N20
+\binary_bcd_ins|bcd_signal[22]~9\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[24]~11_combout\ = (\binary_bcd_ins|CurentState.S5~q\) # ((!\binary_bcd_ins|CurentState.S4~q\ & \binary_bcd_ins|CurentState.S3~q\))
+-- \binary_bcd_ins|bcd_signal[22]~9_combout\ = (\binary_bcd_ins|CurentState.S5~q\) # ((!\binary_bcd_ins|CurentState.S4~q\ & \binary_bcd_ins|CurentState.S3~q\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111111101010000",
+	lut_mask => "1111001111110000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S4~q\,
-	datac => \binary_bcd_ins|CurentState.S3~q\,
-	datad => \binary_bcd_ins|CurentState.S5~q\,
-	combout => \binary_bcd_ins|bcd_signal[24]~11_combout\);
+	datab => \binary_bcd_ins|CurentState.S4~q\,
+	datac => \binary_bcd_ins|CurentState.S5~q\,
+	datad => \binary_bcd_ins|CurentState.S3~q\,
+	combout => \binary_bcd_ins|bcd_signal[22]~9_combout\);
 
--- Location: LCCOMB_X64_Y50_N20
-\binary_bcd_ins|WideOr1~0\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|WideOr1~0_combout\ = (!\binary_bcd_ins|CurentState.S4~q\ & !\binary_bcd_ins|CurentState.S5~q\)
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000000001111",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datac => \binary_bcd_ins|CurentState.S4~q\,
-	datad => \binary_bcd_ins|CurentState.S5~q\,
-	combout => \binary_bcd_ins|WideOr1~0_combout\);
-
--- Location: LCCOMB_X67_Y50_N14
+-- Location: LCCOMB_X63_Y51_N6
 \binary_bcd_ins|Add1~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add1~0_combout\ = \binary_bcd_ins|bcd_signal\(21) $ (VCC)
@@ -4454,16 +4562,16 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0101010110101010",
+	lut_mask => "0011001111001100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(21),
+	datab => \binary_bcd_ins|bcd_signal\(21),
 	datad => VCC,
 	combout => \binary_bcd_ins|Add1~0_combout\,
 	cout => \binary_bcd_ins|Add1~1\);
 
--- Location: LCCOMB_X65_Y50_N16
+-- Location: LCCOMB_X60_Y52_N16
 \binary_bcd_ins|Add3~16\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~16_combout\ = (\binary_bcd_ins|bcd_signal\(21) & (\binary_bcd_ins|Add3~15\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(21) & (!\binary_bcd_ins|Add3~15\ & VCC))
@@ -4481,25 +4589,40 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add3~16_combout\,
 	cout => \binary_bcd_ins|Add3~17\);
 
--- Location: LCCOMB_X66_Y50_N18
+-- Location: LCCOMB_X60_Y51_N28
+\binary_bcd_ins|WideOr1~0\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|WideOr1~0_combout\ = (!\binary_bcd_ins|CurentState.S5~q\ & !\binary_bcd_ins|CurentState.S4~q\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000000001111",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datac => \binary_bcd_ins|CurentState.S5~q\,
+	datad => \binary_bcd_ins|CurentState.S4~q\,
+	combout => \binary_bcd_ins|WideOr1~0_combout\);
+
+-- Location: LCCOMB_X60_Y51_N14
 \binary_bcd_ins|Selector7~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector7~0_combout\ = (\binary_bcd_ins|bcd_signal[24]~11_combout\ & (((!\binary_bcd_ins|WideOr1~0_combout\)))) # (!\binary_bcd_ins|bcd_signal[24]~11_combout\ & ((\binary_bcd_ins|WideOr1~0_combout\ & (\binary_bcd_ins|Add1~0_combout\)) # 
+-- \binary_bcd_ins|Selector7~0_combout\ = (\binary_bcd_ins|bcd_signal[22]~9_combout\ & (((!\binary_bcd_ins|WideOr1~0_combout\)))) # (!\binary_bcd_ins|bcd_signal[22]~9_combout\ & ((\binary_bcd_ins|WideOr1~0_combout\ & (\binary_bcd_ins|Add1~0_combout\)) # 
 -- (!\binary_bcd_ins|WideOr1~0_combout\ & ((\binary_bcd_ins|Add3~16_combout\)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100010011111010",
+	lut_mask => "0010001011111100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[24]~11_combout\,
-	datab => \binary_bcd_ins|Add1~0_combout\,
+	dataa => \binary_bcd_ins|Add1~0_combout\,
+	datab => \binary_bcd_ins|bcd_signal[22]~9_combout\,
 	datac => \binary_bcd_ins|Add3~16_combout\,
 	datad => \binary_bcd_ins|WideOr1~0_combout\,
 	combout => \binary_bcd_ins|Selector7~0_combout\);
 
--- Location: LCCOMB_X65_Y51_N12
+-- Location: LCCOMB_X61_Y51_N10
 \binary_bcd_ins|Add2~8\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add2~8_combout\ = (\binary_bcd_ins|bcd_signal\(21) & (\binary_bcd_ins|Add2~7\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(21) & (!\binary_bcd_ins|Add2~7\ & VCC))
@@ -4507,103 +4630,35 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100001100001100",
+	lut_mask => "1010010100001010",
 	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(21),
+	dataa => \binary_bcd_ins|bcd_signal\(21),
 	datad => VCC,
 	cin => \binary_bcd_ins|Add2~7\,
 	combout => \binary_bcd_ins|Add2~8_combout\,
 	cout => \binary_bcd_ins|Add2~9\);
 
--- Location: LCCOMB_X66_Y50_N28
+-- Location: LCCOMB_X59_Y51_N0
 \binary_bcd_ins|Selector7~1\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector7~1_combout\ = (\binary_bcd_ins|bcd_signal[24]~11_combout\ & ((\binary_bcd_ins|Selector7~0_combout\ & ((\binary_bcd_ins|bcd_signal\(20)))) # (!\binary_bcd_ins|Selector7~0_combout\ & (\binary_bcd_ins|Add2~8_combout\)))) # 
--- (!\binary_bcd_ins|bcd_signal[24]~11_combout\ & (\binary_bcd_ins|Selector7~0_combout\))
+-- \binary_bcd_ins|Selector7~1_combout\ = (\binary_bcd_ins|bcd_signal[22]~9_combout\ & ((\binary_bcd_ins|Selector7~0_combout\ & (\binary_bcd_ins|bcd_signal\(20))) # (!\binary_bcd_ins|Selector7~0_combout\ & ((\binary_bcd_ins|Add2~8_combout\))))) # 
+-- (!\binary_bcd_ins|bcd_signal[22]~9_combout\ & (\binary_bcd_ins|Selector7~0_combout\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110110001100100",
+	lut_mask => "1110011011000100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[24]~11_combout\,
+	dataa => \binary_bcd_ins|bcd_signal[22]~9_combout\,
 	datab => \binary_bcd_ins|Selector7~0_combout\,
-	datac => \binary_bcd_ins|Add2~8_combout\,
-	datad => \binary_bcd_ins|bcd_signal\(20),
+	datac => \binary_bcd_ins|bcd_signal\(20),
+	datad => \binary_bcd_ins|Add2~8_combout\,
 	combout => \binary_bcd_ins|Selector7~1_combout\);
 
--- Location: LCCOMB_X64_Y50_N12
-\binary_bcd_ins|bcd_signal[19]~13\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[19]~13_combout\ = (!\binary_bcd_ins|Selector28~0_combout\ & (!\binary_bcd_ins|bcd_signal[13]~6_combout\ & \binary_bcd_ins|bcd_signal[19]~9_combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0001000000010000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|Selector28~0_combout\,
-	datab => \binary_bcd_ins|bcd_signal[13]~6_combout\,
-	datac => \binary_bcd_ins|bcd_signal[19]~9_combout\,
-	combout => \binary_bcd_ins|bcd_signal[19]~13_combout\);
-
--- Location: LCCOMB_X64_Y50_N10
-\binary_bcd_ins|bcd_signal[24]~12\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[24]~12_combout\ = (!\binary_bcd_ins|bcd_signal\(24) & (((!\binary_bcd_ins|bcd_signal\(21) & !\binary_bcd_ins|bcd_signal\(22))) # (!\binary_bcd_ins|bcd_signal\(23))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000101010101",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(24),
-	datab => \binary_bcd_ins|bcd_signal\(21),
-	datac => \binary_bcd_ins|bcd_signal\(22),
-	datad => \binary_bcd_ins|bcd_signal\(23),
-	combout => \binary_bcd_ins|bcd_signal[24]~12_combout\);
-
--- Location: LCCOMB_X64_Y50_N14
-\binary_bcd_ins|bcd_signal[24]~14\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[24]~14_combout\ = (!\binary_bcd_ins|CurentState.S1~q\ & (\binary_bcd_ins|bcd_signal[19]~13_combout\ & ((!\binary_bcd_ins|bcd_signal[24]~12_combout\) # (!\binary_bcd_ins|CurentState.S2~q\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000010001000100",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S1~q\,
-	datab => \binary_bcd_ins|bcd_signal[19]~13_combout\,
-	datac => \binary_bcd_ins|CurentState.S2~q\,
-	datad => \binary_bcd_ins|bcd_signal[24]~12_combout\,
-	combout => \binary_bcd_ins|bcd_signal[24]~14_combout\);
-
--- Location: FF_X65_Y50_N9
-\binary_bcd_ins|bcd_signal[21]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|Selector7~1_combout\,
-	clrn => \reset_n~input_o\,
-	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd_signal[24]~14_combout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd_signal\(21));
-
--- Location: LCCOMB_X65_Y51_N14
+-- Location: LCCOMB_X61_Y51_N12
 \binary_bcd_ins|Add2~10\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add2~10_combout\ = (\binary_bcd_ins|bcd_signal\(22) & (!\binary_bcd_ins|Add2~9\)) # (!\binary_bcd_ins|bcd_signal\(22) & ((\binary_bcd_ins|Add2~9\) # (GND)))
@@ -4621,97 +4676,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add2~10_combout\,
 	cout => \binary_bcd_ins|Add2~11\);
 
--- Location: LCCOMB_X67_Y50_N16
-\binary_bcd_ins|Add1~2\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Add1~2_combout\ = (\binary_bcd_ins|bcd_signal\(22) & (\binary_bcd_ins|Add1~1\ & VCC)) # (!\binary_bcd_ins|bcd_signal\(22) & (!\binary_bcd_ins|Add1~1\))
--- \binary_bcd_ins|Add1~3\ = CARRY((!\binary_bcd_ins|bcd_signal\(22) & !\binary_bcd_ins|Add1~1\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100001100000011",
-	sum_lutc_input => "cin")
--- pragma translate_on
-PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(22),
-	datad => VCC,
-	cin => \binary_bcd_ins|Add1~1\,
-	combout => \binary_bcd_ins|Add1~2_combout\,
-	cout => \binary_bcd_ins|Add1~3\);
-
--- Location: LCCOMB_X66_Y50_N6
-\binary_bcd_ins|Selector6~0\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Selector6~0_combout\ = (\binary_bcd_ins|bcd_signal[24]~11_combout\ & (((\binary_bcd_ins|Add2~10_combout\)) # (!\binary_bcd_ins|WideOr1~0_combout\))) # (!\binary_bcd_ins|bcd_signal[24]~11_combout\ & (\binary_bcd_ins|WideOr1~0_combout\ & 
--- ((\binary_bcd_ins|Add1~2_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1110011010100010",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[24]~11_combout\,
-	datab => \binary_bcd_ins|WideOr1~0_combout\,
-	datac => \binary_bcd_ins|Add2~10_combout\,
-	datad => \binary_bcd_ins|Add1~2_combout\,
-	combout => \binary_bcd_ins|Selector6~0_combout\);
-
--- Location: LCCOMB_X65_Y50_N18
-\binary_bcd_ins|Add3~18\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Add3~18_combout\ = (\binary_bcd_ins|bcd_signal\(22) & (!\binary_bcd_ins|Add3~17\)) # (!\binary_bcd_ins|bcd_signal\(22) & ((\binary_bcd_ins|Add3~17\) # (GND)))
--- \binary_bcd_ins|Add3~19\ = CARRY((!\binary_bcd_ins|Add3~17\) # (!\binary_bcd_ins|bcd_signal\(22)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0101101001011111",
-	sum_lutc_input => "cin")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(22),
-	datad => VCC,
-	cin => \binary_bcd_ins|Add3~17\,
-	combout => \binary_bcd_ins|Add3~18_combout\,
-	cout => \binary_bcd_ins|Add3~19\);
-
--- Location: LCCOMB_X66_Y50_N8
-\binary_bcd_ins|Selector6~1\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Selector6~1_combout\ = (\binary_bcd_ins|Selector6~0_combout\ & ((\binary_bcd_ins|WideOr1~0_combout\) # ((\binary_bcd_ins|bcd_signal\(21))))) # (!\binary_bcd_ins|Selector6~0_combout\ & (!\binary_bcd_ins|WideOr1~0_combout\ & 
--- (\binary_bcd_ins|Add3~18_combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1011101010011000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|Selector6~0_combout\,
-	datab => \binary_bcd_ins|WideOr1~0_combout\,
-	datac => \binary_bcd_ins|Add3~18_combout\,
-	datad => \binary_bcd_ins|bcd_signal\(21),
-	combout => \binary_bcd_ins|Selector6~1_combout\);
-
--- Location: FF_X65_Y50_N11
-\binary_bcd_ins|bcd_signal[22]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|Selector6~1_combout\,
-	clrn => \reset_n~input_o\,
-	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd_signal[24]~14_combout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd_signal\(22));
-
--- Location: LCCOMB_X65_Y51_N16
+-- Location: LCCOMB_X61_Y51_N14
 \binary_bcd_ins|Add2~12\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add2~12_combout\ = (\binary_bcd_ins|bcd_signal\(23) & (\binary_bcd_ins|Add2~11\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(23) & (!\binary_bcd_ins|Add2~11\ & VCC))
@@ -4729,29 +4694,29 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add2~12_combout\,
 	cout => \binary_bcd_ins|Add2~13\);
 
--- Location: LCCOMB_X67_Y50_N18
+-- Location: LCCOMB_X61_Y51_N16
+\binary_bcd_ins|Add2~14\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Add2~14_combout\ = (\binary_bcd_ins|bcd_signal\(24) & (!\binary_bcd_ins|Add2~13\)) # (!\binary_bcd_ins|bcd_signal\(24) & ((\binary_bcd_ins|Add2~13\) # (GND)))
+-- \binary_bcd_ins|Add2~15\ = CARRY((!\binary_bcd_ins|Add2~13\) # (!\binary_bcd_ins|bcd_signal\(24)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0101101001011111",
+	sum_lutc_input => "cin")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal\(24),
+	datad => VCC,
+	cin => \binary_bcd_ins|Add2~13\,
+	combout => \binary_bcd_ins|Add2~14_combout\,
+	cout => \binary_bcd_ins|Add2~15\);
+
+-- Location: LCCOMB_X63_Y51_N10
 \binary_bcd_ins|Add1~4\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add1~4_combout\ = (\binary_bcd_ins|bcd_signal\(23) & (\binary_bcd_ins|Add1~3\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(23) & (!\binary_bcd_ins|Add1~3\ & VCC))
 -- \binary_bcd_ins|Add1~5\ = CARRY((\binary_bcd_ins|bcd_signal\(23) & !\binary_bcd_ins|Add1~3\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100001100001100",
-	sum_lutc_input => "cin")
--- pragma translate_on
-PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(23),
-	datad => VCC,
-	cin => \binary_bcd_ins|Add1~3\,
-	combout => \binary_bcd_ins|Add1~4_combout\,
-	cout => \binary_bcd_ins|Add1~5\);
-
--- Location: LCCOMB_X65_Y50_N20
-\binary_bcd_ins|Add3~20\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Add3~20_combout\ = (\binary_bcd_ins|bcd_signal\(23) & (\binary_bcd_ins|Add3~19\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(23) & (!\binary_bcd_ins|Add3~19\ & VCC))
--- \binary_bcd_ins|Add3~21\ = CARRY((\binary_bcd_ins|bcd_signal\(23) & !\binary_bcd_ins|Add3~19\))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -4761,65 +4726,11 @@ GENERIC MAP (
 PORT MAP (
 	dataa => \binary_bcd_ins|bcd_signal\(23),
 	datad => VCC,
-	cin => \binary_bcd_ins|Add3~19\,
-	combout => \binary_bcd_ins|Add3~20_combout\,
-	cout => \binary_bcd_ins|Add3~21\);
+	cin => \binary_bcd_ins|Add1~3\,
+	combout => \binary_bcd_ins|Add1~4_combout\,
+	cout => \binary_bcd_ins|Add1~5\);
 
--- Location: LCCOMB_X66_Y50_N10
-\binary_bcd_ins|Selector5~0\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Selector5~0_combout\ = (\binary_bcd_ins|bcd_signal[24]~11_combout\ & (((!\binary_bcd_ins|WideOr1~0_combout\)))) # (!\binary_bcd_ins|bcd_signal[24]~11_combout\ & ((\binary_bcd_ins|WideOr1~0_combout\ & (\binary_bcd_ins|Add1~4_combout\)) # 
--- (!\binary_bcd_ins|WideOr1~0_combout\ & ((\binary_bcd_ins|Add3~20_combout\)))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000101011111100",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|Add1~4_combout\,
-	datab => \binary_bcd_ins|Add3~20_combout\,
-	datac => \binary_bcd_ins|bcd_signal[24]~11_combout\,
-	datad => \binary_bcd_ins|WideOr1~0_combout\,
-	combout => \binary_bcd_ins|Selector5~0_combout\);
-
--- Location: LCCOMB_X66_Y50_N12
-\binary_bcd_ins|Selector5~1\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Selector5~1_combout\ = (\binary_bcd_ins|bcd_signal[24]~11_combout\ & ((\binary_bcd_ins|Selector5~0_combout\ & (\binary_bcd_ins|bcd_signal\(22))) # (!\binary_bcd_ins|Selector5~0_combout\ & ((\binary_bcd_ins|Add2~12_combout\))))) # 
--- (!\binary_bcd_ins|bcd_signal[24]~11_combout\ & (((\binary_bcd_ins|Selector5~0_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1101110110100000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[24]~11_combout\,
-	datab => \binary_bcd_ins|bcd_signal\(22),
-	datac => \binary_bcd_ins|Add2~12_combout\,
-	datad => \binary_bcd_ins|Selector5~0_combout\,
-	combout => \binary_bcd_ins|Selector5~1_combout\);
-
--- Location: FF_X65_Y50_N13
-\binary_bcd_ins|bcd_signal[23]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|Selector5~1_combout\,
-	clrn => \reset_n~input_o\,
-	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd_signal[24]~14_combout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd_signal\(23));
-
--- Location: LCCOMB_X67_Y50_N20
+-- Location: LCCOMB_X63_Y51_N12
 \binary_bcd_ins|Add1~6\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add1~6_combout\ = (\binary_bcd_ins|bcd_signal\(24) & (!\binary_bcd_ins|Add1~5\)) # (!\binary_bcd_ins|bcd_signal\(24) & ((\binary_bcd_ins|Add1~5\) # (GND)))
@@ -4837,11 +4748,29 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add1~6_combout\,
 	cout => \binary_bcd_ins|Add1~7\);
 
--- Location: LCCOMB_X65_Y51_N18
-\binary_bcd_ins|Add2~14\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X60_Y51_N12
+\binary_bcd_ins|Selector4~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Add2~14_combout\ = (\binary_bcd_ins|bcd_signal\(24) & (!\binary_bcd_ins|Add2~13\)) # (!\binary_bcd_ins|bcd_signal\(24) & ((\binary_bcd_ins|Add2~13\) # (GND)))
--- \binary_bcd_ins|Add2~15\ = CARRY((!\binary_bcd_ins|Add2~13\) # (!\binary_bcd_ins|bcd_signal\(24)))
+-- \binary_bcd_ins|Selector4~0_combout\ = (\binary_bcd_ins|WideOr1~0_combout\ & ((\binary_bcd_ins|bcd_signal[22]~9_combout\ & (\binary_bcd_ins|Add2~14_combout\)) # (!\binary_bcd_ins|bcd_signal[22]~9_combout\ & ((\binary_bcd_ins|Add1~6_combout\))))) # 
+-- (!\binary_bcd_ins|WideOr1~0_combout\ & (((\binary_bcd_ins|bcd_signal[22]~9_combout\))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1011101111000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|Add2~14_combout\,
+	datab => \binary_bcd_ins|WideOr1~0_combout\,
+	datac => \binary_bcd_ins|Add1~6_combout\,
+	datad => \binary_bcd_ins|bcd_signal[22]~9_combout\,
+	combout => \binary_bcd_ins|Selector4~0_combout\);
+
+-- Location: LCCOMB_X60_Y52_N18
+\binary_bcd_ins|Add3~18\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Add3~18_combout\ = (\binary_bcd_ins|bcd_signal\(22) & (!\binary_bcd_ins|Add3~17\)) # (!\binary_bcd_ins|bcd_signal\(22) & ((\binary_bcd_ins|Add3~17\) # (GND)))
+-- \binary_bcd_ins|Add3~19\ = CARRY((!\binary_bcd_ins|Add3~17\) # (!\binary_bcd_ins|bcd_signal\(22)))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -4849,31 +4778,31 @@ GENERIC MAP (
 	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(24),
+	datab => \binary_bcd_ins|bcd_signal\(22),
 	datad => VCC,
-	cin => \binary_bcd_ins|Add2~13\,
-	combout => \binary_bcd_ins|Add2~14_combout\,
-	cout => \binary_bcd_ins|Add2~15\);
+	cin => \binary_bcd_ins|Add3~17\,
+	combout => \binary_bcd_ins|Add3~18_combout\,
+	cout => \binary_bcd_ins|Add3~19\);
 
--- Location: LCCOMB_X64_Y50_N16
-\binary_bcd_ins|Selector4~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X60_Y52_N20
+\binary_bcd_ins|Add3~20\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector4~0_combout\ = (\binary_bcd_ins|WideOr1~0_combout\ & ((\binary_bcd_ins|bcd_signal[24]~11_combout\ & ((\binary_bcd_ins|Add2~14_combout\))) # (!\binary_bcd_ins|bcd_signal[24]~11_combout\ & (\binary_bcd_ins|Add1~6_combout\)))) # 
--- (!\binary_bcd_ins|WideOr1~0_combout\ & (((\binary_bcd_ins|bcd_signal[24]~11_combout\))))
+-- \binary_bcd_ins|Add3~20_combout\ = (\binary_bcd_ins|bcd_signal\(23) & (\binary_bcd_ins|Add3~19\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(23) & (!\binary_bcd_ins|Add3~19\ & VCC))
+-- \binary_bcd_ins|Add3~21\ = CARRY((\binary_bcd_ins|bcd_signal\(23) & !\binary_bcd_ins|Add3~19\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111001110001000",
-	sum_lutc_input => "datac")
+	lut_mask => "1010010100001010",
+	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|Add1~6_combout\,
-	datab => \binary_bcd_ins|WideOr1~0_combout\,
-	datac => \binary_bcd_ins|Add2~14_combout\,
-	datad => \binary_bcd_ins|bcd_signal[24]~11_combout\,
-	combout => \binary_bcd_ins|Selector4~0_combout\);
+	dataa => \binary_bcd_ins|bcd_signal\(23),
+	datad => VCC,
+	cin => \binary_bcd_ins|Add3~19\,
+	combout => \binary_bcd_ins|Add3~20_combout\,
+	cout => \binary_bcd_ins|Add3~21\);
 
--- Location: LCCOMB_X65_Y50_N22
+-- Location: LCCOMB_X60_Y52_N22
 \binary_bcd_ins|Add3~22\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~22_combout\ = (\binary_bcd_ins|bcd_signal\(24) & (!\binary_bcd_ins|Add3~21\)) # (!\binary_bcd_ins|bcd_signal\(24) & ((\binary_bcd_ins|Add3~21\) # (GND)))
@@ -4891,25 +4820,25 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add3~22_combout\,
 	cout => \binary_bcd_ins|Add3~23\);
 
--- Location: LCCOMB_X66_Y50_N14
+-- Location: LCCOMB_X61_Y51_N26
 \binary_bcd_ins|Selector4~1\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Selector4~1_combout\ = (\binary_bcd_ins|WideOr1~0_combout\ & (((\binary_bcd_ins|Selector4~0_combout\)))) # (!\binary_bcd_ins|WideOr1~0_combout\ & ((\binary_bcd_ins|Selector4~0_combout\ & (\binary_bcd_ins|bcd_signal\(23))) # 
--- (!\binary_bcd_ins|Selector4~0_combout\ & ((\binary_bcd_ins|Add3~22_combout\)))))
+-- \binary_bcd_ins|Selector4~1_combout\ = (\binary_bcd_ins|Selector4~0_combout\ & ((\binary_bcd_ins|WideOr1~0_combout\) # ((\binary_bcd_ins|bcd_signal\(23))))) # (!\binary_bcd_ins|Selector4~0_combout\ & (!\binary_bcd_ins|WideOr1~0_combout\ & 
+-- (\binary_bcd_ins|Add3~22_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110001111100000",
+	lut_mask => "1011101010011000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(23),
+	dataa => \binary_bcd_ins|Selector4~0_combout\,
 	datab => \binary_bcd_ins|WideOr1~0_combout\,
-	datac => \binary_bcd_ins|Selector4~0_combout\,
-	datad => \binary_bcd_ins|Add3~22_combout\,
+	datac => \binary_bcd_ins|Add3~22_combout\,
+	datad => \binary_bcd_ins|bcd_signal\(23),
 	combout => \binary_bcd_ins|Selector4~1_combout\);
 
--- Location: FF_X65_Y50_N15
+-- Location: FF_X61_Y51_N27
 \binary_bcd_ins|bcd_signal[24]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -4918,17 +4847,65 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|Selector4~1_combout\,
+	d => \binary_bcd_ins|Selector4~1_combout\,
 	clrn => \reset_n~input_o\,
 	sclr => \binary_bcd_ins|CurentState.s6~q\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd_signal[24]~14_combout\,
+	ena => \binary_bcd_ins|bcd_signal[22]~12_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(24));
 
--- Location: FF_X71_Y46_N13
-\binary_bcd_ins|bcd[11]\ : dffeas
+-- Location: LCCOMB_X61_Y51_N30
+\binary_bcd_ins|bcd_signal[22]~10\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[22]~10_combout\ = (!\binary_bcd_ins|bcd_signal\(24) & (((!\binary_bcd_ins|bcd_signal\(22) & !\binary_bcd_ins|bcd_signal\(21))) # (!\binary_bcd_ins|bcd_signal\(23))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000001100000111",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal\(22),
+	datab => \binary_bcd_ins|bcd_signal\(23),
+	datac => \binary_bcd_ins|bcd_signal\(24),
+	datad => \binary_bcd_ins|bcd_signal\(21),
+	combout => \binary_bcd_ins|bcd_signal[22]~10_combout\);
+
+-- Location: LCCOMB_X62_Y51_N30
+\binary_bcd_ins|bcd_signal[22]~11\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[22]~11_combout\ = (\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|bcd_signal[22]~10_combout\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111000000000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datac => \binary_bcd_ins|CurentState.S2~q\,
+	datad => \binary_bcd_ins|bcd_signal[22]~10_combout\,
+	combout => \binary_bcd_ins|bcd_signal[22]~11_combout\);
+
+-- Location: LCCOMB_X62_Y51_N4
+\binary_bcd_ins|bcd_signal[22]~12\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[22]~12_combout\ = (!\binary_bcd_ins|CurentState.S1~q\ & (\binary_bcd_ins|bcd_signal[18]~7_combout\ & (!\binary_bcd_ins|bcd_signal[22]~11_combout\ & \binary_bcd_ins|bcd_signal[13]~5_combout\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000010000000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|CurentState.S1~q\,
+	datab => \binary_bcd_ins|bcd_signal[18]~7_combout\,
+	datac => \binary_bcd_ins|bcd_signal[22]~11_combout\,
+	datad => \binary_bcd_ins|bcd_signal[13]~5_combout\,
+	combout => \binary_bcd_ins|bcd_signal[22]~12_combout\);
+
+-- Location: FF_X59_Y51_N1
+\binary_bcd_ins|bcd_signal[21]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
 	is_wysiwyg => "true",
@@ -4936,16 +4913,70 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|bcd_signal\(24),
+	d => \binary_bcd_ins|Selector7~1_combout\,
 	clrn => \reset_n~input_o\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd[3]~0_combout\,
+	sclr => \binary_bcd_ins|CurentState.s6~q\,
+	ena => \binary_bcd_ins|bcd_signal[22]~12_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd\(11));
+	q => \binary_bcd_ins|bcd_signal\(21));
 
--- Location: FF_X67_Y50_N25
-\binary_bcd_ins|bcd[9]\ : dffeas
+-- Location: LCCOMB_X63_Y51_N8
+\binary_bcd_ins|Add1~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Add1~2_combout\ = (\binary_bcd_ins|bcd_signal\(22) & (\binary_bcd_ins|Add1~1\ & VCC)) # (!\binary_bcd_ins|bcd_signal\(22) & (!\binary_bcd_ins|Add1~1\))
+-- \binary_bcd_ins|Add1~3\ = CARRY((!\binary_bcd_ins|bcd_signal\(22) & !\binary_bcd_ins|Add1~1\))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1100001100000011",
+	sum_lutc_input => "cin")
+-- pragma translate_on
+PORT MAP (
+	datab => \binary_bcd_ins|bcd_signal\(22),
+	datad => VCC,
+	cin => \binary_bcd_ins|Add1~1\,
+	combout => \binary_bcd_ins|Add1~2_combout\,
+	cout => \binary_bcd_ins|Add1~3\);
+
+-- Location: LCCOMB_X60_Y51_N24
+\binary_bcd_ins|Selector6~0\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Selector6~0_combout\ = (\binary_bcd_ins|bcd_signal[22]~9_combout\ & (((\binary_bcd_ins|Add2~10_combout\) # (!\binary_bcd_ins|WideOr1~0_combout\)))) # (!\binary_bcd_ins|bcd_signal[22]~9_combout\ & (\binary_bcd_ins|Add1~2_combout\ & 
+-- ((\binary_bcd_ins|WideOr1~0_combout\))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1110001011001100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|Add1~2_combout\,
+	datab => \binary_bcd_ins|bcd_signal[22]~9_combout\,
+	datac => \binary_bcd_ins|Add2~10_combout\,
+	datad => \binary_bcd_ins|WideOr1~0_combout\,
+	combout => \binary_bcd_ins|Selector6~0_combout\);
+
+-- Location: LCCOMB_X59_Y51_N26
+\binary_bcd_ins|Selector6~1\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Selector6~1_combout\ = (\binary_bcd_ins|Selector6~0_combout\ & ((\binary_bcd_ins|bcd_signal\(21)) # ((\binary_bcd_ins|WideOr1~0_combout\)))) # (!\binary_bcd_ins|Selector6~0_combout\ & (((\binary_bcd_ins|Add3~18_combout\ & 
+-- !\binary_bcd_ins|WideOr1~0_combout\))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1100110010111000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal\(21),
+	datab => \binary_bcd_ins|Selector6~0_combout\,
+	datac => \binary_bcd_ins|Add3~18_combout\,
+	datad => \binary_bcd_ins|WideOr1~0_combout\,
+	combout => \binary_bcd_ins|Selector6~1_combout\);
+
+-- Location: FF_X59_Y51_N27
+\binary_bcd_ins|bcd_signal[22]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
 	is_wysiwyg => "true",
@@ -4953,15 +4984,68 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|bcd_signal\(22),
+	d => \binary_bcd_ins|Selector6~1_combout\,
 	clrn => \reset_n~input_o\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd[3]~0_combout\,
+	sclr => \binary_bcd_ins|CurentState.s6~q\,
+	ena => \binary_bcd_ins|bcd_signal[22]~12_combout\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd\(9));
+	q => \binary_bcd_ins|bcd_signal\(22));
 
--- Location: FF_X71_Y46_N19
+-- Location: LCCOMB_X60_Y51_N26
+\binary_bcd_ins|Selector5~0\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Selector5~0_combout\ = (\binary_bcd_ins|bcd_signal[22]~9_combout\ & (((!\binary_bcd_ins|WideOr1~0_combout\)))) # (!\binary_bcd_ins|bcd_signal[22]~9_combout\ & ((\binary_bcd_ins|WideOr1~0_combout\ & (\binary_bcd_ins|Add1~4_combout\)) # 
+-- (!\binary_bcd_ins|WideOr1~0_combout\ & ((\binary_bcd_ins|Add3~20_combout\)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0010001011111100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|Add1~4_combout\,
+	datab => \binary_bcd_ins|bcd_signal[22]~9_combout\,
+	datac => \binary_bcd_ins|Add3~20_combout\,
+	datad => \binary_bcd_ins|WideOr1~0_combout\,
+	combout => \binary_bcd_ins|Selector5~0_combout\);
+
+-- Location: LCCOMB_X61_Y51_N0
+\binary_bcd_ins|Selector5~1\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Selector5~1_combout\ = (\binary_bcd_ins|Selector5~0_combout\ & (((\binary_bcd_ins|bcd_signal\(22))) # (!\binary_bcd_ins|bcd_signal[22]~9_combout\))) # (!\binary_bcd_ins|Selector5~0_combout\ & (\binary_bcd_ins|bcd_signal[22]~9_combout\ & 
+-- ((\binary_bcd_ins|Add2~12_combout\))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1110011010100010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|Selector5~0_combout\,
+	datab => \binary_bcd_ins|bcd_signal[22]~9_combout\,
+	datac => \binary_bcd_ins|bcd_signal\(22),
+	datad => \binary_bcd_ins|Add2~12_combout\,
+	combout => \binary_bcd_ins|Selector5~1_combout\);
+
+-- Location: FF_X61_Y51_N1
+\binary_bcd_ins|bcd_signal[23]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~inputclkctrl_outclk\,
+	d => \binary_bcd_ins|Selector5~1_combout\,
+	clrn => \reset_n~input_o\,
+	sclr => \binary_bcd_ins|CurentState.s6~q\,
+	ena => \binary_bcd_ins|bcd_signal[22]~12_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \binary_bcd_ins|bcd_signal\(23));
+
+-- Location: FF_X66_Y51_N29
 \binary_bcd_ins|bcd[10]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -4978,7 +5062,54 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(10));
 
--- Location: LCCOMB_X71_Y46_N16
+-- Location: LCCOMB_X66_Y51_N18
+\binary_bcd_ins|bcd[9]~feeder\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd[9]~feeder_combout\ = \binary_bcd_ins|bcd_signal\(22)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111111100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datad => \binary_bcd_ins|bcd_signal\(22),
+	combout => \binary_bcd_ins|bcd[9]~feeder_combout\);
+
+-- Location: FF_X66_Y51_N19
+\binary_bcd_ins|bcd[9]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~inputclkctrl_outclk\,
+	d => \binary_bcd_ins|bcd[9]~feeder_combout\,
+	clrn => \reset_n~input_o\,
+	ena => \binary_bcd_ins|bcd[3]~0_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \binary_bcd_ins|bcd\(9));
+
+-- Location: FF_X66_Y51_N31
+\binary_bcd_ins|bcd[11]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~inputclkctrl_outclk\,
+	asdata => \binary_bcd_ins|bcd_signal\(24),
+	clrn => \reset_n~input_o\,
+	sload => VCC,
+	ena => \binary_bcd_ins|bcd[3]~0_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \binary_bcd_ins|bcd\(11));
+
+-- Location: LCCOMB_X66_Y51_N24
 \binary_bcd_ins|bcd[8]~feeder\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|bcd[8]~feeder_combout\ = \binary_bcd_ins|bcd_signal\(21)
@@ -4992,7 +5123,7 @@ PORT MAP (
 	datad => \binary_bcd_ins|bcd_signal\(21),
 	combout => \binary_bcd_ins|bcd[8]~feeder_combout\);
 
--- Location: FF_X71_Y46_N17
+-- Location: FF_X66_Y51_N25
 \binary_bcd_ins|bcd[8]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -5008,46 +5139,76 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(8));
 
--- Location: LCCOMB_X71_Y46_N6
-\SevenSegment_ins|decoder2|Mux6~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X66_Y51_N0
+\SevenSegment_ins|decoder2|Mux6~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder2|Mux6~0_combout\ = (\binary_bcd_ins|bcd\(9) & (\binary_bcd_ins|bcd\(11) & (!\binary_bcd_ins|bcd\(10) & \binary_bcd_ins|bcd\(8)))) # (!\binary_bcd_ins|bcd\(9) & (\binary_bcd_ins|bcd\(10) $ (((!\binary_bcd_ins|bcd\(11) & 
--- \binary_bcd_ins|bcd\(8))))))
+-- \SevenSegment_ins|decoder2|Mux6~2_combout\ = (\binary_bcd_ins|bcd\(10) & (!\binary_bcd_ins|bcd\(9) & ((\binary_bcd_ins|bcd\(11)) # (!\binary_bcd_ins|bcd\(8))))) # (!\binary_bcd_ins|bcd\(10) & (\binary_bcd_ins|bcd\(8) & (\binary_bcd_ins|bcd\(9) $ 
+-- (!\binary_bcd_ins|bcd\(11)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0010100100110000",
+	lut_mask => "0110000100100010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(11),
+	dataa => \binary_bcd_ins|bcd\(10),
 	datab => \binary_bcd_ins|bcd\(9),
-	datac => \binary_bcd_ins|bcd\(10),
+	datac => \binary_bcd_ins|bcd\(11),
 	datad => \binary_bcd_ins|bcd\(8),
-	combout => \SevenSegment_ins|decoder2|Mux6~0_combout\);
+	combout => \SevenSegment_ins|decoder2|Mux6~2_combout\);
 
--- Location: LCCOMB_X71_Y46_N0
-\SevenSegment_ins|decoder2|Mux5~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X66_Y51_N10
+\SevenSegment_ins|decoder2|Mux6~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder2|Mux5~0_combout\ = (\binary_bcd_ins|bcd\(11) & ((\binary_bcd_ins|bcd\(8) & (\binary_bcd_ins|bcd\(9))) # (!\binary_bcd_ins|bcd\(8) & ((\binary_bcd_ins|bcd\(10)))))) # (!\binary_bcd_ins|bcd\(11) & (\binary_bcd_ins|bcd\(10) & 
--- (\binary_bcd_ins|bcd\(9) $ (\binary_bcd_ins|bcd\(8)))))
+-- \SevenSegment_ins|decoder2|Mux6~3_combout\ = (!\SW[9]~input_o\ & \SevenSegment_ins|decoder2|Mux6~2_combout\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1001100011100000",
+	lut_mask => "0000111100000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(11),
-	datab => \binary_bcd_ins|bcd\(9),
-	datac => \binary_bcd_ins|bcd\(10),
-	datad => \binary_bcd_ins|bcd\(8),
-	combout => \SevenSegment_ins|decoder2|Mux5~0_combout\);
+	datac => \SW[9]~input_o\,
+	datad => \SevenSegment_ins|decoder2|Mux6~2_combout\,
+	combout => \SevenSegment_ins|decoder2|Mux6~3_combout\);
 
--- Location: LCCOMB_X71_Y46_N2
-\SevenSegment_ins|decoder2|Mux4~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X66_Y51_N12
+\SevenSegment_ins|decoder2|Mux5~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder2|Mux4~0_combout\ = (\binary_bcd_ins|bcd\(11) & (\binary_bcd_ins|bcd\(10) & ((\binary_bcd_ins|bcd\(9)) # (!\binary_bcd_ins|bcd\(8))))) # (!\binary_bcd_ins|bcd\(11) & (\binary_bcd_ins|bcd\(9) & (!\binary_bcd_ins|bcd\(10) & 
+-- \SevenSegment_ins|decoder2|Mux5~2_combout\ = (\binary_bcd_ins|bcd\(9) & ((\binary_bcd_ins|bcd\(8) & ((\binary_bcd_ins|bcd\(11)))) # (!\binary_bcd_ins|bcd\(8) & (\binary_bcd_ins|bcd\(10))))) # (!\binary_bcd_ins|bcd\(9) & (\binary_bcd_ins|bcd\(10) & 
+-- (\binary_bcd_ins|bcd\(11) $ (\binary_bcd_ins|bcd\(8)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1100001010101000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd\(10),
+	datab => \binary_bcd_ins|bcd\(9),
+	datac => \binary_bcd_ins|bcd\(11),
+	datad => \binary_bcd_ins|bcd\(8),
+	combout => \SevenSegment_ins|decoder2|Mux5~2_combout\);
+
+-- Location: LCCOMB_X66_Y51_N14
+\SevenSegment_ins|decoder2|Mux5~3\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder2|Mux5~3_combout\ = (!\SW[9]~input_o\ & \SevenSegment_ins|decoder2|Mux5~2_combout\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000111100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datac => \SW[9]~input_o\,
+	datad => \SevenSegment_ins|decoder2|Mux5~2_combout\,
+	combout => \SevenSegment_ins|decoder2|Mux5~3_combout\);
+
+-- Location: LCCOMB_X66_Y51_N8
+\SevenSegment_ins|decoder2|Mux4~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder2|Mux4~2_combout\ = (\binary_bcd_ins|bcd\(10) & (\binary_bcd_ins|bcd\(11) & ((\binary_bcd_ins|bcd\(9)) # (!\binary_bcd_ins|bcd\(8))))) # (!\binary_bcd_ins|bcd\(10) & (\binary_bcd_ins|bcd\(9) & (!\binary_bcd_ins|bcd\(11) & 
 -- !\binary_bcd_ins|bcd\(8))))
 
 -- pragma translate_off
@@ -5056,52 +5217,97 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(11),
+	dataa => \binary_bcd_ins|bcd\(10),
 	datab => \binary_bcd_ins|bcd\(9),
-	datac => \binary_bcd_ins|bcd\(10),
+	datac => \binary_bcd_ins|bcd\(11),
 	datad => \binary_bcd_ins|bcd\(8),
-	combout => \SevenSegment_ins|decoder2|Mux4~0_combout\);
+	combout => \SevenSegment_ins|decoder2|Mux4~2_combout\);
 
--- Location: LCCOMB_X71_Y46_N20
-\SevenSegment_ins|decoder2|Mux3~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X66_Y51_N2
+\SevenSegment_ins|decoder2|Mux4~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder2|Mux3~0_combout\ = (\binary_bcd_ins|bcd\(8) & ((\binary_bcd_ins|bcd\(9) $ (!\binary_bcd_ins|bcd\(10))))) # (!\binary_bcd_ins|bcd\(8) & ((\binary_bcd_ins|bcd\(11) & (\binary_bcd_ins|bcd\(9) & !\binary_bcd_ins|bcd\(10))) # 
--- (!\binary_bcd_ins|bcd\(11) & (!\binary_bcd_ins|bcd\(9) & \binary_bcd_ins|bcd\(10)))))
+-- \SevenSegment_ins|decoder2|Mux4~3_combout\ = (\SevenSegment_ins|decoder2|Mux4~2_combout\ & !\SW[9]~input_o\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100001100011000",
+	lut_mask => "0000110000001100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(11),
-	datab => \binary_bcd_ins|bcd\(9),
-	datac => \binary_bcd_ins|bcd\(10),
-	datad => \binary_bcd_ins|bcd\(8),
-	combout => \SevenSegment_ins|decoder2|Mux3~0_combout\);
+	datab => \SevenSegment_ins|decoder2|Mux4~2_combout\,
+	datac => \SW[9]~input_o\,
+	combout => \SevenSegment_ins|decoder2|Mux4~3_combout\);
 
--- Location: LCCOMB_X71_Y46_N14
-\SevenSegment_ins|decoder2|Mux2~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X66_Y51_N4
+\SevenSegment_ins|decoder2|Mux3~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder2|Mux2~0_combout\ = (\binary_bcd_ins|bcd\(9) & (!\binary_bcd_ins|bcd\(11) & ((\binary_bcd_ins|bcd\(8))))) # (!\binary_bcd_ins|bcd\(9) & ((\binary_bcd_ins|bcd\(10) & (!\binary_bcd_ins|bcd\(11))) # (!\binary_bcd_ins|bcd\(10) & 
+-- \SevenSegment_ins|decoder2|Mux3~2_combout\ = (\binary_bcd_ins|bcd\(8) & (\binary_bcd_ins|bcd\(10) $ ((!\binary_bcd_ins|bcd\(9))))) # (!\binary_bcd_ins|bcd\(8) & ((\binary_bcd_ins|bcd\(10) & (!\binary_bcd_ins|bcd\(9) & !\binary_bcd_ins|bcd\(11))) # 
+-- (!\binary_bcd_ins|bcd\(10) & (\binary_bcd_ins|bcd\(9) & \binary_bcd_ins|bcd\(11)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1001100101000010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd\(10),
+	datab => \binary_bcd_ins|bcd\(9),
+	datac => \binary_bcd_ins|bcd\(11),
+	datad => \binary_bcd_ins|bcd\(8),
+	combout => \SevenSegment_ins|decoder2|Mux3~2_combout\);
+
+-- Location: LCCOMB_X66_Y51_N6
+\SevenSegment_ins|decoder2|Mux3~3\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder2|Mux3~3_combout\ = (\SevenSegment_ins|decoder2|Mux3~2_combout\ & !\SW[9]~input_o\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000110000001100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datab => \SevenSegment_ins|decoder2|Mux3~2_combout\,
+	datac => \SW[9]~input_o\,
+	combout => \SevenSegment_ins|decoder2|Mux3~3_combout\);
+
+-- Location: LCCOMB_X66_Y51_N16
+\SevenSegment_ins|decoder2|Mux2~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder2|Mux2~2_combout\ = (\binary_bcd_ins|bcd\(9) & (((!\binary_bcd_ins|bcd\(11) & \binary_bcd_ins|bcd\(8))))) # (!\binary_bcd_ins|bcd\(9) & ((\binary_bcd_ins|bcd\(10) & (!\binary_bcd_ins|bcd\(11))) # (!\binary_bcd_ins|bcd\(10) & 
 -- ((\binary_bcd_ins|bcd\(8))))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0101011100010000",
+	lut_mask => "0001111100000010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(11),
+	dataa => \binary_bcd_ins|bcd\(10),
 	datab => \binary_bcd_ins|bcd\(9),
-	datac => \binary_bcd_ins|bcd\(10),
+	datac => \binary_bcd_ins|bcd\(11),
 	datad => \binary_bcd_ins|bcd\(8),
-	combout => \SevenSegment_ins|decoder2|Mux2~0_combout\);
+	combout => \SevenSegment_ins|decoder2|Mux2~2_combout\);
 
--- Location: LCCOMB_X71_Y46_N18
-\SevenSegment_ins|decoder2|Mux1~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X66_Y51_N26
+\SevenSegment_ins|decoder2|Mux2~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder2|Mux1~0_combout\ = (\binary_bcd_ins|bcd\(11) & (!\binary_bcd_ins|bcd\(9) & (\binary_bcd_ins|bcd\(10)))) # (!\binary_bcd_ins|bcd\(11) & ((\binary_bcd_ins|bcd\(9) & ((\binary_bcd_ins|bcd\(8)) # (!\binary_bcd_ins|bcd\(10)))) # 
+-- \SevenSegment_ins|decoder2|Mux2~3_combout\ = (!\SW[9]~input_o\ & \SevenSegment_ins|decoder2|Mux2~2_combout\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000111100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datac => \SW[9]~input_o\,
+	datad => \SevenSegment_ins|decoder2|Mux2~2_combout\,
+	combout => \SevenSegment_ins|decoder2|Mux2~3_combout\);
+
+-- Location: LCCOMB_X66_Y51_N28
+\SevenSegment_ins|decoder2|Mux1~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder2|Mux1~2_combout\ = (\binary_bcd_ins|bcd\(11) & (!\binary_bcd_ins|bcd\(9) & (\binary_bcd_ins|bcd\(10)))) # (!\binary_bcd_ins|bcd\(11) & ((\binary_bcd_ins|bcd\(9) & ((\binary_bcd_ins|bcd\(8)) # (!\binary_bcd_ins|bcd\(10)))) # 
 -- (!\binary_bcd_ins|bcd\(9) & (!\binary_bcd_ins|bcd\(10) & \binary_bcd_ins|bcd\(8)))))
 
 -- pragma translate_off
@@ -5114,12 +5320,27 @@ PORT MAP (
 	datab => \binary_bcd_ins|bcd\(9),
 	datac => \binary_bcd_ins|bcd\(10),
 	datad => \binary_bcd_ins|bcd\(8),
-	combout => \SevenSegment_ins|decoder2|Mux1~0_combout\);
+	combout => \SevenSegment_ins|decoder2|Mux1~2_combout\);
 
--- Location: LCCOMB_X71_Y46_N12
-\SevenSegment_ins|decoder2|Mux0~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X66_Y51_N20
+\SevenSegment_ins|decoder2|Mux1~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder2|Mux0~0_combout\ = (\binary_bcd_ins|bcd\(8) & ((\binary_bcd_ins|bcd\(11)) # (\binary_bcd_ins|bcd\(10) $ (\binary_bcd_ins|bcd\(9))))) # (!\binary_bcd_ins|bcd\(8) & ((\binary_bcd_ins|bcd\(10)) # (\binary_bcd_ins|bcd\(9) $ 
+-- \SevenSegment_ins|decoder2|Mux1~3_combout\ = (!\SW[9]~input_o\ & \SevenSegment_ins|decoder2|Mux1~2_combout\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000111100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datac => \SW[9]~input_o\,
+	datad => \SevenSegment_ins|decoder2|Mux1~2_combout\,
+	combout => \SevenSegment_ins|decoder2|Mux1~3_combout\);
+
+-- Location: LCCOMB_X66_Y51_N30
+\SevenSegment_ins|decoder2|Mux0~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder2|Mux0~2_combout\ = (\binary_bcd_ins|bcd\(8) & ((\binary_bcd_ins|bcd\(11)) # (\binary_bcd_ins|bcd\(10) $ (\binary_bcd_ins|bcd\(9))))) # (!\binary_bcd_ins|bcd\(8) & ((\binary_bcd_ins|bcd\(10)) # (\binary_bcd_ins|bcd\(9) $ 
 -- (\binary_bcd_ins|bcd\(11)))))
 
 -- pragma translate_off
@@ -5132,48 +5353,28 @@ PORT MAP (
 	datab => \binary_bcd_ins|bcd\(9),
 	datac => \binary_bcd_ins|bcd\(11),
 	datad => \binary_bcd_ins|bcd\(8),
-	combout => \SevenSegment_ins|decoder2|Mux0~0_combout\);
+	combout => \SevenSegment_ins|decoder2|Mux0~2_combout\);
 
--- Location: LCCOMB_X64_Y49_N4
-\binary_bcd_ins|bcd_signal[28]~34\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X66_Y51_N22
+\SevenSegment_ins|decoder2|Mux0~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[28]~34_combout\ = (\binary_bcd_ins|bcd_signal[28]~17_combout\) # ((\binary_bcd_ins|CurentState.S1~q\ & (!\binary_bcd_ins|bcd_signal\(25) & !\binary_bcd_ins|bcd_signal\(26))))
+-- \SevenSegment_ins|decoder2|Mux0~3_combout\ = (\SevenSegment_ins|decoder2|Mux0~2_combout\ & !\SW[9]~input_o\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100110011001110",
+	lut_mask => "0000101000001010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S1~q\,
-	datab => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datac => \binary_bcd_ins|bcd_signal\(25),
-	datad => \binary_bcd_ins|bcd_signal\(26),
-	combout => \binary_bcd_ins|bcd_signal[28]~34_combout\);
+	dataa => \SevenSegment_ins|decoder2|Mux0~2_combout\,
+	datac => \SW[9]~input_o\,
+	combout => \SevenSegment_ins|decoder2|Mux0~3_combout\);
 
--- Location: LCCOMB_X64_Y49_N6
-\binary_bcd_ins|bcd_signal[28]~35\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X60_Y52_N24
+\binary_bcd_ins|Add3~24\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[28]~35_combout\ = (\binary_bcd_ins|bcd_signal[28]~34_combout\ & (((\binary_bcd_ins|bcd_signal\(28))))) # (!\binary_bcd_ins|bcd_signal[28]~34_combout\ & (\binary_bcd_ins|CurentState.S1~q\ & (\binary_bcd_ins|bcd_signal\(28) $ 
--- (\binary_bcd_ins|bcd_signal\(27)))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100001011001000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S1~q\,
-	datab => \binary_bcd_ins|bcd_signal\(28),
-	datac => \binary_bcd_ins|bcd_signal[28]~34_combout\,
-	datad => \binary_bcd_ins|bcd_signal\(27),
-	combout => \binary_bcd_ins|bcd_signal[28]~35_combout\);
-
--- Location: LCCOMB_X65_Y51_N20
-\binary_bcd_ins|Add2~16\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Add2~16_combout\ = (\binary_bcd_ins|bcd_signal\(25) & (\binary_bcd_ins|Add2~15\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(25) & (!\binary_bcd_ins|Add2~15\ & VCC))
--- \binary_bcd_ins|Add2~17\ = CARRY((\binary_bcd_ins|bcd_signal\(25) & !\binary_bcd_ins|Add2~15\))
+-- \binary_bcd_ins|Add3~24_combout\ = (\binary_bcd_ins|bcd_signal\(25) & (\binary_bcd_ins|Add3~23\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(25) & (!\binary_bcd_ins|Add3~23\ & VCC))
+-- \binary_bcd_ins|Add3~25\ = CARRY((\binary_bcd_ins|bcd_signal\(25) & !\binary_bcd_ins|Add3~23\))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -5183,11 +5384,150 @@ GENERIC MAP (
 PORT MAP (
 	datab => \binary_bcd_ins|bcd_signal\(25),
 	datad => VCC,
+	cin => \binary_bcd_ins|Add3~23\,
+	combout => \binary_bcd_ins|Add3~24_combout\,
+	cout => \binary_bcd_ins|Add3~25\);
+
+-- Location: LCCOMB_X61_Y51_N18
+\binary_bcd_ins|Add2~16\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Add2~16_combout\ = (\binary_bcd_ins|bcd_signal\(25) & (\binary_bcd_ins|Add2~15\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(25) & (!\binary_bcd_ins|Add2~15\ & VCC))
+-- \binary_bcd_ins|Add2~17\ = CARRY((\binary_bcd_ins|bcd_signal\(25) & !\binary_bcd_ins|Add2~15\))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1010010100001010",
+	sum_lutc_input => "cin")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal\(25),
+	datad => VCC,
 	cin => \binary_bcd_ins|Add2~15\,
 	combout => \binary_bcd_ins|Add2~16_combout\,
 	cout => \binary_bcd_ins|Add2~17\);
 
--- Location: LCCOMB_X65_Y51_N22
+-- Location: LCCOMB_X63_Y51_N14
+\binary_bcd_ins|Add1~8\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Add1~8_combout\ = (\binary_bcd_ins|bcd_signal\(25) & (\binary_bcd_ins|Add1~7\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(25) & (!\binary_bcd_ins|Add1~7\ & VCC))
+-- \binary_bcd_ins|Add1~9\ = CARRY((\binary_bcd_ins|bcd_signal\(25) & !\binary_bcd_ins|Add1~7\))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1010010100001010",
+	sum_lutc_input => "cin")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal\(25),
+	datad => VCC,
+	cin => \binary_bcd_ins|Add1~7\,
+	combout => \binary_bcd_ins|Add1~8_combout\,
+	cout => \binary_bcd_ins|Add1~9\);
+
+-- Location: LCCOMB_X62_Y51_N12
+\binary_bcd_ins|bcd_signal[25]~15\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[25]~15_combout\ = (\binary_bcd_ins|CurentState.S2~q\ & ((\binary_bcd_ins|Add1~8_combout\) # ((\binary_bcd_ins|CurentState.S5~q\ & \binary_bcd_ins|bcd_signal\(24))))) # (!\binary_bcd_ins|CurentState.S2~q\ & 
+-- (((\binary_bcd_ins|CurentState.S5~q\ & \binary_bcd_ins|bcd_signal\(24)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111100010001000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|CurentState.S2~q\,
+	datab => \binary_bcd_ins|Add1~8_combout\,
+	datac => \binary_bcd_ins|CurentState.S5~q\,
+	datad => \binary_bcd_ins|bcd_signal\(24),
+	combout => \binary_bcd_ins|bcd_signal[25]~15_combout\);
+
+-- Location: LCCOMB_X62_Y51_N8
+\binary_bcd_ins|bcd_signal[25]~16\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[25]~16_combout\ = (\binary_bcd_ins|bcd_signal[28]~14_combout\ & (((\binary_bcd_ins|bcd_signal\(25))))) # (!\binary_bcd_ins|bcd_signal[28]~14_combout\ & ((\binary_bcd_ins|bcd_signal[25]~15_combout\) # 
+-- ((\binary_bcd_ins|CurentState.S1~q\ & !\binary_bcd_ins|bcd_signal\(25)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1110111000110010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal[25]~15_combout\,
+	datab => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datac => \binary_bcd_ins|CurentState.S1~q\,
+	datad => \binary_bcd_ins|bcd_signal\(25),
+	combout => \binary_bcd_ins|bcd_signal[25]~16_combout\);
+
+-- Location: LCCOMB_X62_Y51_N14
+\binary_bcd_ins|bcd_signal[25]~17\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[25]~17_combout\ = (\binary_bcd_ins|bcd_signal[25]~16_combout\) # ((\binary_bcd_ins|CurentState.S3~q\ & (\binary_bcd_ins|Add2~16_combout\ & !\binary_bcd_ins|bcd_signal[28]~14_combout\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111000011111000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|CurentState.S3~q\,
+	datab => \binary_bcd_ins|Add2~16_combout\,
+	datac => \binary_bcd_ins|bcd_signal[25]~16_combout\,
+	datad => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	combout => \binary_bcd_ins|bcd_signal[25]~17_combout\);
+
+-- Location: LCCOMB_X62_Y51_N2
+\binary_bcd_ins|bcd_signal[25]~18\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[25]~18_combout\ = (\binary_bcd_ins|bcd_signal[25]~17_combout\) # ((\binary_bcd_ins|Add3~24_combout\ & (\binary_bcd_ins|CurentState.S4~q\ & !\binary_bcd_ins|bcd_signal[28]~14_combout\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1100110011101100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|Add3~24_combout\,
+	datab => \binary_bcd_ins|bcd_signal[25]~17_combout\,
+	datac => \binary_bcd_ins|CurentState.S4~q\,
+	datad => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	combout => \binary_bcd_ins|bcd_signal[25]~18_combout\);
+
+-- Location: FF_X62_Y51_N3
+\binary_bcd_ins|bcd_signal[25]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~inputclkctrl_outclk\,
+	d => \binary_bcd_ins|bcd_signal[25]~18_combout\,
+	clrn => \reset_n~input_o\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \binary_bcd_ins|bcd_signal\(25));
+
+-- Location: LCCOMB_X60_Y52_N26
+\binary_bcd_ins|Add3~26\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Add3~26_combout\ = (\binary_bcd_ins|bcd_signal\(26) & (!\binary_bcd_ins|Add3~25\)) # (!\binary_bcd_ins|bcd_signal\(26) & ((\binary_bcd_ins|Add3~25\) # (GND)))
+-- \binary_bcd_ins|Add3~27\ = CARRY((!\binary_bcd_ins|Add3~25\) # (!\binary_bcd_ins|bcd_signal\(26)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0011110000111111",
+	sum_lutc_input => "cin")
+-- pragma translate_on
+PORT MAP (
+	datab => \binary_bcd_ins|bcd_signal\(26),
+	datad => VCC,
+	cin => \binary_bcd_ins|Add3~25\,
+	combout => \binary_bcd_ins|Add3~26_combout\,
+	cout => \binary_bcd_ins|Add3~27\);
+
+-- Location: LCCOMB_X61_Y51_N20
 \binary_bcd_ins|Add2~18\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add2~18_combout\ = (\binary_bcd_ins|bcd_signal\(26) & (!\binary_bcd_ins|Add2~17\)) # (!\binary_bcd_ins|bcd_signal\(26) & ((\binary_bcd_ins|Add2~17\) # (GND)))
@@ -5205,57 +5545,142 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add2~18_combout\,
 	cout => \binary_bcd_ins|Add2~19\);
 
--- Location: LCCOMB_X65_Y51_N24
-\binary_bcd_ins|Add2~20\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X63_Y51_N16
+\binary_bcd_ins|Add1~10\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Add2~20_combout\ = (\binary_bcd_ins|bcd_signal\(27) & (\binary_bcd_ins|Add2~19\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(27) & (!\binary_bcd_ins|Add2~19\ & VCC))
--- \binary_bcd_ins|Add2~21\ = CARRY((\binary_bcd_ins|bcd_signal\(27) & !\binary_bcd_ins|Add2~19\))
+-- \binary_bcd_ins|Add1~10_combout\ = (\binary_bcd_ins|bcd_signal\(26) & (!\binary_bcd_ins|Add1~9\)) # (!\binary_bcd_ins|bcd_signal\(26) & ((\binary_bcd_ins|Add1~9\) # (GND)))
+-- \binary_bcd_ins|Add1~11\ = CARRY((!\binary_bcd_ins|Add1~9\) # (!\binary_bcd_ins|bcd_signal\(26)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100001100001100",
+	lut_mask => "0011110000111111",
 	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(27),
+	datab => \binary_bcd_ins|bcd_signal\(26),
 	datad => VCC,
-	cin => \binary_bcd_ins|Add2~19\,
-	combout => \binary_bcd_ins|Add2~20_combout\,
-	cout => \binary_bcd_ins|Add2~21\);
+	cin => \binary_bcd_ins|Add1~9\,
+	combout => \binary_bcd_ins|Add1~10_combout\,
+	cout => \binary_bcd_ins|Add1~11\);
 
--- Location: LCCOMB_X65_Y51_N26
-\binary_bcd_ins|Add2~22\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X62_Y51_N10
+\binary_bcd_ins|bcd_signal[26]~19\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|Add2~22_combout\ = \binary_bcd_ins|Add2~21\ $ (\binary_bcd_ins|bcd_signal\(28))
+-- \binary_bcd_ins|bcd_signal[26]~19_combout\ = (\binary_bcd_ins|CurentState.S3~q\ & ((\binary_bcd_ins|Add2~18_combout\) # ((\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|Add1~10_combout\)))) # (!\binary_bcd_ins|CurentState.S3~q\ & 
+-- (((\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|Add1~10_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000111111110000",
-	sum_lutc_input => "cin")
--- pragma translate_on
-PORT MAP (
-	datad => \binary_bcd_ins|bcd_signal\(28),
-	cin => \binary_bcd_ins|Add2~21\,
-	combout => \binary_bcd_ins|Add2~22_combout\);
-
--- Location: LCCOMB_X64_Y49_N12
-\binary_bcd_ins|bcd_signal[28]~40\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[28]~40_combout\ = (\binary_bcd_ins|bcd_signal[28]~35_combout\) # ((!\binary_bcd_ins|bcd_signal[28]~17_combout\ & (\binary_bcd_ins|CurentState.S3~q\ & \binary_bcd_ins|Add2~22_combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1011101010101010",
+	lut_mask => "1111100010001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[28]~35_combout\,
-	datab => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datac => \binary_bcd_ins|CurentState.S3~q\,
-	datad => \binary_bcd_ins|Add2~22_combout\,
-	combout => \binary_bcd_ins|bcd_signal[28]~40_combout\);
+	dataa => \binary_bcd_ins|CurentState.S3~q\,
+	datab => \binary_bcd_ins|Add2~18_combout\,
+	datac => \binary_bcd_ins|CurentState.S2~q\,
+	datad => \binary_bcd_ins|Add1~10_combout\,
+	combout => \binary_bcd_ins|bcd_signal[26]~19_combout\);
 
--- Location: LCCOMB_X65_Y50_N28
+-- Location: LCCOMB_X62_Y51_N18
+\binary_bcd_ins|bcd_signal[26]~20\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[26]~20_combout\ = (\binary_bcd_ins|bcd_signal\(25) & ((\binary_bcd_ins|CurentState.S5~q\) # ((\binary_bcd_ins|bcd_signal\(26) & \binary_bcd_ins|CurentState.S1~q\)))) # (!\binary_bcd_ins|bcd_signal\(25) & 
+-- (!\binary_bcd_ins|bcd_signal\(26) & (\binary_bcd_ins|CurentState.S1~q\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1011101010010000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal\(25),
+	datab => \binary_bcd_ins|bcd_signal\(26),
+	datac => \binary_bcd_ins|CurentState.S1~q\,
+	datad => \binary_bcd_ins|CurentState.S5~q\,
+	combout => \binary_bcd_ins|bcd_signal[26]~20_combout\);
+
+-- Location: LCCOMB_X62_Y51_N28
+\binary_bcd_ins|bcd_signal[26]~21\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[26]~21_combout\ = (\binary_bcd_ins|bcd_signal[28]~14_combout\ & (((\binary_bcd_ins|bcd_signal\(26))))) # (!\binary_bcd_ins|bcd_signal[28]~14_combout\ & ((\binary_bcd_ins|bcd_signal[26]~19_combout\) # 
+-- ((\binary_bcd_ins|bcd_signal[26]~20_combout\))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111111000110010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal[26]~19_combout\,
+	datab => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datac => \binary_bcd_ins|bcd_signal[26]~20_combout\,
+	datad => \binary_bcd_ins|bcd_signal\(26),
+	combout => \binary_bcd_ins|bcd_signal[26]~21_combout\);
+
+-- Location: LCCOMB_X62_Y51_N24
+\binary_bcd_ins|bcd_signal[26]~22\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[26]~22_combout\ = (\binary_bcd_ins|bcd_signal[26]~21_combout\) # ((\binary_bcd_ins|Add3~26_combout\ & (\binary_bcd_ins|CurentState.S4~q\ & !\binary_bcd_ins|bcd_signal[28]~14_combout\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1100110011101100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|Add3~26_combout\,
+	datab => \binary_bcd_ins|bcd_signal[26]~21_combout\,
+	datac => \binary_bcd_ins|CurentState.S4~q\,
+	datad => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	combout => \binary_bcd_ins|bcd_signal[26]~22_combout\);
+
+-- Location: FF_X62_Y51_N25
+\binary_bcd_ins|bcd_signal[26]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~inputclkctrl_outclk\,
+	d => \binary_bcd_ins|bcd_signal[26]~22_combout\,
+	clrn => \reset_n~input_o\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \binary_bcd_ins|bcd_signal\(26));
+
+-- Location: LCCOMB_X65_Y51_N8
+\binary_bcd_ins|LessThan0~0\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|LessThan0~0_combout\ = (\binary_bcd_ins|bcd_signal\(27) & ((\binary_bcd_ins|bcd_signal\(26)) # (\binary_bcd_ins|bcd_signal\(25))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111101000000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal\(26),
+	datac => \binary_bcd_ins|bcd_signal\(25),
+	datad => \binary_bcd_ins|bcd_signal\(27),
+	combout => \binary_bcd_ins|LessThan0~0_combout\);
+
+-- Location: LCCOMB_X64_Y51_N12
+\binary_bcd_ins|bcd_signal[27]~23\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[27]~23_combout\ = (!\binary_bcd_ins|bcd_signal[28]~14_combout\ & \binary_bcd_ins|CurentState.S4~q\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000111100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datac => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datad => \binary_bcd_ins|CurentState.S4~q\,
+	combout => \binary_bcd_ins|bcd_signal[27]~23_combout\);
+
+-- Location: LCCOMB_X60_Y52_N28
 \binary_bcd_ins|Add3~28\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~28_combout\ = (\binary_bcd_ins|bcd_signal\(27) & (\binary_bcd_ins|Add3~27\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(27) & (!\binary_bcd_ins|Add3~27\ & VCC))
@@ -5273,7 +5698,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add3~28_combout\,
 	cout => \binary_bcd_ins|Add3~29\);
 
--- Location: LCCOMB_X65_Y50_N30
+-- Location: LCCOMB_X60_Y52_N30
 \binary_bcd_ins|Add3~30\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add3~30_combout\ = \binary_bcd_ins|bcd_signal\(28) $ (\binary_bcd_ins|Add3~29\)
@@ -5288,73 +5713,7 @@ PORT MAP (
 	cin => \binary_bcd_ins|Add3~29\,
 	combout => \binary_bcd_ins|Add3~30_combout\);
 
--- Location: LCCOMB_X67_Y50_N10
-\binary_bcd_ins|bcd_signal[27]~29\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[27]~29_combout\ = (\binary_bcd_ins|CurentState.S2~q\ & !\binary_bcd_ins|bcd_signal[28]~17_combout\)
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000011110000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datac => \binary_bcd_ins|CurentState.S2~q\,
-	datad => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	combout => \binary_bcd_ins|bcd_signal[27]~29_combout\);
-
--- Location: LCCOMB_X67_Y50_N0
-\binary_bcd_ins|bcd_signal[27]~28\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[27]~28_combout\ = (\binary_bcd_ins|CurentState.S5~q\ & !\binary_bcd_ins|bcd_signal[28]~17_combout\)
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0000000011001100",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \binary_bcd_ins|CurentState.S5~q\,
-	datad => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	combout => \binary_bcd_ins|bcd_signal[27]~28_combout\);
-
--- Location: LCCOMB_X67_Y50_N22
-\binary_bcd_ins|Add1~8\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Add1~8_combout\ = (\binary_bcd_ins|bcd_signal\(25) & (\binary_bcd_ins|Add1~7\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(25) & (!\binary_bcd_ins|Add1~7\ & VCC))
--- \binary_bcd_ins|Add1~9\ = CARRY((\binary_bcd_ins|bcd_signal\(25) & !\binary_bcd_ins|Add1~7\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100001100001100",
-	sum_lutc_input => "cin")
--- pragma translate_on
-PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal\(25),
-	datad => VCC,
-	cin => \binary_bcd_ins|Add1~7\,
-	combout => \binary_bcd_ins|Add1~8_combout\,
-	cout => \binary_bcd_ins|Add1~9\);
-
--- Location: LCCOMB_X67_Y50_N24
-\binary_bcd_ins|Add1~10\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Add1~10_combout\ = (\binary_bcd_ins|bcd_signal\(26) & (!\binary_bcd_ins|Add1~9\)) # (!\binary_bcd_ins|bcd_signal\(26) & ((\binary_bcd_ins|Add1~9\) # (GND)))
--- \binary_bcd_ins|Add1~11\ = CARRY((!\binary_bcd_ins|Add1~9\) # (!\binary_bcd_ins|bcd_signal\(26)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0101101001011111",
-	sum_lutc_input => "cin")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(26),
-	datad => VCC,
-	cin => \binary_bcd_ins|Add1~9\,
-	combout => \binary_bcd_ins|Add1~10_combout\,
-	cout => \binary_bcd_ins|Add1~11\);
-
--- Location: LCCOMB_X67_Y50_N26
+-- Location: LCCOMB_X63_Y51_N18
 \binary_bcd_ins|Add1~12\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add1~12_combout\ = (\binary_bcd_ins|bcd_signal\(27) & (\binary_bcd_ins|Add1~11\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(27) & (!\binary_bcd_ins|Add1~11\ & VCC))
@@ -5372,7 +5731,7 @@ PORT MAP (
 	combout => \binary_bcd_ins|Add1~12_combout\,
 	cout => \binary_bcd_ins|Add1~13\);
 
--- Location: LCCOMB_X67_Y50_N28
+-- Location: LCCOMB_X63_Y51_N20
 \binary_bcd_ins|Add1~14\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \binary_bcd_ins|Add1~14_combout\ = \binary_bcd_ins|Add1~13\ $ (\binary_bcd_ins|bcd_signal\(28))
@@ -5387,57 +5746,125 @@ PORT MAP (
 	cin => \binary_bcd_ins|Add1~13\,
 	combout => \binary_bcd_ins|Add1~14_combout\);
 
--- Location: LCCOMB_X67_Y50_N30
+-- Location: LCCOMB_X62_Y51_N22
+\binary_bcd_ins|bcd_signal[27]~27\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[27]~27_combout\ = (!\binary_bcd_ins|bcd_signal[28]~14_combout\ & \binary_bcd_ins|CurentState.S5~q\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0011001100000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datab => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datad => \binary_bcd_ins|CurentState.S5~q\,
+	combout => \binary_bcd_ins|bcd_signal[27]~27_combout\);
+
+-- Location: LCCOMB_X64_Y51_N30
+\binary_bcd_ins|bcd_signal[28]~32\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[28]~32_combout\ = (\binary_bcd_ins|bcd_signal[27]~24_combout\ & ((\binary_bcd_ins|Add1~14_combout\) # ((\binary_bcd_ins|bcd_signal[27]~27_combout\ & \binary_bcd_ins|bcd_signal\(27))))) # 
+-- (!\binary_bcd_ins|bcd_signal[27]~24_combout\ & (((\binary_bcd_ins|bcd_signal[27]~27_combout\ & \binary_bcd_ins|bcd_signal\(27)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1111100010001000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal[27]~24_combout\,
+	datab => \binary_bcd_ins|Add1~14_combout\,
+	datac => \binary_bcd_ins|bcd_signal[27]~27_combout\,
+	datad => \binary_bcd_ins|bcd_signal\(27),
+	combout => \binary_bcd_ins|bcd_signal[28]~32_combout\);
+
+-- Location: LCCOMB_X61_Y51_N22
+\binary_bcd_ins|Add2~20\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Add2~20_combout\ = (\binary_bcd_ins|bcd_signal\(27) & (\binary_bcd_ins|Add2~19\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(27) & (!\binary_bcd_ins|Add2~19\ & VCC))
+-- \binary_bcd_ins|Add2~21\ = CARRY((\binary_bcd_ins|bcd_signal\(27) & !\binary_bcd_ins|Add2~19\))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1010010100001010",
+	sum_lutc_input => "cin")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal\(27),
+	datad => VCC,
+	cin => \binary_bcd_ins|Add2~19\,
+	combout => \binary_bcd_ins|Add2~20_combout\,
+	cout => \binary_bcd_ins|Add2~21\);
+
+-- Location: LCCOMB_X61_Y51_N24
+\binary_bcd_ins|Add2~22\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|Add2~22_combout\ = \binary_bcd_ins|bcd_signal\(28) $ (\binary_bcd_ins|Add2~21\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0011110000111100",
+	sum_lutc_input => "cin")
+-- pragma translate_on
+PORT MAP (
+	datab => \binary_bcd_ins|bcd_signal\(28),
+	cin => \binary_bcd_ins|Add2~21\,
+	combout => \binary_bcd_ins|Add2~22_combout\);
+
+-- Location: LCCOMB_X65_Y51_N18
 \binary_bcd_ins|bcd_signal[28]~33\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[28]~33_combout\ = (\binary_bcd_ins|bcd_signal[27]~29_combout\ & ((\binary_bcd_ins|Add1~14_combout\) # ((\binary_bcd_ins|bcd_signal[27]~28_combout\ & \binary_bcd_ins|bcd_signal\(27))))) # 
--- (!\binary_bcd_ins|bcd_signal[27]~29_combout\ & (\binary_bcd_ins|bcd_signal[27]~28_combout\ & (\binary_bcd_ins|bcd_signal\(27))))
+-- \binary_bcd_ins|bcd_signal[28]~33_combout\ = (\binary_bcd_ins|bcd_signal[28]~14_combout\ & (\binary_bcd_ins|bcd_signal\(28))) # (!\binary_bcd_ins|bcd_signal[28]~14_combout\ & (\binary_bcd_ins|CurentState.S1~q\ & (\binary_bcd_ins|bcd_signal\(28) $ 
+-- (\binary_bcd_ins|LessThan0~0_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110101011000000",
+	lut_mask => "1010010010101000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[27]~29_combout\,
-	datab => \binary_bcd_ins|bcd_signal[27]~28_combout\,
-	datac => \binary_bcd_ins|bcd_signal\(27),
-	datad => \binary_bcd_ins|Add1~14_combout\,
+	dataa => \binary_bcd_ins|bcd_signal\(28),
+	datab => \binary_bcd_ins|CurentState.S1~q\,
+	datac => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datad => \binary_bcd_ins|LessThan0~0_combout\,
 	combout => \binary_bcd_ins|bcd_signal[28]~33_combout\);
 
--- Location: LCCOMB_X64_Y49_N18
-\binary_bcd_ins|bcd_signal[27]~26\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X65_Y51_N4
+\binary_bcd_ins|bcd_signal[28]~37\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[27]~26_combout\ = (!\binary_bcd_ins|bcd_signal[28]~17_combout\ & \binary_bcd_ins|CurentState.S4~q\)
+-- \binary_bcd_ins|bcd_signal[28]~37_combout\ = (\binary_bcd_ins|bcd_signal[28]~33_combout\) # ((\binary_bcd_ins|CurentState.S3~q\ & (\binary_bcd_ins|Add2~22_combout\ & !\binary_bcd_ins|bcd_signal[28]~14_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0011000000110000",
+	lut_mask => "1111111100001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datac => \binary_bcd_ins|CurentState.S4~q\,
-	combout => \binary_bcd_ins|bcd_signal[27]~26_combout\);
+	dataa => \binary_bcd_ins|CurentState.S3~q\,
+	datab => \binary_bcd_ins|Add2~22_combout\,
+	datac => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datad => \binary_bcd_ins|bcd_signal[28]~33_combout\,
+	combout => \binary_bcd_ins|bcd_signal[28]~37_combout\);
 
--- Location: LCCOMB_X64_Y49_N16
-\binary_bcd_ins|bcd_signal[28]~36\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X64_Y51_N26
+\binary_bcd_ins|bcd_signal[28]~34\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[28]~36_combout\ = (\binary_bcd_ins|bcd_signal[28]~40_combout\) # ((\binary_bcd_ins|bcd_signal[28]~33_combout\) # ((\binary_bcd_ins|Add3~30_combout\ & \binary_bcd_ins|bcd_signal[27]~26_combout\)))
+-- \binary_bcd_ins|bcd_signal[28]~34_combout\ = (\binary_bcd_ins|bcd_signal[28]~32_combout\) # ((\binary_bcd_ins|bcd_signal[28]~37_combout\) # ((\binary_bcd_ins|bcd_signal[27]~23_combout\ & \binary_bcd_ins|Add3~30_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111111011111010",
+	lut_mask => "1111111111111000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[28]~40_combout\,
+	dataa => \binary_bcd_ins|bcd_signal[27]~23_combout\,
 	datab => \binary_bcd_ins|Add3~30_combout\,
-	datac => \binary_bcd_ins|bcd_signal[28]~33_combout\,
-	datad => \binary_bcd_ins|bcd_signal[27]~26_combout\,
-	combout => \binary_bcd_ins|bcd_signal[28]~36_combout\);
+	datac => \binary_bcd_ins|bcd_signal[28]~32_combout\,
+	datad => \binary_bcd_ins|bcd_signal[28]~37_combout\,
+	combout => \binary_bcd_ins|bcd_signal[28]~34_combout\);
 
--- Location: FF_X64_Y49_N17
+-- Location: FF_X64_Y51_N27
 \binary_bcd_ins|bcd_signal[28]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -5446,357 +5873,162 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	d => \binary_bcd_ins|bcd_signal[28]~36_combout\,
+	d => \binary_bcd_ins|bcd_signal[28]~34_combout\,
 	clrn => \reset_n~input_o\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(28));
 
--- Location: LCCOMB_X64_Y49_N24
-\binary_bcd_ins|bcd_signal[28]~15\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X63_Y51_N24
+\binary_bcd_ins|bcd_signal[28]~13\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[28]~15_combout\ = (!\binary_bcd_ins|bcd_signal\(28) & (((!\binary_bcd_ins|bcd_signal\(26) & !\binary_bcd_ins|bcd_signal\(25))) # (!\binary_bcd_ins|bcd_signal\(27))))
+-- \binary_bcd_ins|bcd_signal[28]~13_combout\ = (\binary_bcd_ins|CurentState.S1~q\ & (!\binary_bcd_ins|LessThan0~0_combout\ & !\binary_bcd_ins|bcd_signal\(28)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000000101010101",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(28),
-	datab => \binary_bcd_ins|bcd_signal\(26),
-	datac => \binary_bcd_ins|bcd_signal\(25),
-	datad => \binary_bcd_ins|bcd_signal\(27),
-	combout => \binary_bcd_ins|bcd_signal[28]~15_combout\);
-
--- Location: LCCOMB_X64_Y50_N4
-\binary_bcd_ins|bcd_signal[28]~16\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[28]~16_combout\ = (\binary_bcd_ins|CurentState.S1~q\ & ((\binary_bcd_ins|bcd_signal[28]~15_combout\) # ((\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|bcd_signal[24]~12_combout\)))) # (!\binary_bcd_ins|CurentState.S1~q\ & 
--- (((\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|bcd_signal[24]~12_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111100010001000",
+	lut_mask => "0000000000001010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|CurentState.S1~q\,
-	datab => \binary_bcd_ins|bcd_signal[28]~15_combout\,
-	datac => \binary_bcd_ins|CurentState.S2~q\,
-	datad => \binary_bcd_ins|bcd_signal[24]~12_combout\,
-	combout => \binary_bcd_ins|bcd_signal[28]~16_combout\);
+	datac => \binary_bcd_ins|LessThan0~0_combout\,
+	datad => \binary_bcd_ins|bcd_signal\(28),
+	combout => \binary_bcd_ins|bcd_signal[28]~13_combout\);
 
--- Location: LCCOMB_X64_Y49_N14
-\binary_bcd_ins|bcd_signal[28]~17\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X62_Y51_N16
+\binary_bcd_ins|bcd_signal[28]~14\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[28]~17_combout\ = ((\binary_bcd_ins|Selector28~0_combout\) # ((\binary_bcd_ins|bcd_signal[13]~6_combout\) # (\binary_bcd_ins|bcd_signal[28]~16_combout\))) # (!\binary_bcd_ins|bcd_signal[19]~9_combout\)
+-- \binary_bcd_ins|bcd_signal[28]~14_combout\ = (((\binary_bcd_ins|bcd_signal[22]~11_combout\) # (\binary_bcd_ins|bcd_signal[28]~13_combout\)) # (!\binary_bcd_ins|bcd_signal[18]~7_combout\)) # (!\binary_bcd_ins|bcd_signal[13]~5_combout\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111111111111101",
+	lut_mask => "1111111111110111",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[19]~9_combout\,
-	datab => \binary_bcd_ins|Selector28~0_combout\,
-	datac => \binary_bcd_ins|bcd_signal[13]~6_combout\,
-	datad => \binary_bcd_ins|bcd_signal[28]~16_combout\,
-	combout => \binary_bcd_ins|bcd_signal[28]~17_combout\);
+	dataa => \binary_bcd_ins|bcd_signal[13]~5_combout\,
+	datab => \binary_bcd_ins|bcd_signal[18]~7_combout\,
+	datac => \binary_bcd_ins|bcd_signal[22]~11_combout\,
+	datad => \binary_bcd_ins|bcd_signal[28]~13_combout\,
+	combout => \binary_bcd_ins|bcd_signal[28]~14_combout\);
 
--- Location: LCCOMB_X64_Y50_N26
-\binary_bcd_ins|bcd_signal[25]~18\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X64_Y51_N6
+\binary_bcd_ins|bcd_signal[27]~24\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[25]~18_combout\ = (\binary_bcd_ins|bcd_signal\(24) & ((\binary_bcd_ins|CurentState.S5~q\) # ((\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|Add1~8_combout\)))) # (!\binary_bcd_ins|bcd_signal\(24) & 
--- (((\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|Add1~8_combout\))))
+-- \binary_bcd_ins|bcd_signal[27]~24_combout\ = (!\binary_bcd_ins|bcd_signal[28]~14_combout\ & \binary_bcd_ins|CurentState.S2~q\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111100010001000",
+	lut_mask => "0000111100000000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(24),
-	datab => \binary_bcd_ins|CurentState.S5~q\,
-	datac => \binary_bcd_ins|CurentState.S2~q\,
-	datad => \binary_bcd_ins|Add1~8_combout\,
-	combout => \binary_bcd_ins|bcd_signal[25]~18_combout\);
+	datac => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datad => \binary_bcd_ins|CurentState.S2~q\,
+	combout => \binary_bcd_ins|bcd_signal[27]~24_combout\);
 
--- Location: LCCOMB_X64_Y49_N10
-\binary_bcd_ins|bcd_signal[25]~19\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X64_Y51_N16
+\binary_bcd_ins|bcd_signal[27]~25\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[25]~19_combout\ = (\binary_bcd_ins|bcd_signal[28]~17_combout\ & (((\binary_bcd_ins|bcd_signal\(25))))) # (!\binary_bcd_ins|bcd_signal[28]~17_combout\ & ((\binary_bcd_ins|bcd_signal[25]~18_combout\) # 
--- ((\binary_bcd_ins|CurentState.S1~q\ & !\binary_bcd_ins|bcd_signal\(25)))))
+-- \binary_bcd_ins|bcd_signal[27]~25_combout\ = \binary_bcd_ins|bcd_signal\(27) $ (((!\binary_bcd_ins|bcd_signal[28]~14_combout\ & ((\binary_bcd_ins|bcd_signal\(26)) # (\binary_bcd_ins|bcd_signal\(25))))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111001111000010",
+	lut_mask => "1100110100110010",
 	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S1~q\,
-	datab => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datac => \binary_bcd_ins|bcd_signal\(25),
-	datad => \binary_bcd_ins|bcd_signal[25]~18_combout\,
-	combout => \binary_bcd_ins|bcd_signal[25]~19_combout\);
-
--- Location: LCCOMB_X64_Y49_N30
-\binary_bcd_ins|bcd_signal[25]~20\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[25]~20_combout\ = (\binary_bcd_ins|bcd_signal[25]~19_combout\) # ((!\binary_bcd_ins|bcd_signal[28]~17_combout\ & (\binary_bcd_ins|CurentState.S3~q\ & \binary_bcd_ins|Add2~16_combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1011101010101010",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[25]~19_combout\,
-	datab => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datac => \binary_bcd_ins|CurentState.S3~q\,
-	datad => \binary_bcd_ins|Add2~16_combout\,
-	combout => \binary_bcd_ins|bcd_signal[25]~20_combout\);
-
--- Location: LCCOMB_X65_Y50_N24
-\binary_bcd_ins|Add3~24\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Add3~24_combout\ = (\binary_bcd_ins|bcd_signal\(25) & (\binary_bcd_ins|Add3~23\ $ (GND))) # (!\binary_bcd_ins|bcd_signal\(25) & (!\binary_bcd_ins|Add3~23\ & VCC))
--- \binary_bcd_ins|Add3~25\ = CARRY((\binary_bcd_ins|bcd_signal\(25) & !\binary_bcd_ins|Add3~23\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1010010100001010",
-	sum_lutc_input => "cin")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(25),
-	datad => VCC,
-	cin => \binary_bcd_ins|Add3~23\,
-	combout => \binary_bcd_ins|Add3~24_combout\,
-	cout => \binary_bcd_ins|Add3~25\);
-
--- Location: LCCOMB_X64_Y49_N26
-\binary_bcd_ins|bcd_signal[25]~21\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[25]~21_combout\ = (\binary_bcd_ins|bcd_signal[25]~20_combout\) # ((!\binary_bcd_ins|bcd_signal[28]~17_combout\ & (\binary_bcd_ins|CurentState.S4~q\ & \binary_bcd_ins|Add3~24_combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1011101010101010",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[25]~20_combout\,
-	datab => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datac => \binary_bcd_ins|CurentState.S4~q\,
-	datad => \binary_bcd_ins|Add3~24_combout\,
-	combout => \binary_bcd_ins|bcd_signal[25]~21_combout\);
-
--- Location: FF_X64_Y49_N27
-\binary_bcd_ins|bcd_signal[25]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~inputclkctrl_outclk\,
-	d => \binary_bcd_ins|bcd_signal[25]~21_combout\,
-	clrn => \reset_n~input_o\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd_signal\(25));
-
--- Location: LCCOMB_X66_Y49_N24
-\binary_bcd_ins|bcd_signal[26]~23\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[26]~23_combout\ = (\binary_bcd_ins|bcd_signal\(25) & ((\binary_bcd_ins|CurentState.S5~q\) # ((\binary_bcd_ins|bcd_signal\(26) & \binary_bcd_ins|CurentState.S1~q\)))) # (!\binary_bcd_ins|bcd_signal\(25) & 
--- (!\binary_bcd_ins|bcd_signal\(26) & (\binary_bcd_ins|CurentState.S1~q\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1011101010010000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(25),
-	datab => \binary_bcd_ins|bcd_signal\(26),
-	datac => \binary_bcd_ins|CurentState.S1~q\,
-	datad => \binary_bcd_ins|CurentState.S5~q\,
-	combout => \binary_bcd_ins|bcd_signal[26]~23_combout\);
-
--- Location: LCCOMB_X64_Y50_N24
-\binary_bcd_ins|bcd_signal[26]~22\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[26]~22_combout\ = (\binary_bcd_ins|Add2~18_combout\ & ((\binary_bcd_ins|CurentState.S3~q\) # ((\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|Add1~10_combout\)))) # (!\binary_bcd_ins|Add2~18_combout\ & 
--- (((\binary_bcd_ins|CurentState.S2~q\ & \binary_bcd_ins|Add1~10_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111100010001000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|Add2~18_combout\,
-	datab => \binary_bcd_ins|CurentState.S3~q\,
-	datac => \binary_bcd_ins|CurentState.S2~q\,
-	datad => \binary_bcd_ins|Add1~10_combout\,
-	combout => \binary_bcd_ins|bcd_signal[26]~22_combout\);
-
--- Location: LCCOMB_X64_Y49_N20
-\binary_bcd_ins|bcd_signal[26]~24\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[26]~24_combout\ = (\binary_bcd_ins|bcd_signal[28]~17_combout\ & (((\binary_bcd_ins|bcd_signal\(26))))) # (!\binary_bcd_ins|bcd_signal[28]~17_combout\ & ((\binary_bcd_ins|bcd_signal[26]~23_combout\) # 
--- ((\binary_bcd_ins|bcd_signal[26]~22_combout\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111111000110010",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal[26]~23_combout\,
-	datab => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datac => \binary_bcd_ins|bcd_signal[26]~22_combout\,
-	datad => \binary_bcd_ins|bcd_signal\(26),
-	combout => \binary_bcd_ins|bcd_signal[26]~24_combout\);
-
--- Location: LCCOMB_X65_Y50_N26
-\binary_bcd_ins|Add3~26\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|Add3~26_combout\ = (\binary_bcd_ins|bcd_signal\(26) & (!\binary_bcd_ins|Add3~25\)) # (!\binary_bcd_ins|bcd_signal\(26) & ((\binary_bcd_ins|Add3~25\) # (GND)))
--- \binary_bcd_ins|Add3~27\ = CARRY((!\binary_bcd_ins|Add3~25\) # (!\binary_bcd_ins|bcd_signal\(26)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0101101001011111",
-	sum_lutc_input => "cin")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|bcd_signal\(26),
-	datad => VCC,
-	cin => \binary_bcd_ins|Add3~25\,
-	combout => \binary_bcd_ins|Add3~26_combout\,
-	cout => \binary_bcd_ins|Add3~27\);
-
--- Location: LCCOMB_X64_Y49_N28
-\binary_bcd_ins|bcd_signal[26]~25\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[26]~25_combout\ = (\binary_bcd_ins|bcd_signal[26]~24_combout\) # ((\binary_bcd_ins|CurentState.S4~q\ & (!\binary_bcd_ins|bcd_signal[28]~17_combout\ & \binary_bcd_ins|Add3~26_combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100111011001100",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S4~q\,
-	datab => \binary_bcd_ins|bcd_signal[26]~24_combout\,
-	datac => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datad => \binary_bcd_ins|Add3~26_combout\,
-	combout => \binary_bcd_ins|bcd_signal[26]~25_combout\);
-
--- Location: FF_X64_Y49_N29
-\binary_bcd_ins|bcd_signal[26]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~inputclkctrl_outclk\,
-	d => \binary_bcd_ins|bcd_signal[26]~25_combout\,
-	clrn => \reset_n~input_o\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd_signal\(26));
-
--- Location: LCCOMB_X64_Y49_N8
-\binary_bcd_ins|bcd_signal[27]~39\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[27]~39_combout\ = (!\binary_bcd_ins|bcd_signal[28]~17_combout\ & (\binary_bcd_ins|CurentState.S3~q\ & \binary_bcd_ins|Add2~20_combout\))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0011000000000000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	datab => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datac => \binary_bcd_ins|CurentState.S3~q\,
-	datad => \binary_bcd_ins|Add2~20_combout\,
-	combout => \binary_bcd_ins|bcd_signal[27]~39_combout\);
-
--- Location: LCCOMB_X64_Y49_N22
-\binary_bcd_ins|bcd_signal[27]~27\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[27]~27_combout\ = \binary_bcd_ins|bcd_signal\(27) $ (((!\binary_bcd_ins|bcd_signal[28]~17_combout\ & ((\binary_bcd_ins|bcd_signal\(25)) # (\binary_bcd_ins|bcd_signal\(26))))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111000100001110",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(25),
-	datab => \binary_bcd_ins|bcd_signal\(26),
-	datac => \binary_bcd_ins|bcd_signal[28]~17_combout\,
+	datab => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datac => \binary_bcd_ins|bcd_signal\(25),
 	datad => \binary_bcd_ins|bcd_signal\(27),
-	combout => \binary_bcd_ins|bcd_signal[27]~27_combout\);
+	combout => \binary_bcd_ins|bcd_signal[27]~25_combout\);
 
--- Location: LCCOMB_X67_Y50_N4
+-- Location: LCCOMB_X64_Y51_N10
+\binary_bcd_ins|bcd_signal[27]~26\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[27]~26_combout\ = (\binary_bcd_ins|bcd_signal[27]~24_combout\ & ((\binary_bcd_ins|Add1~12_combout\) # ((\binary_bcd_ins|CurentState.S1~q\ & \binary_bcd_ins|bcd_signal[27]~25_combout\)))) # 
+-- (!\binary_bcd_ins|bcd_signal[27]~24_combout\ & (\binary_bcd_ins|CurentState.S1~q\ & ((\binary_bcd_ins|bcd_signal[27]~25_combout\))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1110110010100000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal[27]~24_combout\,
+	datab => \binary_bcd_ins|CurentState.S1~q\,
+	datac => \binary_bcd_ins|Add1~12_combout\,
+	datad => \binary_bcd_ins|bcd_signal[27]~25_combout\,
+	combout => \binary_bcd_ins|bcd_signal[27]~26_combout\);
+
+-- Location: LCCOMB_X62_Y51_N26
+\binary_bcd_ins|bcd_signal[27]~28\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[27]~28_combout\ = (!\binary_bcd_ins|bcd_signal[28]~14_combout\ & \binary_bcd_ins|CurentState.S3~q\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0011000000110000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datab => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datac => \binary_bcd_ins|CurentState.S3~q\,
+	combout => \binary_bcd_ins|bcd_signal[27]~28_combout\);
+
+-- Location: LCCOMB_X62_Y51_N6
+\binary_bcd_ins|bcd_signal[27]~29\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \binary_bcd_ins|bcd_signal[27]~29_combout\ = (\binary_bcd_ins|bcd_signal[27]~27_combout\ & ((\binary_bcd_ins|bcd_signal\(26)) # ((\binary_bcd_ins|Add2~20_combout\ & \binary_bcd_ins|bcd_signal[27]~28_combout\)))) # 
+-- (!\binary_bcd_ins|bcd_signal[27]~27_combout\ & (\binary_bcd_ins|Add2~20_combout\ & (\binary_bcd_ins|bcd_signal[27]~28_combout\)))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1110101011000000",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd_signal[27]~27_combout\,
+	datab => \binary_bcd_ins|Add2~20_combout\,
+	datac => \binary_bcd_ins|bcd_signal[27]~28_combout\,
+	datad => \binary_bcd_ins|bcd_signal\(26),
+	combout => \binary_bcd_ins|bcd_signal[27]~29_combout\);
+
+-- Location: LCCOMB_X64_Y51_N28
 \binary_bcd_ins|bcd_signal[27]~30\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[27]~30_combout\ = (\binary_bcd_ins|bcd_signal\(26) & ((\binary_bcd_ins|bcd_signal[27]~28_combout\) # ((\binary_bcd_ins|Add1~12_combout\ & \binary_bcd_ins|bcd_signal[27]~29_combout\)))) # (!\binary_bcd_ins|bcd_signal\(26) & 
--- (((\binary_bcd_ins|Add1~12_combout\ & \binary_bcd_ins|bcd_signal[27]~29_combout\))))
+-- \binary_bcd_ins|bcd_signal[27]~30_combout\ = (\binary_bcd_ins|bcd_signal[27]~29_combout\) # ((\binary_bcd_ins|bcd_signal[28]~14_combout\ & \binary_bcd_ins|bcd_signal\(27)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111100010001000",
+	lut_mask => "1111101010101010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd_signal\(26),
-	datab => \binary_bcd_ins|bcd_signal[27]~28_combout\,
-	datac => \binary_bcd_ins|Add1~12_combout\,
-	datad => \binary_bcd_ins|bcd_signal[27]~29_combout\,
+	dataa => \binary_bcd_ins|bcd_signal[27]~29_combout\,
+	datac => \binary_bcd_ins|bcd_signal[28]~14_combout\,
+	datad => \binary_bcd_ins|bcd_signal\(27),
 	combout => \binary_bcd_ins|bcd_signal[27]~30_combout\);
 
--- Location: LCCOMB_X64_Y49_N2
+-- Location: LCCOMB_X64_Y51_N24
 \binary_bcd_ins|bcd_signal[27]~31\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \binary_bcd_ins|bcd_signal[27]~31_combout\ = (\binary_bcd_ins|bcd_signal[27]~30_combout\) # ((\binary_bcd_ins|bcd_signal[27]~27_combout\ & ((\binary_bcd_ins|CurentState.S1~q\) # (\binary_bcd_ins|bcd_signal[28]~17_combout\))))
+-- \binary_bcd_ins|bcd_signal[27]~31_combout\ = (\binary_bcd_ins|bcd_signal[27]~26_combout\) # ((\binary_bcd_ins|bcd_signal[27]~30_combout\) # ((\binary_bcd_ins|Add3~28_combout\ & \binary_bcd_ins|bcd_signal[27]~23_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1111111111100000",
+	lut_mask => "1111111011101110",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|CurentState.S1~q\,
-	datab => \binary_bcd_ins|bcd_signal[28]~17_combout\,
-	datac => \binary_bcd_ins|bcd_signal[27]~27_combout\,
-	datad => \binary_bcd_ins|bcd_signal[27]~30_combout\,
+	dataa => \binary_bcd_ins|bcd_signal[27]~26_combout\,
+	datab => \binary_bcd_ins|bcd_signal[27]~30_combout\,
+	datac => \binary_bcd_ins|Add3~28_combout\,
+	datad => \binary_bcd_ins|bcd_signal[27]~23_combout\,
 	combout => \binary_bcd_ins|bcd_signal[27]~31_combout\);
 
--- Location: LCCOMB_X64_Y49_N0
-\binary_bcd_ins|bcd_signal[27]~32\ : fiftyfivenm_lcell_comb
--- Equation(s):
--- \binary_bcd_ins|bcd_signal[27]~32_combout\ = (\binary_bcd_ins|bcd_signal[27]~39_combout\) # ((\binary_bcd_ins|bcd_signal[27]~31_combout\) # ((\binary_bcd_ins|Add3~28_combout\ & \binary_bcd_ins|bcd_signal[27]~26_combout\)))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1111111111111000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \binary_bcd_ins|Add3~28_combout\,
-	datab => \binary_bcd_ins|bcd_signal[27]~26_combout\,
-	datac => \binary_bcd_ins|bcd_signal[27]~39_combout\,
-	datad => \binary_bcd_ins|bcd_signal[27]~31_combout\,
-	combout => \binary_bcd_ins|bcd_signal[27]~32_combout\);
-
--- Location: FF_X64_Y49_N1
+-- Location: FF_X64_Y51_N25
 \binary_bcd_ins|bcd_signal[27]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -5805,13 +6037,13 @@ GENERIC MAP (
 -- pragma translate_on
 PORT MAP (
 	clk => \clk~inputclkctrl_outclk\,
-	d => \binary_bcd_ins|bcd_signal[27]~32_combout\,
+	d => \binary_bcd_ins|bcd_signal[27]~31_combout\,
 	clrn => \reset_n~input_o\,
 	devclrn => ww_devclrn,
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd_signal\(27));
 
--- Location: FF_X71_Y46_N11
+-- Location: FF_X65_Y51_N13
 \binary_bcd_ins|bcd[14]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -5828,24 +6060,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(14));
 
--- Location: FF_X64_Y49_N25
-\binary_bcd_ins|bcd[12]\ : dffeas
--- pragma translate_off
-GENERIC MAP (
-	is_wysiwyg => "true",
-	power_up => "low")
--- pragma translate_on
-PORT MAP (
-	clk => \clk~inputclkctrl_outclk\,
-	asdata => \binary_bcd_ins|bcd_signal\(25),
-	clrn => \reset_n~input_o\,
-	sload => VCC,
-	ena => \binary_bcd_ins|bcd[3]~0_combout\,
-	devclrn => ww_devclrn,
-	devpor => ww_devpor,
-	q => \binary_bcd_ins|bcd\(12));
-
--- Location: FF_X71_Y46_N9
+-- Location: FF_X65_Y51_N3
 \binary_bcd_ins|bcd[13]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -5862,7 +6077,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(13));
 
--- Location: FF_X71_Y46_N29
+-- Location: FF_X65_Y51_N31
 \binary_bcd_ins|bcd[15]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -5879,118 +6094,225 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => \binary_bcd_ins|bcd\(15));
 
--- Location: LCCOMB_X71_Y46_N30
-\SevenSegment_ins|decoder3|Mux6~0\ : fiftyfivenm_lcell_comb
+-- Location: FF_X65_Y51_N17
+\binary_bcd_ins|bcd[12]\ : dffeas
+-- pragma translate_off
+GENERIC MAP (
+	is_wysiwyg => "true",
+	power_up => "low")
+-- pragma translate_on
+PORT MAP (
+	clk => \clk~inputclkctrl_outclk\,
+	asdata => \binary_bcd_ins|bcd_signal\(25),
+	clrn => \reset_n~input_o\,
+	sload => VCC,
+	ena => \binary_bcd_ins|bcd[3]~0_combout\,
+	devclrn => ww_devclrn,
+	devpor => ww_devpor,
+	q => \binary_bcd_ins|bcd\(12));
+
+-- Location: LCCOMB_X65_Y51_N6
+\SevenSegment_ins|decoder3|Mux6~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder3|Mux6~0_combout\ = (\binary_bcd_ins|bcd\(14) & (!\binary_bcd_ins|bcd\(13) & ((\binary_bcd_ins|bcd\(15)) # (!\binary_bcd_ins|bcd\(12))))) # (!\binary_bcd_ins|bcd\(14) & (\binary_bcd_ins|bcd\(12) & (\binary_bcd_ins|bcd\(13) $ 
+-- \SevenSegment_ins|decoder3|Mux6~2_combout\ = (\binary_bcd_ins|bcd\(14) & (!\binary_bcd_ins|bcd\(13) & ((\binary_bcd_ins|bcd\(15)) # (!\binary_bcd_ins|bcd\(12))))) # (!\binary_bcd_ins|bcd\(14) & (\binary_bcd_ins|bcd\(12) & (\binary_bcd_ins|bcd\(13) $ 
 -- (!\binary_bcd_ins|bcd\(15)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100101000000110",
+	lut_mask => "0110000100100010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|bcd\(14),
-	datab => \binary_bcd_ins|bcd\(12),
-	datac => \binary_bcd_ins|bcd\(13),
-	datad => \binary_bcd_ins|bcd\(15),
-	combout => \SevenSegment_ins|decoder3|Mux6~0_combout\);
+	datab => \binary_bcd_ins|bcd\(13),
+	datac => \binary_bcd_ins|bcd\(15),
+	datad => \binary_bcd_ins|bcd\(12),
+	combout => \SevenSegment_ins|decoder3|Mux6~2_combout\);
 
--- Location: LCCOMB_X71_Y46_N24
-\SevenSegment_ins|decoder3|Mux5~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X65_Y51_N24
+\SevenSegment_ins|decoder3|Mux6~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder3|Mux5~0_combout\ = (\binary_bcd_ins|bcd\(13) & ((\binary_bcd_ins|bcd\(12) & ((\binary_bcd_ins|bcd\(15)))) # (!\binary_bcd_ins|bcd\(12) & (\binary_bcd_ins|bcd\(14))))) # (!\binary_bcd_ins|bcd\(13) & (\binary_bcd_ins|bcd\(14) & 
--- (\binary_bcd_ins|bcd\(12) $ (\binary_bcd_ins|bcd\(15)))))
+-- \SevenSegment_ins|decoder3|Mux6~3_combout\ = (\SevenSegment_ins|decoder3|Mux6~2_combout\ & !\SW[9]~input_o\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110001000101000",
+	lut_mask => "0000101000001010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \SevenSegment_ins|decoder3|Mux6~2_combout\,
+	datac => \SW[9]~input_o\,
+	combout => \SevenSegment_ins|decoder3|Mux6~3_combout\);
+
+-- Location: LCCOMB_X65_Y51_N10
+\SevenSegment_ins|decoder3|Mux5~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder3|Mux5~2_combout\ = (\binary_bcd_ins|bcd\(13) & ((\binary_bcd_ins|bcd\(12) & ((\binary_bcd_ins|bcd\(15)))) # (!\binary_bcd_ins|bcd\(12) & (\binary_bcd_ins|bcd\(14))))) # (!\binary_bcd_ins|bcd\(13) & (\binary_bcd_ins|bcd\(14) & 
+-- (\binary_bcd_ins|bcd\(15) $ (\binary_bcd_ins|bcd\(12)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1100001010101000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|bcd\(14),
-	datab => \binary_bcd_ins|bcd\(12),
-	datac => \binary_bcd_ins|bcd\(13),
-	datad => \binary_bcd_ins|bcd\(15),
-	combout => \SevenSegment_ins|decoder3|Mux5~0_combout\);
+	datab => \binary_bcd_ins|bcd\(13),
+	datac => \binary_bcd_ins|bcd\(15),
+	datad => \binary_bcd_ins|bcd\(12),
+	combout => \SevenSegment_ins|decoder3|Mux5~2_combout\);
 
--- Location: LCCOMB_X71_Y46_N26
-\SevenSegment_ins|decoder3|Mux4~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X65_Y51_N20
+\SevenSegment_ins|decoder3|Mux5~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder3|Mux4~0_combout\ = (\binary_bcd_ins|bcd\(14) & (\binary_bcd_ins|bcd\(15) & ((\binary_bcd_ins|bcd\(13)) # (!\binary_bcd_ins|bcd\(12))))) # (!\binary_bcd_ins|bcd\(14) & (!\binary_bcd_ins|bcd\(12) & (\binary_bcd_ins|bcd\(13) & 
--- !\binary_bcd_ins|bcd\(15))))
+-- \SevenSegment_ins|decoder3|Mux5~3_combout\ = (\SevenSegment_ins|decoder3|Mux5~2_combout\ & !\SW[9]~input_o\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1010001000010000",
+	lut_mask => "0000101000001010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \SevenSegment_ins|decoder3|Mux5~2_combout\,
+	datac => \SW[9]~input_o\,
+	combout => \SevenSegment_ins|decoder3|Mux5~3_combout\);
+
+-- Location: LCCOMB_X65_Y51_N22
+\SevenSegment_ins|decoder3|Mux4~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder3|Mux4~2_combout\ = (\binary_bcd_ins|bcd\(14) & (\binary_bcd_ins|bcd\(15) & ((\binary_bcd_ins|bcd\(13)) # (!\binary_bcd_ins|bcd\(12))))) # (!\binary_bcd_ins|bcd\(14) & (\binary_bcd_ins|bcd\(13) & (!\binary_bcd_ins|bcd\(15) & 
+-- !\binary_bcd_ins|bcd\(12))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1000000010100100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \binary_bcd_ins|bcd\(14),
-	datab => \binary_bcd_ins|bcd\(12),
-	datac => \binary_bcd_ins|bcd\(13),
-	datad => \binary_bcd_ins|bcd\(15),
-	combout => \SevenSegment_ins|decoder3|Mux4~0_combout\);
+	datab => \binary_bcd_ins|bcd\(13),
+	datac => \binary_bcd_ins|bcd\(15),
+	datad => \binary_bcd_ins|bcd\(12),
+	combout => \SevenSegment_ins|decoder3|Mux4~2_combout\);
 
--- Location: LCCOMB_X71_Y46_N4
-\SevenSegment_ins|decoder3|Mux3~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X65_Y51_N0
+\SevenSegment_ins|decoder3|Mux4~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder3|Mux3~0_combout\ = (\binary_bcd_ins|bcd\(12) & (\binary_bcd_ins|bcd\(14) $ ((!\binary_bcd_ins|bcd\(13))))) # (!\binary_bcd_ins|bcd\(12) & ((\binary_bcd_ins|bcd\(14) & (!\binary_bcd_ins|bcd\(13) & !\binary_bcd_ins|bcd\(15))) # 
--- (!\binary_bcd_ins|bcd\(14) & (\binary_bcd_ins|bcd\(13) & \binary_bcd_ins|bcd\(15)))))
+-- \SevenSegment_ins|decoder3|Mux4~3_combout\ = (!\SW[9]~input_o\ & \SevenSegment_ins|decoder3|Mux4~2_combout\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1001010010000110",
+	lut_mask => "0011000000110000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(14),
-	datab => \binary_bcd_ins|bcd\(12),
-	datac => \binary_bcd_ins|bcd\(13),
-	datad => \binary_bcd_ins|bcd\(15),
-	combout => \SevenSegment_ins|decoder3|Mux3~0_combout\);
+	datab => \SW[9]~input_o\,
+	datac => \SevenSegment_ins|decoder3|Mux4~2_combout\,
+	combout => \SevenSegment_ins|decoder3|Mux4~3_combout\);
 
--- Location: LCCOMB_X71_Y46_N8
-\SevenSegment_ins|decoder3|Mux2~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X65_Y51_N16
+\SevenSegment_ins|decoder3|Mux3~2\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder3|Mux2~0_combout\ = (\binary_bcd_ins|bcd\(13) & (((\binary_bcd_ins|bcd\(12) & !\binary_bcd_ins|bcd\(15))))) # (!\binary_bcd_ins|bcd\(13) & ((\binary_bcd_ins|bcd\(14) & ((!\binary_bcd_ins|bcd\(15)))) # (!\binary_bcd_ins|bcd\(14) & 
--- (\binary_bcd_ins|bcd\(12)))))
+-- \SevenSegment_ins|decoder3|Mux3~2_combout\ = (\binary_bcd_ins|bcd\(12) & ((\binary_bcd_ins|bcd\(13) $ (!\binary_bcd_ins|bcd\(14))))) # (!\binary_bcd_ins|bcd\(12) & ((\binary_bcd_ins|bcd\(15) & (\binary_bcd_ins|bcd\(13) & !\binary_bcd_ins|bcd\(14))) # 
+-- (!\binary_bcd_ins|bcd\(15) & (!\binary_bcd_ins|bcd\(13) & \binary_bcd_ins|bcd\(14)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000010011001110",
+	lut_mask => "1100000100111000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(14),
-	datab => \binary_bcd_ins|bcd\(12),
-	datac => \binary_bcd_ins|bcd\(13),
-	datad => \binary_bcd_ins|bcd\(15),
-	combout => \SevenSegment_ins|decoder3|Mux2~0_combout\);
+	dataa => \binary_bcd_ins|bcd\(15),
+	datab => \binary_bcd_ins|bcd\(13),
+	datac => \binary_bcd_ins|bcd\(12),
+	datad => \binary_bcd_ins|bcd\(14),
+	combout => \SevenSegment_ins|decoder3|Mux3~2_combout\);
 
--- Location: LCCOMB_X71_Y46_N10
-\SevenSegment_ins|decoder3|Mux1~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X65_Y51_N26
+\SevenSegment_ins|decoder3|Mux3~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder3|Mux1~0_combout\ = (\binary_bcd_ins|bcd\(13) & (!\binary_bcd_ins|bcd\(15) & ((\binary_bcd_ins|bcd\(12)) # (!\binary_bcd_ins|bcd\(14))))) # (!\binary_bcd_ins|bcd\(13) & ((\binary_bcd_ins|bcd\(14) & ((\binary_bcd_ins|bcd\(15)))) # 
--- (!\binary_bcd_ins|bcd\(14) & (\binary_bcd_ins|bcd\(12) & !\binary_bcd_ins|bcd\(15)))))
+-- \SevenSegment_ins|decoder3|Mux3~3_combout\ = (\SevenSegment_ins|decoder3|Mux3~2_combout\ & !\SW[9]~input_o\)
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0011000010001110",
+	lut_mask => "0000101000001010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \binary_bcd_ins|bcd\(12),
+	dataa => \SevenSegment_ins|decoder3|Mux3~2_combout\,
+	datac => \SW[9]~input_o\,
+	combout => \SevenSegment_ins|decoder3|Mux3~3_combout\);
+
+-- Location: LCCOMB_X65_Y51_N2
+\SevenSegment_ins|decoder3|Mux2~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder3|Mux2~2_combout\ = (\binary_bcd_ins|bcd\(13) & (!\binary_bcd_ins|bcd\(15) & (\binary_bcd_ins|bcd\(12)))) # (!\binary_bcd_ins|bcd\(13) & ((\binary_bcd_ins|bcd\(14) & (!\binary_bcd_ins|bcd\(15))) # (!\binary_bcd_ins|bcd\(14) & 
+-- ((\binary_bcd_ins|bcd\(12))))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0100010101001100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd\(15),
+	datab => \binary_bcd_ins|bcd\(12),
+	datac => \binary_bcd_ins|bcd\(13),
+	datad => \binary_bcd_ins|bcd\(14),
+	combout => \SevenSegment_ins|decoder3|Mux2~2_combout\);
+
+-- Location: LCCOMB_X65_Y51_N28
+\SevenSegment_ins|decoder3|Mux2~3\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder3|Mux2~3_combout\ = (\SevenSegment_ins|decoder3|Mux2~2_combout\ & !\SW[9]~input_o\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000101000001010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \SevenSegment_ins|decoder3|Mux2~2_combout\,
+	datac => \SW[9]~input_o\,
+	combout => \SevenSegment_ins|decoder3|Mux2~3_combout\);
+
+-- Location: LCCOMB_X65_Y51_N12
+\SevenSegment_ins|decoder3|Mux1~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder3|Mux1~2_combout\ = (\binary_bcd_ins|bcd\(15) & (!\binary_bcd_ins|bcd\(13) & (\binary_bcd_ins|bcd\(14)))) # (!\binary_bcd_ins|bcd\(15) & ((\binary_bcd_ins|bcd\(13) & ((\binary_bcd_ins|bcd\(12)) # (!\binary_bcd_ins|bcd\(14)))) # 
+-- (!\binary_bcd_ins|bcd\(13) & (!\binary_bcd_ins|bcd\(14) & \binary_bcd_ins|bcd\(12)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0110010100100100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \binary_bcd_ins|bcd\(15),
 	datab => \binary_bcd_ins|bcd\(13),
 	datac => \binary_bcd_ins|bcd\(14),
-	datad => \binary_bcd_ins|bcd\(15),
-	combout => \SevenSegment_ins|decoder3|Mux1~0_combout\);
+	datad => \binary_bcd_ins|bcd\(12),
+	combout => \SevenSegment_ins|decoder3|Mux1~2_combout\);
 
--- Location: LCCOMB_X71_Y46_N28
-\SevenSegment_ins|decoder3|Mux0~0\ : fiftyfivenm_lcell_comb
+-- Location: LCCOMB_X65_Y51_N14
+\SevenSegment_ins|decoder3|Mux1~3\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder3|Mux0~0_combout\ = (\binary_bcd_ins|bcd\(12) & ((\binary_bcd_ins|bcd\(15)) # (\binary_bcd_ins|bcd\(14) $ (\binary_bcd_ins|bcd\(13))))) # (!\binary_bcd_ins|bcd\(12) & ((\binary_bcd_ins|bcd\(14)) # (\binary_bcd_ins|bcd\(13) $ 
+-- \SevenSegment_ins|decoder3|Mux1~3_combout\ = (\SevenSegment_ins|decoder3|Mux1~2_combout\ & !\SW[9]~input_o\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000110000001100",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	datab => \SevenSegment_ins|decoder3|Mux1~2_combout\,
+	datac => \SW[9]~input_o\,
+	combout => \SevenSegment_ins|decoder3|Mux1~3_combout\);
+
+-- Location: LCCOMB_X65_Y51_N30
+\SevenSegment_ins|decoder3|Mux0~2\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder3|Mux0~2_combout\ = (\binary_bcd_ins|bcd\(12) & ((\binary_bcd_ins|bcd\(15)) # (\binary_bcd_ins|bcd\(14) $ (\binary_bcd_ins|bcd\(13))))) # (!\binary_bcd_ins|bcd\(12) & ((\binary_bcd_ins|bcd\(14)) # (\binary_bcd_ins|bcd\(13) $ 
 -- (\binary_bcd_ins|bcd\(15)))))
 
 -- pragma translate_off
@@ -6003,7 +6325,22 @@ PORT MAP (
 	datab => \binary_bcd_ins|bcd\(13),
 	datac => \binary_bcd_ins|bcd\(15),
 	datad => \binary_bcd_ins|bcd\(12),
-	combout => \SevenSegment_ins|decoder3|Mux0~0_combout\);
+	combout => \SevenSegment_ins|decoder3|Mux0~2_combout\);
+
+-- Location: LCCOMB_X69_Y50_N16
+\SevenSegment_ins|decoder3|Mux0~3\ : fiftyfivenm_lcell_comb
+-- Equation(s):
+-- \SevenSegment_ins|decoder3|Mux0~3_combout\ = (\SevenSegment_ins|decoder3|Mux0~2_combout\ & !\SW[9]~input_o\)
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "0000000010101010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \SevenSegment_ins|decoder3|Mux0~2_combout\,
+	datad => \SW[9]~input_o\,
+	combout => \SevenSegment_ins|decoder3|Mux0~3_combout\);
 
 -- Location: UNVM_X0_Y40_N40
 \~QUARTUS_CREATED_UNVM~\ : fiftyfivenm_unvm

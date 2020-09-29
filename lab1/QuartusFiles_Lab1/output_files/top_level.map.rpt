@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top_level
-Tue Sep 29 09:55:56 2020
+Tue Sep 29 12:51:09 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -18,11 +18,12 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
  10. Registers Removed During Synthesis
  11. General Register Statistics
  12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Port Connectivity Checks: "binary_bcd:binary_bcd_ins"
- 14. Port Connectivity Checks: "SevenSegment:SevenSegment_ins"
- 15. Post-Synthesis Netlist Statistics for Top Partition
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+ 13. Port Connectivity Checks: "MUX_HEXDEC:MUX_HEXDEC_ins"
+ 14. Port Connectivity Checks: "binary_bcd:binary_bcd_ins"
+ 15. Port Connectivity Checks: "SevenSegment:SevenSegment_ins"
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -48,13 +49,13 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Sep 29 09:55:56 2020       ;
+; Analysis & Synthesis Status        ; Successful - Tue Sep 29 12:51:09 2020       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; top_level                                   ;
 ; Top-level Entity Name              ; top_level                                   ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 202                                         ;
-;     Total combinational functions  ; 181                                         ;
+; Total logic elements               ; 223                                         ;
+;     Total combinational functions  ; 202                                         ;
 ;     Dedicated logic registers      ; 84                                          ;
 ; Total registers                    ; 84                                          ;
 ; Total pins                         ; 70                                          ;
@@ -179,6 +180,7 @@ refer to the applicable agreement for further details.
 ; SevenSegment_decoder.vhd         ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment_decoder.vhd ;         ;
 ; SevenSegment.vhd                 ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd         ;         ;
 ; binary_bcd.vhd                   ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/binary_bcd.vhd           ;         ;
+; MUX_HEXDEC.vhd                   ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd           ;         ;
 +----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+---------+
 
 
@@ -187,16 +189,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 202       ;
+; Estimated Total logic elements              ; 223       ;
 ;                                             ;           ;
-; Total combinational functions               ; 181       ;
+; Total combinational functions               ; 202       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 76        ;
-;     -- 3 input functions                    ; 25        ;
-;     -- <=2 input functions                  ; 80        ;
+;     -- 4 input functions                    ; 73        ;
+;     -- 3 input functions                    ; 35        ;
+;     -- <=2 input functions                  ; 94        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 117       ;
+;     -- normal mode                          ; 138       ;
 ;     -- arithmetic mode                      ; 64        ;
 ;                                             ;           ;
 ; Total registers                             ; 84        ;
@@ -209,8 +211,8 @@ refer to the applicable agreement for further details.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 84        ;
-; Total fan-out                               ; 993       ;
-; Average fan-out                             ; 2.45      ;
+; Total fan-out                               ; 1039      ;
+; Average fan-out                             ; 2.44      ;
 +---------------------------------------------+-----------+
 
 
@@ -219,13 +221,14 @@ refer to the applicable agreement for further details.
 +---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------+----------------------+--------------+
 ; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                    ; Entity Name          ; Library Name ;
 +---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------+----------------------+--------------+
-; |top_level                            ; 181 (0)             ; 84 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 70   ; 0            ; 0          ; |top_level                                                             ; top_level            ; work         ;
-;    |SevenSegment:SevenSegment_ins|    ; 28 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins                               ; SevenSegment         ; work         ;
+; |top_level                            ; 202 (0)             ; 84 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 70   ; 0            ; 0          ; |top_level                                                             ; top_level            ; work         ;
+;    |MUX_HEXDEC:MUX_HEXDEC_ins|        ; 8 (8)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|MUX_HEXDEC:MUX_HEXDEC_ins                                   ; MUX_HEXDEC           ; work         ;
+;    |SevenSegment:SevenSegment_ins|    ; 42 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins                               ; SevenSegment         ; work         ;
 ;       |SevenSegment_decoder:decoder0| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder0 ; SevenSegment_decoder ; work         ;
 ;       |SevenSegment_decoder:decoder1| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder1 ; SevenSegment_decoder ; work         ;
-;       |SevenSegment_decoder:decoder2| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder2 ; SevenSegment_decoder ; work         ;
-;       |SevenSegment_decoder:decoder3| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder3 ; SevenSegment_decoder ; work         ;
-;    |binary_bcd:binary_bcd_ins|        ; 153 (153)           ; 84 (84)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|binary_bcd:binary_bcd_ins                                   ; binary_bcd           ; work         ;
+;       |SevenSegment_decoder:decoder2| ; 14 (14)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder2 ; SevenSegment_decoder ; work         ;
+;       |SevenSegment_decoder:decoder3| ; 14 (14)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder3 ; SevenSegment_decoder ; work         ;
+;    |binary_bcd:binary_bcd_ins|        ; 152 (152)           ; 84 (84)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|binary_bcd:binary_bcd_ins                                   ; binary_bcd           ; work         ;
 +---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------+----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -298,13 +301,22 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[12] ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[7]  ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[9]  ;
+; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[4]  ;
 ; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[13] ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[19] ;
-; 10:1               ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[24] ;
+; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[18] ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[22] ;
 ; 12:1               ; 4 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[28] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
+
+
++-------------------------------------------------------+
+; Port Connectivity Checks: "MUX_HEXDEC:MUX_HEXDEC_ins" ;
++---------------+-------+----------+--------------------+
+; Port          ; Type  ; Severity ; Details            ;
++---------------+-------+----------+--------------------+
+; hex_in[15..8] ; Input ; Info     ; Stuck at GND       ;
++---------------+-------+----------+--------------------+
 
 
 +-------------------------------------------------------+
@@ -341,18 +353,18 @@ Encoding Type:  One-Hot
 ;     ENA CLR           ; 53                          ;
 ;     ENA CLR SCLR      ; 15                          ;
 ;     ENA CLR SCLR SLD  ; 4                           ;
-; cycloneiii_lcell_comb ; 186                         ;
+; cycloneiii_lcell_comb ; 207                         ;
 ;     arith             ; 64                          ;
 ;         2 data inputs ; 64                          ;
-;     normal            ; 122                         ;
+;     normal            ; 143                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 9                           ;
-;         2 data inputs ; 11                          ;
-;         3 data inputs ; 25                          ;
-;         4 data inputs ; 76                          ;
+;         2 data inputs ; 25                          ;
+;         3 data inputs ; 35                          ;
+;         4 data inputs ; 73                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 3.99                        ;
+; Average LUT depth     ; 4.10                        ;
 +-----------------------+-----------------------------+
 
 
@@ -371,7 +383,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue Sep 29 09:54:50 2020
+    Info: Processing started: Tue Sep 29 12:50:36 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Group8_Lab1_ENCM453 -c top_level
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -390,10 +402,17 @@ Info (12021): Found 2 design units, including 1 entities, in source file binary_
 Info (12021): Found 2 design units, including 1 entities, in source file mux_hexdec.vhd
     Info (12022): Found design unit 1: MUX_HEXDEC-synth File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 18
     Info (12023): Found entity 1: MUX_HEXDEC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file output_files/tb_mux_hexdec.vhd
+    Info (12022): Found design unit 1: tb_MUX_HEXDEC-behavior File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/tb_MUX_HEXDEC.vhd Line: 8
+    Info (12023): Found entity 1: tb_MUX_HEXDEC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/tb_MUX_HEXDEC.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file output_files/tb_top_level.vhd
+    Info (12022): Found design unit 1: tb_top_level-behaviour File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/tb_top_level.vhd Line: 10
+    Info (12023): Found entity 1: tb_top_level File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/tb_top_level.vhd Line: 6
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
-Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:SevenSegment_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 49
+Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:SevenSegment_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 63
 Info (12128): Elaborating entity "SevenSegment_decoder" for hierarchy "SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder0" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd Line: 24
-Info (12128): Elaborating entity "binary_bcd" for hierarchy "binary_bcd:binary_bcd_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 71
+Info (12128): Elaborating entity "binary_bcd" for hierarchy "binary_bcd:binary_bcd_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 86
+Info (12128): Elaborating entity "MUX_HEXDEC" for hierarchy "MUX_HEXDEC:MUX_HEXDEC_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 98
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX0[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
     Warning (13410): Pin "HEX1[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
@@ -419,14 +438,14 @@ Info (286030): Timing-Driven Synthesis is running
 Info (17049): 7 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 272 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 293 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 58 output pins
-    Info (21061): Implemented 202 logic cells
+    Info (21061): Implemented 223 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
-    Info: Peak virtual memory: 4803 megabytes
-    Info: Processing ended: Tue Sep 29 09:55:56 2020
-    Info: Elapsed time: 00:01:06
-    Info: Total CPU time (on all processors): 00:01:23
+    Info: Peak virtual memory: 4824 megabytes
+    Info: Processing ended: Tue Sep 29 12:51:09 2020
+    Info: Elapsed time: 00:00:33
+    Info: Total CPU time (on all processors): 00:01:08
 
 
