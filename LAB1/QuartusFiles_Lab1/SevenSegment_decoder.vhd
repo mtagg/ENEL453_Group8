@@ -35,13 +35,13 @@ begin
 				
 				-- students add this block ------
 				
-				-- MT START MODS
-				when "1010" => seven_seg(6 downto 0)<="0110111"; -- A
+				-- MT START MODS ; TI editted decodings
+				when "1010" => seven_seg(6 downto 0)<="1110111"; -- A
 				when "1011" => seven_seg(6 downto 0)<="1111100"; -- b
-				when "1100" => seven_seg(6 downto 0)<="1011000"; -- C
+				when "1100" => seven_seg(6 downto 0)<="0111001"; -- C
 				when "1101" => seven_seg(6 downto 0)<="1011110"; -- d
-				when "1110" => seven_seg(6 downto 0)<="1111001"; -- e
-				when "1111" => seven_seg(6 downto 0)<="1110001"; -- f
+				when "1110" => seven_seg(6 downto 0)<="1111001"; -- E
+				when "1111" => seven_seg(6 downto 0)<="1110001"; -- F
 				-- MT END MODS
 				
 
