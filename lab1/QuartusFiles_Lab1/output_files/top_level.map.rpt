@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top_level
-Tue Sep 29 21:19:11 2020
+Thu Oct 01 12:02:44 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -49,7 +49,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Sep 29 21:19:11 2020       ;
+; Analysis & Synthesis Status        ; Successful - Thu Oct 01 12:02:44 2020       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; top_level                                   ;
 ; Top-level Entity Name              ; top_level                                   ;
@@ -373,7 +373,7 @@ Encoding Type:  One-Hot
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -383,7 +383,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue Sep 29 21:18:55 2020
+    Info: Processing started: Thu Oct 01 12:02:30 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Group8_Lab1_ENCM453 -c top_level
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -402,12 +402,8 @@ Info (12021): Found 2 design units, including 1 entities, in source file binary_
 Info (12021): Found 2 design units, including 1 entities, in source file mux_hexdec.vhd
     Info (12022): Found design unit 1: MUX_HEXDEC-synth File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 18
     Info (12023): Found entity 1: MUX_HEXDEC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 8
-Info (12021): Found 2 design units, including 1 entities, in source file output_files/tb_mux_hexdec.vhd
-    Info (12022): Found design unit 1: tb_MUX_HEXDEC-behavior File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/tb_MUX_HEXDEC.vhd Line: 8
-    Info (12023): Found entity 1: tb_MUX_HEXDEC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/tb_MUX_HEXDEC.vhd Line: 5
-Info (12021): Found 2 design units, including 1 entities, in source file output_files/tb_top_level.vhd
-    Info (12022): Found design unit 1: tb_top_level-behaviour File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/tb_top_level.vhd Line: 10
-    Info (12023): Found entity 1: tb_top_level File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/tb_top_level.vhd Line: 6
+Warning (12019): Can't analyze file -- file output_files/tb_MUX_HEXDEC.vhd is missing
+Warning (12019): Can't analyze file -- file output_files/tb_top_level.vhd is missing
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
 Warning (10492): VHDL Process Statement warning at top_level.vhd(66): signal "SW" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 66
 Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:SevenSegment_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 70
@@ -443,10 +439,10 @@ Info (21057): Implemented 288 device resources after synthesis - the final resou
     Info (21058): Implemented 12 input pins
     Info (21059): Implemented 58 output pins
     Info (21061): Implemented 218 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 4814 megabytes
-    Info: Processing ended: Tue Sep 29 21:19:11 2020
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:28
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 25 warnings
+    Info: Peak virtual memory: 4811 megabytes
+    Info: Processing ended: Thu Oct 01 12:02:44 2020
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:26
 
 

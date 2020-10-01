@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
 
--- DATE "09/29/2020 21:19:38"
+-- DATE "10/01/2020 12:03:10"
 
 -- 
 -- Device: Altera 10M50DAF484C6GES Package FBGA484
@@ -3802,12 +3802,12 @@ PORT MAP (
 -- Location: LCCOMB_X60_Y53_N16
 \SevenSegment_ins|decoder0|Mux6~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder0|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\)))) # 
--- (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ $ (!\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\))))
+-- \SevenSegment_ins|decoder0|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000100010110100",
+	lut_mask => "0000100010010100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -3893,13 +3893,12 @@ PORT MAP (
 -- Location: LCCOMB_X60_Y53_N26
 \SevenSegment_ins|decoder0|Mux1~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder0|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (((\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & !\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & 
--- ((\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\))) # (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & 
--- \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\))))
+-- \SevenSegment_ins|decoder0|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ $ (((\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\))))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ & \MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100010110100100",
+	lut_mask => "0100010110000100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -3913,11 +3912,11 @@ PORT MAP (
 \SevenSegment_ins|decoder0|Mux0~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \SevenSegment_ins|decoder0|Mux0~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\)))) # 
--- (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\))))
+-- (!\MUX_HEXDEC_ins|DATA_OUT[0]~0_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[1]~1_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[3]~3_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[2]~2_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1011110111111010",
+	lut_mask => "1011111111011010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -4399,12 +4398,12 @@ PORT MAP (
 -- Location: LCCOMB_X65_Y53_N16
 \SevenSegment_ins|decoder1|Mux6~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder1|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & !\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\))) # 
--- (!\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\ $ (((!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & \MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\)))))
+-- \SevenSegment_ins|decoder1|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000101110000100",
+	lut_mask => "0000100110000100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -4490,13 +4489,12 @@ PORT MAP (
 -- Location: LCCOMB_X65_Y53_N26
 \SevenSegment_ins|decoder1|Mux1~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder1|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (((!\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & \MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & 
--- ((\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\))) # (!\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & 
--- !\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\))))
+-- \SevenSegment_ins|decoder1|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ $ (((\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\))))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ & !\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100101001010100",
+	lut_mask => "0100100001010100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -4510,11 +4508,11 @@ PORT MAP (
 \SevenSegment_ins|decoder1|Mux0~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \SevenSegment_ins|decoder1|Mux0~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\)))) # 
--- (!\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\))))
+-- (!\MUX_HEXDEC_ins|DATA_OUT[4]~4_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[5]~5_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[7]~7_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[6]~6_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1011111111011010",
+	lut_mask => "1011110111111010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -5168,12 +5166,12 @@ PORT MAP (
 -- Location: LCCOMB_X66_Y51_N8
 \SevenSegment_ins|decoder2|Mux6~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder2|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ & !\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\))) # 
--- (!\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\ $ (((!\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ & \MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\)))))
+-- \SevenSegment_ins|decoder2|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000101110000100",
+	lut_mask => "0000100110000100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -5259,13 +5257,12 @@ PORT MAP (
 -- Location: LCCOMB_X66_Y51_N10
 \SevenSegment_ins|decoder2|Mux1~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder2|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ & (((!\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\ & \MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ & 
--- ((\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\))) # (!\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\ & 
--- !\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\))))
+-- \SevenSegment_ins|decoder2|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ $ (((\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\))))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\ & !\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\)))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100101001010100",
+	lut_mask => "0100100001010100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -5279,11 +5276,11 @@ PORT MAP (
 \SevenSegment_ins|decoder2|Mux0~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \SevenSegment_ins|decoder2|Mux0~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\)))) # 
--- (!\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\))))
+-- (!\MUX_HEXDEC_ins|DATA_OUT[8]~8_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[9]~9_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[11]~11_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[10]~10_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1011111111011010",
+	lut_mask => "1011110111111010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -6104,12 +6101,12 @@ PORT MAP (
 -- Location: LCCOMB_X66_Y50_N0
 \SevenSegment_ins|decoder3|Mux6~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder3|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\) # (!\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\)))) # 
+-- \SevenSegment_ins|decoder3|Mux6~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\ $ (!\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\)))) # 
 -- (!\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\ $ (!\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0100000010100110",
+	lut_mask => "0100000010000110",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -6195,13 +6192,12 @@ PORT MAP (
 -- Location: LCCOMB_X66_Y50_N26
 \SevenSegment_ins|decoder3|Mux1~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
--- \SevenSegment_ins|decoder3|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\ & ((!\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\))) # (!\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\ & 
--- (\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\ & \MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\)))) # (!\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\) # 
--- (\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\))))
+-- \SevenSegment_ins|decoder3|Mux1~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\ & (\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\)))) # 
+-- (!\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\ & (!\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "0000110110100100",
+	lut_mask => "0000110110000100",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
@@ -6215,11 +6211,11 @@ PORT MAP (
 \SevenSegment_ins|decoder3|Mux0~0\ : fiftyfivenm_lcell_comb
 -- Equation(s):
 -- \SevenSegment_ins|decoder3|Mux0~0_combout\ = (\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\)))) # 
--- (!\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\))))
+-- (!\MUX_HEXDEC_ins|DATA_OUT[12]~12_combout\ & ((\MUX_HEXDEC_ins|DATA_OUT[13]~13_combout\) # (\MUX_HEXDEC_ins|DATA_OUT[14]~14_combout\ $ (\MUX_HEXDEC_ins|DATA_OUT[15]~15_combout\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1110011111111010",
+	lut_mask => "1111011111011010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
