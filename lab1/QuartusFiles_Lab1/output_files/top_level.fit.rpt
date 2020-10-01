@@ -1,5 +1,5 @@
 Fitter report for top_level
-Tue Sep 29 15:15:44 2020
+Tue Sep 29 21:19:25 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -66,7 +66,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                   ;
 +------------------------------------+---------------------------------------------+
-; Fitter Status                      ; Successful - Tue Sep 29 15:15:44 2020       ;
+; Fitter Status                      ; Successful - Tue Sep 29 21:19:25 2020       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; top_level                                   ;
 ; Top-level Entity Name              ; top_level                                   ;
@@ -150,12 +150,13 @@ refer to the applicable agreement for further details.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 6           ;
 ;                            ;             ;
-; Average used               ; 1.07        ;
+; Average used               ; 1.06        ;
 ; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-6         ;   1.4%      ;
+;     Processor 2            ;   1.1%      ;
+;     Processors 3-6         ;   1.1%      ;
 +----------------------------+-------------+
 
 
@@ -1919,7 +1920,7 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:00
-Info (11888): Total time spent on timing analysis during the Fitter is 0.10 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.11 seconds.
 Info (334003): Started post-fitting delay annotation
 Warning (334000): Timing characteristics of device 10M50DAF484C6GES are preliminary
 Info (334004): Delay annotation completed successfully
@@ -1943,10 +1944,10 @@ Warning (169177): 12 pins must meet Intel FPGA requirements for 3.3-, 3.0-, and 
     Info (169178): Pin clk uses I/O standard 3.3-V LVTTL at P11 File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 6
 Info (144001): Generated suppressed messages file S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/output_files/top_level.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 91 warnings
-    Info: Peak virtual memory: 5784 megabytes
-    Info: Processing ended: Tue Sep 29 15:15:44 2020
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:13
+    Info: Peak virtual memory: 5780 megabytes
+    Info: Processing ended: Tue Sep 29 21:19:25 2020
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:17
 
 
 +----------------------------+
