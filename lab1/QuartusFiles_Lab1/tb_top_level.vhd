@@ -22,7 +22,7 @@ architecture behaviour of tb_top_level is
 	signal LEDR									 :  STD_LOGIC_VECTOR(9 downto 0);
 	signal HEX0,HEX1,HEX2,HEX3,HEX4,HEX5 :  STD_LOGIC_VECTOR(7 downto 0);
 	
-	constant TbPeriod : time	 		:= 20ns;
+	constant TbPeriod : time	 		:= 20 ns;
 	signal TbClk 		: STD_LOGIC    := '0';
 	signal TbSimEnd	: STD_LOGIC 	:= '0';
 	
@@ -37,7 +37,7 @@ architecture behaviour of tb_top_level is
 				TbClk <= not TbClk after TbPeriod when TbSimEnd /= '1' else '0' ;
 			
 			
-			SIMULATION STIMULI: Process begin
+			SIMULATION_STIMULI: Process begin
 			
 							--initialize switches all to '0'
 					SW 	<= "0000000000";
@@ -59,30 +59,30 @@ architecture behaviour of tb_top_level is
 					
 					assert false report "top_level testbench start"; -- terminal display message in ModelSim
 					SW <= "0000000001"; -- binary - 1
-					wait TbPeriod;      -- these lines will just delay the switching so we can see the output in steps
+					wait for TbPeriod;      -- these lines will just delay the switching so we can see the output in steps
 					SW <= "1000000001"; --hex - 1
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "0000000010"; -- binary - 2
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "1000000010"; --hex - 2
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "0000000100"; -- binary - 4
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "1000000100"; --hex - 4
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "0000001000"; -- binary - 8
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "1000001000"; --hex - 8
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "0000010000"; -- binary - 16
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "1000010000"; --hex - 16
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "0000100000"; -- binary - 32
-					wait TbPeriod;
+					wait for TbPeriod;
 					SW <= "1000100000"; --hex - 32
 			
-					assert false report "testbench complete" -- another terminal display
+					assert false report "testbench complete"; -- another terminal display
 					wait; -- prevents the test bench from looping back to the start
 					
 					

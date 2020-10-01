@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
 
--- DATE "10/01/2020 12:03:10"
+-- DATE "10/01/2020 15:31:28"
 
 -- 
 -- Device: Altera 10M50DAF484C6GES Package FBGA484
@@ -92,13 +92,13 @@ ENTITY 	top_level IS
 	clk : IN std_logic;
 	reset_n : IN std_logic;
 	SW : IN std_logic_vector(9 DOWNTO 0);
-	LEDR : OUT std_logic_vector(9 DOWNTO 0);
-	HEX0 : OUT std_logic_vector(7 DOWNTO 0);
-	HEX1 : OUT std_logic_vector(7 DOWNTO 0);
-	HEX2 : OUT std_logic_vector(7 DOWNTO 0);
-	HEX3 : OUT std_logic_vector(7 DOWNTO 0);
-	HEX4 : OUT std_logic_vector(7 DOWNTO 0);
-	HEX5 : OUT std_logic_vector(7 DOWNTO 0)
+	LEDR : BUFFER std_logic_vector(9 DOWNTO 0);
+	HEX0 : BUFFER std_logic_vector(7 DOWNTO 0);
+	HEX1 : BUFFER std_logic_vector(7 DOWNTO 0);
+	HEX2 : BUFFER std_logic_vector(7 DOWNTO 0);
+	HEX3 : BUFFER std_logic_vector(7 DOWNTO 0);
+	HEX4 : BUFFER std_logic_vector(7 DOWNTO 0);
+	HEX5 : BUFFER std_logic_vector(7 DOWNTO 0)
 	);
 END top_level;
 
