@@ -37,7 +37,11 @@ architecture behaviour of tb_top_level is
 				TbClk <= not TbClk after TbPeriod when TbSimEnd /= '1' else '0' ;
 			
 			
-			stimuli : Process begin
+			SIMULATION STIMULI: Process begin
+			
+							--initialize switches all to '0'
+					SW 	<= "0000000000";
+
 				
 				--checking operation of reset
 					reset_n <= '1';
@@ -45,20 +49,44 @@ architecture behaviour of tb_top_level is
 					reset_n <= '0';
 					wait for 40 ns;
 				
-				--initialize signals
-					SW 	<= "0000000000";
-					--LEDR 	<= '0000000000';
-					--HEX0	<= '0000000000';
-					--HEX1 	<= '00000000';
-					--HEX2   <= '00000000';  
-					--HEX3 	<= '00000000';
-					--HEX4	<= '00000000';
-					--HEX5 	<= '00000000';
-				--end initial
+										
+				--begin input switch stimulus (for SW)
+					wait for 40 * TbPeriod; --add spacing to the waveform display
+					--clock is already initialized and reset has been tested above
+					--only SW (pull switches) need to be simulated at this point
+					--Note: SW(9), the far left bit, is used to toggle hex or dec display,
+					-- the right most 8 bits, SW(7:0) are used for modifying the display value
+					
+					assert false report "top_level testbench start"; -- terminal display message in ModelSim
+					SW <= "0000000001"; -- binary - 1
+					wait TbPeriod;      -- these lines will just delay the switching so we can see the output in steps
+					SW <= "1000000001"; --hex - 1
+					wait TbPeriod;
+					SW <= "0000000010"; -- binary - 2
+					wait TbPeriod;
+					SW <= "1000000010"; --hex - 2
+					wait TbPeriod;
+					SW <= "0000000100"; -- binary - 4
+					wait TbPeriod;
+					SW <= "1000000100"; --hex - 4
+					wait TbPeriod;
+					SW <= "0000001000"; -- binary - 8
+					wait TbPeriod;
+					SW <= "1000001000"; --hex - 8
+					wait TbPeriod;
+					SW <= "0000010000"; -- binary - 16
+					wait TbPeriod;
+					SW <= "1000010000"; --hex - 16
+					wait TbPeriod;
+					SW <= "0000100000"; -- binary - 32
+					wait TbPeriod;
+					SW <= "1000100000"; --hex - 32
+			
+					assert false report "testbench complete" -- another terminal display
+					wait; -- prevents the test bench from looping back to the start
 					
 					
-				--begin input signal simulations
-					wait for 40 * TbPeriod;
+					
 				end process;
 					
 end behaviour;				

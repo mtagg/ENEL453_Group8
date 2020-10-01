@@ -33,7 +33,7 @@ architecture behavior OF tb_MUX_HEXDEC is
  
             
     -- Stimulus process 
-      SIMULATION STIMULI: process -- this process, in testbench/simulation code, is different than in design code
+      stim_process: process -- this process, in testbench/simulation code, is different than in design code
       begin
 		  assert false report "MUX_HEXDEC testbench started"; -- puts a note in the ModelSim transcript window (this line is just for convenience)
 		  slide <= '1';
