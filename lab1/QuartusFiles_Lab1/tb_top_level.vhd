@@ -28,10 +28,11 @@ architecture behaviour of tb_top_level is
 	
 			begin		
 				dut : top_level
-					port map (clk 		=> clk,
-							 reset_n => reset_n,
-							 SW      => SW);
-							 
+					port map 
+								(clk 		  => clk,
+								 reset_n   => reset_n,
+								 SW        => SW );
+									
 			--Clock will invert signal every Tbperiod until simulation ends
 				clk <= TbClk;
 				TbClk <= not TbClk after TbPeriod when TbSimEnd /= '1' else '0' ;

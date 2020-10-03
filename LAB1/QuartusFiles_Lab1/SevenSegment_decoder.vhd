@@ -34,8 +34,18 @@ begin
 				when "1001" => seven_seg(6 downto 0)<="1100111"; -- 9
 				
 				-- students add this block ------
+				--------------------------------------------------
+				-- MT START MODS 
+				-- This is the only modification to the seven Segment Decoder
+				-- This modification only extends the abilities of the decoder to 
+				-- output hex digits 10-15 (decimal 10-15), no other modifications were needed as hex decoding for 
+				--digits 0-9 are the same as the decimal decoding above.
 				
-				-- MT START MODS ; TI editted decodings
+				--EXAMPLE CASE: 
+					-- if the decoder sees the input bus with "1001" the appropriate 7 segment display
+					-- will output a 9; if the input bus reads "1111" the 7 segment display will 
+					-- output an F to the board.
+				--------------------------------------------------	
 				when "1010" => seven_seg(6 downto 0)<="1110111"; -- A
 				when "1011" => seven_seg(6 downto 0)<="1111100"; -- b
 				when "1100" => seven_seg(6 downto 0)<="0111001"; -- C
