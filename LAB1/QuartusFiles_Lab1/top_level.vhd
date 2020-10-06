@@ -17,10 +17,10 @@ architecture Behavioral of top_level is
 Signal Num_Hex0, Num_Hex1, Num_Hex2, Num_Hex3, Num_Hex4, Num_Hex5 : STD_LOGIC_VECTOR (3 downto 0):= (others=>'0');   
 Signal DP_in, Blank:  STD_LOGIC_VECTOR (5 downto 0);
 Signal switch_inputs: STD_LOGIC_VECTOR (12 downto 0);
-Signal bcd:           STD_LOGIC_VECTOR(15 DOWNTO 0);
+Signal bcd:           STD_LOGIC_VECTOR (15 DOWNTO 0);
 signal muxSW : 		 STD_LOGIC;	--MT 
-signal hex_input:		 STD_LOGIC_VECTOR(15 downto 0); --MT
-signal DATA_OUT:		 STD_LOGIC_VECTOR(15 downto 0); --MT
+signal hex_input:		 STD_LOGIC_VECTOR (15 downto 0); --MT
+signal DATA_OUT:		 STD_LOGIC_VECTOR (15 downto 0); --MT
 	--MT - muxSW and DATA_OUT are now goinh to be what determines the display output instead of auto decimal
 
 --MT START MODS
