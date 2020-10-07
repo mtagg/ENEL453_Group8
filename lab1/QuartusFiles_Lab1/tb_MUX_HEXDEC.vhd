@@ -21,7 +21,7 @@ architecture behavior OF tb_MUX_HEXDEC is
     signal   SLIDE                   : std_logic ;
     signal   DEC_IN,HEX_IN				 : std_logic_vector (15 downto 0);
 	 signal   DATA_OUT 					 : std_logic_vector (15 downto 0);
-	 constant time_delay              : time := 10 ns;
+	 constant time_delay              : time := 500 ns;
 	
 	
     BEGIN --start of the simulation logic

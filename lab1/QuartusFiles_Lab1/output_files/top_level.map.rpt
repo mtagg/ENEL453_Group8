@@ -1,38 +1,28 @@
-Analysis & Synthesis report for top_level
-Sat Oct 03 12:51:02 2020
-Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Analysis & Elaboration report for top_level
+Tue Oct 06 21:13:37 2020
+Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
 ---------------------
 ; Table of Contents ;
 ---------------------
   1. Legal Notice
-  2. Analysis & Synthesis Summary
-  3. Analysis & Synthesis Settings
-  4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |top_level|binary_bcd:binary_bcd_ins|CurentState
-  9. State Machine - |top_level|binary_bcd:binary_bcd_ins|\bcd_process:NextState
- 10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Port Connectivity Checks: "MUX_HEXDEC:MUX_HEXDEC_ins"
- 14. Port Connectivity Checks: "binary_bcd:binary_bcd_ins"
- 15. Port Connectivity Checks: "SevenSegment:SevenSegment_ins"
- 16. Post-Synthesis Netlist Statistics for Top Partition
- 17. Elapsed Time Per Partition
- 18. Analysis & Synthesis Messages
+  2. Analysis & Elaboration Summary
+  3. Parallel Compilation
+  4. Analysis & Elaboration Settings
+  5. Port Connectivity Checks: "MUX_HEXDEC:MUX_HEXDEC_ins"
+  6. Port Connectivity Checks: "binary_bcd:binary_bcd_ins"
+  7. Port Connectivity Checks: "SevenSegment:SevenSegment_ins"
+  8. Analysis & Elaboration Messages
 
 
 
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2018  Intel Corporation. All rights reserved.
+Copyright (C) 2020  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
-and other software and tools, and its AMPP partner logic 
+and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
@@ -42,34 +32,51 @@ the Intel FPGA IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
 Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details.
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
 
 
 
 +----------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                     ;
+; Analysis & Elaboration Summary                                                   ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Oct 03 12:51:02 2020       ;
-; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Analysis & Elaboration Status      ; Successful - Tue Oct 06 21:13:37 2020       ;
+; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                      ; top_level                                   ;
 ; Top-level Entity Name              ; top_level                                   ;
 ; Family                             ; MAX 10                                      ;
-; Total logic elements               ; 218                                         ;
-;     Total combinational functions  ; 197                                         ;
-;     Dedicated logic registers      ; 84                                          ;
-; Total registers                    ; 84                                          ;
-; Total pins                         ; 70                                          ;
-; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 0                                           ;
-; Embedded Multiplier 9-bit elements ; 0                                           ;
-; Total PLLs                         ; 0                                           ;
-; UFM blocks                         ; 0                                           ;
-; ADC blocks                         ; 0                                           ;
+; Total logic elements               ; N/A until Partition Merge                   ;
+;     Total combinational functions  ; N/A until Partition Merge                   ;
+;     Dedicated logic registers      ; N/A until Partition Merge                   ;
+; Total registers                    ; N/A until Partition Merge                   ;
+; Total pins                         ; N/A until Partition Merge                   ;
+; Total virtual pins                 ; N/A until Partition Merge                   ;
+; Total memory bits                  ; N/A until Partition Merge                   ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
+; Total PLLs                         ; N/A until Partition Merge                   ;
+; UFM blocks                         ; N/A until Partition Merge                   ;
+; ADC blocks                         ; N/A until Partition Merge                   ;
 +------------------------------------+---------------------------------------------+
 
 
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 1           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
++----------------------------+-------------+
+
+
 +------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Settings                                                                              ;
+; Analysis & Elaboration Settings                                                                            ;
 +------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                           ; Setting            ; Default Value      ;
 +------------------------------------------------------------------+--------------------+--------------------+
@@ -154,163 +161,6 @@ refer to the applicable agreement for further details.
 +------------------------------------------------------------------+--------------------+--------------------+
 
 
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 12          ;
-; Maximum allowed            ; 6           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 6           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-6         ;   0.0%      ;
-+----------------------------+-------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                             ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                      ; Library ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+---------+
-; top_level.vhd                    ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd            ;         ;
-; SevenSegment_decoder.vhd         ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment_decoder.vhd ;         ;
-; SevenSegment.vhd                 ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd         ;         ;
-; binary_bcd.vhd                   ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/binary_bcd.vhd           ;         ;
-; MUX_HEXDEC.vhd                   ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd           ;         ;
-+----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+---------+
-
-
-+-------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                 ;
-+---------------------------------------------+---------------+
-; Resource                                    ; Usage         ;
-+---------------------------------------------+---------------+
-; Estimated Total logic elements              ; 218           ;
-;                                             ;               ;
-; Total combinational functions               ; 197           ;
-; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 84            ;
-;     -- 3 input functions                    ; 33            ;
-;     -- <=2 input functions                  ; 80            ;
-;                                             ;               ;
-; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 133           ;
-;     -- arithmetic mode                      ; 64            ;
-;                                             ;               ;
-; Total registers                             ; 84            ;
-;     -- Dedicated logic registers            ; 84            ;
-;     -- I/O registers                        ; 0             ;
-;                                             ;               ;
-; I/O pins                                    ; 70            ;
-;                                             ;               ;
-; Embedded Multiplier 9-bit elements          ; 0             ;
-;                                             ;               ;
-; Maximum fan-out node                        ; reset_n~input ;
-; Maximum fan-out                             ; 100           ;
-; Total fan-out                               ; 1049          ;
-; Average fan-out                             ; 2.49          ;
-+---------------------------------------------+---------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                       ;
-+---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------+----------------------+--------------+
-; Compilation Hierarchy Node            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                                    ; Entity Name          ; Library Name ;
-+---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------+----------------------+--------------+
-; |top_level                            ; 197 (0)             ; 84 (0)                    ; 0           ; 0          ; 0            ; 0       ; 0         ; 70   ; 0            ; 0          ; |top_level                                                             ; top_level            ; work         ;
-;    |MUX_HEXDEC:MUX_HEXDEC_ins|        ; 16 (16)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|MUX_HEXDEC:MUX_HEXDEC_ins                                   ; MUX_HEXDEC           ; work         ;
-;    |SevenSegment:SevenSegment_ins|    ; 28 (0)              ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins                               ; SevenSegment         ; work         ;
-;       |SevenSegment_decoder:decoder0| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder0 ; SevenSegment_decoder ; work         ;
-;       |SevenSegment_decoder:decoder1| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder1 ; SevenSegment_decoder ; work         ;
-;       |SevenSegment_decoder:decoder2| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder2 ; SevenSegment_decoder ; work         ;
-;       |SevenSegment_decoder:decoder3| ; 7 (7)               ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder3 ; SevenSegment_decoder ; work         ;
-;    |binary_bcd:binary_bcd_ins|        ; 153 (153)           ; 84 (84)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |top_level|binary_bcd:binary_bcd_ins                                   ; binary_bcd           ; work         ;
-+---------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------------------------+----------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-Encoding Type:  One-Hot
-+---------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |top_level|binary_bcd:binary_bcd_ins|CurentState                                                                      ;
-+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
-; Name           ; CurentState.s6 ; CurentState.S5 ; CurentState.S4 ; CurentState.S3 ; CurentState.S2 ; CurentState.S1 ; CurentState.S0 ;
-+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
-; CurentState.S0 ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ; 0              ;
-; CurentState.S1 ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ; 1              ;
-; CurentState.S2 ; 0              ; 0              ; 0              ; 0              ; 1              ; 0              ; 1              ;
-; CurentState.S3 ; 0              ; 0              ; 0              ; 1              ; 0              ; 0              ; 1              ;
-; CurentState.S4 ; 0              ; 0              ; 1              ; 0              ; 0              ; 0              ; 1              ;
-; CurentState.S5 ; 0              ; 1              ; 0              ; 0              ; 0              ; 0              ; 1              ;
-; CurentState.s6 ; 1              ; 0              ; 0              ; 0              ; 0              ; 0              ; 1              ;
-+----------------+----------------+----------------+----------------+----------------+----------------+----------------+----------------+
-
-
-Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |top_level|binary_bcd:binary_bcd_ins|\bcd_process:NextState                                                                                                                                                   ;
-+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
-; Name                      ; \bcd_process:NextState.s6 ; \bcd_process:NextState.S5 ; \bcd_process:NextState.S4 ; \bcd_process:NextState.S3 ; \bcd_process:NextState.S2 ; \bcd_process:NextState.S1 ; \bcd_process:NextState.S0 ;
-+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
-; \bcd_process:NextState.S0 ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ;
-; \bcd_process:NextState.S1 ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 1                         ;
-; \bcd_process:NextState.S2 ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 1                         ;
-; \bcd_process:NextState.S3 ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 1                         ;
-; \bcd_process:NextState.S4 ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 1                         ;
-; \bcd_process:NextState.S5 ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ;
-; \bcd_process:NextState.s6 ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ;
-+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
-
-
-+--------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                       ;
-+-----------------------------------------------------+--------------------+
-; Register name                                       ; Reason for Removal ;
-+-----------------------------------------------------+--------------------+
-; binary_bcd:binary_bcd_ins|\bcd_process:NextState.S0 ; Lost fanout        ;
-; binary_bcd:binary_bcd_ins|\bcd_process:NextState.S1 ; Lost fanout        ;
-; binary_bcd:binary_bcd_ins|\bcd_process:NextState.S2 ; Lost fanout        ;
-; binary_bcd:binary_bcd_ins|\bcd_process:NextState.S3 ; Lost fanout        ;
-; binary_bcd:binary_bcd_ins|\bcd_process:NextState.S4 ; Lost fanout        ;
-; binary_bcd:binary_bcd_ins|\bcd_process:NextState.S5 ; Lost fanout        ;
-; binary_bcd:binary_bcd_ins|\bcd_process:NextState.s6 ; Lost fanout        ;
-; Total Number of Removed Registers = 7               ;                    ;
-+-----------------------------------------------------+--------------------+
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 84    ;
-; Number of registers using Synchronous Clear  ; 19    ;
-; Number of registers using Synchronous Load   ; 4     ;
-; Number of registers using Asynchronous Clear ; 77    ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 79    ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                    ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                          ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-; 5:1                ; 5 bits    ; 15 LEs        ; 5 LEs                ; 10 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[9]  ;
-; 5:1                ; 7 bits    ; 21 LEs        ; 14 LEs               ; 7 LEs                  ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[7]  ;
-; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[16] ;
-; 8:1                ; 4 bits    ; 20 LEs        ; 8 LEs                ; 12 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[18] ;
-; 10:1               ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[21] ;
-; 12:1               ; 4 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |top_level|binary_bcd:binary_bcd_ins|bcd_signal[27] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------+
-
-
 +-------------------------------------------------------+
 ; Port Connectivity Checks: "MUX_HEXDEC:MUX_HEXDEC_ins" ;
 +---------------+-------+----------+--------------------+
@@ -342,112 +192,48 @@ Encoding Type:  One-Hot
 +-------------+-------+----------+--------------------------+
 
 
-+-----------------------------------------------------+
-; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; boundary_port         ; 70                          ;
-; cycloneiii_ff         ; 84                          ;
-;     CLR               ; 5                           ;
-;     ENA               ; 7                           ;
-;     ENA CLR           ; 53                          ;
-;     ENA CLR SCLR      ; 15                          ;
-;     ENA CLR SCLR SLD  ; 4                           ;
-; cycloneiii_lcell_comb ; 202                         ;
-;     arith             ; 64                          ;
-;         2 data inputs ; 64                          ;
-;     normal            ; 138                         ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 9                           ;
-;         2 data inputs ; 11                          ;
-;         3 data inputs ; 33                          ;
-;         4 data inputs ; 84                          ;
-;                       ;                             ;
-; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 4.15                        ;
-+-----------------------+-----------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:02     ;
-+----------------+--------------+
-
-
-+-------------------------------+
-; Analysis & Synthesis Messages ;
-+-------------------------------+
++---------------------------------+
+; Analysis & Elaboration Messages ;
++---------------------------------+
 Info: *******************************************************************
-Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Oct 03 12:50:34 2020
-Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Group8_Lab1_ENCM453 -c top_level
+Info: Running Quartus Prime Analysis & Elaboration
+    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+    Info: Processing started: Tue Oct 06 21:13:22 2020
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Group8_Lab1_ENCM453 -c top_level --analysis_and_elaboration
+Info (125069): Default assignment values were changed in the current version of the Quartus Prime software -- changes to default assignments values are contained in file c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file tb_top_level.vhd
-    Info (12022): Found design unit 1: tb_top_level-behaviour File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/tb_top_level.vhd Line: 10
-    Info (12023): Found entity 1: tb_top_level File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/tb_top_level.vhd Line: 6
+    Info (12022): Found design unit 1: tb_top_level-behaviour File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/tb_top_level.vhd Line: 10
+    Info (12023): Found entity 1: tb_top_level File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/tb_top_level.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file tb_mux_hexdec.vhd
-    Info (12022): Found design unit 1: tb_MUX_HEXDEC-behavior File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/tb_MUX_HEXDEC.vhd Line: 10
-    Info (12023): Found entity 1: tb_MUX_HEXDEC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/tb_MUX_HEXDEC.vhd Line: 5
+    Info (12022): Found design unit 1: tb_MUX_HEXDEC-behavior File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/tb_MUX_HEXDEC.vhd Line: 10
+    Info (12023): Found entity 1: tb_MUX_HEXDEC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/tb_MUX_HEXDEC.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file top_level.vhd
-    Info (12022): Found design unit 1: top_level-Behavioral File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 15
-    Info (12023): Found entity 1: top_level File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 5
+    Info (12022): Found design unit 1: top_level-Behavioral File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 15
+    Info (12023): Found entity 1: top_level File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file sevensegment_decoder.vhd
-    Info (12022): Found design unit 1: SevenSegment_decoder-Behavioral File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment_decoder.vhd Line: 13
-    Info (12023): Found entity 1: SevenSegment_decoder File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment_decoder.vhd Line: 5
+    Info (12022): Found design unit 1: SevenSegment_decoder-Behavioral File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment_decoder.vhd Line: 13
+    Info (12023): Found entity 1: SevenSegment_decoder File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment_decoder.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file sevensegment.vhd
-    Info (12022): Found design unit 1: SevenSegment-Behavioral File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd Line: 11
-    Info (12023): Found entity 1: SevenSegment File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd Line: 5
+    Info (12022): Found design unit 1: SevenSegment-Behavioral File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment.vhd Line: 11
+    Info (12023): Found entity 1: SevenSegment File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file binary_bcd.vhd
-    Info (12022): Found design unit 1: binary_bcd-behavior File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/binary_bcd.vhd Line: 17
-    Info (12023): Found entity 1: binary_bcd File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/binary_bcd.vhd Line: 8
+    Info (12022): Found design unit 1: binary_bcd-behavior File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/binary_bcd.vhd Line: 17
+    Info (12023): Found entity 1: binary_bcd File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/binary_bcd.vhd Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file mux_hexdec.vhd
-    Info (12022): Found design unit 1: MUX_HEXDEC-synth File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 18
-    Info (12023): Found entity 1: MUX_HEXDEC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 8
+    Info (12022): Found design unit 1: MUX_HEXDEC-synth File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 18
+    Info (12023): Found entity 1: MUX_HEXDEC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 8
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at top_level.vhd(66): signal "SW" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 66
-Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:SevenSegment_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 70
-Info (12128): Elaborating entity "SevenSegment_decoder" for hierarchy "SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder0" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd Line: 24
-Info (12128): Elaborating entity "binary_bcd" for hierarchy "binary_bcd:binary_bcd_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 93
-Info (12128): Elaborating entity "MUX_HEXDEC" for hierarchy "MUX_HEXDEC:MUX_HEXDEC_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 106
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX3[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
-Info (286030): Timing-Driven Synthesis is running
-Info (17049): 7 registers lost all their fanouts during netlist optimizations.
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 288 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 12 input pins
-    Info (21059): Implemented 58 output pins
-    Info (21061): Implemented 218 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 4836 megabytes
-    Info: Processing ended: Sat Oct 03 12:51:02 2020
-    Info: Elapsed time: 00:00:28
-    Info: Total CPU time (on all processors): 00:00:57
+Warning (10492): VHDL Process Statement warning at top_level.vhd(66): signal "SW" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 66
+Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:SevenSegment_ins" File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 70
+Info (12128): Elaborating entity "SevenSegment_decoder" for hierarchy "SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder0" File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment.vhd Line: 24
+Info (12128): Elaborating entity "binary_bcd" for hierarchy "binary_bcd:binary_bcd_ins" File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 93
+Info (12128): Elaborating entity "MUX_HEXDEC" for hierarchy "MUX_HEXDEC:MUX_HEXDEC_ins" File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 106
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 4786 megabytes
+    Info: Processing ended: Tue Oct 06 21:13:38 2020
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:37
 
 
