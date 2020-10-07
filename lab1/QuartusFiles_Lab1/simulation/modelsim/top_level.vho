@@ -1,6 +1,6 @@
--- Copyright (C) 2018  Intel Corporation. All rights reserved.
+-- Copyright (C) 2020  Intel Corporation. All rights reserved.
 -- Your use of Intel Corporation's design tools, logic functions 
--- and other software and tools, and its AMPP partner logic 
+-- and other software and tools, and any partner logic 
 -- functions, and any output files from any of the foregoing 
 -- (including device programming or simulation files), and any 
 -- associated documentation or information are expressly subject 
@@ -10,13 +10,14 @@
 -- agreement, including, without limitation, that your use is for
 -- the sole purpose of programming logic devices manufactured by
 -- Intel and sold by Intel or its authorized distributors.  Please
--- refer to the applicable agreement for further details.
+-- refer to the applicable agreement for further details, at
+-- https://fpgasoftware.intel.com/eula.
 
 -- VENDOR "Altera"
 -- PROGRAM "Quartus Prime"
--- VERSION "Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition"
+-- VERSION "Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition"
 
--- DATE "10/03/2020 12:51:38"
+-- DATE "10/06/2020 17:28:22"
 
 -- 
 -- Device: Altera 10M50DAF484C6GES Package FBGA484
@@ -544,10 +545,10 @@ SIGNAL \SevenSegment_ins|decoder3|Mux0~0_combout\ : std_logic;
 SIGNAL \binary_bcd_ins|bcd_signal\ : std_logic_vector(28 DOWNTO 0);
 SIGNAL \binary_bcd_ins|bcd\ : std_logic_vector(15 DOWNTO 0);
 SIGNAL \binary_bcd_ins|counter\ : std_logic_vector(31 DOWNTO 0);
-SIGNAL \SevenSegment_ins|decoder3|ALT_INV_Mux0~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder2|ALT_INV_Mux0~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder1|ALT_INV_Mux0~0_combout\ : std_logic;
 SIGNAL \SevenSegment_ins|decoder0|ALT_INV_Mux0~0_combout\ : std_logic;
+SIGNAL \SevenSegment_ins|decoder3|ALT_INV_Mux0~0_combout\ : std_logic;
 
 COMPONENT hard_block
     PORT (
@@ -577,10 +578,10 @@ ww_devpor <= devpor;
 \~QUARTUS_CREATED_ADC2~_CHSEL_bus\ <= (\~QUARTUS_CREATED_GND~I_combout\ & \~QUARTUS_CREATED_GND~I_combout\ & \~QUARTUS_CREATED_GND~I_combout\ & \~QUARTUS_CREATED_GND~I_combout\ & \~QUARTUS_CREATED_GND~I_combout\);
 
 \clk~inputclkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \clk~input_o\);
-\SevenSegment_ins|decoder3|ALT_INV_Mux0~0_combout\ <= NOT \SevenSegment_ins|decoder3|Mux0~0_combout\;
 \SevenSegment_ins|decoder2|ALT_INV_Mux0~0_combout\ <= NOT \SevenSegment_ins|decoder2|Mux0~0_combout\;
 \SevenSegment_ins|decoder1|ALT_INV_Mux0~0_combout\ <= NOT \SevenSegment_ins|decoder1|Mux0~0_combout\;
 \SevenSegment_ins|decoder0|ALT_INV_Mux0~0_combout\ <= NOT \SevenSegment_ins|decoder0|Mux0~0_combout\;
+\SevenSegment_ins|decoder3|ALT_INV_Mux0~0_combout\ <= NOT \SevenSegment_ins|decoder3|Mux0~0_combout\;
 auto_generated_inst : hard_block
 PORT MAP (
 	devoe => ww_devoe,
@@ -6231,7 +6232,9 @@ PORT MAP (
 GENERIC MAP (
 	addr_range1_end_addr => -1,
 	addr_range1_offset => -1,
+	addr_range2_end_addr => -1,
 	addr_range2_offset => -1,
+	addr_range3_offset => -1,
 	is_compressed_image => "false",
 	is_dual_boot => "false",
 	is_eram_skip => "false",

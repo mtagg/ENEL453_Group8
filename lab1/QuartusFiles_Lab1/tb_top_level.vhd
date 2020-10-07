@@ -22,7 +22,7 @@ architecture behaviour of tb_top_level is
 	signal LEDR									 :  STD_LOGIC_VECTOR(9 downto 0);
 	signal HEX0,HEX1,HEX2,HEX3,HEX4,HEX5 :  STD_LOGIC_VECTOR(7 downto 0);
 	
-	constant TbPeriod : time	 		:=  10 ns;
+	constant TbPeriod : time	 		:=  100 ns;
 	signal TbClk 		: STD_LOGIC    := '0';
 	signal TbSimEnd	: STD_LOGIC 	:= '0';
 	
@@ -79,9 +79,17 @@ architecture behaviour of tb_top_level is
 					wait for 100*TbPeriod;
 					SW <= "1000010000"; --hex - 16
 					wait for 100*TbPeriod;
-					SW <= "0000100000"; -- binary - 32
+					
+					--TI START 
+					--reset_n <= '0';     --added reset to demonstrate values resetting
+					--wait for 100*TbPeriod;
+					--reset_n <= '1';	  --reset button no longer pressed
+					--wait for 100*TbPeriod;
+					--TI END
+					
+					SW <= "0010000000"; -- binary - 128
 					wait for 100*TbPeriod;
-					SW <= "1000100000"; --hex - 32
+					SW <= "1010000000"; --hex - 128 (80 in hex)
 					TbSimEnd <= '1';
 					assert false report "testbench complete"; -- another terminal display
 					wait; -- prevents the test bench from looping back to the start
