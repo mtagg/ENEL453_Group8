@@ -66,14 +66,6 @@ architecture behaviour of tb_top_level is
 				wait for 200*TbPeriod;
 				SW <= "0000000100"; -- binary - 4
 				wait for 200*TbPeriod;
-				
-				--TI START 
-				reset_n <= '0';     --added reset to demonstrate values resetting
-				wait for 200*TbPeriod;
-				reset_n <= '1';	  --reset button no longer pressed
-				wait for 200*TbPeriod;
-				--TI END
-									
 				SW <= "0000001000"; -- binary - 8
 				wait for 200*TbPeriod;
 				SW <= "0000010000"; -- binary - 16
@@ -87,14 +79,22 @@ architecture behaviour of tb_top_level is
 				wait for 200*TbPeriod;
 				SW <= "1000000100"; --hex - 4
 				wait for 200*TbPeriod;
+				
+				--TI START 
+				reset_n <= '0';     --added reset to demonstrate values resetting
+				wait for 200*TbPeriod;
+				reset_n <= '1';	  --reset button no longer pressed
+				wait for 200*TbPeriod;
+				--TI END
+				
 				SW <= "1000001000"; --hex - 8
 				wait for 200*TbPeriod;
-				SW <= "1000010000"; --hex - 16
+				SW <= "1000010000"; --hex - 10 (decimal 16)
 				wait for 200*TbPeriod;
-				SW <= "1010000000"; --hex - 80 (binary 128)
+				SW <= "1010000000"; --hex - 80 (decimal 128)
 				wait for 200*TbPeriod;
 				TbSimEnd <= '1';
-				wait for 200*TbPeriod;
+				
 			assert false report "testbench complete"; -- another terminal display
 			wait; -- prevents the test bench from looping back to the start
 				
