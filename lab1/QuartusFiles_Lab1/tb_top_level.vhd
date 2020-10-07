@@ -22,7 +22,7 @@ architecture behaviour of tb_top_level is
 	signal LEDR									 :  STD_LOGIC_VECTOR(9 downto 0);
 	signal HEX0,HEX1,HEX2,HEX3,HEX4,HEX5 :  STD_LOGIC_VECTOR(7 downto 0);
 	
-	constant TbPeriod : time	 		:=  10 ns;
+	constant TbPeriod : time	 		:=  100 ns;
 	signal TbClk 		: STD_LOGIC    := '0';
 	signal TbSimEnd	: STD_LOGIC 	:= '0';
 	
@@ -50,45 +50,54 @@ architecture behaviour of tb_top_level is
 					reset_n <= '1';
 					
 				
-										
-				--begin input switch stimulus (for SW)
-					wait for 100*TbPeriod; --add spacing to the waveform display
+			--begin input switch stimulus (for SW)
+			wait for 100*TbPeriod; --add spacing to the waveform display
+					
 					--clock is already initialized and reset has been tested above
 					--only SW (pull switches) need to be simulated at this point
 					--Note: SW(9), the far left bit, is used to toggle hex or dec display,
 					-- the right most 8 bits, SW(7:0) are used for modifying the display value
 					
-					assert false report "top_level testbench start"; -- terminal display message in ModelSim
-					SW <= "0000000001"; -- binary - 1
-					wait for 100*TbPeriod;      -- these lines will just delay the switching so we can see the output in steps
-					SW <= "1000000001"; --hex - 1
-					wait for 100*TbPeriod;
-					SW <= "0000000010"; -- binary - 2
-					wait for 100*TbPeriod;
-					SW <= "1000000010"; --hex - 2
-					wait for 100*TbPeriod;
-					SW <= "0000000100"; -- binary - 4
-					wait for 100*TbPeriod;
-					SW <= "1000000100"; --hex - 4
-					wait for 100*TbPeriod;
-					SW <= "0000001000"; -- binary - 8
-					wait for 100*TbPeriod;
-					SW <= "1000001000"; --hex - 8
-					wait for 100*TbPeriod;
-					SW <= "0000010000"; -- binary - 16
-					wait for 100*TbPeriod;
-					SW <= "1000010000"; --hex - 16
-					wait for 100*TbPeriod;
-					SW <= "0000100000"; -- binary - 32
-					wait for 100*TbPeriod;
-					SW <= "1000100000"; --hex - 32
-					TbSimEnd <= '1';
-					assert false report "testbench complete"; -- another terminal display
-					wait; -- prevents the test bench from looping back to the start
-					
-					
-					
-				end process;
+			assert false report "top_level testbench start"; -- terminal display message in ModelSim
+				
+				SW <= "0000000001"; -- binary - 1
+				wait for 200*TbPeriod;      -- these lines will just delay the switching so we can see the output in steps
+				SW <= "0000000010"; -- binary - 2
+				wait for 200*TbPeriod;
+				SW <= "0000000100"; -- binary - 4
+				wait for 200*TbPeriod;
+				SW <= "0000001000"; -- binary - 8
+				wait for 200*TbPeriod;
+				SW <= "0000010000"; -- binary - 16
+				wait for 200*TbPeriod;
+				SW <= "0010000000"; -- binary - 128
+				wait for 200*TbPeriod;
+				
+				SW <= "1000000001"; --hex - 1
+				wait for 200*TbPeriod;
+				SW <= "1000000010"; --hex - 2
+				wait for 200*TbPeriod;
+				SW <= "1000000100"; --hex - 4
+				wait for 200*TbPeriod;
+				SW <= "1000001000"; --hex - 8
+				wait for 200*TbPeriod;
+				SW <= "1000010000"; --hex - 16
+				wait for 200*TbPeriod;
+				SW <= "1010000000"; --hex - 80 (binary 128)
+				wait for 200*TbPeriod;
+				TbSimEnd <= '1';
+				wait for 200*TbPeriod;
+			assert false report "testbench complete"; -- another terminal display
+			wait; -- prevents the test bench from looping back to the start
+				
+				--TI START 
+				--reset_n <= '0';     --added reset to demonstrate values resetting
+				--wait for 100*TbPeriod;
+				--reset_n <= '1';	  --reset button no longer pressed
+				--wait for 100*TbPeriod;
+				--TI END
+									
+	end process;
 					
 end behaviour;				
 --MT END
