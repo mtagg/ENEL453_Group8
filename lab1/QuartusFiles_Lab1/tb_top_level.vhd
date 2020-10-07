@@ -60,27 +60,27 @@ architecture behaviour of tb_top_level is
 					
 					assert false report "top_level testbench start"; -- terminal display message in ModelSim
 					SW <= "0000000001"; -- binary - 1
-					wait for 200*TbPeriod;      -- these lines will just delay the switching so we can see the output in steps
-					SW <= "0000000010"; -- binary - 2
-					wait for 200*TbPeriod;
-					SW <= "0000000100"; -- binary - 4
-					wait for 200*TbPeriod;
-					SW <= "0000001000"; -- binary - 8
-					wait for 200*TbPeriod;
-					SW <= "0000010000"; -- binary - 16
-					wait for 200*TbPeriod;
-					SW <= "0000100000"; -- binary - 32
-					wait for 200*TbPeriod;
+					wait for 100*TbPeriod;      -- these lines will just delay the switching so we can see the output in steps
 					SW <= "1000000001"; --hex - 1
-					wait for 200*TbPeriod;
+					wait for 100*TbPeriod;
+					SW <= "0000000010"; -- binary - 2
+					wait for 100*TbPeriod;
 					SW <= "1000000010"; --hex - 2
-					wait for 200*TbPeriod;
+					wait for 100*TbPeriod;
+					SW <= "0000000100"; -- binary - 4
+					wait for 100*TbPeriod;
 					SW <= "1000000100"; --hex - 4
-					wait for 200*TbPeriod;
+					wait for 100*TbPeriod;
+					SW <= "0000001000"; -- binary - 8
+					wait for 100*TbPeriod;
 					SW <= "1000001000"; --hex - 8
-					wait for 200*TbPeriod;
+					wait for 100*TbPeriod;
+					SW <= "0000010000"; -- binary - 16
+					wait for 100*TbPeriod;
 					SW <= "1000010000"; --hex - 16
-					wait for 200*TbPeriod;
+					wait for 100*TbPeriod;
+					SW <= "0000100000"; -- binary - 32
+					wait for 100*TbPeriod;
 					SW <= "1000100000"; --hex - 32
 					TbSimEnd <= '1';
 					assert false report "testbench complete"; -- another terminal display
