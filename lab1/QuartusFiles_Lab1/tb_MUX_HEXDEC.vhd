@@ -21,7 +21,7 @@ architecture behavior OF tb_MUX_HEXDEC is
     signal   SLIDE                   : std_logic ;
     signal   DEC_IN,HEX_IN				 : std_logic_vector (15 downto 0);
 	 signal   DATA_OUT 					 : std_logic_vector (15 downto 0);
-	 constant time_delay              : time := 10 ns;
+	 constant time_delay              : time := 500 ns; --TI: changing this value for modelsim purposes (= 0.5us)
 	
 	
     BEGIN --start of the simulation logic
@@ -42,25 +42,34 @@ architecture behavior OF tb_MUX_HEXDEC is
 		  assert false report "MUX_HEXDEC testbench started"; -- puts a note in the ModelSim transcript window (this line is just for convenience)
 		  slide <= '1';
 		  dec_in <= "0000111100000000"; hex_in <= "0000000011110000";
-        wait for time_delay;
+        wait for 10*time_delay;
+		  
 		  slide <= '0'; 
-		  wait for time_delay;
+		  wait for 10*time_delay;
 		  dec_in <= "0101010101010101"; hex_in <= "1111111110101010"; 
-        wait for time_delay;
+        wait for 10*time_delay;
+		 
 		  slide <= '1';
-		  wait for time_delay;
+		  wait for 10*time_delay;
 		  dec_in <= "1010101010101010"; hex_in <= "0000000001010101"; 
-		  wait for time_delay;
+		  wait for 10*time_delay;
+		  
 		  slide <= '0'; 	
-		  wait for time_delay;
+		  wait for 10*time_delay;
 		  dec_in <= "0110011100010001"; hex_in <= "0000000011001100"; 
-		  wait for time_delay;
+		  wait for 10*time_delay;
+		  
 		  slide <= '1';
-		  wait for time_delay;
+		  wait for 10*time_delay;
 		  dec_in <= "1111000010101010"; hex_in <= "0111111111111111"; 		  
-        wait for time_delay;
-		  slide <= '0'; 
-		  wait for 10*time_delay; -- this extends the time by 10x the time_delay, for ease of veiwing waveforms
+        wait for 10*time_delay;
+		  
+		  slide <= '0';			  -- SLIDE = 0 : DATA_OUT = DEC_IN
+		  wait for 10*time_delay;
+		  
+		  slide <= '1';			  -- SLIDE = 1 : DATA_OUT = HEX_IN
+		  wait for 10*time_delay; -- this extends the time by 10x the time_delay, for ease of viewing waveforms
+		  
 		  assert false report "MUX_HEXDEC testbench completed"; -- puts a note in the ModelSim transcript window (this line is just for convenience)
         wait;	-- this wait without any time parameters just stops the simulation, otherwise it would repeat forever starting back at the top  
 

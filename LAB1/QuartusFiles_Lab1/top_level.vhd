@@ -19,9 +19,9 @@ Signal DP_in, Blank:  STD_LOGIC_VECTOR (5 downto 0);
 Signal switch_inputs: STD_LOGIC_VECTOR (12 downto 0);
 Signal bcd:           STD_LOGIC_VECTOR (15 DOWNTO 0);
 signal muxSW : 		 STD_LOGIC;	--MT 
-signal hex_input:		 STD_LOGIC_VECTOR (15 downto 0); --MT
+signal hex_input:		 STD_LOGIC_VECTOR (15 downto 0); --MT ; binary representation of number
 signal DATA_OUT:		 STD_LOGIC_VECTOR (15 downto 0); --MT
-	--MT - muxSW and DATA_OUT are now goinh to be what determines the display output instead of auto decimal
+	--MT - muxSW and DATA_OUT are now going to be what determines the display output instead of auto decimal
 
 --MT START MODS
 
@@ -58,15 +58,17 @@ begin
    Num_Hex5 <= "0000";   
    DP_in    <= "000000"; -- position of the decimal point in the display (1=LED on,0=LED off)
    Blank    <= "110000"; -- blank the 2 MSB 7-segment displays (1=7-seg display off, 0=7-seg display on)
--- MT BEGIN MODS
+
+	-- MT BEGIN MODS
 reset_process: process (reset_n) begin
-	if (reset_n= '0') then 
+	if (reset_n = '0') then 
 				muxSW <= '0';
 			else 
 				muxSW <= SW(9);
 			end if;
 	end process;
 --MT END MODS
+
 SevenSegment_ins: SevenSegment  
 
                   PORT MAP( Num_Hex0 => Num_Hex0,
