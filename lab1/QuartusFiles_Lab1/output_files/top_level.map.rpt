@@ -1,6 +1,6 @@
 Analysis & Synthesis report for top_level
-Tue Oct 06 21:36:18 2020
-Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Tue Oct 06 22:52:08 2020
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
 ---------------------
@@ -30,9 +30,9 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2020  Intel Corporation. All rights reserved.
+Copyright (C) 2018  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
-and other software and tools, and any partner logic 
+and other software and tools, and its AMPP partner logic 
 functions, and any output files from any of the foregoing 
 (including device programming or simulation files), and any 
 associated documentation or information are expressly subject 
@@ -42,16 +42,15 @@ the Intel FPGA IP License Agreement, or other applicable license
 agreement, including, without limitation, that your use is for
 the sole purpose of programming logic devices manufactured by
 Intel and sold by Intel or its authorized distributors.  Please
-refer to the applicable agreement for further details, at
-https://fpgasoftware.intel.com/eula.
+refer to the applicable agreement for further details.
 
 
 
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Oct 06 21:36:18 2020       ;
-; Quartus Prime Version              ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
+; Analysis & Synthesis Status        ; Successful - Tue Oct 06 22:52:08 2020       ;
+; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; top_level                                   ;
 ; Top-level Entity Name              ; top_level                                   ;
 ; Family                             ; MAX 10                                      ;
@@ -160,29 +159,30 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 8           ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 8           ;
+; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-6         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                            ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                     ; Library ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------+---------+
-; top_level.vhd                    ; yes             ; User VHDL File  ; C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd            ;         ;
-; SevenSegment_decoder.vhd         ; yes             ; User VHDL File  ; C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment_decoder.vhd ;         ;
-; SevenSegment.vhd                 ; yes             ; User VHDL File  ; C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment.vhd         ;         ;
-; binary_bcd.vhd                   ; yes             ; User VHDL File  ; C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/binary_bcd.vhd           ;         ;
-; MUX_HEXDEC.vhd                   ; yes             ; User VHDL File  ; C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/MUX_HEXDEC.vhd           ;         ;
-+----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                             ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                      ; Library ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+---------+
+; top_level.vhd                    ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd            ;         ;
+; SevenSegment_decoder.vhd         ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment_decoder.vhd ;         ;
+; SevenSegment.vhd                 ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd         ;         ;
+; binary_bcd.vhd                   ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/binary_bcd.vhd           ;         ;
+; MUX_HEXDEC.vhd                   ; yes             ; User VHDL File  ; S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd           ;         ;
++----------------------------------+-----------------+-----------------+-----------------------------------------------------------------------------------+---------+
 
 
 +-------------------------------------------------------------+
@@ -383,60 +383,59 @@ Encoding Type:  One-Hot
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Tue Oct 06 21:36:00 2020
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Tue Oct 06 22:51:53 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Group8_Lab1_ENCM453 -c top_level
-Info (125069): Default assignment values were changed in the current version of the Quartus Prime software -- changes to default assignments values are contained in file c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file tb_top_level.vhd
-    Info (12022): Found design unit 1: tb_top_level-behaviour File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/tb_top_level.vhd Line: 10
-    Info (12023): Found entity 1: tb_top_level File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/tb_top_level.vhd Line: 6
+    Info (12022): Found design unit 1: tb_top_level-behaviour File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/tb_top_level.vhd Line: 10
+    Info (12023): Found entity 1: tb_top_level File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/tb_top_level.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file tb_mux_hexdec.vhd
-    Info (12022): Found design unit 1: tb_MUX_HEXDEC-behavior File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/tb_MUX_HEXDEC.vhd Line: 10
-    Info (12023): Found entity 1: tb_MUX_HEXDEC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/tb_MUX_HEXDEC.vhd Line: 5
+    Info (12022): Found design unit 1: tb_MUX_HEXDEC-behavior File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/tb_MUX_HEXDEC.vhd Line: 10
+    Info (12023): Found entity 1: tb_MUX_HEXDEC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/tb_MUX_HEXDEC.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file top_level.vhd
-    Info (12022): Found design unit 1: top_level-Behavioral File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 15
-    Info (12023): Found entity 1: top_level File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 5
+    Info (12022): Found design unit 1: top_level-Behavioral File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 15
+    Info (12023): Found entity 1: top_level File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file sevensegment_decoder.vhd
-    Info (12022): Found design unit 1: SevenSegment_decoder-Behavioral File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment_decoder.vhd Line: 13
-    Info (12023): Found entity 1: SevenSegment_decoder File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment_decoder.vhd Line: 5
+    Info (12022): Found design unit 1: SevenSegment_decoder-Behavioral File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment_decoder.vhd Line: 13
+    Info (12023): Found entity 1: SevenSegment_decoder File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment_decoder.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file sevensegment.vhd
-    Info (12022): Found design unit 1: SevenSegment-Behavioral File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment.vhd Line: 11
-    Info (12023): Found entity 1: SevenSegment File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment.vhd Line: 5
+    Info (12022): Found design unit 1: SevenSegment-Behavioral File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd Line: 11
+    Info (12023): Found entity 1: SevenSegment File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file binary_bcd.vhd
-    Info (12022): Found design unit 1: binary_bcd-behavior File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/binary_bcd.vhd Line: 17
-    Info (12023): Found entity 1: binary_bcd File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/binary_bcd.vhd Line: 8
+    Info (12022): Found design unit 1: binary_bcd-behavior File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/binary_bcd.vhd Line: 17
+    Info (12023): Found entity 1: binary_bcd File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/binary_bcd.vhd Line: 8
 Info (12021): Found 2 design units, including 1 entities, in source file mux_hexdec.vhd
-    Info (12022): Found design unit 1: MUX_HEXDEC-synth File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 18
-    Info (12023): Found entity 1: MUX_HEXDEC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 8
+    Info (12022): Found design unit 1: MUX_HEXDEC-synth File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 18
+    Info (12023): Found entity 1: MUX_HEXDEC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/MUX_HEXDEC.vhd Line: 8
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at top_level.vhd(66): signal "SW" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 66
-Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:SevenSegment_ins" File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 70
-Info (12128): Elaborating entity "SevenSegment_decoder" for hierarchy "SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder0" File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/SevenSegment.vhd Line: 24
-Info (12128): Elaborating entity "binary_bcd" for hierarchy "binary_bcd:binary_bcd_ins" File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 93
-Info (12128): Elaborating entity "MUX_HEXDEC" for hierarchy "MUX_HEXDEC:MUX_HEXDEC_ins" File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 106
+Warning (10492): VHDL Process Statement warning at top_level.vhd(67): signal "SW" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 67
+Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:SevenSegment_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 72
+Info (12128): Elaborating entity "SevenSegment_decoder" for hierarchy "SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder0" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/SevenSegment.vhd Line: 24
+Info (12128): Elaborating entity "binary_bcd" for hierarchy "binary_bcd:binary_bcd_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 95
+Info (12128): Elaborating entity "MUX_HEXDEC" for hierarchy "MUX_HEXDEC:MUX_HEXDEC_ins" File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 108
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX3[7]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX4[7]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
-    Warning (13410): Pin "HEX5[7]" is stuck at VCC File: C:/Users/Tahseen/Documents/GitHub/ENEL453_Group8/LAB1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX1[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX2[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX3[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX4[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
+    Warning (13410): Pin "HEX5[7]" is stuck at VCC File: S:/QuartusProjects/ENEL453_Group8/lab1/QuartusFiles_Lab1/top_level.vhd Line: 10
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 7 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -446,9 +445,9 @@ Info (21057): Implemented 288 device resources after synthesis - the final resou
     Info (21059): Implemented 58 output pins
     Info (21061): Implemented 218 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 4831 megabytes
-    Info: Processing ended: Tue Oct 06 21:36:19 2020
-    Info: Elapsed time: 00:00:19
-    Info: Total CPU time (on all processors): 00:00:40
+    Info: Peak virtual memory: 4838 megabytes
+    Info: Processing ended: Tue Oct 06 22:52:08 2020
+    Info: Elapsed time: 00:00:15
+    Info: Total CPU time (on all processors): 00:00:28
 
 
