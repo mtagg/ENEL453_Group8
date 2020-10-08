@@ -59,15 +59,7 @@ begin
    DP_in    <= "000000"; -- position of the decimal point in the display (1=LED on,0=LED off)
    Blank    <= "110000"; -- blank the 2 MSB 7-segment displays (1=7-seg display off, 0=7-seg display on)
 
-	-- MT BEGIN MODS
-reset_process: process (reset_n) begin
-	if (reset_n = '0') then 
-				muxSW <= '0';
-			else 
-				muxSW <= SW(9);
-			end if;
-	end process;
---MT END MODS
+	muxSW <= SW(9) when reset_n = '1' else '0';
 
 SevenSegment_ins: SevenSegment  
 
