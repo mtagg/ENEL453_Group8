@@ -24,3 +24,14 @@ lab1/QuartusFiles_Lab1/db/top_level.map.kpt
 *.summary
 *.rpt
 *.done
+*.sci
+*.db_info
+*.cdb
+*.hdb
+*.bpm
+*.qmsg
+*.rdb
+*.db_info
+*.vho
+*.sof
+*.summary
