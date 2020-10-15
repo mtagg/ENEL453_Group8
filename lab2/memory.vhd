@@ -4,9 +4,9 @@ use ieee.numeric_std.all;
 
 
 entity memory is
-		port( save_n		  :in  STD_LOGIC;
-				BITS_IN 		:in  STD_LOGIC_VECTOR(9 downto 0);
-				BITS_OUT		:out STD_LOGIC_VECTOR(9 downto 0) := (others=>'0') --initial saved memory to 0
+		port( save_n		:in  STD_LOGIC;
+				BITS_IN 	   :in  STD_LOGIC_VECTOR(15 downto 0);
+				BITS_OUT		:out STD_LOGIC_VECTOR(15 downto 0) := (others=>'0') --initial saved memory to 0
 				);
 end entity;
 

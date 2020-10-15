@@ -49,11 +49,12 @@ component debounce is
 	end component;
 
 component displayMUX is
-		port ( reset_n    : in  STD_LOGIC;
+		port ( clk 			: in  STD_LOGIC;
+				 reset_n    : in  STD_LOGIC;
 				 save       : in  STD_LOGIC;
 				 SWsync		: in  STD_LOGIC_VECTOR( 9 downto 0);	
 				 BCD_IN 	   : in  STD_LOGIC_VECTOR(15 downto 0);		
-				 DATA_OUT   : out STD_LOGIC_VECTOR(15 downto 0)
+				 DATA_OUT   : buffer STD_LOGIC_VECTOR(15 downto 0)
 				);
 	end component;
 
@@ -78,10 +79,10 @@ component binary_bcd IS
 
 
 begin
-   Num_Hex0 <= DATA_OUT(3  downto  0); --switched to the MUX output 'DATA_OUT' instead of just the BCD output
-   Num_Hex1 <= DATA_OUT(7  downto  4); -- ""
-   Num_Hex2 <= DATA_OUT(11 downto  8); -- ""
-   Num_Hex3 <= DATA_OUT(15 downto 12); -- ""
+   Num_Hex0 <= DATA_OUT(3  downto  0); -- Data output after 4:1 mux selection
+   Num_Hex1 <= DATA_OUT(7  downto  4); --""
+   Num_Hex2 <= DATA_OUT(11 downto  8); --""
+   Num_Hex3 <= DATA_OUT(15 downto 12); --""
    Num_Hex4 <= "0000";						-- segment 4 off
    Num_Hex5 <= "0000";   					-- segment 5 off
    DP_in    <= "000000"; 					-- position of the decimal point in the display (1=LED on,0=LED off)
@@ -118,6 +119,7 @@ binary_bcd_ins : binary_bcd
 			
 displayMUX_ins : displayMUX		
 		PORT MAP(
+			clk       => clk,
 			reset_n   => reset_n,    
 			save      => save,
 			SWsync    => SWsync,
