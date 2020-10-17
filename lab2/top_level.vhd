@@ -27,9 +27,7 @@ architecture Behavioral of top_level is
 	Signal bcd					: STD_LOGIC_VECTOR (15 DOWNTO 0);
 	signal DATA_OUT			: STD_LOGIC_VECTOR (15 downto 0); 
 	signal SWsync				: STD_LOGIC_VECTOR (9  downto 0);
-	signal save 				: STD_LOGIC;
-
-
+	signal DBsave_n			: STD_LOGIC;
 
 
 component synchro is
@@ -51,7 +49,7 @@ component debounce is
 component displayMUX is
 		port ( clk 			: in  STD_LOGIC;
 				 reset_n    : in  STD_LOGIC;
-				 save       : in  STD_LOGIC;
+				 save_n       : in  STD_LOGIC;
 				 SWsync		: in  STD_LOGIC_VECTOR( 9 downto 0);	
 				 BCD_IN 	   : in  STD_LOGIC_VECTOR(15 downto 0);		
 				 DATA_OUT   : buffer STD_LOGIC_VECTOR(15 downto 0)
@@ -121,7 +119,7 @@ displayMUX_ins : displayMUX
 		PORT MAP(
 			clk       => clk,
 			reset_n   => reset_n,    
-			save      => save,
+			save_n    => DBsave_n,
 			SWsync    => SWsync,
 			BCD_IN 	 => bcd,
 			DATA_OUT  => DATA_OUT
@@ -139,7 +137,7 @@ debounce_ins : debounce
 			clk		 => clk,
 			reset_n   => reset_n,
 			button    => save_n,
-			result    => save
+			result    => DBsave_n
 			);
 
 end architecture; --end of top_level 

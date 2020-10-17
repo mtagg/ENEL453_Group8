@@ -12,7 +12,8 @@ end entity;
 
 
 architecture synchronize of synchro is
-	signal mid	: STD_LOGIC_VECTOR(9 downto 0);
+	signal mid	: STD_LOGIC_VECTOR (9 downto 0) := (others => '0');
+	
 	begin 
 		process (clk) begin
 		

@@ -1,94 +1,118 @@
---MT START 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use ieee.numeric_std.all;
+-- Testbench automatically generated online
+-- at https://vhdl.lapinoo.net
+-- Generation date : 17.10.2020 20:55:23 UTC
+
+library ieee;
+use ieee.std_logic_1164.all;
 
 entity tb_top_level is
-	end tb_top_level;
-	
-	
-architecture behaviour of tb_top_level is
-	component top_level
-			port ( clk 									 : in STD_LOGIC;
-					 reset_n 	                   : in STD_LOGIC;
-					 SW									 : in STD_LOGIC_VECTOR(9 downto 0);
-					 LEDR									 : out STD_LOGIC_VECTOR(9 downto 0);
-					 HEX0,HEX1,HEX2,HEX3,HEX4,HEX5 : out STD_LOGIC_VECTOR(9 downto 0) );
-	end component;
-	
-	signal clk 									 :  STD_LOGIC;
-	signal reset_n 	                   :  STD_LOGIC;
-	signal SW									 :  STD_LOGIC_VECTOR(9 downto 0);
-	signal LEDR									 :  STD_LOGIC_VECTOR(9 downto 0);
-	signal HEX0,HEX1,HEX2,HEX3,HEX4,HEX5 :  STD_LOGIC_VECTOR(7 downto 0);
-	
-	constant TbPeriod : time	 		:=  10 ns;
-	signal TbClk 		: STD_LOGIC    := '0';
-	signal TbSimEnd	: STD_LOGIC 	:= '0';
-	
-			begin		
-				dut : top_level
-					port map 
-								(clk 		  => clk,
-								 reset_n   => reset_n,
-								 SW        => SW );
-									
-			--Clock will invert signal every Tbperiod until simulation ends
-				clk <= TbClk;
-				TbClk <= not TbClk after TbPeriod/2 when TbSimEnd /= '1' else '0' ;
-			
-			
-			SIMULATION_STIMULI: Process begin
-			
-							--initialize switches all to '0'
-					SW 	<= "0000000000";
+end tb_top_level;
 
+architecture tb of tb_top_level is
+
+    component top_level
+        port (clk     : in std_logic;
+              reset_n : in std_logic;
+              save_n  : in std_logic;
+              SW      : in std_logic_vector (9 downto 0);
+              LEDR    : out std_logic_vector (9 downto 0);
+              HEX0    : out std_logic_vector (7 downto 0);
+              HEX1    : out std_logic_vector (7 downto 0);
+              HEX2    : out std_logic_vector (7 downto 0);
+              HEX3    : out std_logic_vector (7 downto 0);
+              HEX4    : out std_logic_vector (7 downto 0);
+              HEX5    : out std_logic_vector (7 downto 0));
+    end component;
+
+    signal clk     : std_logic;
+    signal reset_n : std_logic;
+    signal save_n  : std_logic;
+    signal SW      : std_logic_vector (9 downto 0);
+    signal LEDR    : std_logic_vector (9 downto 0);
+    signal HEX0    : std_logic_vector (7 downto 0);
+    signal HEX1    : std_logic_vector (7 downto 0);
+    signal HEX2    : std_logic_vector (7 downto 0);
+    signal HEX3    : std_logic_vector (7 downto 0);
+    signal HEX4    : std_logic_vector (7 downto 0);
+    signal HEX5    : std_logic_vector (7 downto 0);
+
+    constant TbPeriod : time := 20 ns; --- @ 50MHz clk freq
+	 constant second	 : time := 1000 ms;  
+    signal TbClock : std_logic := '0';
+    signal TbSimEnded : std_logic := '0';
+
+begin
+
+    dut : top_level
+    port map (clk     => clk,
+              reset_n => reset_n,
+              save_n  => save_n,
+              SW      => SW,
+              LEDR    => LEDR,
+              HEX0    => HEX0,
+              HEX1    => HEX1,
+              HEX2    => HEX2,
+              HEX3    => HEX3,
+              HEX4    => HEX4,
+              HEX5    => HEX5);
+
+    -- Clock generation
+    TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
+    clk <= TbClock;
+
+	 
+    stimuli : process
+    begin
+
+        save_n <= '1';  --save off
+        SW <= (others => '0'); -- SW all initially off
+
+        -- Reset generation
+
+        reset_n <= '0'; -- reset pressed
+        wait for 100 ns;
+        reset_n <= '1'; -- reset off
+        wait for 100 ns;
+		  
+				--SW stimuli
 				
-				--checking operation of reset
-					reset_n <= '0';
-					wait for 400 ns;
-					reset_n <= '1';
-					
-				
-										
-				--begin input switch stimulus (for SW)
-					wait for 100*TbPeriod; --add spacing to the waveform display
-					--clock is already initialized and reset has been tested above
-					--only SW (pull switches) need to be simulated at this point
-					--Note: SW(9), the far left bit, is used to toggle hex or dec display,
-					-- the right most 8 bits, SW(7:0) are used for modifying the display value
-					
-					assert false report "top_level testbench start"; -- terminal display message in ModelSim
-					SW <= "0000000001"; -- binary - 1
-					wait for 200*TbPeriod;      -- these lines will just delay the switching so we can see the output in steps
-					SW <= "0000000010"; -- binary - 2
-					wait for 200*TbPeriod;
-					SW <= "0000000100"; -- binary - 4
-					wait for 200*TbPeriod;
-					SW <= "0000001000"; -- binary - 8
-					wait for 200*TbPeriod;
-					SW <= "0000010000"; -- binary - 16
-					wait for 200*TbPeriod;
-					SW <= "0000100000"; -- binary - 32
-					wait for 200*TbPeriod;
-					SW <= "1000000001"; --hex - 1
-					wait for 200*TbPeriod;
-					SW <= "1000000010"; --hex - 2
-					wait for 200*TbPeriod;
-					SW <= "1000000100"; --hex - 4
-					wait for 200*TbPeriod;
-					SW <= "1000001000"; --hex - 8
-					wait for 200*TbPeriod;
-					SW <= "1000010000"; --hex - 16
-					wait for 200*TbPeriod;
-					SW <= "1000100000"; --hex - 32
-					TbSimEnd <= '1';
-					assert false report "testbench complete"; -- another terminal display
-					wait; -- prevents the test bench from looping back to the start
-					
-					
-					
-				end process;
-					
-end behaviour;				
---MT END
+				SW <= "0010101010"; 
+				save_n <= '0';
+				wait for second;
+				SW <= "0001010101";
+				wait for second;
+				SW <= "1000000000";
+				wait for second;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		  wait for 100 ns;
+        -- Stop the clock and hence terminate the simulation
+        TbSimEnded <= '1';
+        wait;
+    end process;
+
+end tb;
+
+
+
+
+
+
+-- Configuration block below is required by some simulators. Usually no need to edit.
+
+configuration cfg_tb_top_level of tb_top_level is
+    for tb
+    end for;
+end cfg_tb_top_level;
