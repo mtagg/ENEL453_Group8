@@ -10,13 +10,11 @@ entity synchro is
 				);			
 end entity;
 
-
 architecture synchronize of synchro is
 	signal mid	: STD_LOGIC_VECTOR (9 downto 0) := (others => '0');
-	
-	begin 
-		process (clk) begin
-		
+begin 
+		process (clk) 
+		begin
 			if rising_edge(clk) then
 					syncOUT <= mid;
 					mid	  <= syncIN;

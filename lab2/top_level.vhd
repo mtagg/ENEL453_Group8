@@ -27,7 +27,7 @@ architecture Behavioral of top_level is
 	Signal bcd					: STD_LOGIC_VECTOR (15 DOWNTO 0);
 	signal DATA_OUT			: STD_LOGIC_VECTOR (15 downto 0); 
 	signal SWsync				: STD_LOGIC_VECTOR (9  downto 0);
-	signal DBsave_n			: STD_LOGIC;
+	signal DBsave_n			: STD_LOGIC := '1';
 
 
 component synchro is
