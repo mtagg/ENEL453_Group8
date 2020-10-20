@@ -27,7 +27,8 @@ architecture Behavioral of top_level is
 	Signal bcd					: STD_LOGIC_VECTOR (15 DOWNTO 0);
 	signal DATA_OUT			: STD_LOGIC_VECTOR (15 downto 0); 
 	signal SWsync				: STD_LOGIC_VECTOR (9  downto 0);
-	signal DBsave_n			: STD_LOGIC;
+	signal SAVED_IN			: STD_LOGIC_VECTOR(15 downto 0);
+	signal DBsave_n			: STD_LOGIC := '1';
 
 
 component synchro is
@@ -46,15 +47,26 @@ component debounce is
 				 result  : OUT STD_LOGIC); --debounced signal
 	end component;
 
-component displayMUX is
-		port ( clk 			: in  STD_LOGIC;
-				 reset_n    : in  STD_LOGIC;
-				 save_n       : in  STD_LOGIC;
-				 SWsync		: in  STD_LOGIC_VECTOR( 9 downto 0);	
-				 BCD_IN 	   : in  STD_LOGIC_VECTOR(15 downto 0);		
-				 DATA_OUT   : buffer STD_LOGIC_VECTOR(15 downto 0)
+component memory is
+		port( reset_n     :in  STD_LOGIC;
+				save_n  		:in  STD_LOGIC;
+				BITS_IN 		:in  STD_LOGIC_VECTOR(15 downto 0);
+				BITS_OUT		:out STD_LOGIC_VECTOR(15 downto 0)
 				);
 	end component;
+	
+component displayMUX is
+	   port( clk 			 : in  STD_LOGIC;
+				reset_n      : in  STD_LOGIC;
+				save_n   	 : in  STD_LOGIC;
+				SWsync		 : in  STD_LOGIC_VECTOR( 9 downto 0);	
+				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
+				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
+				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
+				); 
+	end component;
+	
+	
 
 component SevenSegment is
     Port( Num_Hex0,Num_Hex1,Num_Hex2,Num_Hex3,Num_Hex4,Num_Hex5 : in  STD_LOGIC_VECTOR (3 downto 0);
@@ -117,12 +129,13 @@ binary_bcd_ins : binary_bcd
 			
 displayMUX_ins : displayMUX		
 		PORT MAP(
-			clk       => clk,
-			reset_n   => reset_n,    
-			save_n    => DBsave_n,
-			SWsync    => SWsync,
-			BCD_IN 	 => bcd,
-			DATA_OUT  => DATA_OUT
+			clk 		  => clk,
+			reset_n    => reset_n,    
+			save_n     => DBsave_n,
+			SWsync	  => SWsync,
+			BCD_IN 	  => bcd,
+			SAVED_IN   => SAVED_IN,
+			DATA_OUT   => DATA_OUT
 			);
 			
 synchro_ins : synchro
@@ -139,6 +152,15 @@ debounce_ins : debounce
 			button    => save_n,
 			result    => DBsave_n
 			);
+			
+memory_ins: memory
+	PORT MAP(
+			reset_n  => reset_n,
+			save_n   => DBsave_n,
+			BITS_IN  => DATA_OUT,
+			BITS_OUT => SAVED_IN
+			);
+			
 
 end architecture; --end of top_level 
 

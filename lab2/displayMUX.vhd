@@ -12,7 +12,7 @@ use ieee.numeric_std.all;
 entity displayMUX is 
 	port (   clk 			 : in  STD_LOGIC;
 				reset_n      : in  STD_LOGIC;
-				save_n   		 : in  STD_LOGIC;
+				save_n   	 : in  STD_LOGIC;
 				SWsync		 : in  STD_LOGIC_VECTOR( 9 downto 0);	
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
 				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
@@ -32,9 +32,9 @@ component memory is
 				);
 end component;
 			
-	signal SavedData     : STD_LOGIC_VECTOR(15 downto 0); -- Saved data bus for memory module
 	signal SW8_9			: STD_LOGIC_VECTOR( 1 downto 0); --control switches for mux operation
 	signal DataToMem		: STD_LOGIC_VECTOR(15 downto 0); -- signal to branch off DATA_OUT to supply memory block
+	signal SavedData     : STD_LOGIC_VECTOR(15 downto 0); -- Saved data bus for memory module
 	
 =======
 		
