@@ -14,13 +14,15 @@ entity displayMUX is
 				reset_n      : in  STD_LOGIC;
 				save_n   		 : in  STD_LOGIC;
 				SWsync		 : in  STD_LOGIC_VECTOR( 9 downto 0);	
-				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);		
+				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
+				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
 	); 
 end entity;
 
 
 architecture behavior of displayMUX is
+<<<<<<< Updated upstream
 	
 component memory is
 		port( reset_n     :in  STD_LOGIC;
@@ -34,6 +36,10 @@ end component;
 	signal SW8_9			: STD_LOGIC_VECTOR( 1 downto 0); --control switches for mux operation
 	signal DataToMem		: STD_LOGIC_VECTOR(15 downto 0); -- signal to branch off DATA_OUT to supply memory block
 	
+=======
+		
+	signal SW8_9 	: STD_LOGIC_VECTOR( 1 downto 0); --control switches for mux operation
+>>>>>>> Stashed changes
 	
 begin 
 	
@@ -42,30 +48,12 @@ begin
 muxOperation : process ( SW8_9) 					
 	begin
 			case SW8_9 is	
-				 when "00"    => 		DATA_OUT  <= BCD_IN;									--BCD display
-											DataToMem <= BCD_IN;
-											
-				 when "01"    => 		DATA_OUT  <= "00000000" & SWsync(7 downto 0); --HEX display
-											DataToMem <= "00000000" & SWsync(7 downto 0);
-											
-				 when "10"    => 		DATA_OUT  <= SavedData;								--Saved display
-											DataToMem <= SavedData;
-				 
+				 when "00"    => 		DATA_OUT  <= BCD_IN;									--BCD display											
+				 when "01"    => 		DATA_OUT  <= "00000000" & SWsync(7 downto 0); --HEX display											
+				 when "10"    => 		DATA_OUT  <= SAVED_IN;								--Saved display				 
 				 when others  => 		DATA_OUT  <= "0101101001011010";					--0x5a5a display
-											DataToMem <= "0101101001011010";				
 
 			end case; 
 end process;
-
-			
-memory_ins: memory
-	PORT MAP(
-			reset_n  => reset_n,
-			save_n   => save_n,
-			BITS_IN  => DataToMem,
-			BITS_OUT => SavedData
-			);
-			
-			
-					
+				
 end architecture; -- end displayMUX entity
