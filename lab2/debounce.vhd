@@ -25,41 +25,43 @@
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 ENTITY debounce IS
-  GENERIC(
-    clk_freq    : INTEGER := 50_000_000;  --system clock frequency in Hz
-    stable_time : INTEGER := 30);         --time button must remain stable in ms
-  PORT(
-    clk     : IN  STD_LOGIC;  --input clock
-    reset_n : IN  STD_LOGIC;  --asynchronous active low reset
-    button  : IN  STD_LOGIC;  --input signal to be debounced
-    result  : OUT STD_LOGIC); --debounced signal
+	GENERIC( clk_freq    : INTEGER := 50_000_000;  --system clock frequency in Hz
+				stable_time : INTEGER := 30);         --time button must remain stable in ms
+	PORT( 
+			clk     : IN  STD_LOGIC;  --input clock
+			reset_n : IN  STD_LOGIC;  --asynchronous active low reset
+			button  : IN  STD_LOGIC;  --input signal to be debounced
+			result  : OUT STD_LOGIC); --debounced signal out
 END debounce;
 
 ARCHITECTURE logic OF debounce IS
-  SIGNAL flipflops   : STD_LOGIC_VECTOR(1 DOWNTO 0); --input flip flops
-  SIGNAL counter_set : STD_LOGIC;                    --sync reset to zero
+	CONSTANT  MAXCOUNT    : INTEGER := 1_500_000;   		-- desired debounce clock cycles - [ 50MHz * 30ms ] 
+	SIGNAL 	 flipflops   : STD_LOGIC_VECTOR(1 DOWNTO 0); -- input flip flops
+	SIGNAL 	 counter_set : STD_LOGIC;                    -- sync reset to zero
+	SIGNAL    count 		 : INTEGER;	                     -- internal signal for simulation debugging
+	
 BEGIN
-
-  counter_set <= flipflops(0) xor flipflops(1);  --determine when to start/reset counter
+  counter_set <= flipflops(0) xor flipflops(1);  		 -- counter reset when flip flops are non-equivalent
   
-  PROCESS(clk, reset_n)
-    VARIABLE count :  INTEGER RANGE 0 TO clk_freq*stable_time/1000;  --counter for timing
+PROCESS(clk, reset_n)
   BEGIN
-    IF(reset_n = '0') THEN                        --reset
-      flipflops(1 DOWNTO 0) <= "00";                 --clear input flipflops
-      result <= '0';                                 --clear result register
-    ELSIF(clk'EVENT and clk = '1') THEN           --rising clock edge
-      flipflops(0) <= button;                        --store button value in 1st flipflop
-      flipflops(1) <= flipflops(0);                  --store 1st flipflop value in 2nd flipflop
-      If(counter_set = '1') THEN                     --reset counter because input is changing
-        count := 0;                                    --clear the counter
-      ELSIF(count < clk_freq*stable_time/1000) THEN  --stable input time is not yet met
-        count := count + 1;                            --increment counter
-      ELSE                                           --stable input time is met
-        result <= flipflops(1);                        --output the stable value
-      END IF;    
+    IF(reset_n = '0') THEN                       		-- reset pressed:
+      flipflops(1 DOWNTO 0) <= "00";                 		-- clear input flipflops and,
+      result <= '0';                                 		-- clear result register
+		
+    ELSIF rising_edge(clk) THEN           		 		-- rising clock edge
+			flipflops(0) <= button;                   	  	-- store button value in 1st flipflop
+			flipflops(1) <= flipflops(0);               	  	-- store 1st flipflop value in 2nd flipflop
+			If(counter_set = '1') THEN                   	-- if flip flops are not set equal then:	
+					count  <= 0;                     	 -- reset counter because input is changing
+			ELSIF(count > MAXCOUNT) THEN 							-- if count has passed the desired stable time, then:		
+					result <= flipflops(1);                       -- output the stable value
+			ELSE                                           	-- if count is shy of stable time, then:					
+					count <= count + 1;										 -- increment count	
+			END IF; 
     END IF;
   END PROCESS;
   

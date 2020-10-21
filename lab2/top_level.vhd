@@ -13,8 +13,7 @@ entity top_level is
 			  save_n							  	  : in  STD_LOGIC; -- used to save current binary value in memory for stored output functionality	
 			  SW                            : in  STD_LOGIC_VECTOR (9 downto 0);
            LEDR                          : out STD_LOGIC_VECTOR (9 downto 0);
-           HEX0,HEX1,HEX2,HEX3,HEX4,HEX5 : out STD_LOGIC_VECTOR (7 downto 0)
-			  
+           HEX0,HEX1,HEX2,HEX3,HEX4,HEX5 : out STD_LOGIC_VECTOR (7 downto 0)			  
           );          
 end;
 
@@ -40,11 +39,11 @@ component synchro is
 
 component debounce is
 		GENERIC( clk_freq    : INTEGER := 50_000_000;  --system clock frequency in Hz
-					stable_time : INTEGER := 10);         --time button must remain stable in ms
-		PORT(  clk     : IN  STD_LOGIC;  				  --input clock
-				 reset_n : IN  STD_LOGIC; 				     --asynchronous active low reset
-				 button  : IN  STD_LOGIC;  				  --input signal to be debounced
-				 result  : OUT STD_LOGIC); 				  --debounced signal
+					stable_time : INTEGER := 30);         --time button must remain stable in ms
+		PORT(  clk     : IN  STD_LOGIC;  --input clock
+				 reset_n : IN  STD_LOGIC;  --asynchronous active low reset
+				 button  : IN  STD_LOGIC;  --input signal to be debounced
+				 result  : OUT STD_LOGIC); --debounced signal
 	end component;
 
 component memory is
@@ -64,6 +63,8 @@ component displayMUX is
 				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
 				); 
 	end component;
+	
+	
 
 component SevenSegment is
     Port( Num_Hex0,Num_Hex1,Num_Hex2,Num_Hex3,Num_Hex4,Num_Hex5 : in  STD_LOGIC_VECTOR (3 downto 0);
@@ -71,6 +72,7 @@ component SevenSegment is
           DP_in,Blank                                           : in  STD_LOGIC_VECTOR (5 downto 0)
 			);
 	end component;
+
 
 component binary_bcd IS
    PORT(
