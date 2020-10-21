@@ -35,3 +35,4 @@ lab1/QuartusFiles_Lab1/db/top_level.map.kpt
 *.vho
 *.sof
 *.summary
+*.hif

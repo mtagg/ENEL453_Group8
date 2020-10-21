@@ -22,24 +22,9 @@ end entity;
 
 
 architecture behavior of displayMUX is
-<<<<<<< Updated upstream
-	
-component memory is
-		port( reset_n     :in  STD_LOGIC;
-				save_n  		:in  STD_LOGIC;
-				BITS_IN 		:in  STD_LOGIC_VECTOR(15 downto 0);
-				BITS_OUT		:out STD_LOGIC_VECTOR(15 downto 0)
-				);
-end component;
-			
-	signal SW8_9			: STD_LOGIC_VECTOR( 1 downto 0); --control switches for mux operation
-	signal DataToMem		: STD_LOGIC_VECTOR(15 downto 0); -- signal to branch off DATA_OUT to supply memory block
-	signal SavedData     : STD_LOGIC_VECTOR(15 downto 0); -- Saved data bus for memory module
-	
-=======
-		
+				
 	signal SW8_9 	: STD_LOGIC_VECTOR( 1 downto 0); --control switches for mux operation
->>>>>>> Stashed changes
+
 	
 begin 
 	
