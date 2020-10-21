@@ -41,10 +41,10 @@ component synchro is
 component debounce is
 		GENERIC( clk_freq    : INTEGER := 50_000_000;  --system clock frequency in Hz
 					stable_time : INTEGER := 10);         --time button must remain stable in ms
-		PORT(  clk     : IN  STD_LOGIC;  --input clock
-				 reset_n : IN  STD_LOGIC;  --asynchronous active low reset
-				 button  : IN  STD_LOGIC;  --input signal to be debounced
-				 result  : OUT STD_LOGIC); --debounced signal
+		PORT(  clk     : IN  STD_LOGIC;  				  --input clock
+				 reset_n : IN  STD_LOGIC; 				     --asynchronous active low reset
+				 button  : IN  STD_LOGIC;  				  --input signal to be debounced
+				 result  : OUT STD_LOGIC); 				  --debounced signal
 	end component;
 
 component memory is
@@ -58,15 +58,12 @@ component memory is
 component displayMUX is
 	   port( clk 			 : in  STD_LOGIC;
 				reset_n      : in  STD_LOGIC;
-				save_n   	 : in  STD_LOGIC;
 				SWsync		 : in  STD_LOGIC_VECTOR( 9 downto 0);	
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
 				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
 				); 
 	end component;
-	
-	
 
 component SevenSegment is
     Port( Num_Hex0,Num_Hex1,Num_Hex2,Num_Hex3,Num_Hex4,Num_Hex5 : in  STD_LOGIC_VECTOR (3 downto 0);
@@ -74,7 +71,6 @@ component SevenSegment is
           DP_in,Blank                                           : in  STD_LOGIC_VECTOR (5 downto 0)
 			);
 	end component;
-
 
 component binary_bcd IS
    PORT(
@@ -131,7 +127,6 @@ displayMUX_ins : displayMUX
 		PORT MAP(
 			clk 		  => clk,
 			reset_n    => reset_n,    
-			save_n     => DBsave_n,
 			SWsync	  => SWsync,
 			BCD_IN 	  => bcd,
 			SAVED_IN   => SAVED_IN,

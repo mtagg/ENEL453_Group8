@@ -12,7 +12,6 @@ use ieee.numeric_std.all;
 entity displayMUX is 
 	port (   clk 			 : in  STD_LOGIC;
 				reset_n      : in  STD_LOGIC;
-				save_n   	 : in  STD_LOGIC;
 				SWsync		 : in  STD_LOGIC_VECTOR( 9 downto 0);	
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
 				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
