@@ -10,18 +10,21 @@ end tb_displayMUX;
 
 architecture tb of tb_displayMUX is
 
-    component displayMUX
-        port (clk      : in std_logic;
-              reset_n  : in std_logic;
-              SWsync   : in std_logic_vector  ( 9 downto 0);
-              BCD_IN   : in std_logic_vector  (15 downto 0);
-				  SAVED_IN : in  STD_LOGIC_VECTOR (15 downto 0);
-              DATA_OUT : out std_logic_vector (15 downto 0));
-    end component;
+component displayMUX
+     port ( clk 			 : in  STD_LOGIC;
+				reset_n      : in  STD_LOGIC;
+				SW7_0		 	 : in  STD_LOGIC_VECTOR( 7 downto 0);
+				SW9_8 		 : in  STD_LOGIC_VECTOR( 1 downto 0); 
+				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
+				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
+				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
+			); 
+end component;
 
     signal clk      : std_logic 				 := '0'; 
     signal reset_n  : std_logic            := '1';
-    signal SWsync   : std_logic_vector   ( 9 downto 0)   := (others => '0');
+	 signal SW7_0	  : STD_LOGIC_VECTOR   ( 7 downto 0)   := (others => '0');
+	 signal SW9_8 	  : STD_LOGIC_VECTOR   ( 9 downto 0)   := (others => '0');
     signal BCD_IN   : std_logic_vector   (15 downto 0)   := (others => '0');
 	 signal SAVED_IN : std_logic_vector   (15 downto 0)   := (others => '0');
     signal DATA_OUT : std_logic_vector   (15 downto 0)   := (others => '0');
@@ -35,7 +38,8 @@ begin
     dut : displayMUX
 		port map (	clk      => clk		,
 						reset_n  => reset_n	,	
-						SWsync   => SWsync 	,	
+						SW7_0    => SW7_0 	,	
+						SW9_8    => SW9_8 	,
 						BCD_IN   => BCD_IN	,	
 						SAVED_IN => SAVED_IN ,  
 						DATA_OUT => DATA_OUT	);	
@@ -59,16 +63,17 @@ begin
 		  
 				--main stimuli
 					BCD_IN   <= "1001100110011001";  -- BCD '9999'
-					SAVED_IN <= "0001000100010001";  -- saved "1111"
-					SWsync   <= "0011111111";        -- BCD mode
+					SAVED_IN <= "0001000100010001";  -- saved  "1111"
+					SW7_0    <= "11111111";          -- switch input
+					SW9_8   	<= "00";
 					wait for 20 * TbPeriod;
-					SWsync   <= "0111111111";        -- HEX mode "FF"
+					SW9_8   	<= "01";   			      -- HEX mode "FF"
 					wait for 20 * TbPeriod;
-					SWsync   <= "1011111111";        -- memory mode
+					SW9_8   	<= "10";      			   -- memory mode
 					wait for 20 * TbPeriod;
-					SWsync   <= "1111111111";        --"5a5a" mode		  
+					SW9_8   	<= "11";    			   --"5a5a" mode		  
 					wait for 20 * TbPeriod;		
-				TbSimEnded <= '1'; -- stop clock
+				TbSimEnded <= '1'; 						-- stop clock
         wait;							
     end process;
 end tb;

@@ -12,8 +12,8 @@ use ieee.numeric_std.all;
 entity displayMUX is 
 	port (   clk 			 : in  STD_LOGIC;
 				reset_n      : in  STD_LOGIC;
-				save_n   	 : in  STD_LOGIC;
-				SWsync		 : in  STD_LOGIC_VECTOR( 9 downto 0);	
+				SW7_0		 	 : in  STD_LOGIC_VECTOR( 7 downto 0);
+				SW9_8 		 : in  STD_LOGIC_VECTOR( 1 downto 0); --control switches for mux operation	
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
 				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
@@ -22,19 +22,14 @@ end entity;
 
 
 architecture behavior of displayMUX is
-				
-	signal SW8_9 	: STD_LOGIC_VECTOR( 1 downto 0); --control switches for mux operation
-
-	
+	signal hexout : std_logic_vector(15 downto 0) := "00000000" & SW7_0;
 begin 
 	
-	SW8_9 			<= SWsync(9 downto 8);		--	for 4:1 mux op, ie: '00' ; '01' ; '10' ; '11'
-	
-muxOperation : process ( SW8_9) 					
+muxOperation : process (SW9_8) 					
 	begin
-			case SW8_9 is	
+			case SW9_8 is	
 				 when "00"    => 		DATA_OUT  <= BCD_IN;									--BCD display											
-				 when "01"    => 		DATA_OUT  <= "00000000" & SWsync(7 downto 0); --HEX display											
+				 when "01"    => 		DATA_OUT  <= hexout; 		   					--HEX display											
 				 when "10"    => 		DATA_OUT  <= SAVED_IN;								--Saved display				 
 				 when others  => 		DATA_OUT  <= "0101101001011010";					--0x5a5a display
 

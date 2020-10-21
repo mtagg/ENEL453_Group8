@@ -13,8 +13,8 @@ entity top_level is
 			  save_n							  	  : in  STD_LOGIC; -- used to save current binary value in memory for stored output functionality	
 			  SW                            : in  STD_LOGIC_VECTOR (9 downto 0);
            LEDR                          : out STD_LOGIC_VECTOR (9 downto 0);
-           HEX0,HEX1,HEX2,HEX3,HEX4,HEX5 : out STD_LOGIC_VECTOR (7 downto 0)			  
-          );          
+           HEX0,HEX1,HEX2,HEX3,HEX4,HEX5 : out STD_LOGIC_VECTOR (7 downto 0) 
+			);          
 end;
 
 
@@ -26,8 +26,8 @@ architecture Behavioral of top_level is
 	Signal bcd					: STD_LOGIC_VECTOR (15 DOWNTO 0);
 	signal DATA_OUT			: STD_LOGIC_VECTOR (15 downto 0); 
 	signal SWsync				: STD_LOGIC_VECTOR (9  downto 0);
-	signal SAVED_IN			: STD_LOGIC_VECTOR(15 downto 0);
-	signal DBsave_n			: STD_LOGIC := '1';
+	signal SAVED_IN			: STD_LOGIC_VECTOR (15 downto 0);
+	signal DBsave_n			: STD_LOGIC;
 
 
 component synchro is
@@ -57,15 +57,14 @@ component memory is
 component displayMUX is
 	   port( clk 			 : in  STD_LOGIC;
 				reset_n      : in  STD_LOGIC;
-				SWsync		 : in  STD_LOGIC_VECTOR( 9 downto 0);	
+				SW7_0		 	 : in  STD_LOGIC_VECTOR( 7 downto 0);
+				SW9_8 		 : in  STD_LOGIC_VECTOR( 1 downto 0); --control switches for mux operation	
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
 				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
 				); 
 	end component;
 	
-	
-
 component SevenSegment is
     Port( Num_Hex0,Num_Hex1,Num_Hex2,Num_Hex3,Num_Hex4,Num_Hex5 : in  STD_LOGIC_VECTOR (3 downto 0);
           Hex0,Hex1,Hex2,Hex3,Hex4,Hex5                         : out STD_LOGIC_VECTOR (7 downto 0);
@@ -82,8 +81,6 @@ component binary_bcd IS
       bcd     : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)   --resulting BCD number
 		);           
 	end component;
-
-
 
 
 begin
@@ -129,7 +126,8 @@ displayMUX_ins : displayMUX
 		PORT MAP(
 			clk 		  => clk,
 			reset_n    => reset_n,    
-			SWsync	  => SWsync,
+			SW7_0	  	  => SWsync(7 downto 0),
+			SW9_8	  	  => SWsync(9 downto 8),
 			BCD_IN 	  => bcd,
 			SAVED_IN   => SAVED_IN,
 			DATA_OUT   => DATA_OUT
