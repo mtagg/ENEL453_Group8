@@ -24,7 +24,7 @@ end component;
     signal clk      : std_logic 				 := '0'; 
     signal reset_n  : std_logic            := '1';
 	 signal SW7_0	  : STD_LOGIC_VECTOR   ( 7 downto 0)   := (others => '0');
-	 signal SW9_8 	  : STD_LOGIC_VECTOR   ( 9 downto 0)   := (others => '0');
+	 signal SW9_8 	  : STD_LOGIC_VECTOR   ( 1 downto 0)   := (others => '0');
     signal BCD_IN   : std_logic_vector   (15 downto 0)   := (others => '0');
 	 signal SAVED_IN : std_logic_vector   (15 downto 0)   := (others => '0');
     signal DATA_OUT : std_logic_vector   (15 downto 0)   := (others => '0');

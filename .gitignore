@@ -1,4 +1,7 @@
-
+*.db/*
+*.output_files/*
+*.simulation/*
+*.incremental_db/*
 *.flock
 *.cdb
 *.cdb
@@ -6,7 +9,6 @@
 *.cdb
 *.cdb
 *.kpt
-lab1/QuartusFiles_Lab1/db/top_level.map.kpt
 *.hdb
 *.qmsg
 *.bpm

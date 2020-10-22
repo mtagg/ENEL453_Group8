@@ -38,7 +38,7 @@ signal stable_time_tb :  time := 30 ms;
 signal some_delay     :  time := 3 ns;
 
    -- Clock period definitions
-constant clk_period : time := 10 ns; -- this is a 100 MHz clock
+constant clk_period : time := 20 ns; -- this is a 50 MHz clock for DE10-Lite
 
 begin
   
