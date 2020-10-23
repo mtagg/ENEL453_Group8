@@ -35,7 +35,7 @@ signal Test_State : StateType; -- this creates a convenient and readable signal 
 signal error : STD_LOGIC := '0'; -- used to flag errors
 
 signal stable_time_tb :  time := 30 ms;
-signal some_delay     :  time := 3 ns;
+signal some_delay     :  time :=  1 us;
 
    -- Clock period definitions
 constant clk_period : time := 20 ns; -- this is a 50 MHz clock for DE10-Lite
@@ -44,7 +44,7 @@ begin
   
 debounce1 : debounce
             generic map(clk_freq     => 50_000_000, -- change this value if different from default
-				             stable_time => 10)         -- change this value if different from default
+				             stable_time => 30)         -- change this value if different from default
 				port map(
 				   clk     => clk,
 					button  => button,
