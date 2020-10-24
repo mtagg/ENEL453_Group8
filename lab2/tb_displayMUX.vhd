@@ -30,8 +30,8 @@ end component;
     signal DATA_OUT : std_logic_vector   (15 downto 0)   := (others => '0');
 
 
-    constant TbPeriod   : time	 		:= 20 ns ;
-    signal   TbClock	   : std_logic 	:= '0'	;
+    constant TbPeriod   : time	 		:= 20 ns ; -- clock period for simulation
+    signal   TbClock	   : std_logic 	:= '0'	; -- initial clock value
     signal   TbSimEnded : std_logic 	:= '0'	;
 
 begin
@@ -53,31 +53,32 @@ begin
 	 	 
     stimuli : process
     begin
-	 
-	 -- signals BCD_IN, SAVED_IN and clk are being manipulated in the simulation
-
-		--test reset:
-        reset_n <= '0';
-        wait for 1000 ns;
-        reset_n <= '1';
-        wait for 1000 ns;
+		assert false report "MUX_HEXDEC testbench started";
+			wait for 0.5 * TbPeriod;
+			--test reset:
+			--  reset_n <= '0';
+			--  wait for 1000 ns;
+			--  reset_n <= '1';
+			--  wait for 1000 ns;
 		  
 				--main stimuli
 					BCD_IN   <= "1001100110011001";  -- BCD '9999'
 					SAVED_IN <= "0001000100010001";  -- saved  "1111"
-					SW7_0    <= "11111111";          -- switch input
-					SW9_8   	<= "00";
-					wait for 20 * TbPeriod;
-					SW9_8   	<= "01";   			      -- HEX mode "FF"
-					wait for 20 * TbPeriod;
-					SW9_8   	<= "10";      			   -- memory mode
-					wait for 20 * TbPeriod;
-					SW9_8   	<= "11";    			   --"5a5a" mode		  
-					wait for 20 * TbPeriod;		
-				TbSimEnded <= '1'; 						-- stop clock
+					SW7_0    <= "11111111";          -- switch input (FF, or 255)
+					
+					SW9_8   	<= "00";						-- Decimal mode  ; DATAOUT = BCD_IN
+					wait for 2 * TbPeriod;
+					SW9_8   	<= "01";   			      -- HEX mode "FF" ; DATAOUT = hexout
+					wait for 2 * TbPeriod;
+					SW9_8   	<= "10";      			   -- memory mode   ; DATAOUT = SAVED_IN
+					wait for 2 * TbPeriod;
+					SW9_8   	<= "11";    			   --"5a5a" mode	  ; DATAOUT = 0x5a5a	  
+					wait for 2 * TbPeriod;		
 		  
-        wait for 100 * TbPeriod;		
+        wait for 2*TbPeriod;		
         TbSimEnded <= '1'; -- stop clock
+		  
+			assert false report "MUX_HEXDEC testbench completed";
         wait;							
     end process;
 end tb;
