@@ -12,12 +12,12 @@ use ieee.numeric_std.all;
 entity displayMUX is 
 	port (   clk 			 : in  STD_LOGIC;
 				reset_n      : in  STD_LOGIC;
-				SW7_0		 	 : in  STD_LOGIC_VECTOR( 7 downto 0);
-				SW9_8 		 : in  STD_LOGIC_VECTOR( 1 downto 0); --control switches for mux operation	
+				SW7_0			 : in  STD_LOGIC_VECTOR(7 downto 0);
+				SW9_8			 : in  STD_LOGIC_VECTOR(1 downto 0);  -- control switches for mux operation
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
 				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
-	); 
+				); 
 end entity;
 
 
@@ -34,6 +34,6 @@ muxOperation : process (SW9_8)
 				 when others  => 		DATA_OUT  <= "0101101001011010";					--0x5a5a display
 
 			end case; 
-end process;
+	end process;
 				
 end architecture; -- end displayMUX entity

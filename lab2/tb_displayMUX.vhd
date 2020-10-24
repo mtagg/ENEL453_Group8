@@ -1,4 +1,4 @@
--- Testbench automatically generated online
+-- Testbench automatically generated online, but edited by Tahseen I.
 -- at https://vhdl.lapinoo.net
 -- Generation date : 18.10.2020 00:01:11 UTC
 
@@ -29,6 +29,7 @@ end component;
 	 signal SAVED_IN : std_logic_vector   (15 downto 0)   := (others => '0');
     signal DATA_OUT : std_logic_vector   (15 downto 0)   := (others => '0');
 
+
     constant TbPeriod   : time	 		:= 20 ns ;
     signal   TbClock	   : std_logic 	:= '0'	;
     signal   TbSimEnded : std_logic 	:= '0'	;
@@ -40,20 +41,20 @@ begin
 						reset_n  => reset_n	,	
 						SW7_0    => SW7_0 	,	
 						SW9_8    => SW9_8 	,
-						BCD_IN   => BCD_IN	,	
-						SAVED_IN => SAVED_IN ,  
+						BCD_IN   => BCD_IN	,
+						SAVED_IN => SAVED_IN ,
 						DATA_OUT => DATA_OUT	);	
 
     -- Clock generation:
-	 clk 		<= TbClock;
+	 clk 		<= TbClock; 	--clock initially at 0
     TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
 
 
-	 
-	 
+	 	 
     stimuli : process
     begin
-
+	 
+	 -- signals BCD_IN, SAVED_IN and clk are being manipulated in the simulation
 
 		--test reset:
         reset_n <= '0';
@@ -74,6 +75,9 @@ begin
 					SW9_8   	<= "11";    			   --"5a5a" mode		  
 					wait for 20 * TbPeriod;		
 				TbSimEnded <= '1'; 						-- stop clock
+		  
+        wait for 100 * TbPeriod;		
+        TbSimEnded <= '1'; -- stop clock
         wait;							
     end process;
 end tb;
