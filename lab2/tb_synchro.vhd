@@ -1,4 +1,6 @@
--- TI start
+-- tb_synchro.vhd 
+-- Created by Tahseen I. (no online generator used)
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.all;
@@ -45,14 +47,32 @@ BEGIN -- START OF SIMULATION
 				clk 	 <= '0';
 				syncIN <= "0000000000";
 				wait for clk_period;
-				clk 	 <= '1';
+				clk 	 <= '1';			--rising edge: mid = 0000000000, syncOUT = 0000000000
 				wait for clk_period;
+				
 				clk	 <= '0';
+				syncIN <= "0001001001";
+				wait for clk_period;
+				clk	 <= '1';			--rising edge: mid = 0001001001, syncOUT = 0000000000
+				wait for clk_period;
 				
+				clk	 <= '0';
+				syncIN <= "0001100111";
+				wait for clk_period;
+				clk	 <= '1';			--rising edge: mid = 0001100111, syncOUT = 0001001001
+				wait for clk_period;
 				
+				clk	 <= '0';
 				syncIN <= "1111111111";
 				wait for clk_period;
-									
+				clk    <= '1';			--rising edge: mid = 1111111111, syncOUT = 0001100111
+				wait for clk_period;
+
+				clk	 <= '0';
+				wait for clk_period;
+				clk	 <= '1';			--rising edge: syncOUT = 1111111111
+				wait for clk_period;
+
 			assert false report "MUX_HEXDEC testbench completed"; -- puts a note in the ModelSim transcript window (this line is just for convenience)
 		wait;
 	end process;
