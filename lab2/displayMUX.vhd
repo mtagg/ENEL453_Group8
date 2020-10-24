@@ -10,7 +10,7 @@ use ieee.numeric_std.all;
 
 
 entity displayMUX is 
-	port (   clk 			 : in  STD_LOGIC;
+	port (   		clk 			 : in  STD_LOGIC;
 				reset_n      : in  STD_LOGIC;
 				SW7_0			 : in  STD_LOGIC_VECTOR(7 downto 0);
 				SW9_8			 : in  STD_LOGIC_VECTOR(1 downto 0);  -- control switches for mux operation
@@ -22,9 +22,10 @@ end entity;
 
 
 architecture behavior of displayMUX is
-	signal hexout : std_logic_vector(15 downto 0) := "00000000" & SW7_0;
-begin 
+	signal hexout : std_logic_vector(15 downto 0);
 	
+begin 
+	hexout <= "00000000" & SW7_0 when rising_edge(clk) else hexout;
 muxOperation : process (SW9_8) 					
 	begin
 			case SW9_8 is	
