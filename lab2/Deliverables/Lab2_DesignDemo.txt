@@ -1,0 +1,17 @@
+Michael Tagg - Group 8 - Design Demonstration
+(3min)
+
+
+10s - intro
+20s - RTL overview
+10s - explain what remained the same as lab1
+10s - synchro block
+10s - memory block
+10s - 15s mux block
+
+15s - top level code
+15s - mux code
+10s - sunchro code
+10s - memory code
+
+30s - Debouncer mod + tb mod for 30ms requirement
