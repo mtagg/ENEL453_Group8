@@ -71,8 +71,7 @@ begin
 						
 					SW 	  <= "0111111111";  wait for 500000*TbPeriod;	 -- SW9_8 = 01, output value in hex (FF)
 					
-					-- 3000000 * 20ns = 60ms ; debouncer should take effect here but it currently does not
-					save_n  <= '0'; 			  wait for 3000000*TbPeriod;    -- save value in DATA_OUT to memory (255/FF as a 16bit value)
+					save_n  <= '0'; 			  wait for 31ms;   			    -- save value in DATA_OUT to memory (255/FF as a 16bit value)
 					save_n  <= '1';			  wait for 500000*TbPeriod;
 					
 					SW 	  <= "1000000000";  wait for 500000*TbPeriod;		-- SW9_8 = 10, output should be whatever is stored in memory

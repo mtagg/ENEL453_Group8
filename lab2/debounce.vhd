@@ -34,7 +34,7 @@ ENTITY debounce IS
 			clk     : IN  STD_LOGIC;  --input clock
 			reset_n : IN  STD_LOGIC;  --asynchronous active low reset
 			button  : IN  STD_LOGIC;  --input signal to be debounced
-			result  : OUT STD_LOGIC); --debounced signal out
+			result  : OUT STD_LOGIC := '1'); --debounced signal out --initialize at 1
 END debounce;
 
 ARCHITECTURE logic OF debounce IS

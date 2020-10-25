@@ -26,8 +26,8 @@ architecture Behavioral of top_level is
 	signal DATA_OUT			: STD_LOGIC_VECTOR (15 downto 0); 
 	signal SWsync				: STD_LOGIC_VECTOR (9  downto 0);
 	signal SAVED_IN			: STD_LOGIC_VECTOR (15 downto 0);
-	signal DB1save_n			: STD_LOGIC;
-	signal DB2save_n			: STD_LOGIC;	
+	signal DBsave_n			: STD_LOGIC;
+
 
 
 component synchro is
@@ -94,7 +94,7 @@ begin
    Blank    <= "110000"; 					-- blank the 2 MSB 7-segment displays (1=7-seg display off, 0=7-seg display on)
 	LEDR(9 downto 0) <= SWsync (9 downto 0); 					-- gives visual display of the switch inputs to the LEDs on board
 	switch_inputs 	  <= "00000" & SWsync(7 downto 0);		-- extend to 13 bits for bcd module
-	DB2save_n <= DB1save_n;
+
 
 SevenSegment_ins : SevenSegment  
       PORT MAP( 
@@ -144,13 +144,13 @@ debounce_ins : debounce
 			clk		 => clk,
 			reset_n   => reset_n,
 			button    => save_n,
-			result    => DB1save_n
+			result    => DBsave_n
 			);
 			
 memory_ins: memory
 	PORT MAP(
 			reset_n  => reset_n,
-			save_n   => DB2save_n,
+			save_n   => DBsave_n,
 			BITS_IN  => DATA_OUT,
 			BITS_OUT => SAVED_IN
 			);
