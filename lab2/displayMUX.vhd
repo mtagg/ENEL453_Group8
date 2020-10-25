@@ -25,15 +25,13 @@ architecture behavior of displayMUX is
 	
 begin 
 	hexout <= "00000000" & SW7_0 when rising_edge(clk) else hexout;
-muxOperation : process (SW9_8) 					
-	begin
-			case SW9_8 is	
-				 when "00"    => 		DATA_OUT  <= BCD_IN;									--BCD display											
-				 when "01"    => 		DATA_OUT  <= hexout; 		   					--HEX display											
-				 when "10"    => 		DATA_OUT  <= SAVED_IN;								--Saved display				 
-				 when others  => 		DATA_OUT  <= "0101101001011010";					--0x5a5a display
-
-			end case; 
+muxOperation : process (SW9_8)  
+			begin
+				 if    (SW9_8 = "00")  then  DATA_OUT  <=  BCD_IN;							      --BCD display			
+				 elsif (SW9_8 = "00")  then  DATA_OUT  <=  hexout; 		   					--HEX display	 										
+				 elsif (SW9_8 = "01")  then  DATA_OUT  <=  SAVED_IN;							   --Saved display 										
+				 elsif (SW9_8 = "10")  then  DATA_OUT  <=  "0101101001011010";				   --0x5a5a display				
+			end if;
 	end process;
 				
 end architecture; -- end displayMUX entity
