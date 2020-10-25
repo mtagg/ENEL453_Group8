@@ -1,7 +1,7 @@
-*.db*
-*.output_files*
-*.simulation*
-*.incremental_db*
+*.db/
+*.output_files/
+*.simulation/
+*.incremental_db/
 *.flock
 *.cdb
 *.cdb
