@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top_level
-Sun Oct 25 10:57:48 2020
+Sun Oct 25 12:48:13 2020
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -51,7 +51,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Oct 25 10:57:48 2020       ;
+; Analysis & Synthesis Status        ; Successful - Sun Oct 25 12:48:13 2020       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; top_level                                   ;
 ; Top-level Entity Name              ; top_level                                   ;
@@ -426,7 +426,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -436,7 +436,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sun Oct 25 10:57:35 2020
+    Info: Processing started: Sun Oct 25 12:47:48 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Group8_Lab2 -c top_level
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -482,16 +482,16 @@ Info (12021): Found 2 design units, including 1 entities, in source file tb_memo
     Info (12022): Found design unit 1: tb_memory-synth File: S:/QuartusProjects/ENEL453_Group8/lab2/tb_memory.vhd Line: 12
     Info (12023): Found entity 1: tb_memory File: S:/QuartusProjects/ENEL453_Group8/lab2/tb_memory.vhd Line: 9
 Info (12127): Elaborating entity "top_level" for the top level hierarchy
-Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:SevenSegment_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 98
+Info (12128): Elaborating entity "SevenSegment" for hierarchy "SevenSegment:SevenSegment_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 99
 Info (12128): Elaborating entity "SevenSegment_decoder" for hierarchy "SevenSegment:SevenSegment_ins|SevenSegment_decoder:decoder0" File: S:/QuartusProjects/ENEL453_Group8/lab2/SevenSegment.vhd Line: 24
-Info (12128): Elaborating entity "binary_bcd" for hierarchy "binary_bcd:binary_bcd_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 116
-Info (12128): Elaborating entity "displayMUX" for hierarchy "displayMUX:displayMUX_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 124
+Info (12128): Elaborating entity "binary_bcd" for hierarchy "binary_bcd:binary_bcd_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 117
+Info (12128): Elaborating entity "displayMUX" for hierarchy "displayMUX:displayMUX_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 125
 Warning (10492): VHDL Process Statement warning at displayMUX.vhd(31): signal "BCD_IN" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: S:/QuartusProjects/ENEL453_Group8/lab2/displayMUX.vhd Line: 31
 Warning (10492): VHDL Process Statement warning at displayMUX.vhd(32): signal "hexout" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: S:/QuartusProjects/ENEL453_Group8/lab2/displayMUX.vhd Line: 32
 Warning (10492): VHDL Process Statement warning at displayMUX.vhd(33): signal "SAVED_IN" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: S:/QuartusProjects/ENEL453_Group8/lab2/displayMUX.vhd Line: 33
-Info (12128): Elaborating entity "synchro" for hierarchy "synchro:synchro_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 134
-Info (12128): Elaborating entity "debounce" for hierarchy "debounce:debounce_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 141
-Info (12128): Elaborating entity "memory" for hierarchy "memory:memory_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 149
+Info (12128): Elaborating entity "synchro" for hierarchy "synchro:synchro_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 135
+Info (12128): Elaborating entity "debounce" for hierarchy "debounce:debounce_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 142
+Info (12128): Elaborating entity "memory" for hierarchy "memory:memory_ins" File: S:/QuartusProjects/ENEL453_Group8/lab2/top_level.vhd Line: 150
 Warning (10492): VHDL Process Statement warning at memory.vhd(22): signal "BITS_IN" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: S:/QuartusProjects/ENEL453_Group8/lab2/memory.vhd Line: 22
 Warning (10631): VHDL Process Statement warning at memory.vhd(17): inferring latch(es) for signal or variable "BITS_OUT", which holds its previous value in one or more paths through the process File: S:/QuartusProjects/ENEL453_Group8/lab2/memory.vhd Line: 17
 Info (10041): Inferred latch for "BITS_OUT[0]" at memory.vhd(17) File: S:/QuartusProjects/ENEL453_Group8/lab2/memory.vhd Line: 17
@@ -540,9 +540,9 @@ Info (21057): Implemented 420 device resources after synthesis - the final resou
     Info (21059): Implemented 58 output pins
     Info (21061): Implemented 349 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 27 warnings
-    Info: Peak virtual memory: 4814 megabytes
-    Info: Processing ended: Sun Oct 25 10:57:48 2020
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:26
+    Info: Peak virtual memory: 4817 megabytes
+    Info: Processing ended: Sun Oct 25 12:48:13 2020
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:31
 
 
