@@ -27,7 +27,7 @@ architecture tb of tb_top_level is
     signal clk     : std_logic;
     signal reset_n : std_logic := '1';	-- initialize off	
     signal save_n  : std_logic := '1'; -- initialize off
-    signal SW      : std_logic_vector (9 downto 0) := "0011111111";
+    signal SW      : std_logic_vector (9 downto 0) := "0011111111"; --initially output 255 (decimal)
     signal LEDR    : std_logic_vector (9 downto 0);
     signal HEX0    : std_logic_vector (7 downto 0);
     signal HEX1    : std_logic_vector (7 downto 0);
@@ -62,25 +62,25 @@ begin
 	 
     stimuli : process
     begin
+			reset_n <= '0';       --reset flipflops
+			wait for 10*TBPeriod; --100*20ns = 2us
+			reset_n <= '1';
+					SW 	  <= "0111111111";  wait for 500000*TbPeriod;		-- SW9_8 = 01, meaning that it should output value in hex (FF)
+					
+					
+					save_n  <= '0'; 	  		  --wait for 100*TbPeriod;   -- memory register will hold a value (11111111, or FF)
+					SW		  <= "0000010001";  wait for 1000000*TbPeriod;	-- SW9_8 = 00: output in decimal, memory register should save value (00010001)
+					save_n  <= '1'; 	  		                           -- no longer saving the value to memory
+					
+					
+					SW 	  <= "1000000000";  wait for 500000*TbPeriod;		-- SW9_8 = 10, meaning that output should be whatever is stored in memory
+					
+					reset_n <= '0';
+					SW 	  <= "1100000000";  wait for 500000*TbPeriod;		-- SW9_8 = 11, which outputs the hardcoded value of 0x5a5a
+			
 
-        -- Reset generation
-
-        reset_n <= '0'; -- reset pressed
-        wait for 1000000 ns;
-        reset_n <= '1'; -- reset off
-        wait for 1000000 ns;
-		  
-				--SW stimuli
-				
-				SW <= "0110101010"; wait for 10000000 ns;
-				save_n <= '0'; 	  wait for 31000000 ns; --let debouncer update
-				save_n <= '1'; 	  wait for 10000000 ns;
-				SW <= "1000000000"; wait for 10000000 ns;
-				SW <= "1100000000"; wait for 10000000 ns;
-		
-
-        -- Stop the clock and hence terminate the simulation
-        TbSimEnded <= '1';
+					-- Stop the clock and hence terminate the simulation
+					TbSimEnded <= '1';
         wait;
     end process;
 

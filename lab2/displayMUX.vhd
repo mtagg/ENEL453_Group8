@@ -10,8 +10,7 @@ use ieee.numeric_std.all;
 
 
 entity displayMUX is 
-	port (   		clk 			 : in  STD_LOGIC;
-				reset_n      : in  STD_LOGIC;
+	port (   clk 			 : in  STD_LOGIC;
 				SW7_0			 : in  STD_LOGIC_VECTOR(7 downto 0);
 				SW9_8			 : in  STD_LOGIC_VECTOR(1 downto 0);  -- control switches for mux operation
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);

@@ -34,7 +34,7 @@ signal Test_State : StateType; -- this creates a convenient and readable signal 
                                -- simulation, to know where in the testbench you are in the waveform
 signal error : STD_LOGIC := '0'; -- used to flag errors
 
-signal stable_time_tb :  time := 30 ms;
+signal stable_time_tb :  time := 50 ms;
 signal some_delay     :  time :=  1 us;
 
    -- Clock period definitions
@@ -83,10 +83,10 @@ debounce1 : debounce
           
           -- test low-to-high transition with bouncing
           Test_State <= Bouncing;
-            button <= '1'; wait for 100 ns;
-            button <= '0'; wait for 100 ns;
-            button <= '1'; wait for 100 ns;
-            button <= '0'; wait for 100 ns;
+            button <= '1'; wait for 1000 ns;
+            button <= '0'; wait for 1000 ns;
+            button <= '1'; wait for 1000 ns;
+            button <= '0'; wait for 1000 ns;
             Test_State <= Stable;          
             button <= '1';
           wait for stable_time_tb + some_delay; -- allow button signal to stablize 
@@ -106,10 +106,10 @@ debounce1 : debounce
           
           -- test high-to-low transition with bouncing    
           Test_State <= Bouncing;
-             button <= '0'; wait for 100 ns;
-             button <= '1'; wait for 100 ns;
-             button <= '0'; wait for 100 ns;
-             button <= '1'; wait for 100 ns;
+             button <= '0'; wait for 1000 ns;
+             button <= '1'; wait for 1000 ns;
+             button <= '0'; wait for 1000 ns;
+             button <= '1'; wait for 1000 ns;
              Test_State <= Stable;          
              button <= '0';      
           wait for stable_time_tb + some_delay; -- allow button signal to stablize  

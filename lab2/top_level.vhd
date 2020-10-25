@@ -55,7 +55,6 @@ component memory is
 	
 component displayMUX is
 	   port( clk 			 : in  STD_LOGIC;
-				reset_n      : in  STD_LOGIC;
 				SW7_0		 	 : in  STD_LOGIC_VECTOR(7 downto 0);
 				SW9_8 		 : in  STD_LOGIC_VECTOR(1 downto 0); --control switches for mux operation	
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
@@ -125,7 +124,6 @@ binary_bcd_ins : binary_bcd
 displayMUX_ins : displayMUX		
 		PORT MAP(
 			clk 		  => clk,
-			reset_n    => reset_n,
 			SW7_0	  	  => SWsync(7 downto 0),
 			SW9_8	  	  => SWsync(9 downto 8),
 			BCD_IN 	  => bcd,
