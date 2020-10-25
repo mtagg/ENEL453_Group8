@@ -1,8 +1,0 @@
-Design-Lead Presentation:
-2mins lol
-
-15s - Introduction (role, name, group, class)
-30s - overview of RTL, showing what changed from the original files, where the bcd wires and mux wires go to
-30s - showing the top-level code where the pins were changed and mux module ports
-15s - explaining the reset and how it piggybacked off of BCD (there was an extra 2:1 mux in the RTL viewer for this so i showed that at the same time)
-15s - explaining the path to the sevensegment module and the changes to decode hex inputs
