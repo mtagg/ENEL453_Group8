@@ -1,6 +1,8 @@
--- Testbench automatically generated online, but edited by Tahseen I.
+-- Testbench automatically generated online
 -- at https://vhdl.lapinoo.net
 -- Generation date : 18.10.2020 00:01:11 UTC
+
+--Edited by Tahseen I.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -12,7 +14,6 @@ architecture tb of tb_displayMUX is
 
 component displayMUX
      port ( clk 			 : in  STD_LOGIC;
-				reset_n      : in  STD_LOGIC;
 				SW7_0		 	 : in  STD_LOGIC_VECTOR( 7 downto 0);
 				SW9_8 		 : in  STD_LOGIC_VECTOR( 1 downto 0); 
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
@@ -22,7 +23,6 @@ component displayMUX
 end component;
 
     signal clk      : std_logic 				 := '0'; 
-    signal reset_n  : std_logic            := '1';
 	 signal SW7_0	  : STD_LOGIC_VECTOR   ( 7 downto 0)   := (others => '0');
 	 signal SW9_8 	  : STD_LOGIC_VECTOR   ( 1 downto 0)   := (others => '0');
     signal BCD_IN   : std_logic_vector   (15 downto 0)   := (others => '0');
@@ -38,7 +38,6 @@ begin
 
     dut : displayMUX
 		port map (	clk      => clk		,
-						reset_n  => reset_n	,	
 						SW7_0    => SW7_0 	,	
 						SW9_8    => SW9_8 	,
 						BCD_IN   => BCD_IN	,
@@ -54,29 +53,29 @@ begin
     stimuli : process
     begin
 		assert false report "MUX_HEXDEC testbench started";
-			wait for 0.5 * TbPeriod;
-			--test reset:
-			--  reset_n <= '0';
-			--  wait for 1000 ns;
-			--  reset_n <= '1';
-			--  wait for 1000 ns;
 		  
 				--main stimuli
+					SW7_0    <= "11111111";          -- switch input (FF, or 255)					
+					SW9_8   	<= "00";						-- initial mode is 00
 					BCD_IN   <= "1001100110011001";  -- BCD '9999'
 					SAVED_IN <= "0001000100010001";  -- saved  "1111"
-					SW7_0    <= "11111111";          -- switch input (FF, or 255)
+					
+					wait for 2 * TbPeriod;
+					
+					SW9_8   	<= "01";   			      -- HEX mode "FF" ; DATAOUT = hexout
+					wait for 2 * TbPeriod;
+					
+					SW9_8   	<= "10";      			   -- memory mode   ; DATAOUT = SAVED_IN
+					wait for 2 * TbPeriod;
+					
+					SW9_8   	<= "11";    			   --"5a5a" mode	  ; DATAOUT = 0x5a5a	  
+					wait for 2 * TbPeriod;
 					
 					SW9_8   	<= "00";						-- Decimal mode  ; DATAOUT = BCD_IN
 					wait for 2 * TbPeriod;
-					SW9_8   	<= "01";   			      -- HEX mode "FF" ; DATAOUT = hexout
-					wait for 2 * TbPeriod;
-					SW9_8   	<= "10";      			   -- memory mode   ; DATAOUT = SAVED_IN
-					wait for 2 * TbPeriod;
-					SW9_8   	<= "11";    			   --"5a5a" mode	  ; DATAOUT = 0x5a5a	  
-					wait for 2 * TbPeriod;		
-		  
-        wait for 2*TbPeriod;		
-        TbSimEnded <= '1'; -- stop clock
+					
+				wait for 2*TbPeriod;		
+				TbSimEnded <= '1'; -- stop clock
 		  
 			assert false report "MUX_HEXDEC testbench completed";
         wait;							
