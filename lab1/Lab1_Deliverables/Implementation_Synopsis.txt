@@ -1,0 +1,9 @@
+Implementation Lead Presentation
+2mins :O
+
+
+15s - Introduce self then point camera at board
+30s - Decimal slide switch behaviour ( show LED activation and confirm result for ~ 5 switches)
+15s - reset for decimal
+30s - hex slide switch demo
+15s - hex reset test/ explanation
