@@ -13,51 +13,42 @@ end tb_displayMUX;
 architecture tb of tb_displayMUX is
 
 component displayMUX
-     port ( clk 			 : in  STD_LOGIC;
-				SW7_0		 	 : in  STD_LOGIC_VECTOR( 7 downto 0);
-				SW9_8 		 : in  STD_LOGIC_VECTOR( 1 downto 0); 
+     port (	SW9_8 		 : in  STD_LOGIC_VECTOR( 1 downto 0); 
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
+				HEX_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
 			); 
 end component;
 
-    signal clk      : std_logic 				 := '0'; 
-	 signal SW7_0	  : STD_LOGIC_VECTOR   ( 7 downto 0)   := (others => '0');
 	 signal SW9_8 	  : STD_LOGIC_VECTOR   ( 1 downto 0)   := (others => '0');
     signal BCD_IN   : std_logic_vector   (15 downto 0)   := (others => '0');
+	 signal HEX_IN	  : std_logic_vector   (15 downto 0);
 	 signal SAVED_IN : std_logic_vector   (15 downto 0)   := (others => '0');
     signal DATA_OUT : std_logic_vector   (15 downto 0)   := (others => '0');
 
 
     constant TbPeriod   : time	 		:= 20 ns ; -- clock period for simulation
-    signal   TbClock	   : std_logic 	:= '0'	; -- initial clock value
     signal   TbSimEnded : std_logic 	:= '0'	;
 
 begin
 
     dut : displayMUX
-		port map (	clk      => clk		,
-						SW7_0    => SW7_0 	,	
-						SW9_8    => SW9_8 	,
+		port map (	SW9_8    => SW9_8 	,
 						BCD_IN   => BCD_IN	,
+						HEX_IN   => HEX_IN   ,
 						SAVED_IN => SAVED_IN ,
 						DATA_OUT => DATA_OUT	);	
-
-    -- Clock generation:
-	 clk 		<= TbClock; 	--clock initially at 0
-    TbClock <= not TbClock after TbPeriod/2 when TbSimEnded /= '1' else '0';
-
-
 	 	 
     stimuli : process
     begin
 		assert false report "MUX_HEXDEC testbench started";
 		  
 				--main stimuli
-					SW7_0    <= "11111111";          -- switch input (FF, or 255)					
+										
 					SW9_8   	<= "00";						-- initial mode is 00
 					BCD_IN   <= "1001100110011001";  -- BCD '9999'
+					HEX_IN   <= "0000000011111111";  -- HEX '00FF'
 					SAVED_IN <= "0001000100010001";  -- saved  "1111"
 					
 					wait for 2 * TbPeriod;
@@ -75,7 +66,7 @@ begin
 					wait for 2 * TbPeriod;
 					
 				wait for 2*TbPeriod;		
-				TbSimEnded <= '1'; -- stop clock
+				TbSimEnded  <= '1'; -- stop clock
 		  
 			assert false report "MUX_HEXDEC testbench completed";
         wait;							
