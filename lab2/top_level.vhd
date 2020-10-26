@@ -26,9 +26,8 @@ architecture Behavioral of top_level is
 	signal DATA_OUT			: STD_LOGIC_VECTOR (15 downto 0); 
 	signal SWsync				: STD_LOGIC_VECTOR (9  downto 0);
 	signal SAVED_IN			: STD_LOGIC_VECTOR (15 downto 0);
+	signal hex_buffer			: STD_LOGIC_VECTOR (15 downto 0);
 	signal DBsave_n			: STD_LOGIC;
-
-
 
 component synchro is
 		port ( clk		:in  STD_LOGIC;
@@ -55,10 +54,9 @@ component memory is
 	end component;
 	
 component displayMUX is
-	   port( clk 			 : in  STD_LOGIC;
-				SW7_0		 	 : in  STD_LOGIC_VECTOR(7 downto 0);
-				SW9_8 		 : in  STD_LOGIC_VECTOR(1 downto 0); --control switches for mux operation	
+	port ( 	SW9_8			 : in  STD_LOGIC_VECTOR(1 downto 0);  
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
+				HEX_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
 				); 
@@ -94,7 +92,7 @@ begin
    Blank    <= "110000"; 					-- blank the 2 MSB 7-segment displays (1=7-seg display off, 0=7-seg display on)
 	LEDR(9 downto 0) <= SWsync (9 downto 0); 					-- gives visual display of the switch inputs to the LEDs on board
 	switch_inputs 	  <= "00000" & SWsync(7 downto 0);		-- extend to 13 bits for bcd module
-
+	hex_buffer  	  <= "00000000" & SWsync(7 downto 0);
 
 SevenSegment_ins : SevenSegment  
       PORT MAP( 
@@ -123,11 +121,10 @@ binary_bcd_ins : binary_bcd
 			);
 			
 displayMUX_ins : displayMUX		
-		PORT MAP(
-			clk 		  => clk,
-			SW7_0	  	  => SWsync(7 downto 0),
+		PORT MAP(			
 			SW9_8	  	  => SWsync(9 downto 8),
 			BCD_IN 	  => bcd,
+			HEX_IN     => hex_buffer,
 			SAVED_IN   => SAVED_IN,
 			DATA_OUT   => DATA_OUT
 			);
@@ -148,7 +145,7 @@ debounce_ins : debounce
 			);
 			
 memory_ins: memory
-	PORT MAP(
+		PORT MAP(
 			reset_n  => reset_n,
 			save_n   => DBsave_n,
 			BITS_IN  => DATA_OUT,

@@ -62,20 +62,18 @@ begin
 	 
     stimuli : process
     begin
+			SW <= "0000000000" ;    --initial all SW off
 			reset_n <= '0';         --reset flipflops
-			wait for 2000*TBPeriod; --2000*20ns = 40us
+			wait for 500000*TBPeriod; 
 			reset_n <= '1';
-					
-				
-					SW 	  <= "0000000000";  wait for 500000*TbPeriod; --500000 * 20ns = 10ms
-					SW 	  <= "0011111111";      -- SW9_8 = 00, output is in decimal (255)					
-					SW 	  <= "0111111111";  wait for 500000*TbPeriod;	 -- SW9_8 = 01, output value in hex (FF)	
-					save_n  <= '0'; 			  wait for 31ms;   			    -- save value in DATA_OUT to memory (255/FF as a 16bit value)
-					save_n  <= '1';			  wait for 500000*TbPeriod;					
-					SW 	  <= "1000000000";  wait for 500000*TbPeriod;		-- SW9_8 = 10, output should be whatever is stored in memory					
-					SW 	  <= "1100000000";  wait for 500000*TbPeriod;		-- SW9_8 = 11, which outputs the hardcoded value of 0x5a5a
 			
-
+					wait for 31 ms;  				--let debouncer stabalize														
+					SW 	  <= "0011111111";  wait for 500000*TbPeriod;	--Decimal '255'																				
+					SW 	  <= "0110101010";  wait for 500000*TbPeriod; 	--Hex 	 'CC'														--save oxFF
+					save_n  <= '0'; 			  wait for 31 ms;  			   --debounce wait to save 'CC'
+					save_n  <= '1';			  wait for 31 ms;					--wait for save un-enable										
+					SW 	  <= "1000000000";  wait for 500000*TbPeriod;	--Saved 'FF'					
+					SW 	  <= "1100000000";  wait for 500000*TbPeriod;	--Hardcoded '5A5A'
 					-- Stop the clock and hence terminate the simulation
 					TbSimEnded <= '1';
         wait;

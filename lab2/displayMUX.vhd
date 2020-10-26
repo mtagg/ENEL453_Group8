@@ -10,28 +10,27 @@ use ieee.numeric_std.all;
 
 
 entity displayMUX is 
-	port (   clk 			 : in  STD_LOGIC;
-				SW7_0			 : in  STD_LOGIC_VECTOR(7 downto 0);
-				SW9_8			 : in  STD_LOGIC_VECTOR(1 downto 0);  -- control switches for mux operation
+	port ( 	SW9_8			 : in  STD_LOGIC_VECTOR(1 downto 0);  
 				BCD_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);
+				HEX_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				SAVED_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
 				DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
 				); 
 end entity;
 
 
-architecture behavior of displayMUX is
-	signal hexout : std_logic_vector(15 downto 0);
-	
+architecture behavior of displayMUX is	
+	 
 begin 
-	hexout <= "00000000" & SW7_0 when rising_edge(clk) else hexout;
-muxOperation : process (SW9_8)  
+muxOperation : process (BCD_IN, HEX_IN, SAVED_IN, SW9_8)  
 			begin
-				 if    (SW9_8 = "00")  then  DATA_OUT  <=  BCD_IN;							      --BCD display			
-				 elsif (SW9_8 = "00")  then  DATA_OUT  <=  hexout; 		   					--HEX display	 										
-				 elsif (SW9_8 = "01")  then  DATA_OUT  <=  SAVED_IN;							   --Saved display 										
-				 elsif (SW9_8 = "10")  then  DATA_OUT  <=  "0101101001011010";				   --0x5a5a display				
-			end if;
+				case SW9_8 is
+				  when "00"    =>  DATA_OUT  <=  BCD_IN;							      --BCD display			
+				  when "01"    =>  DATA_OUT  <=  HEX_IN; 		   					--HEX display	 										
+				  when "10"    =>  DATA_OUT  <=  SAVED_IN;							   --Saved display 										
+				  when others  =>  DATA_OUT  <=  "0101101001011010";				   --0x5a5a display	
+
+				end case;
 	end process;
 				
 end architecture; -- end displayMUX entity
