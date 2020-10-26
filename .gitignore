@@ -1,5 +1,5 @@
 
-*db/**
-*output_files/**
-*simulation/**
-*incremental_db/**
+lab2/db/**
+lab2/output_files/**
+lab2/simulation/**
+lab2/incremental_db/**
