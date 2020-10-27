@@ -62,15 +62,15 @@ begin
 	 
     stimuli : process
     begin
-			SW <= "0000000000" ;    --initial all SW off
-			reset_n <= '0';         --reset flipflops
-			wait for 500000*TBPeriod; 
+			SW <= "0000000000" ;      --initial all SW off
+			reset_n <= '0';           --reset flipflops
+			wait for 500000*TBPeriod; -- 10ms
 			reset_n <= '1';
 			
 					wait for 31 ms;  				--let debouncer stabalize														
 					SW 	  <= "0011111111";  wait for 500000*TbPeriod;	--Decimal '255'																				
-					SW 	  <= "0110101010";  wait for 500000*TbPeriod; 	--Hex 	 'CC'														--save oxFF
-					save_n  <= '0'; 			  wait for 31 ms;  			   --debounce wait to save 'CC'
+					SW 	  <= "0110101010";  wait for 500000*TbPeriod; 	--Hex 	 'AA'														--save oxFF
+					save_n  <= '0'; 			  wait for 31 ms;  			   --debounce wait to save 'AA'
 					save_n  <= '1';			  wait for 31 ms;					--wait for save un-enable										
 					SW 	  <= "1000000000";  wait for 500000*TbPeriod;	--Saved 'FF'					
 					SW 	  <= "1100000000";  wait for 500000*TbPeriod;	--Hardcoded '5A5A'
