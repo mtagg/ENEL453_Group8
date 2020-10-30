@@ -8,3 +8,9 @@ lab3/db/**
 lab3/output_files/**
 lab3/simulation/**
 lab3/incremental_db/**
+
+lab4/db/**
+lab4/output_files/**
+lab4/simulation/**
+lab4/incremental_db/**
+

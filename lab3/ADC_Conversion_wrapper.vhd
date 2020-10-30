@@ -27,8 +27,8 @@ ADC_Conversion_ins: ADC_Conversion  PORT MAP(  -- test_ADC  PORT MAP(
 end RTL;
 
 ARCHITECTURE simulation OF ADC_Conversion_wrapper IS
-Signal counter :              STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
-Signal response_valid_out_i : std_logic;
+	Signal counter :              STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
+	Signal response_valid_out_i : std_logic;
 begin
 
 response_valid_out <= response_valid_out_i;

@@ -31,8 +31,8 @@ end component;
 --******************************************************************************************************************************************
 -- Comment out one of the two lines below, to select whether you want RTL (for DE10-Lite board) or simulation (for testbench) for the ADC **
 --******************************************************************************************************************************************
---for ADC_ins : ADC_Conversion_wrapper use entity work.ADC_Conversion_wrapper(RTL);        -- selects the RTL architecture
-for ADC_ins : ADC_Conversion_wrapper use entity work.ADC_Conversion_wrapper(simulation); -- selects the simulation architecture
+for ADC_ins : ADC_Conversion_wrapper use entity work.ADC_Conversion_wrapper(RTL);        -- selects the RTL architecture
+--for ADC_ins : ADC_Conversion_wrapper use entity work.ADC_Conversion_wrapper(simulation); -- selects the simulation architecture
 --******************************************************************************************************************************************
 
 Component voltage2distance_array2 IS -- converts ADC's voltage value to distance value
@@ -67,25 +67,27 @@ voltage2distance_ins: voltage2distance_array2
 									 reset_n	 => reset_n,											
 									 voltage	 => voltage_temp,									
 									 distance => distance
-									);
+);
 
-ADC_ins: ADC_Conversion_wrapper  PORT MAP(     
-                       MAX10_CLK1_50      => clk,
-                       response_valid_out => response_valid_out,
-                       ADC_out            => ADC_raw_temp -- normally ADC_out_temp
-									 );	
+ADC_ins: ADC_Conversion_wrapper  
+						PORT MAP(     
+									  MAX10_CLK1_50      => clk,
+									  response_valid_out => response_valid_out,
+									  ADC_out            => ADC_raw_temp -- normally ADC_out_temp
+);	
 
-averager : averager256 generic map( -- change here to modify the number of samples to average
+averager : averager256 
+						generic map( -- change here to modify the number of samples to average
                        N    => 8,  -- 8, 10, -- log2(number of samples to average over), e.g. N=8 is 2**8 = 256 samples
 							  X    => 4,  -- 4, 5, -- X = log4(2**N), e.g. log4(2**8) = log4(4**4) = log4(256) = 4 (bit of resolution gained)
 							  bits => 11) -- 11 -- number of bits in the input data to be averaged
-                       PORT MAP(
-                       clk        => clk,
-							  EN         => response_valid_out,
-							  reset_n    => reset_n,
-							  Din        => ADC_raw_temp,
-							  Q          => ADC_out_ave
-							  );
+                  PORT MAP(
+									  clk        => clk,
+									  EN         => response_valid_out,
+									  reset_n    => reset_n,
+									  Din        => ADC_raw_temp,
+									  Q          => ADC_out_ave
+);
 												
 ADC_out <= ADC_out_ave;
 
