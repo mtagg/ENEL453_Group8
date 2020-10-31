@@ -62,7 +62,10 @@ begin
 		  enable <= '1';				--release hold button
 		  wait for 8*TBPeriod;		--D_IN will now update D_OUT
 		  
+		  
+		  --end the TB:
 		  TB_END <= '1';
+		  assert false report "Simulation ended" severity failure;
         wait;
     end process;					
 					

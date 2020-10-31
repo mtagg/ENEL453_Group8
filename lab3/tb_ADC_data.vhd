@@ -2,6 +2,8 @@
 -- at https://vhdl.lapinoo.net
 -- Generation date : 22.10.2020 02:59:01 UTC
 
+--BEFORE TESTING THIS MODULE, SET THE ADC_MODULE INTO SIMULATION MODE, THIS IS EXPLAINED BY ONEN IN HIS OUTLINE
+
 library ieee;
 use ieee.std_logic_1164.all;
 

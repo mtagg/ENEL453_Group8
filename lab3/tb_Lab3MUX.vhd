@@ -2,6 +2,10 @@
 -- at https://vhdl.lapinoo.net
 -- Generation date : 29.10.2020 14:59:09 UTC
 
+
+--This testbench should suffice, it will just go through the 4 different outputs available to 
+		--the MUX which have set values, unique from each other.
+
 library ieee;
 use ieee.std_logic_1164.all;
 

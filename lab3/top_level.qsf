@@ -367,31 +367,32 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-set_global_assignment -name VHDL_FILE Display_Manager.vhd
-set_global_assignment -name QIP_FILE adc_qsys/synthesis/adc_qsys.qip
-set_global_assignment -name SDC_FILE top_level.sdc
-set_global_assignment -name VHDL_FILE tb_top_level.vhd
-set_global_assignment -name VHDL_FILE tb_Lab3MUX.vhd
-set_global_assignment -name VHDL_FILE Lab3MUX.vhd
-set_global_assignment -name SDC_FILE top_level.SDC
 set_global_assignment -name VHDL_FILE top_level.vhd
 set_global_assignment -name SOURCE_FILE top_level.qsf
-set_global_assignment -name VHDL_FILE SevenSegment_decoder.vhd
-set_global_assignment -name VHDL_FILE SevenSegment.vhd
-set_global_assignment -name VHDL_FILE binary_bcd.vhd
+set_global_assignment -name SDC_FILE top_level.sdc
+set_global_assignment -name SDC_FILE top_level.SDC
 set_global_assignment -name SOURCE_FILE top_level_assignment_defaults.qdf
 set_global_assignment -name SOURCE_FILE top_level.vhd.bak
 set_global_assignment -name SOURCE_FILE top_level.qws
-set_global_assignment -name VHDL_FILE debounce.vhd
-set_global_assignment -name VHDL_FILE synchro.vhd
-set_global_assignment -name VHDL_FILE voltage2distance_array2.vhd
-set_global_assignment -name VHDL_FILE tb_ADC_data.vhd
-set_global_assignment -name VHDL_FILE LUT_pkg.vhd
 set_global_assignment -name VHDL_FILE averager256.vhd
+set_global_assignment -name VHDL_FILE Lab3MUX.vhd
+set_global_assignment -name VHDL_FILE Display_Manager.vhd
+set_global_assignment -name VHDL_FILE freeze.vhd
+set_global_assignment -name VHDL_FILE synchro.vhd
+set_global_assignment -name VHDL_FILE debounce.vhd
+set_global_assignment -name VHDL_FILE SevenSegment_decoder.vhd
+set_global_assignment -name VHDL_FILE SevenSegment.vhd
+set_global_assignment -name VHDL_FILE binary_bcd.vhd
 set_global_assignment -name VHDL_FILE ADC_Data.vhd
 set_global_assignment -name VHDL_FILE ADC_Conversion_wrapper.vhd
 set_global_assignment -name VERILOG_FILE ADC_Conversion.v
+set_global_assignment -name VHDL_FILE LUT_pkg.vhd
+set_global_assignment -name VHDL_FILE voltage2distance_array2.vhd
+set_global_assignment -name QIP_FILE adc_qsys/synthesis/adc_qsys.qip
+set_global_assignment -name VHDL_FILE tb_top_level.vhd
+set_global_assignment -name VHDL_FILE tb_Lab3MUX.vhd
 set_global_assignment -name VHDL_FILE tb_freeze.vhd
-set_global_assignment -name VHDL_FILE freeze.vhd
+set_global_assignment -name VHDL_FILE tb_ADC_data.vhd
 set_global_assignment -name VHDL_FILE tb_Display_Manager.vhd
+set_global_assignment -name VHDL_FILE tb_averager256.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

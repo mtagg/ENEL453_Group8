@@ -2,6 +2,8 @@
 -- at https://vhdl.lapinoo.net
 -- Generation date : 29.10.2020 18:03:41 UTC
 
+--BEFORE TESTING THIS MODULE, SET THE ADC_MODULE INTO SIMULATION MODE, THIS IS EXPLAINED BY ONEN IN HIS OUTLINE
+
 library ieee;
 use ieee.std_logic_1164.all;
 
@@ -24,10 +26,10 @@ architecture tb of tb_top_level is
               HEX5    : out std_logic_vector (7 downto 0));
     end component;
 
-    signal clk     : std_logic;
-    signal reset_n : std_logic;
-    signal hold_n  : std_logic;
-    signal SW      : std_logic_vector (9 downto 0);
+    signal clk     : std_logic := '0';
+    signal reset_n : std_logic := '1';
+    signal hold_n  : std_logic := '1';
+    signal SW      : std_logic_vector (9 downto 0) := (others => '0');
     signal LEDR    : std_logic_vector (9 downto 0);
     signal HEX0    : std_logic_vector (7 downto 0);
     signal HEX1    : std_logic_vector (7 downto 0);
@@ -60,43 +62,30 @@ begin
 
   stimuli : process
     begin
-	 
-		  -- initialize	
-        hold_n <= '1';
-        SW <= (others => '0');
+		  
 
-		  
-		  
         -- Reset test
         reset_n <= '0';
-        wait for 200*TbPeriod;
+        wait for 500*TbPeriod;
         reset_n <= '1';
-        wait for 200*TbPeriod;
-
-		  
-		  
+		  wait for 31 ms; --let the debounce settle
         -- main testing
-		  wait for 200*TbPeriod;
+		  SW 		<= "0011111111" ; wait for 2000*TbPeriod;--should display hex "FF" 
+
+		  SW 		<= "0100000000" ; wait for 2000*TbPeriod;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
+
+		  SW 		<= "1000000000" ; wait for 2000*TbPeriod;-- BCD Voltage display mode, in Volt units (with decimal)
 		  
-		  wait for 200*TbPeriod;
-		  
-		  wait for 200*TbPeriod;
-		  
-		  wait for 200*TbPeriod;
-		  
-		  wait for 200*TbPeriod;
-		  
-		  wait for 200*TbPeriod;
-		  
-		  wait for 200*TbPeriod;
-		  
-		  wait for 200*TbPeriod;
-  
-		  wait for 200*TbPeriod;
-		  
-		  
+		  SW 		<= "1100000000" ; wait for 2000*TbPeriod;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
+		 
+		  		
+		  --hold_n <= '0'; 			  	wait for 31 ms;--hold button pressed, wait for debouncer
+		  --verify the display is now frozen until the debounced hold_n is set high
+		  --hold_n <= '1';			  	wait for 31 ms;	--hold button released, wait for debouncer
+		  -- end main testing 	
+
         TbSimEnded <= '1';   -- Stop the clock and hence terminate the simulation
-		  
+		  assert false report "Simulation ended" severity failure; -- need this line to halt the testbench  
         wait;
 		  
     end process;

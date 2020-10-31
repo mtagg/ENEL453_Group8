@@ -1,4 +1,7 @@
 
+
+*.bak
+
 lab2/db/**
 lab2/output_files/**
 lab2/simulation/**

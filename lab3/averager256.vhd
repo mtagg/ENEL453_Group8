@@ -31,9 +31,10 @@ architecture rtl of averager256 is
 		signal REG_ARRAY  : Register_Array(2**N downto 1);						 -- create signal 2D-array : (2**N) * 12 bit registers, ie. 256 - 12bit registers 
 
 		type temporary is array(integer range <>) of integer;
-		signal tmp 			: temporary((2**N)-1 downto 1);								 -- create temp 1D-array   : (2**N - 1) integer array
-
+		signal tmp 			: temporary((2**N)-1 downto 1);								 -- create temp 1D-array   : (2**N - 1) integer array						
 		signal tmplast 	: std_logic_vector(2**N-1 downto 0);					 -- 256-bit signal - will be given the 256 bits at index 255 of "tmp" to be delivered to Q(output)
+		
+
 		
 		constant Zeros		: STD_LOGIC_VECTOR(11 downto 0) := (others => '0'); -- 12-bits of '0' used for reset functionality
 
@@ -58,9 +59,7 @@ begin
 							LoopA2: for i in 1 to 2**N-1 loop	
 								REG_ARRAY(i+1) <= REG_ARRAY(i);		-- every rising clock edge, shift the new Din value to the top of REG_ARRAY
 								end loop LoopA2;
-							
-
-								
+	
 							Q     <= tmplast(N+bits downto N); 		-- every rising clock edge, output average: Q is updated with tmplast(19 downto 8) (with 8 bits left over, lol, wut?) 
 							-- Q_high_res <= tmplast(N+bits downto N-X);
 						
@@ -70,14 +69,14 @@ begin
    
 
 		
-   LoopB1: for i in 1 to (2**N)/2 generate 					 -- loop through the lower-half indicies of tmp	
-      tmp(i) <= to_integer(unsigned(REG_ARRAY((2*i)-1)))  + to_integer(unsigned(REG_ARRAY(2*i)));	
+   LoopB1: for i in 1 to (2**N)/2  generate 					 -- loop through tmp(128 downto 1)
+      tmp(i) <= (to_integer(unsigned(REG_ARRAY((2*i)-1)))  + to_integer(unsigned(REG_ARRAY(2*i))))	when rising_edge(clk) else tmp(i);
 	end generate LoopB1;		
    
 	
 	
-	LoopB2: for i in ((2**N)/2)+1 to ((2**N) -1) generate		-- loop through upper-half indicies of tmp 129<i<255					
-		tmp(i) <= tmp(2*(i-(2**N)/2)) + tmp(2*(i-(2**N)/2) - 1);
+	LoopB2: for i in ((2**N)/2)+1 to ((2**N) -1) generate		-- loop through tmp (255 downto 129
+		tmp(i) <= (tmp(2*(i-(2**N)/2)) + tmp(2*(i-(2**N)/2) - 1)) when rising_edge(clk) else tmp(i);
    end generate LoopB2;
 
 	
