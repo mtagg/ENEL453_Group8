@@ -50,7 +50,7 @@ PROCESS(clk, reset_n)
   BEGIN
     IF(reset_n = '0') THEN                       		-- reset pressed:
       flipflops(1 DOWNTO 0) <= "00";                 		-- clear input flipflops and,
-      result <= '0';                                 		-- clear result register
+      result <= '1';                                 		-- clear result register
 		
     ELSIF rising_edge(clk) THEN           		 		-- rising clock edge
 			flipflops(0) <= button;                   	  	-- store button value in 1st flipflop

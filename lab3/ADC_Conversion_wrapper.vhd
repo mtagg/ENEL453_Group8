@@ -36,8 +36,10 @@ ADC_out(11 downto 3) <= "100011000"; -- upper ADC bits stay the same
 
          response_valid_out_process: process -- This models a 1 MSps ADC output
          begin                               -- However, your ADC has 25 kHz ADC output
-              response_valid_out_i <= '0'; wait for 980 ns;
-              response_valid_out_i <= '1'; wait for 20 ns; 
+			
+			--EDIT: ADJUSTED THE ON/OFF TIME OF THIS PROCESS TO SIMULATE THE 25 kHz OUTPUT
+              response_valid_out_i <= '0'; wait for 39 us;
+              response_valid_out_i <= '1'; wait for  1 ns; 
          end process;
         
          ADC_out_process : Process (response_valid_out_i) -- modify the lower 3 ADC bits

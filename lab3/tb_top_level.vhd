@@ -3,6 +3,8 @@
 -- Generation date : 29.10.2020 18:03:41 UTC
 
 --BEFORE TESTING THIS MODULE, SET THE ADC_MODULE INTO SIMULATION MODE, THIS IS EXPLAINED BY ONEN IN HIS OUTLINE
+--THIS TESTBENCH SHOULD BE GOOD TO PRESENT
+
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -63,27 +65,32 @@ begin
   stimuli : process
     begin
 		  
-
-        -- Reset test
-        reset_n <= '0';
-        wait for 500*TbPeriod;
-        reset_n <= '1';
-		  wait for 31 ms; --let the debounce settle
-        -- main testing
-		  SW 		<= "0011111111" ; wait for 2000*TbPeriod;--should display hex "FF" 
-
-		  SW 		<= "0100000000" ; wait for 2000*TbPeriod;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
-
-		  SW 		<= "1000000000" ; wait for 2000*TbPeriod;-- BCD Voltage display mode, in Volt units (with decimal)
 		  
-		  SW 		<= "1100000000" ; wait for 2000*TbPeriod;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
+        -- Reset test
+		  -- Reset will now force the debounce signal to high (off) position, yay!
+        reset_n <= '0';
+        wait for 20000*TbPeriod;
+        reset_n <= '1';
+		  wait for 20000*TbPeriod;
+
+        -- main testing
+		  SW 		<= "0011111111" ; wait for 30000*TbPeriod;--should display hex "FF" 
+
+		  SW 		<= "0100000000" ; wait for 30000*TbPeriod;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
+
+		  SW 		<= "1000000000" ; wait for 30000*TbPeriod;-- BCD Voltage display mode, in Volt units (with decimal)
+		  
+		  SW 		<= "1100000000" ; wait for 30000*TbPeriod;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
 		 
 		  		
-		  --hold_n <= '0'; 			  	wait for 31 ms;--hold button pressed, wait for debouncer
-		  --verify the display is now frozen until the debounced hold_n is set high
-		  --hold_n <= '1';			  	wait for 31 ms;	--hold button released, wait for debouncer
+		  hold_n <= '0'; 			  	wait for 30 ms;--hold button pressed, wait for debouncer
+		  --verify the display is now frozen
+		  --I chose to end the simulation with the hold behaviour instead of waiting another 31ms to turn it back off
+		  --it already was taking 2-3 mins to load the simulation at this point
+		  
+		  
 		  -- end main testing 	
-
+		  wait for 50000*TbPeriod;	
         TbSimEnded <= '1';   -- Stop the clock and hence terminate the simulation
 		  assert false report "Simulation ended" severity failure; -- need this line to halt the testbench  
         wait;
