@@ -90,7 +90,7 @@ begin
 		  
 		  
 		  -- end main testing 	
-		  wait for 50000*TbPeriod;	
+		  wait for 200000*TbPeriod;	
         TbSimEnded <= '1';   -- Stop the clock and hence terminate the simulation
 		  assert false report "Simulation ended" severity failure; -- need this line to halt the testbench  
         wait;

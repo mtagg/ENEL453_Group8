@@ -1,5 +1,5 @@
-
-
+*.mp4
+*.mov
 *.bak
 
 lab2/db/**
