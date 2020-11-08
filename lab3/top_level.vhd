@@ -38,45 +38,45 @@ architecture Behavioral of top_level is
 
 
 	
-component freeze is 
-		port(		clk		:in  STD_LOGIC;
-					reset_n	:in  STD_LOGIC;
-					enable 	:in  STD_LOGIC;
-					D_IN	:in  STD_LOGIC_VECTOR(15 downto 0);
-					D_OUT :out STD_LOGIC_VECTOR(15 downto 0)
-			);	
-end component;
-
-component ADC_Data is
-		port(    clk      : in STD_LOGIC;
-					reset_n  : in STD_LOGIC; -- active-low
-					voltage  : out STD_LOGIC_VECTOR (12 downto 0); -- Voltage in milli-volts
-					distance : out STD_LOGIC_VECTOR (12 downto 0); -- distance in 10^-4 cm (e.g. if distance = 33 cm, then 3300 is the value)
-					ADC_raw  : out STD_LOGIC_VECTOR (11 downto 0); -- the latest 12-bit ADC value
-					ADC_out  : out STD_LOGIC_VECTOR (11 downto 0)  -- moving average of ADC value, over 256 samples,
-			);                                              -- number of samples defined by the averager module
+	component freeze is 
+			port(		clk		:in  STD_LOGIC;
+						reset_n	:in  STD_LOGIC;
+						enable 	:in  STD_LOGIC;
+						D_IN	:in  STD_LOGIC_VECTOR(15 downto 0);
+						D_OUT :out STD_LOGIC_VECTOR(15 downto 0)
+				);	
 	end component;
-
-component Display_Manager is
-		port ( 	SW9_8   		: in  STD_LOGIC_VECTOR ( 1 downto 0);
-					Dist_Disp	: in  STD_LOGIC_VECTOR (15 downto 0);
-					HexADC_Disp : in  STD_LOGIC_VECTOR (15 downto 0);
-					DP_IN 	   : out STD_LOGIC_VECTOR ( 5 downto 0);
-					Blank			: out STD_LOGIC_VECTOR ( 5 downto 0)
-				);
-				
-end component;
-				 
 	
-component Lab3MUX is 
-		port ( 	SW9_8			 : in  STD_LOGIC_VECTOR(1 downto 0);  
-					HEX_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
-					CM_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);	
-					VOLT_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
-					VAVG_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
-					DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
-					); 
+	component ADC_Data is
+			port(    clk      : in STD_LOGIC;
+						reset_n  : in STD_LOGIC; -- active-low
+						voltage  : out STD_LOGIC_VECTOR (12 downto 0); -- Voltage in milli-volts
+						distance : out STD_LOGIC_VECTOR (12 downto 0); -- distance in 10^-4 cm (e.g. if distance = 33 cm, then 3300 is the value)
+						ADC_raw  : out STD_LOGIC_VECTOR (11 downto 0); -- the latest 12-bit ADC value
+						ADC_out  : out STD_LOGIC_VECTOR (11 downto 0)  -- moving average of ADC value, over 256 samples,
+				);                                              -- number of samples defined by the averager module
+		end component;
+	
+	component Display_Manager is
+			port ( 	SW9_8   		: in  STD_LOGIC_VECTOR ( 1 downto 0);
+						Dist_Disp	: in  STD_LOGIC_VECTOR (15 downto 0);
+						HexADC_Disp : in  STD_LOGIC_VECTOR (15 downto 0);
+						DP_IN 	   : out STD_LOGIC_VECTOR ( 5 downto 0);
+						Blank			: out STD_LOGIC_VECTOR ( 5 downto 0)
+					);
+					
 	end component;
+					 
+		
+	component Lab3MUX is 
+			port ( 	SW9_8			 : in  STD_LOGIC_VECTOR(1 downto 0);  
+						HEX_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
+						CM_IN 	    : in  STD_LOGIC_VECTOR(15 downto 0);	
+						VOLT_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
+						VAVG_IN		 : in  STD_LOGIC_VECTOR(15 downto 0);
+						DATA_OUT     : out STD_LOGIC_VECTOR(15 downto 0)
+						); 
+		end component;
 
 
 component synchro is
