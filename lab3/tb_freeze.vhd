@@ -48,7 +48,7 @@ begin
 	stimuli : process
     begin
         -- initialization
-			enable 	<= '1';        		--all registers enabled
+			enable 	<= '1';        --all registers enabled
 		  
 		  -- reset test
 		  reset_n <= '0';

@@ -61,10 +61,8 @@ begin
     -- Clock generation
     clk <= not clk after TbPeriod/2 when TbSimEnded /= '1' else '0';
 
-
   stimuli : process
     begin
-		  
 		  
         -- Reset test
 		  -- Reset will now force the debounce signal to high (off) position, yay!

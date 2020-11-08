@@ -28,11 +28,11 @@ architecture rtl of averager256 is
 
 		subtype REG is std_logic_vector(bits downto 0);				
 		type Register_Array is array (natural range <>) of REG;
-		signal REG_ARRAY  : Register_Array(2**N downto 1);						 -- create signal 2D-array : (2**N) * 12 bit registers, ie. 256 - 12bit registers 
+		signal REG_ARRAY  : Register_Array(2**N downto 1);						-- create signal 2D-array : (2**N) * 12 bit registers, ie. 256 - 12bit registers 
 
 		type temporary is array(integer range <>) of integer;
-		signal tmp 			: temporary((2**N)-1 downto 1);								 -- create temp 1D-array   : (2**N - 1) integer array						
-		signal tmplast 	: std_logic_vector(2**N-1 downto 0);					 -- 256-bit signal - will be given the 256 bits at index 255 of "tmp" to be delivered to Q(output)
+		signal tmp 			: temporary((2**N)-1 downto 1);						-- create temp 1D-array   : (2**N - 1) integer array						
+		signal tmplast 	: std_logic_vector(2**N-1 downto 0);				-- 256-bit signal - will be given the 256 bits at index 255 of "tmp" to be delivered to Q(output)
 		
 
 		

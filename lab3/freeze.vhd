@@ -19,7 +19,7 @@ begin
 data_flow : process (clk, reset_n, enable, D_IN)
 		begin
 			if (reset_n = '0') then
-					mid 		 <= (others => '0');
+					mid 	 <= (others => '0');
 					D_OUT  <= (others => '0');
 			elsif rising_edge(clk) then
 					if (enable = '1') then

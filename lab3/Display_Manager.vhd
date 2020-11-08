@@ -24,7 +24,7 @@ Display_Management : process (SW9_8, Dist_Disp,  HexADC_Disp)
 					
 						case SW9_8 is
 							when "01" 		=> DP_IN <= "000100"; -- distance display mode
-													if (Dist_Disp < "0001000000000000") then
+													if (Dist_Disp < "0100000000000000") then
 															Blank <= "111000";
 													else  Blank <= "110000";
 													end if;

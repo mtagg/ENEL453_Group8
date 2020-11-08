@@ -57,6 +57,7 @@ begin
     begin
         -- EDIT Adapt initialization as needed
 
+		  
         -- Reset generation
         -- EDIT: Check that reset_n is really your reset signal
         reset_n <= '0';
