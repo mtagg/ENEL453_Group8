@@ -3,9 +3,6 @@
 -- Generation date : 31.10.2020 15:22:12 UTC
 
 
-
-
-
 --Averager256 Testbench to test the operation of the added registers
 
 --BEFORE TESTING THIS MODULE, SET THE ADC_MODULE INTO SIMULATION MODE, THIS IS EXPLAINED BY ONEN IN HIS OUTLINE
@@ -24,16 +21,16 @@ component averager256 is
         port (clk     : in  std_logic;
               EN      : in  std_logic;
               reset_n : in  std_logic;
-              Din     : in  std_logic_vector (7 downto 0);
-              Q       : out std_logic_vector (7 downto 0)
+              Din     : in  std_logic_vector (11 downto 0);
+              Q       : out std_logic_vector (11 downto 0)
 				  );
 	end component;
 
-    signal clk     : std_logic:='0';	--init clk
+    signal clk     : std_logic:='0';	--initialize clk
     signal EN      : std_logic:='1';   --enables module to take a new average value
-    signal reset_n : std_logic:='1';	--init reset off
-    signal Din     : std_logic_vector (7 downto 0) := (others => '0'); --init Data in: Din to all 0s
-    signal Q       : std_logic_vector (7 downto 0);
+    signal reset_n : std_logic:='1';	--initialize reset off
+    signal Din     : std_logic_vector (11 downto 0) := (others => '0'); --init Data in: Din to all 0s
+    signal Q       : std_logic_vector (11 downto 0);
 	 
 	 constant   N	  : INTEGER := 8; -- 2**8 = 256, the base 2 log of 256, the number of data points we will average
 	 constant   X    : INTEGER := 4; -- X = log4(2**N), e.g. log4(2**8) = log4(4**4) = log4(256) = 4 (bit of resolution gained)
@@ -54,7 +51,7 @@ begin
 
     -- Clock generation
     clk <= not clk after TbPeriod/2 when TbSimEnded /= '1' else '0';
-
+	 Din	 <= (Din(11 downto 0) & '1') when rising_edge(clk);
 
 stimuli : process
     begin
@@ -70,7 +67,7 @@ stimuli : process
 		  
 		  
 		  
-		  --  we will need to test the operation of the new registers within the averager. a decent understanding of how the module works
+		  -- we will need to test the operation of the new registers within the averager. a decent understanding of how the module works
 		  -- in regards to binary averaging would be useful, it took me a few hours to really understand
 		  -- let me know if you want to have a video call to kinda get you up to speed if you wanna save time
 		  
