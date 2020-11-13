@@ -70,13 +70,15 @@ begin
 
 		
    LoopB1: for i in 1 to (2**N)/2  generate 					 -- loop through tmp(128 downto 1)
-      tmp(i) <= (to_integer(unsigned(REG_ARRAY((2*i)-1)))  + to_integer(unsigned(REG_ARRAY(2*i))))	when rising_edge(clk) else tmp(i);
+		tmp(i) <= 0 when reset_n = '0'
+      else (to_integer(unsigned(REG_ARRAY((2*i)-1)))  + to_integer(unsigned(REG_ARRAY(2*i))))	when rising_edge(clk) else tmp(i);
 	end generate LoopB1;		
    
 	
 	
 	LoopB2: for i in ((2**N)/2)+1 to ((2**N) -1) generate		-- loop through tmp (255 downto 129
-		tmp(i) <= (tmp(2*(i-(2**N)/2)) + tmp(2*(i-(2**N)/2) - 1)) when rising_edge(clk) else tmp(i);
+		tmp(i) <= 0 when reset_n = '0'
+		else (tmp(2*(i-(2**N)/2)) + tmp(2*(i-(2**N)/2) - 1)) when rising_edge(clk) else tmp(i);
    end generate LoopB2;
 
 	
