@@ -64,31 +64,30 @@ begin
   stimuli : process
     begin
 		  
-        -- Reset test
 		  -- Reset will now force the debounce signal to high (off) position, yay!
         reset_n <= '0';
-        wait for 20000*TbPeriod;
+        wait for 20000*TbPeriod; --0.4ms
         reset_n <= '1';
 		  wait for 20000*TbPeriod;
+		  
+		  hold_n <= '0'; 			  	wait for 31 ms;--hold button pressed; debouncer takes 30ms
 
         -- main testing
-		  SW 		<= "0011111111" ; wait for 30000*TbPeriod;--should display hex "FF" 
+		  SW 		<= "0011111111" ; wait for 5 ms;--should display hex "FF" 
 
-		  SW 		<= "0100000000" ; wait for 30000*TbPeriod;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
+		  SW 		<= "0100000000" ; wait for 5 ms;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
 
-		  SW 		<= "1000000000" ; wait for 30000*TbPeriod;-- BCD Voltage display mode, in Volt units (with decimal)
+		  SW 		<= "1000000000" ; wait for 5 ms;-- BCD Voltage display mode, in Volt units (with decimal)
 		  
-		  SW 		<= "1100000000" ; wait for 30000*TbPeriod;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
+		  SW 		<= "1100000000" ; wait for 5 ms;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
 		 
-		  		
-		  hold_n <= '0'; 			  	wait for 30 ms;--hold button pressed, wait for debouncer
-		  --verify the display is now frozen
+		  
 		  --I chose to end the simulation with the hold behaviour instead of waiting another 31ms to turn it back off
 		  --it already was taking 2-3 mins to load the simulation at this point
 		  
 		  
 		  -- end main testing 	
-		  wait for 200000*TbPeriod;	
+		  wait for 150000*TbPeriod; --3ms
         TbSimEnded <= '1';   -- Stop the clock and hence terminate the simulation
 		  assert false report "Simulation ended" severity failure; -- need this line to halt the testbench  
         wait;

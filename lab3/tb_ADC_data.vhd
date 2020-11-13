@@ -67,6 +67,9 @@ begin
 
         -- EDIT Add stimuli here
         wait for 100 * TbPeriod;
+		  
+		  --adc_out_ave <= "000000110000"; --30 is the moving average from the start
+		  
         wait for 500 * 980 ns;
 
         -- Stop the clock and hence terminate the simulation
