@@ -55,15 +55,15 @@ begin
         -- test the mux
 		  -- input display values can remain constand as we are just testing the output changing as SW9_8 changes
 		  
-		  wait for 20 ns;
+		  wait for 50 ns;
 		  SW9_8 <= "01";			-- BCD distance
-		  wait for 20 ns;
+		  wait for 100 ns;
 		  SW9_8 <= "10";			-- BCD voltage
-		  wait for 20 ns;
+		  wait for 100 ns;
 		  SW9_8 <= "11";        -- hex voltage
-		  wait for 20 ns;
+		  wait for 100 ns;
 		  SW9_8 <= "00";			-- back to switch input
-		  wait for 20 ns;
+		  wait for 100 ns;
 		    
         wait;
     end process;

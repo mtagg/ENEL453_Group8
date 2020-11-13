@@ -37,24 +37,25 @@ for ADC_ins : ADC_Conversion_wrapper use entity work.ADC_Conversion_wrapper(simu
 
 Component voltage2distance_array2 IS -- converts ADC's voltage value to distance value
 	PORT(                             -- according to Sharp GP2Y0A41SK0F Distance Sensor datasheet
-		clk				:	IN		STD_LOGIC;											
-		reset_n			:	IN		STD_LOGIC;											
-		voltage			:	IN		STD_LOGIC_VECTOR(12 DOWNTO 0);									
-		distance			:	OUT	STD_LOGIC_VECTOR(12 DOWNTO 0)
+			clk				:	IN		STD_LOGIC;											
+			reset_n			:	IN		STD_LOGIC;											
+			voltage			:	IN		STD_LOGIC_VECTOR(12 DOWNTO 0);									
+			distance			:	OUT	STD_LOGIC_VECTOR(12 DOWNTO 0)
 		);	
 END Component;
 
 component averager256 is -- calculates moving average of 256 12-bit samples
   generic(
-	     N    : INTEGER;
-        X    : INTEGER;
-		  bits : INTEGER); 
+			N    : INTEGER;
+			X    : INTEGER;
+			bits : INTEGER
+		  ); 
 	port (
-		  clk     : in  std_logic;
-		  EN      : in  std_logic; -- takes a new sample when high for each clock cycle
-		  reset_n : in  std_logic; -- active-low
-		  Din     : in  std_logic_vector(bits downto 0); -- input sample for moving average calculation
-		  Q       : out std_logic_vector(bits downto 0)  -- 12-bit moving average of 256 samples
+			clk     : in  std_logic;
+			EN      : in  std_logic; -- takes a new sample when high for each clock cycle
+			reset_n : in  std_logic; -- active-low
+			Din     : in  std_logic_vector(bits downto 0); -- input sample for moving average calculation
+			Q       : out std_logic_vector(bits downto 0)  -- 12-bit moving average of 256 samples
 		  );
 end component;
 

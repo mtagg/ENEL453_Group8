@@ -126,6 +126,7 @@ begin
 	LEDR(9 downto 0) <= SWsync (9 downto 0); 	-- visual display of the switch inputs to the LEDs on board
 	hex_buffer  	  <= "00000000" & SWsync(7 downto 0);  --extend 0s for 2byte bus
 	ADC_buffer       <= "0000" & ADC_out;
+	
 SevenSegment_ins : SevenSegment  
       PORT MAP( 
 			Num_Hex0  => Num_Hex0,

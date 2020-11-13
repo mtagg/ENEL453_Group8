@@ -51,21 +51,19 @@ begin
 
     -- Clock generation
     clk <= not clk after TbPeriod/2 when TbSimEnded /= '1' else '0';
-	 Din	 <= (Din(11 downto 0) & '1') when rising_edge(clk);
+	 Din <= (Din(10 downto 0) & '1') when rising_edge(clk); --increment Din by 1
 
 stimuli : process
     begin
 
         -- Reset generation
         reset_n <= '0';
-        wait for 100 ns;
+        wait for 50 ns;
         reset_n <= '1';
-        wait for 100 ns;
+        wait for 50 ns;
 
         -- main stimuli
-        wait for 100 * TbPeriod;
-		  
-		  
+        wait for 20 * TbPeriod; -- this is 400ns
 		  
 		  -- we will need to test the operation of the new registers within the averager. a decent understanding of how the module works
 		  -- in regards to binary averaging would be useful, it took me a few hours to really understand
