@@ -19,8 +19,8 @@ constant X : integer := 4; -- 4; -- X = log4(2**N), e.g. log4(2**8) = log4(4**4)
 signal response_valid_out : STD_LOGIC;
 signal ADC_raw_temp,ADC_out_ave : STD_LOGIC_VECTOR(11 DOWNTO 0);
 signal voltage_temp       : STD_LOGIC_VECTOR(12 DOWNTO 0);
-signal temp               : STD_LOGIC_VECTOR(11 DOWNTO 0);
-signal Q_high_res         : STD_LOGIC_VECTOR(X+11 downto 0); -- (4+11 DOWNTO 0); -- first add (i.e. X) is log4(2**N), e.g. log4(2**8) = log4(256) = 4, must match X constant
+--signal temp               : STD_LOGIC_VECTOR(11 DOWNTO 0);
+--signal Q_high_res         : STD_LOGIC_VECTOR(X+11 downto 0); -- (4+11 DOWNTO 0); -- first add (i.e. X) is log4(2**N), e.g. log4(2**8) = log4(256) = 4, must match X constant
 
 component ADC_Conversion_wrapper is -- this brings in the ADC module, either as a hardware peripheral or as a simulation model
     Port( MAX10_CLK1_50      : in STD_LOGIC;

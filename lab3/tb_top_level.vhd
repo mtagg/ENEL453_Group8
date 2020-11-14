@@ -70,7 +70,7 @@ begin
         reset_n <= '1';
 		  wait for 20000*TbPeriod;
 		  
-		  hold_n <= '0'; 			  	wait for 31 ms;--hold button pressed; debouncer takes 30ms
+		  hold_n <= '0'; 			  	wait for 3 ms;--hold button pressed; debouncer takes 30ms
 
         -- main testing
 		  SW 		<= "0011111111" ; wait for 5 ms;--should display hex "FF" 
@@ -81,13 +81,15 @@ begin
 		  
 		  SW 		<= "1100000000" ; wait for 5 ms;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
 		 
+		  wait for 10 ms;
+		 
 		  
 		  --I chose to end the simulation with the hold behaviour instead of waiting another 31ms to turn it back off
 		  --it already was taking 2-3 mins to load the simulation at this point
 		  
 		  
 		  -- end main testing 	
-		  wait for 150000*TbPeriod; --3ms
+		  wait for 250000*TbPeriod; --5ms
         TbSimEnded <= '1';   -- Stop the clock and hence terminate the simulation
 		  assert false report "Simulation ended" severity failure; -- need this line to halt the testbench  
         wait;
