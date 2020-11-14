@@ -23,7 +23,7 @@ architecture tb of tb_ADC_Data is
 				  );
     end component;
 
-    signal clk              : std_logic;
+    signal clk              : std_logic := '1';
     signal reset_n          : std_logic;
     signal voltage          : std_logic_vector (12 downto 0);
     signal distance         : std_logic_vector (12 downto 0);
@@ -38,7 +38,7 @@ architecture tb of tb_ADC_Data is
 begin
 
     dut : ADC_Data
-    port map (clk              => clk,
+    port map (clk              => clk ,
               reset_n          => reset_n,
               voltage          => voltage,
               distance         => distance,

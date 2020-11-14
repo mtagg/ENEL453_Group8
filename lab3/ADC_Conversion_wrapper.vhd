@@ -39,7 +39,7 @@ ADC_out(11 downto 3) <= "100011000"; -- upper ADC bits stay the same
 			
 			--EDIT: ADJUSTED THE ON/OFF TIME OF THIS PROCESS TO SIMULATE THE 25 kHz OUTPUT
               response_valid_out_i <= '0'; wait for 39 us;
-              response_valid_out_i <= '1'; wait for  1 ns; 
+              response_valid_out_i <= '1'; wait for  1 us; 
          end process;
         
          ADC_out_process : Process (response_valid_out_i) -- modify the lower 3 ADC bits
