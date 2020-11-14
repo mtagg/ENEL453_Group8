@@ -94,7 +94,7 @@ ADC_out <= ADC_out_ave;
 
 ADC_raw <= ADC_raw_temp;
 
-voltage_temp <= '0' & std_logic_vector(resize(unsigned(ADC_out_ave)*2500*2/(2**12),voltage_temp'length-1));  -- Converting ADC_out_ave, a 12-bit binary value, to voltage value (in mV), using type conversions
+voltage <= '0' & std_logic_vector(resize(unsigned(ADC_out_ave)*2500*2/(2**12),voltage_temp'length-1));  -- Converting ADC_out_ave, a 12-bit binary value, to voltage value (in mV), using type conversions
 -- Above equation:  2**12 represents 2^12 = 4096, and this is scaling factor to normalize the ADC 12-bit value to 1 (technically 4095/4096 = 0.9997559). 
 --                    Dividing by 4096 is trivial for digital hardware, it's just a shift of the binary point. Dividing by 4095 is difficult, resulting a complex divider that reduces the Fmax to 21.1 MHz.
 --                    The difference in accuracy between /4096 and /4095 is neglible for this application. If you are curious, talk to Denis Onen about how to efficiently do /4095, he is an expert in these kinds of calculations.
