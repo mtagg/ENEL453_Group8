@@ -65,22 +65,11 @@ stimuli : process
         -- main stimuli
         wait for 20 * TbPeriod; -- this is 400ns
 		  
-		  -- we will need to test the operation of the new registers within the averager. a decent understanding of how the module works
-		  -- in regards to binary averaging would be useful, it took me a few hours to really understand
-		  -- let me know if you want to have a video call to kinda get you up to speed if you wanna save time
-		  
-		  --but basically, we need to verify that the few layers of binary adders in the module really do have registers seperating the layers
-		  --this seperation would allow for pipelining of data, instead of just always calculating data as it comes up like combinational logic does
-		  
-		  --to verify this behaviour, we would want to continually change the Din signal every clock cycle( or a few, whatever preference you have)
-		  --for every clock cycle, we should see the upper values of the "tmp" signal be updated with the lower values of tmp, likewise, the
-		  --lower values of tmp will be updated with the new values of "REG_ARRAY", REG_ARRAY also gets updated with values of Din every clock
-		  --cycle, but this was previous behaviour and will not need to be tested.
-		  
-		  --the code for the logic mentioned in the last paragraph is in the averager256 module, starting on lines 59,72, and 78
-
-		  
-		  
+		  --algorithm for averager TB:
+		  --value of Din increments by 1, then that is updated to register0 of REG_ARRAY on next clk rise
+		  --tmp updates to sum of N and N-1 register values on next clk rise
+		  --tmplast updates to value of tmp(255) on next clk rise
+		  --Q = tmplast(19:8) on next clk rise
 		  
         -- Stop the clock and hence terminate the simulation	  
         TbSimEnded <= '1';

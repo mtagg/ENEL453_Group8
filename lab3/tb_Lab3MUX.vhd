@@ -4,7 +4,7 @@
 
 
 --This testbench should suffice, it will just go through the 4 different outputs available to 
-		--the MUX which have set values, unique from each other.
+--the MUX which have set values, unique from each other.
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -44,16 +44,17 @@ begin
 
     stimuli : process
     begin
-	 --Initialize
-        SW9_8 <= "00";
+	 
+	     --Initialize values for stimulus
+        
+		  SW9_8 <= "00";
         HEX_IN <= "0000000011110000";	--SWITCHES HEX DISPLAY "F0"
         CM_IN <= 	"0000100100001001";	-- Distance display "0909"
         VOLT_IN <= (others => '0');		-- BCD volt display "0000"
         VAVG_IN <= "0000101010101010"; -- ADC HEX DISPLAY "0AAA"
 			
 
-        -- test the mux
-		  -- input display values can remain constand as we are just testing the output changing as SW9_8 changes
+        -- we are just testing the output changing as SW9_8 changes
 		  
 		  wait for 50 ns;
 		  SW9_8 <= "01";			-- BCD distance
@@ -69,11 +70,6 @@ begin
     end process;
 
 end tb;
-
-
-
-
-
 
 
 configuration cfg_tb_Lab3MUX of tb_Lab3MUX is

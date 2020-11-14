@@ -70,9 +70,9 @@ begin
         reset_n <= '1';
 		  wait for 20000*TbPeriod;
 		  
-		  hold_n <= '0'; 			  	wait for 3 ms;--hold button pressed; debouncer takes 30ms
+		  hold_n <= '0'; 			  	wait for 3 ms;--hold button pressed; debouncer will take 30ms to update
 
-        -- main testing
+        -- main testing while we wait for debounce
 		  SW 		<= "0011111111" ; wait for 5 ms;--should display hex "FF" 
 
 		  SW 		<= "0100000000" ; wait for 5 ms;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
@@ -82,11 +82,8 @@ begin
 		  SW 		<= "1100000000" ; wait for 5 ms;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
 		 
 		  wait for 10 ms;
-		 
 		  
-		  --I chose to end the simulation with the hold behaviour instead of waiting another 31ms to turn it back off
-		  --it already was taking 2-3 mins to load the simulation at this point
-		  
+		  --after debounce occurs, outputs should be frozen
 		  
 		  -- end main testing 	
 		  wait for 250000*TbPeriod; --5ms

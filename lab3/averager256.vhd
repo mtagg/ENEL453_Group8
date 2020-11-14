@@ -59,7 +59,7 @@ begin
 								REG_ARRAY(i+1) <= REG_ARRAY(i);		-- every rising clock edge, shift the new Din value to the top of REG_ARRAY
 								end loop LoopA2;
 	
-							Q     <= tmplast(N+bits downto N); 		-- every rising clock edge, output average: Q is updated with tmplast(19 downto 8) (with 8 bits left over, lol, wut?) 
+							Q     <= tmplast(N+bits downto N); 		-- every rising clock edge, output average: Q is updated with tmplast(19 downto 8) 
 							-- Q_high_res <= tmplast(N+bits downto N-X);
 						
 						end if;
@@ -75,7 +75,7 @@ begin
    
 	
 	
-	LoopB2: for i in ((2**N)/2)+1 to ((2**N) -1) generate		-- loop through tmp (255 downto 129
+	LoopB2: for i in ((2**N)/2)+1 to ((2**N) -1) generate		-- loop through tmp (255 downto 129)
 		tmp(i) <= 0 when reset_n = '0'
 		else (tmp(2*(i-(2**N)/2)) + tmp(2*(i-(2**N)/2) - 1)) when rising_edge(clk) else tmp(i);
    end generate LoopB2;
