@@ -9,6 +9,7 @@ entity Display_Manager is
 				 HexADC_Disp   : in  STD_LOGIC_VECTOR (15 downto 0);
 				 DP_IN 			: out STD_LOGIC_VECTOR ( 5 downto 0);
 				 Blank			: out STD_LOGIC_VECTOR ( 5 downto 0)
+				 
 				);
 end entity;
 				 
