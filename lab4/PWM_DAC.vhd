@@ -6,6 +6,7 @@ entity PWM_DAC is
    Generic ( width : integer := 9);
    Port    ( reset_n    : in  STD_LOGIC;
              clk        : in  STD_LOGIC;
+				 counter_en : in  STD_LOGIC;
              duty_cycle : in  STD_LOGIC_VECTOR (width-1 downto 0);
              pwm_out    : out STD_LOGIC
            );
@@ -19,8 +20,12 @@ begin
    begin
        if( reset_n = '0') then
            counter <= (others => '0');
-       elsif (rising_edge(clk)) then 
-           counter <= counter + 1;
+       elsif (rising_edge(clk)) then 		
+				if (counter_en = '1') then		-- lab4 modifications:
+					counter <= counter + 1;		-- COUNTER WILL ONLY INCREASE WHEN enable is set high
+				else 
+					counter <= counter;			-- counter remains unchanged if enable is not high
+				end if;								-- end modifications
        end if;
    end process;
  

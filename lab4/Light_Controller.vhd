@@ -22,11 +22,14 @@ constant width 		 : integer := 12;		-- to account for the 13 bit distance signal
 signal pwm_out 		 : STD_LOGIC;
 signal duty_cycle 	 : STD_LOGIC_VECTOR (width-1 downto 0);
 signal Invert_Distance: STD_LOGIC_VECTOR (width-1 downto 0);
+signal Flash_EN		 : STD_LOGIC;
+signal counter_en		 : STD_LOGIC;								
 
 component PWM_DAC is
-		Generic ( width : integer := 12);
+		Generic ( width : integer := 9);		--use bit patters specific for this module
 		Port    ( reset_n    : in  STD_LOGIC;
 					 clk        : in  STD_LOGIC;
+					 counter_en : in  STD_LOGIC;
 					 duty_cycle : in  STD_LOGIC_VECTOR (width-1 downto 0);
 					 pwm_out    : out STD_LOGIC
 		);
@@ -35,19 +38,21 @@ end component;
 
 begin
 
-PWM_DAC_ins : PWM_DAC  
+PWM_DAC_ins : PWM_DAC 
+GENERIC MAP ( width => width) 
 		PORT MAP (
 					 reset_n 	=> reset_n,
 					 clk    		=> clk,
+					 counter_en => counter_en,
 					 duty_cycle => duty_cycle,
 					 pwm_out  	=> pwm_out
 		);
 		
 
 Invert_Distance <= "111111111111" XOR Distance(width-1 downto 0); --Invert_Distance will recieve 4095 minus current distance
-								
+counter_en <= '1'; 																--pwm_dac should always be operational								
 
-LEDR_Dimming: process (Invert_Distance, pwm_out) is 
+LEDR_Dimming: process (Invert_Distance, clk, reset_n, pwm_out) is 
 	begin
 		if (reset_n = '0') then					--reset behavior
 			LEDR <= (others=>'0');				--LEDs off upon reset
