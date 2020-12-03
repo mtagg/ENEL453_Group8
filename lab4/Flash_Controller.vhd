@@ -15,12 +15,13 @@ end Flash_Controller;
 
 architecture behavior of Flash_Controller is
 	
-	constant width 		 	 : integer := 4;		-- small 4 bit base PWM counter size
-	constant flash_distance	 : STD_LOGIC_VECTOR (15 downto 0) := "0010000000000001"; 	-- (BCD "2001")compare this to current distance to determine if flash is necessary
+	constant width 		 	 : integer := 4;	-- small 4 bit base PWM counter size
+	constant flash_distance	 : STD_LOGIC_VECTOR (15 downto 0) := "0010000000000001";	-- (BCD "2001")compare this to current distance to determine if flash is necessary
+	
 	signal pwm_out 			 : STD_LOGIC;
 	signal duty_cycle 	 	 : STD_LOGIC_VECTOR (width-1 downto 0) := "0111"; -- 50:50 PWM flash , counter 0-8 on, counter 9-15 off;
 	signal flash_en			 : STD_LOGIC;	
-   signal zero,zero1,zero2,zero3,zero4,zero5 	: STD_LOGIC; 							  -- each will yield different clock dividing frequencies
+   signal zero,zero1,zero2,zero3,zero4,zero5 	: STD_LOGIC; 					  -- each will yield different clock dividing frequencies
 
 	
 	
