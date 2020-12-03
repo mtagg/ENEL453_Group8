@@ -2,8 +2,7 @@
 -- at https://vhdl.lapinoo.net
 -- Generation date : 29.10.2020 18:03:41 UTC
 
---BEFORE TESTING THIS MODULE, SET THE ADC_MODULE INTO SIMULATION MODE, THIS IS EXPLAINED BY ONEN IN HIS OUTLINE
---THIS TESTBENCH SHOULD BE GOOD TO PRESENT
+-- Top Level Testbench taken from Lab3, modified for Lab 4
 
 
 library ieee;
@@ -15,30 +14,32 @@ end tb_top_level;
 architecture tb of tb_top_level is
 
     component top_level
-        port (clk     : in std_logic;
-              reset_n : in std_logic;
-              hold_n  : in std_logic;
-              SW      : in std_logic_vector (9 downto 0);
-              LEDR    : out std_logic_vector (9 downto 0);
-              HEX0    : out std_logic_vector (7 downto 0);
-              HEX1    : out std_logic_vector (7 downto 0);
-              HEX2    : out std_logic_vector (7 downto 0);
-              HEX3    : out std_logic_vector (7 downto 0);
-              HEX4    : out std_logic_vector (7 downto 0);
-              HEX5    : out std_logic_vector (7 downto 0));
+        port (clk      : in std_logic;
+              reset_n  : in std_logic;
+              hold_n   : in std_logic;
+              SW       : in std_logic_vector (9 downto 0);
+              LEDR     : out std_logic_vector (9 downto 0);
+              HEX0     : out std_logic_vector (7 downto 0);
+              HEX1     : out std_logic_vector (7 downto 0);
+              HEX2     : out std_logic_vector (7 downto 0);
+              HEX3     : out std_logic_vector (7 downto 0);
+              HEX4     : out std_logic_vector (7 downto 0);
+              HEX5     : out std_logic_vector (7 downto 0);
+				  Buzz_Out : out STD_LOGIC);
     end component;
 
-    signal clk     : std_logic := '0';
-    signal reset_n : std_logic := '1';
-    signal hold_n  : std_logic := '1';
-    signal SW      : std_logic_vector (9 downto 0) := (others => '0');
-    signal LEDR    : std_logic_vector (9 downto 0);
-    signal HEX0    : std_logic_vector (7 downto 0);
-    signal HEX1    : std_logic_vector (7 downto 0);
-    signal HEX2    : std_logic_vector (7 downto 0);
-    signal HEX3    : std_logic_vector (7 downto 0);
-    signal HEX4    : std_logic_vector (7 downto 0);
-    signal HEX5    : std_logic_vector (7 downto 0);
+    signal clk      : std_logic := '0';
+    signal reset_n  : std_logic := '1';
+    signal hold_n   : std_logic := '1';
+    signal SW       : std_logic_vector (9 downto 0) := (others => '0');
+    signal LEDR     : std_logic_vector (9 downto 0);
+    signal HEX0     : std_logic_vector (7 downto 0);
+    signal HEX1     : std_logic_vector (7 downto 0);
+    signal HEX2     : std_logic_vector (7 downto 0);
+    signal HEX3     : std_logic_vector (7 downto 0);
+    signal HEX4     : std_logic_vector (7 downto 0);
+    signal HEX5     : std_logic_vector (7 downto 0);
+	 signal Buzz_Out : std_logic := '0';
 
     constant TbPeriod : time := 20 ns; -- EDIT Put right period here
     signal TbSimEnded : std_logic := '0';
@@ -46,17 +47,18 @@ architecture tb of tb_top_level is
 begin
 
     dut : top_level
-    port map (clk     => clk,
-              reset_n => reset_n,
-              hold_n  => hold_n,
-              SW      => SW,
-              LEDR    => LEDR,
-              HEX0    => HEX0,
-              HEX1    => HEX1,
-              HEX2    => HEX2,
-              HEX3    => HEX3,
-              HEX4    => HEX4,
-              HEX5    => HEX5);
+    port map (clk      => clk,
+              reset_n  => reset_n,
+              hold_n   => hold_n,
+              SW       => SW,
+              LEDR     => LEDR,
+              HEX0     => HEX0,
+              HEX1     => HEX1,
+              HEX2     => HEX2,
+              HEX3     => HEX3,
+              HEX4     => HEX4,
+              HEX5     => HEX5,
+				  Buzz_Out => Buzz_Out);
 
     -- Clock generation
     clk <= not clk after TbPeriod/2 when TbSimEnded /= '1' else '0';
@@ -72,7 +74,7 @@ begin
 		  
 		  hold_n <= '0'; 			  	wait for 3 ms;--hold button pressed; debouncer will take 30ms to update
 
-        -- main testing while we wait for debounce
+        -- main testing while we wait for debounce to take effect
 		  SW 		<= "0011111111" ; wait for 5 ms;--should display hex "FF" 
 
 		  SW 		<= "0100000000" ; wait for 5 ms;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals

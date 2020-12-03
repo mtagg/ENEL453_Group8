@@ -116,12 +116,6 @@ buzz: process (clk, reset_n, BCD_Distance, zero, pwm_out)
 										
 					
 
-	
-	
-	
-	
-	
-	
 	--component instances:
 L0downcounter_ins : downcounter
 GENERIC MAP( Period => 100000)	--500 Hz

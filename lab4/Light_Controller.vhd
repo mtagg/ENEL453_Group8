@@ -39,26 +39,28 @@ end component;
 begin
 
 PWM_DAC_ins : PWM_DAC 
-GENERIC MAP ( width => width) 
+GENERIC MAP (width => width) 
 		PORT MAP (
 					 reset_n 	=> reset_n,
 					 clk    		=> clk,
 					 counter_en => counter_en,
 					 duty_cycle => duty_cycle,
 					 pwm_out  	=> pwm_out
-		);
+					 );
 		
 
 Invert_Distance <= "111111111111" XOR Distance(width-1 downto 0); --Invert_Distance will recieve 4095 minus current distance
-counter_en <= '1'; 																--pwm_dac should always be operational								
+counter_en <= '1'; 																--pwm_dac should always be in operation
 
 LEDR_Dimming: process (Invert_Distance, clk, reset_n, pwm_out) is 
 	begin
 		if (reset_n = '0') then					--reset behavior
 			LEDR <= (others=>'0');				--LEDs off upon reset
+			
 		elsif rising_edge(clk) then			--synchronized default behavior
 			duty_cycle <= Invert_Distance;	--duty cycle scaled by distance, larger distance == smaller Invert_Distance == smaller duty cycle 
 			LEDR <= (others => (pwm_out));	--LEDR output will be determined by the pulse width calculated
+			
 		end if;		
 	end process;
 		
