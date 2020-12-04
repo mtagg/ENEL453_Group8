@@ -72,23 +72,23 @@ begin
         reset_n <= '1';
 		  wait for 20000*TbPeriod;
 		  
-		  hold_n <= '0'; 			  	wait for 3 ms;--hold button pressed; debouncer will take 30ms to update
+		  --hold_n <= '0'; 			  	wait for 3 ms;--hold button pressed; debouncer will take 30ms to update
 
         -- main testing while we wait for debounce to take effect
-		  SW 		<= "0011111111" ; wait for 5 ms;--should display hex "FF" 
+		  --SW 		<= "0011111111" ; wait for 5 ms;--should display hex "FF" 
 
-		  SW 		<= "0100000000" ; wait for 5 ms;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
+		  SW 		<= "0100000000" ; wait for 1 ms;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
 
-		  SW 		<= "1000000000" ; wait for 5 ms;-- BCD Voltage display mode, in Volt units (with decimal)
+		  SW 		<= "1000000000" ; wait for 1 ms;-- BCD Voltage display mode, in Volt units (with decimal)
 		  
-		  SW 		<= "1100000000" ; wait for 5 ms;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
+		  SW 		<= "1100000000" ; wait for 1 ms;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
 		 
-		  wait for 10 ms;
+		  --wait for 10 ms;
 		  
 		  --after debounce occurs, outputs should be frozen
 		  
 		  -- end main testing 	
-		  wait for 250000*TbPeriod; --5ms
+		  --wait for 250000*TbPeriod; --5ms
         TbSimEnded <= '1';   -- Stop the clock and hence terminate the simulation
 		  assert false report "Simulation ended" severity failure; -- need this line to halt the testbench  
         wait;
