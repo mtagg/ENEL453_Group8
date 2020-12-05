@@ -29,7 +29,7 @@ use ieee.numeric_std.all;
 
 ENTITY debounce IS
 	GENERIC( clk_freq    : INTEGER := 50_000_000;  --system clock frequency in Hz
-				stable_time : INTEGER := 30);         --time button must remain stable in ms
+				stable_time : INTEGER := 1);         --time button must remain stable in ms (changed to 1ms for testing)
 	PORT( 
 			clk     : IN  STD_LOGIC;  --input clock
 			reset_n : IN  STD_LOGIC;  --asynchronous active low reset
@@ -38,7 +38,7 @@ ENTITY debounce IS
 END debounce;
 
 ARCHITECTURE logic OF debounce IS
-	CONSTANT  MAXCOUNT    : INTEGER := 1_500_000;   		-- desired debounce clock cycles - [ 50MHz * 30ms ] 
+	CONSTANT  MAXCOUNT    : INTEGER := 50_000;   		-- desired debounce clock cycles - [ 50MHz * 30ms ] 
 	SIGNAL 	 flipflops   : STD_LOGIC_VECTOR(1 DOWNTO 0); -- input flip flops
 	SIGNAL 	 counter_set : STD_LOGIC;                    -- sync reset to zero
 	SIGNAL    count 		 : INTEGER;	                     -- internal signal for simulation debugging

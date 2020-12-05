@@ -38,6 +38,7 @@ architecture Behavioral of top_level is
    signal VOLT_IN				: STD_LOGIC_VECTOR (15 downto 0);-- decimal voltage value, decimal pt on segment 3
 	signal Blank_Mid1			: STD_LOGIC_VECTOR (5  downto 0);-- to freeze module
 	signal DP_mid				: STD_LOGIC_VECTOR (5  downto 0);-- to freeze module
+	
 	--Lab 4 additions:
 	signal Blank_Mid2			: STD_LOGIC_VECTOR (5  downto 0); -- takes the output of displaymanager and delivers to the flash_controller
 																				 -- flash controller will then be the last stop before SevenSegment.vhd module
@@ -209,7 +210,7 @@ ADC_Data_ins : ADC_Data
 			clk       => clk,
          reset_n   => reset_n,
          voltage   => voltage,
-			distance  => Distance,
+			distance  => Distance, --output of ADC_Data
 			ADC_raw   => ADC_raw,
          ADC_out   => ADC_out
 			);
@@ -218,7 +219,7 @@ CM_binary_bcd_ins : binary_bcd
 		PORT MAP(
 			clk       => clk,                          
 			reset_n   => reset_n,                                 
-			binary    => Distance,    
+			binary    => Distance, --input from ADC_Data 
 			bcd       => CM_IN         
 			);
 	

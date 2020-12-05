@@ -68,24 +68,26 @@ begin
 		  
 		  -- Reset will now force the debounce signal to high (off) position, yay!
         reset_n <= '0';
-        wait for 20000*TbPeriod; --0.4ms
+        wait for 25000*TbPeriod; --0.5ms
         reset_n <= '1';
-		  wait for 20000*TbPeriod;
+		  wait for 1000*TbPeriod; --20us
 		  
-		  --hold_n <= '0'; 			  	wait for 3 ms;--hold button pressed; debouncer will take 30ms to update
-
-        -- main testing while we wait for debounce to take effect
+		  
+		  -- main testing while we wait for debounce to take effect
 		  --SW 		<= "0011111111" ; wait for 5 ms;--should display hex "FF" 
 
-		  SW 		<= "0100000000" ; wait for 1 ms;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
-
-		  SW 		<= "1000000000" ; wait for 1 ms;-- BCD Voltage display mode, in Volt units (with decimal)
+		  SW 		<= "0100000000" ; wait for 4 ms;-- distance display mode in CM (fronm BCD module), verify correct displays/decimals
+		  			
+		
+		  --SW 		<= "1000000000" ; wait for 1 ms;-- BCD Voltage display mode, in Volt units (with decimal)
+		  		  
+		  --hold_n <= '0'; wait for 2 ms;
+		  --hold_n <= '1'; wait for 3 ms;
 		  
-		  SW 		<= "1100000000" ; wait for 1 ms;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
-		 
-		  --wait for 10 ms;
+		  --SW 		<= "1100000000" ; wait for 4 ms;-- Hex voltage display, should display 12bit voltage string as 3 digit hex
 		  
-		  --after debounce occurs, outputs should be frozen
+		  wait for 10 ms;
+		  
 		  
 		  -- end main testing 	
 		  --wait for 250000*TbPeriod; --5ms
