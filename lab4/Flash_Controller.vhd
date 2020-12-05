@@ -82,10 +82,10 @@ begin
 	
 	
 	
---component instances:
+--component instances: scaled by 1/50000 for testbench
 	
 L1downcounter_ins : downcounter
-GENERIC MAP( Period => 5000000)
+GENERIC MAP( Period => 100) --1.6ms
 		PORT MAP (
 				clk      	=> clk,
 				reset_n 		=> reset_n,
@@ -93,7 +93,7 @@ GENERIC MAP( Period => 5000000)
 				zero 			=> zero1
 		);
 L2downcounter_ins : downcounter
-GENERIC MAP( Period => 3000000)
+GENERIC MAP( Period => 60)
 		PORT MAP (
 				clk      	=> clk,
 				reset_n 		=> reset_n,
@@ -101,7 +101,7 @@ GENERIC MAP( Period => 3000000)
 				zero 			=> zero2
 		);
 L3downcounter_ins : downcounter
-GENERIC MAP( Period => 1500000)
+GENERIC MAP( Period => 30)
 		PORT MAP (
 				clk      	=> clk,
 				reset_n 		=> reset_n,
@@ -109,7 +109,7 @@ GENERIC MAP( Period => 1500000)
 				zero 			=> zero3
 		);
 L4downcounter_ins : downcounter
-GENERIC MAP( Period => 1000000)
+GENERIC MAP( Period => 20)
 		PORT MAP (
 				clk      	=> clk,
 				reset_n 		=> reset_n,
@@ -118,7 +118,7 @@ GENERIC MAP( Period => 1000000)
 		);
 		
 L5downcounter_ins : downcounter
-GENERIC MAP( Period => 500000)
+GENERIC MAP( Period => 10) --16us
 		PORT MAP (
 				clk      	=> clk,
 				reset_n 		=> reset_n,
